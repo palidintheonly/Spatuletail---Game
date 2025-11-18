@@ -1,0 +1,13 @@
+{
+  "name": "spatuletail-game",
+  "version": "1.0.0",
+  "description": "Spatuletail - Game: 2-player turn-based battleship with Three.js 3D graphics",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}

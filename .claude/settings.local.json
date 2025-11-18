@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(taskkill:*)",
+      "Bash(nul)",
+      "Bash(node bot.js:*)",
+      "Bash(timeout:*)",
+      "Bash(if exist \"data\\worldMap.json\" del \"data\\worldMap.json\")",
+      "Bash(del \"c:\\Users\\lkroo\\Desktop\\game\\data\\worldMap.json\" 2)",
+      "Bash(dir:*)",
+      "Bash(del \"c:\\Users\\lkroo\\Desktop\\game\\server\\data\\world-map.json\")",
+      "Bash(curl:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(if exist \"client\\dist\" rmdir /s /q \"client\\dist\")",
+      "Bash(if exist \"server\\public\" rmdir /s /q \"server\\public\")",
+      "Bash(npm start)",
+      "Bash(echo:*)",
+      "Bash(client/.env)",
+      "Bash(npm run copy:build:*)",
+      "Bash(if exist \"game\" echo Duplicate game directory exists)",
+      "Bash(if exist \"server\\src\\routes\\mmorpg.js\" echo MMORPG routes file exists)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(npx vite build)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
