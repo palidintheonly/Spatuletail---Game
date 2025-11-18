@@ -364,8 +364,9 @@
             useEffect(() => {
                 const fetchStats = async () => {
                     try {
-                        const response = await fetch('/api/stats/live');
-                        const data = await response.json();
+                        const response = await fetch('/api/v1/stats/live');
+                        const result = await response.json();
+                        const data = result.data || result; // Handle both wrapped and unwrapped responses
                         setStats({
                             activePlayers: data.activePlayers || 0,
                             gamesPlayed: data.gamesPlayed || 0,

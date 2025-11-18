@@ -438,7 +438,7 @@
                 setLoading(true);
 
                 try {
-                    const response = await fetch('/api/admin/verify', {
+                    const response = await fetch('/api/v1/admin/verify', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -534,8 +534,9 @@
             useEffect(() => {
                 const fetchStats = async () => {
                     try {
-                        const response = await fetch('/api/stats/live');
-                        const data = await response.json();
+                        const response = await fetch('/api/v1/stats/live');
+                        const result = await response.json();
+                        const data = result.data || result; // Handle both wrapped and unwrapped responses
                         setStats(data);
                         // Use server-configured interval if available
                         if (data.updateInterval) {
@@ -683,10 +684,12 @@
             useEffect(() => {
                 const fetchLeaderboards = async () => {
                     try {
-                        const [online, offline] = await Promise.all([
-                            fetch('/api/leaderboard/online').then(r => r.json()),
-                            fetch('/api/leaderboard/offline').then(r => r.json())
+                        const [onlineResult, offlineResult] = await Promise.all([
+                            fetch('/api/v1/leaderboard/online').then(r => r.json()),
+                            fetch('/api/v1/leaderboard/offline').then(r => r.json())
                         ]);
+                        const online = onlineResult.data || onlineResult;
+                        const offline = offlineResult.data || offlineResult;
                         setOnlineLeaderboard(online);
                         setOfflineLeaderboard(offline);
                     } catch (error) {
@@ -769,8 +772,9 @@
             useEffect(() => {
                 const fetchSystemInfo = async () => {
                     try {
-                        const response = await fetch('/api/admin/system');
-                        const data = await response.json();
+                        const response = await fetch('/api/v1/admin/system');
+                        const result = await response.json();
+                        const data = result.data || result;
                         setSystemInfo(data);
                     } catch (error) {
                         console.error('Failed to fetch system info:', error);
@@ -935,8 +939,9 @@
             useEffect(() => {
                 const fetchLogs = async () => {
                     try {
-                        const response = await fetch('/api/logs/recent?limit=50');
-                        const data = await response.json();
+                        const response = await fetch('/api/v1/logs/recent?limit=50');
+                        const result = await response.json();
+                        const data = result.data || result;
                         setLogs(data);
                     } catch (error) {
                         console.error('Failed to fetch logs:', error);

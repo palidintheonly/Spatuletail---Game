@@ -48,6 +48,7 @@ const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 const os = require('os');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const httpServer = createServer(app);
@@ -69,6 +70,12 @@ const ADMIN_SESSION_TIMEOUT = (parseInt(process.env.ADMIN_SESSION_TIMEOUT_SECOND
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const ENABLE_RATE_LIMITING = process.env.ENABLE_RATE_LIMITING === 'true';
 const MAX_CONNECTIONS_PER_IP = parseInt(process.env.MAX_CONNECTIONS_PER_IP) || 10;
+
+// Rate Limiting Configuration
+const RATE_LIMIT_WINDOW_MINUTES = parseInt(process.env.RATE_LIMIT_WINDOW_MINUTES) || 15;
+const RATE_LIMIT_MAX_REQUESTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100;
+const RATE_LIMIT_SOCKET_ENABLED = process.env.RATE_LIMIT_SOCKET_ENABLED === 'true';
+const RATE_LIMIT_SOCKET_MAX_PER_MINUTE = parseInt(process.env.RATE_LIMIT_SOCKET_MAX_PER_MINUTE) || 5;
 
 // Game Configuration
 const MAX_ROUNDS = parseInt(process.env.MAX_ROUNDS) || 3;
@@ -106,6 +113,15 @@ const ENABLE_OFFLINE_MODE = process.env.ENABLE_OFFLINE_MODE !== 'false';
 const ENABLE_ONLINE_MODE = process.env.ENABLE_ONLINE_MODE !== 'false';
 const ENABLE_LEADERBOARDS = process.env.ENABLE_LEADERBOARDS !== 'false';
 const ENABLE_GAME_STATS = process.env.ENABLE_GAME_STATS !== 'false';
+
+// API Configuration
+const API_VERSION = process.env.API_VERSION || 'v1';
+const API_FOOTER_ENABLED = process.env.API_FOOTER_ENABLED !== 'false';
+const API_FOOTER_NAME = process.env.API_FOOTER_NAME || 'Spatuletail Game API';
+const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '1.0.0';
+const API_FOOTER_AUTHOR = process.env.API_FOOTER_AUTHOR || 'Spatuletail Development Team';
+const API_FOOTER_DOCS_URL = process.env.API_FOOTER_DOCS_URL || 'https://github.com/spatuletail/game';
+const API_FOOTER_TIMESTAMP = process.env.API_FOOTER_TIMESTAMP !== 'false';
 
 // Print loaded configuration
 console.log('\x1b[1m\x1b[32m[CONFIG] Environment configuration loaded successfully\x1b[0m');
@@ -158,6 +174,76 @@ const Logger = {
 app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
 app.use(express.json());
 Logger.success('server', 'Static file serving enabled', { directory: 'QuakerBeak/assets' });
+
+// ========================================
+// RATE LIMITING MIDDLEWARE
+// ========================================
+if (ENABLE_RATE_LIMITING) {
+  const apiLimiter = rateLimit({
+    windowMs: RATE_LIMIT_WINDOW_MINUTES * 60 * 1000,
+    max: RATE_LIMIT_MAX_REQUESTS,
+    message: {
+      error: 'Too many requests from this IP, please try again later.',
+      retryAfter: RATE_LIMIT_WINDOW_MINUTES + ' minutes'
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+    handler: (req, res) => {
+      Logger.warn('security', 'Rate limit exceeded', {
+        ip: req.ip,
+        path: req.path
+      });
+      res.status(429).json({
+        error: 'Too many requests from this IP, please try again later.',
+        retryAfter: RATE_LIMIT_WINDOW_MINUTES + ' minutes'
+      });
+    }
+  });
+
+  app.use(`/api/${API_VERSION}`, apiLimiter);
+  Logger.success('security', 'API rate limiting enabled', {
+    window: RATE_LIMIT_WINDOW_MINUTES + ' minutes',
+    maxRequests: RATE_LIMIT_MAX_REQUESTS
+  });
+} else {
+  Logger.warn('security', 'Rate limiting is DISABLED');
+}
+
+// ========================================
+// API FOOTER MIDDLEWARE
+// ========================================
+if (API_FOOTER_ENABLED) {
+  app.use(`/api/${API_VERSION}`, (req, res, next) => {
+    const originalJson = res.json.bind(res);
+
+    res.json = function(data) {
+      const response = {
+        data: data,
+        _meta: {
+          api: API_FOOTER_NAME,
+          version: API_FOOTER_VERSION,
+          author: API_FOOTER_AUTHOR,
+          docs: API_FOOTER_DOCS_URL
+        }
+      };
+
+      if (API_FOOTER_TIMESTAMP) {
+        response._meta.timestamp = new Date().toISOString();
+      }
+
+      return originalJson(response);
+    };
+
+    next();
+  });
+
+  Logger.success('api', 'API footer middleware enabled', {
+    name: API_FOOTER_NAME,
+    version: API_FOOTER_VERSION
+  });
+} else {
+  Logger.info('api', 'API footer is DISABLED');
+}
 
 // Route handlers for new structure
 app.get('/', (req, res) => {
@@ -724,9 +810,90 @@ class BattleshipGame {
 
   placeShips(playerId, ships) {
     const player = playerId === this.player1.id ? this.player1 : this.player2;
+
+    // Validate ship placement to ensure equal tiles for both players
+    if (!this.validateShips(ships)) {
+      Logger.error('placement', `${player.name} placed invalid ships - rejecting`, {
+        playerId,
+        shipCount: ships.length,
+        expected: SHIP_TYPES.length
+      });
+      return false;
+    }
+
     Logger.game('placement', `${player.name} placed ships`, { playerId, shipCount: ships.length });
     this.ships[playerId] = ships;
     this.ready[playerId] = true;
+    return true;
+  }
+
+  validateShips(ships) {
+    // Must have exactly 5 ships (equal for both players)
+    if (ships.length !== SHIP_TYPES.length) {
+      Logger.warn('validation', 'Invalid ship count', {
+        received: ships.length,
+        expected: SHIP_TYPES.length
+      });
+      return false;
+    }
+
+    // Track which ship types have been placed
+    const placedTypes = new Set();
+    let totalCells = 0;
+
+    for (let ship of ships) {
+      // Check if ship type exists in SHIP_TYPES
+      const shipType = SHIP_TYPES.find(st => st.name === ship.type);
+      if (!shipType) {
+        Logger.warn('validation', 'Unknown ship type', { type: ship.type });
+        return false;
+      }
+
+      // Check for duplicate ship types
+      if (placedTypes.has(ship.type)) {
+        Logger.warn('validation', 'Duplicate ship type', { type: ship.type });
+        return false;
+      }
+      placedTypes.add(ship.type);
+
+      // Validate ship length matches expected length
+      if (ship.length !== shipType.length) {
+        Logger.warn('validation', 'Invalid ship length', {
+          type: ship.type,
+          expected: shipType.length,
+          received: ship.length
+        });
+        return false;
+      }
+
+      // Validate ship cells match length
+      if (!ship.cells || ship.cells.length !== ship.length) {
+        Logger.warn('validation', 'Ship cells do not match length', {
+          type: ship.type,
+          cellCount: ship.cells?.length,
+          expectedLength: ship.length
+        });
+        return false;
+      }
+
+      totalCells += ship.length;
+    }
+
+    // Ensure both players have exactly 17 tiles (5+4+3+3+2)
+    if (totalCells !== 17) {
+      Logger.warn('validation', 'Invalid total ship cells', {
+        received: totalCells,
+        expected: 17
+      });
+      return false;
+    }
+
+    // All validation passed - both players will have equal tiles
+    Logger.success('validation', 'Ship placement validated - equal tiles confirmed', {
+      ships: ships.length,
+      totalCells
+    });
+    return true;
   }
 
   attack(attackerId, row, col) {
@@ -1241,15 +1408,39 @@ io.on('connection', (socket) => {
 
     if (!game) {
       Logger.warn('placement', 'Ship placement for non-existent game', { socketId: socket.id });
+      socket.emit('placementError', {
+        error: 'No active game found',
+        message: 'Please rejoin the game'
+      });
       return;
     }
 
-    game.placeShips(socket.id, ships);
+    // Validate and place ships - ensure equal tiles for both players
+    const validPlacement = game.placeShips(socket.id, ships);
+
+    if (!validPlacement) {
+      Logger.error('placement', `Invalid ship placement from ${socket.playerName}`, {
+        socketId: socket.id,
+        gameId: game.id
+      });
+      socket.emit('placementError', {
+        error: 'Invalid ship placement',
+        message: 'You must place all 5 ships correctly (Carrier, Battleship, Cruiser, Submarine, Destroyer)',
+        expectedShips: SHIP_TYPES.map(st => ({ name: st.name, length: st.length }))
+      });
+      return;
+    }
+
     logGameEvent('shipsPlaced', {
       gameId: game.id,
       playerId: socket.id,
       playerName: socket.playerName,
       mode: game.mode
+    });
+
+    // Confirm successful placement
+    socket.emit('placementConfirmed', {
+      message: 'Ships placed successfully - equal tiles confirmed'
     });
 
     if (game.ready[game.player1.id] && game.ready[game.player2.id]) {
@@ -1737,7 +1928,7 @@ function endGame(game) {
 }
 
 // API Endpoints for Leaderboard
-app.get('/api/leaderboard/:mode', (req, res) => {
+app.get(`/api/${API_VERSION}/leaderboard/:mode`, (req, res) => {
   const mode = req.params.mode;
   Logger.info('api', `Leaderboard request for ${mode} mode`);
 
@@ -1760,7 +1951,7 @@ app.get('/api/leaderboard/:mode', (req, res) => {
 });
 
 // Live Stats API Endpoint
-app.get('/api/stats/live', (req, res) => {
+app.get(`/api/${API_VERSION}/stats/live`, (req, res) => {
   Logger.info('api', 'Live stats requested');
 
   const stats = {
@@ -1786,7 +1977,7 @@ app.get('/api/stats/live', (req, res) => {
 });
 
 // Game Log API Endpoint
-app.get('/api/logs/recent', (req, res) => {
+app.get(`/api/${API_VERSION}/logs/recent`, (req, res) => {
   const limit = parseInt(req.query.limit) || 50;
   Logger.info('api', `Recent logs requested`, { limit });
 
@@ -1798,7 +1989,7 @@ app.get('/api/logs/recent', (req, res) => {
 });
 
 // Admin Password Verification Endpoint
-app.post('/api/admin/verify', (req, res) => {
+app.post(`/api/${API_VERSION}/admin/verify`, (req, res) => {
   const { password } = req.body;
   Logger.info('api', 'Admin password verification attempt');
 
@@ -1812,7 +2003,7 @@ app.post('/api/admin/verify', (req, res) => {
 });
 
 // System Information API Endpoint
-app.get('/api/admin/system', (req, res) => {
+app.get(`/api/${API_VERSION}/admin/system`, (req, res) => {
   Logger.info('api', 'System information requested');
 
   const systemInfo = {

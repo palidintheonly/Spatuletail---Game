@@ -578,8 +578,9 @@
         // Fetch and display live stats
         async function updateStats() {
             try {
-                const response = await fetch('/api/stats/live');
-                const stats = await response.json();
+                const response = await fetch('/api/v1/stats/live');
+                const result = await response.json();
+                const stats = result.data || result; // Handle both wrapped and unwrapped responses
 
                 document.getElementById('activePlayers').textContent = stats.activePlayers || 0;
                 document.getElementById('gamesPlayed').textContent = stats.gamesPlayed || 0;
