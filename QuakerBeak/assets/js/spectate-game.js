@@ -178,7 +178,7 @@ socket.on('queueUpdate', (data) => {
   Logger.info('queue', `Queue position: #${queuePosition}`);
 });
 
-socket.on('startGame', (data) => {
+socket.on('gameStart', (data) => {
   Logger.success('game', 'You are now playing!', data);
   window.location.href = '/online';
 });

@@ -69,7 +69,7 @@ function initThree() {
   scene.background = new THREE.Color(0x0a0e27);
 
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 25, 8);
+  camera.position.set(0, 20, 12);
   camera.lookAt(0, 0, 0);
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -285,7 +285,7 @@ socket.on('connect', () => {
   gameState = 'placing';
 });
 
-socket.on('startGame', (data) => {
+socket.on('gameStart', (data) => {
   Logger.game('game', 'Game started', data);
   document.getElementById('player-name').textContent = data.playerName;
   gameState = 'playing';

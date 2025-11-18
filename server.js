@@ -152,6 +152,35 @@ let liveStats = {
 // Player activity tracking
 const playerActivity = new Map(); // socketId -> { lastActivity, warnings, isActive }
 
+// Simulated bot players (1-47) to show active players
+const SIMULATED_PLAYERS = Array.from({ length: 47 }, (_, i) => i + 1);
+const activeSimulatedPlayers = new Set();
+
+// Initialize with random active players (30-40% initially active)
+SIMULATED_PLAYERS.forEach(id => {
+  if (Math.random() < 0.35) {
+    activeSimulatedPlayers.add(id);
+  }
+});
+
+// Random interval to toggle simulated player activity
+function toggleRandomSimulatedPlayer() {
+  const randomId = SIMULATED_PLAYERS[Math.floor(Math.random() * SIMULATED_PLAYERS.length)];
+
+  if (activeSimulatedPlayers.has(randomId)) {
+    activeSimulatedPlayers.delete(randomId);
+  } else {
+    activeSimulatedPlayers.add(randomId);
+  }
+
+  // Schedule next toggle at random interval (5-30 seconds)
+  const nextInterval = 5000 + Math.random() * 25000;
+  setTimeout(toggleRandomSimulatedPlayer, nextInterval);
+}
+
+// Start the simulated player activity system
+toggleRandomSimulatedPlayer();
+
 Logger.info('server', 'Game state initialized', {
   waitingPlayer: null,
   activeOnlineGame: null,
@@ -1638,7 +1667,7 @@ app.get('/api/stats/live', (req, res) => {
     accuracy: liveStats.totalHits + liveStats.totalMisses > 0
       ? ((liveStats.totalHits / (liveStats.totalHits + liveStats.totalMisses)) * 100).toFixed(2) + '%'
       : '0%',
-    activePlayers: playerActivity.size,
+    activePlayers: playerActivity.size + activeSimulatedPlayers.size,
     timestamp: new Date().toISOString()
   };
 
