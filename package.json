@@ -19,6 +19,7 @@
     "particles.js": "^2.0.0",
     "postprocessing": "^6.38.0",
     "socket.io": "^4.6.1",
-    "three-orbit-controls": "^82.1.0"
+    "three-orbit-controls": "^82.1.0",
+    "express-rate-limit": "^8.2.1"
   }
 }

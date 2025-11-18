@@ -3,12 +3,25 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const fs = require('fs');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 const PORT = process.env.PORT || 3010;
+
+// Configure rate limiting: e.g., max 100 requests per 15 minutes per IP
+const htmlRoutesLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: {
+    status: 429,
+    error: 'Too many requests from this IP, please try again after 15 minutes.',
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Waterbird directory for JSON logging
 const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
@@ -53,22 +66,22 @@ app.use(express.json());
 Logger.success('server', 'Static file serving enabled', { directory: 'QuakerBeak/assets' });
 
 // Route handlers for new structure
-app.get('/', (req, res) => {
+app.get('/', htmlRoutesLimiter, (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index.html'));
   Logger.info('route', 'Root route accessed', { path: '/' });
 });
 
-app.get('/online', (req, res) => {
+app.get('/online', htmlRoutesLimiter, (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'online.html'));
   Logger.info('route', 'Online game route accessed', { path: '/online' });
 });
 
-app.get('/offline', (req, res) => {
+app.get('/offline', htmlRoutesLimiter, (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'offline.html'));
   Logger.info('route', 'Offline game route accessed', { path: '/offline' });
 });
 
-app.get('/spectate', (req, res) => {
+app.get('/spectate', htmlRoutesLimiter, (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'spectate.html'));
   Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
