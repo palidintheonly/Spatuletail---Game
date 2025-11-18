@@ -271,7 +271,10 @@ function updateShipPreview() {
 socket.on('connect', () => {
   Logger.info('socket', 'Connected - Requesting offline game');
   document.getElementById('loading-screen').classList.remove('active');
-  socket.emit('requestOfflineGame');
+
+  // Request offline game with player name
+  const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
+  socket.emit('join', { name: playerName, mode: 'offline' });
   gameState = 'placing';
 });
 

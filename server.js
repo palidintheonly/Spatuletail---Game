@@ -938,6 +938,26 @@ io.on('connection', (socket) => {
     logGameEvent('playerJoin', { socketId: socket.id, playerName, mode });
     Logger.info('player', `Player joined: ${socket.playerName}`, { socketId: socket.id, mode });
 
+    // Spectate mode: watch active game or wait in queue
+    if (mode === 'spectate') {
+      if (activeOnlineGame) {
+        spectators.push({ id: socket.id, socket, name: socket.playerName });
+        socket.emit('spectating', {
+          message: 'Watching live match',
+          queuePosition: spectators.length
+        });
+        Logger.info('spectate', `${socket.playerName} is spectating`, {
+          queuePosition: spectators.length,
+          totalSpectators: spectators.length
+        });
+        sendSpectatorGameState(socket, activeOnlineGame);
+      } else {
+        socket.emit('noActiveGames');
+        Logger.info('spectate', `${socket.playerName} found no active games`);
+      }
+      return;
+    }
+
     // Offline mode: create game with bot (one at a time per player)
     if (mode === 'offline') {
       Logger.info('offline', `Starting offline game for ${socket.playerName}`);
@@ -975,13 +995,13 @@ io.on('connection', (socket) => {
       return;
     }
 
-    // Online mode: matchmaking with spectate
-    if (!activeOnlineGame && !waitingPlayer) {
+    // Online mode: matchmaking
+    if (mode === 'online' && !activeOnlineGame && !waitingPlayer) {
       // No active game, no waiting player - become waiting player
       waitingPlayer = { id: socket.id, socket, name: socket.playerName, isBot: false };
       socket.emit('waiting');
       Logger.info('matchmaking', `${socket.playerName} is waiting for opponent`, { socketId: socket.id });
-    } else if (!activeOnlineGame && waitingPlayer) {
+    } else if (mode === 'online' && !activeOnlineGame && waitingPlayer) {
       // No active game, but there's a waiting player - start game
       const game = new BattleshipGame(waitingPlayer, { id: socket.id, socket, name: socket.playerName, isBot: false });
       game.mode = 'online';
@@ -1011,14 +1031,14 @@ io.on('connection', (socket) => {
         player1: game.player1.name,
         player2: game.player2.name
       });
-    } else {
-      // Game in progress - add to spectators
+    } else if (mode === 'online') {
+      // Game in progress - add to spectators (online mode auto-spectate)
       spectators.push({ id: socket.id, socket, name: socket.playerName });
       socket.emit('spectating', {
         message: 'Game in progress. You are now spectating.',
         queuePosition: spectators.length
       });
-      Logger.info('spectate', `${socket.playerName} is spectating`, {
+      Logger.info('spectate', `${socket.playerName} auto-spectating online game`, {
         queuePosition: spectators.length,
         totalSpectators: spectators.length
       });

@@ -278,7 +278,10 @@ function updateShipPreview() {
 socket.on('connect', () => {
   Logger.network('socket', 'Connected to server');
   document.getElementById('loading-screen').classList.remove('active');
-  socket.emit('requestOnlineGame');
+
+  // Request online game with player name
+  const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
+  socket.emit('join', { name: playerName, mode: 'online' });
   gameState = 'placing';
 });
 

@@ -124,7 +124,10 @@ function initStatsChart() {
 socket.on('connect', () => {
   Logger.info('socket', 'Connected to spectate server');
   document.getElementById('loading-screen')?.classList.remove('active');
-  socket.emit('requestSpectate');
+
+  // Request spectate mode with player name
+  const playerName = prompt('Enter your name:') || `Spectator${Math.floor(Math.random() * 1000)}`;
+  socket.emit('join', { name: playerName, mode: 'spectate' });
 });
 
 socket.on('noActiveGames', () => {
