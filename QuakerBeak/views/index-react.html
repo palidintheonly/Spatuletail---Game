@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Spatuletail - Game Mode Selection</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #ff6b6b;
+            --accent-color: #ffd93d;
+            --dark-bg: #0a0e27;
+            --card-bg: rgba(20, 25, 50, 0.95);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glow-primary: 0 0 30px rgba(0, 212, 255, 0.6);
+            --glow-secondary: 0 0 30px rgba(255, 107, 107, 0.6);
+            --glow-accent: 0 0 30px rgba(255, 217, 61, 0.6);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--glow-primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .mode-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px 30px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .mode-card:hover::before {
+            opacity: 1;
+        }
+
+        .mode-card.online {
+            border-color: var(--primary-color);
+        }
+
+        .mode-card.online:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--glow-primary), 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .mode-card.offline {
+            border-color: var(--secondary-color);
+        }
+
+        .mode-card.offline:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--glow-secondary), 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .mode-card.spectate {
+            border-color: var(--accent-color);
+        }
+
+        .mode-card.spectate:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--glow-accent), 0 20px 40px rgba(255, 217, 61, 0.3);
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .mode-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .mode-card.online .mode-title {
+            color: var(--primary-color);
+        }
+
+        .mode-card.offline .mode-title {
+            color: var(--secondary-color);
+        }
+
+        .mode-card.spectate .mode-title {
+            color: var(--accent-color);
+        }
+
+        .mode-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .mode-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .mode-features li {
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .mode-features li::before {
+            content: '✓ ';
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .mode-card.online .mode-features li::before {
+            color: var(--primary-color);
+        }
+
+        .mode-card.offline .mode-features li::before {
+            color: var(--secondary-color);
+        }
+
+        .mode-card.spectate .mode-features li::before {
+            color: var(--accent-color);
+        }
+
+        .play-button {
+            width: 100%;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .mode-card.online .play-button {
+            background: linear-gradient(135deg, var(--primary-color), #00a8cc);
+            color: #0a0e27;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .mode-card.offline .play-button {
+            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+            color: #fff;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .mode-card.spectate .play-button {
+            background: linear-gradient(135deg, var(--accent-color), #f39c12);
+            color: #0a0e27;
+            box-shadow: 0 5px 20px rgba(255, 217, 61, 0.4);
+        }
+
+        .stats-bar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function GameModeCard({ mode, icon, title, description, features, path, className }) {
+            const navigate = () => {
+                window.location.href = path;
+            };
+
+            return (
+                <div className={`mode-card ${className}`} onClick={navigate} data-aos="fade-up" data-aos-delay={mode * 100}>
+                    <span className="mode-icon">{icon}</span>
+                    <h2 className="mode-title">{title}</h2>
+                    <p className="mode-description">{description}</p>
+                    <ul className="mode-features">
+                        {features.map((feature, idx) => (
+                            <li key={idx}>{feature}</li>
+                        ))}
+                    </ul>
+                    <button className="play-button">{mode === 1 ? 'Launch Battle' : mode === 2 ? 'Start Training' : 'Watch Now'}</button>
+                </div>
+            );
+        }
+
+        function StatsBar() {
+            const [stats, setStats] = useState({
+                activePlayers: '-',
+                gamesPlayed: '-',
+                onlineGames: '-',
+                spectators: '-'
+            });
+
+            useEffect(() => {
+                const fetchStats = async () => {
+                    try {
+                        const response = await fetch('/api/stats/live');
+                        const data = await response.json();
+                        setStats({
+                            activePlayers: data.activePlayers || 0,
+                            gamesPlayed: data.gamesPlayed || 0,
+                            onlineGames: data.activeGames?.online || 0,
+                            spectators: data.queue?.spectators || 0
+                        });
+                    } catch (error) {
+                        console.error('Failed to fetch stats:', error);
+                    }
+                };
+
+                fetchStats();
+                const interval = setInterval(fetchStats, 5000);
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <div className="stats-bar" data-aos="fade-up" data-aos-delay="400">
+                    <div className="stat-item">
+                        <span className="stat-value">{stats.activePlayers}</span>
+                        <span className="stat-label">Active Players Online</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value">{stats.gamesPlayed}</span>
+                        <span className="stat-label">Games Today</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value">{stats.onlineGames}</span>
+                        <span className="stat-label">Live Matches</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value">{stats.spectators}</span>
+                        <span className="stat-label">Spectators</span>
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            useEffect(() => {
+                // Initialize AOS
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out-cubic',
+                    once: true
+                });
+
+                // Initialize particles
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: '#00d4ff' },
+                        shape: { type: 'circle' },
+                        opacity: { value: 0.3, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: '#00d4ff',
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: 'none',
+                            random: true,
+                            out_mode: 'out'
+                        }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: {
+                            onhover: { enable: true, mode: 'grab' },
+                            onclick: { enable: true, mode: 'push' },
+                            resize: true
+                        },
+                        modes: {
+                            grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                            push: { particles_nb: 4 }
+                        }
+                    },
+                    retina_detect: true
+                });
+
+                // Hide loading
+                setTimeout(() => {
+                    document.getElementById('loading').classList.add('hidden');
+                }, 500);
+            }, []);
+
+            const gameModes = [
+                {
+                    mode: 1,
+                    icon: '⚔️',
+                    title: 'Online Battle',
+                    description: 'Challenge real players in intense tactical warfare',
+                    features: [
+                        'Live multiplayer combat',
+                        'Global leaderboards',
+                        'Real-time match statistics',
+                        'Competitive ranking system'
+                    ],
+                    path: '/online',
+                    className: 'online'
+                },
+                {
+                    mode: 2,
+                    icon: '🤖',
+                    title: 'AI Training',
+                    description: 'Test your skills against advanced AI opponents',
+                    features: [
+                        '4 difficulty levels (Easy → Extreme)',
+                        'Smart adaptive AI',
+                        'Practice mode',
+                        'Skill progression tracking'
+                    ],
+                    path: '/offline',
+                    className: 'offline'
+                },
+                {
+                    mode: 3,
+                    icon: '👁️',
+                    title: 'Spectate',
+                    description: 'Watch live battles and join the queue',
+                    features: [
+                        'Watch ongoing matches',
+                        'Join game queue',
+                        'Learn from top players',
+                        'Live match commentary'
+                    ],
+                    path: '/spectate',
+                    className: 'spectate'
+                }
+            ];
+
+            return (
+                <div className="container">
+                    <header className="header" data-aos="fade-down">
+                        <h1>SPATULETAIL - GAME</h1>
+                        <p>Choose your battle mode and dominate the seas</p>
+                    </header>
+
+                    <div className="game-modes">
+                        {gameModes.map((mode) => (
+                            <GameModeCard key={mode.mode} {...mode} />
+                        ))}
+                    </div>
+
+                    <StatsBar />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

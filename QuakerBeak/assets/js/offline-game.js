@@ -67,8 +67,15 @@ function initThree() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0a0e27);
 
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 20, 12);
+  camera = new THREE.OrthographicCamera(
+    window.innerWidth / -100,
+    window.innerWidth / 100,
+    window.innerHeight / 100,
+    window.innerHeight / -100,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 30, 0);
   camera.lookAt(0, 0, 0);
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -111,6 +118,7 @@ function createBoards() {
       myBoard[row][col] = 0;
       enemyBoard[row][col] = 0;
 
+      // My board (left)
       const myGeometry = new THREE.BoxGeometry(cellSize * 0.9, 0.2, cellSize * 0.9);
       const myMaterial = new THREE.MeshPhongMaterial({ color: 0x00d4ff });
       const myCube = new THREE.Mesh(myGeometry, myMaterial);
@@ -120,6 +128,7 @@ function createBoards() {
       scene.add(myCube);
       myBoardMeshes[row][col] = myCube;
 
+      // Enemy board (right)
       const enemyGeometry = new THREE.BoxGeometry(cellSize * 0.9, 0.2, cellSize * 0.9);
       const enemyMaterial = new THREE.MeshPhongMaterial({ color: 0xff6b6b });
       const enemyCube = new THREE.Mesh(enemyGeometry, enemyMaterial);
@@ -138,7 +147,10 @@ function animate() {
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.left = window.innerWidth / -100;
+  camera.right = window.innerWidth / 100;
+  camera.top = window.innerHeight / 100;
+  camera.bottom = window.innerHeight / -100;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }

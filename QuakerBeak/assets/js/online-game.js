@@ -68,8 +68,15 @@ function initThree() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0a0e27);
 
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 20, 12);
+  camera = new THREE.OrthographicCamera(
+    window.innerWidth / -100,
+    window.innerWidth / 100,
+    window.innerHeight / 100,
+    window.innerHeight / -100,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 30, 0);
   camera.lookAt(0, 0, 0);
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -141,7 +148,10 @@ function animate() {
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.left = window.innerWidth / -100;
+  camera.right = window.innerWidth / 100;
+  camera.top = window.innerHeight / 100;
+  camera.bottom = window.innerHeight / -100;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
@@ -218,8 +228,6 @@ function placeShip(row, col) {
 
   if (currentShipIndex >= SHIP_TYPES.length) {
     document.getElementById('ready-btn').disabled = false;
-    document.getElementById('placement-screen').classList.add('hidden');
-    socket.emit('placeShips', myShips);
   }
 }
 
@@ -262,8 +270,6 @@ function autoPlaceShips() {
 
   sounds.place.play();
   document.getElementById('ready-btn').disabled = false;
-  document.getElementById('placement-screen').classList.add('hidden');
-  socket.emit('placeShips', myShips);
 }
 
 function updateShipPreview() {
@@ -400,6 +406,7 @@ document.getElementById('auto-place-btn')?.addEventListener('click', autoPlaceSh
 
 document.getElementById('ready-btn')?.addEventListener('click', () => {
   document.getElementById('placement-screen').classList.add('hidden');
+  socket.emit('placeShips', myShips);
   gameState = 'waiting';
 });
 

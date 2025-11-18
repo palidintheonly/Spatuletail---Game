@@ -1,14 +1,121 @@
+// ========================================
+// ENVIRONMENT CONFIGURATION
+// ========================================
+// Check if .env file exists
+const fs = require('fs');
+const path = require('path');
+
+const envPath = path.join(__dirname, '.env');
+if (!fs.existsSync(envPath)) {
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] .env file not found!\x1b[0m');
+  console.error('\x1b[33mPlease copy example.env to .env and configure your settings.\x1b[0m');
+  console.error('\x1b[33mCommand: cp example.env .env\x1b[0m');
+  process.exit(1);
+}
+
+// Load environment variables
+const dotenv = require('dotenv');
+const result = dotenv.config();
+
+if (result.error) {
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Failed to parse .env file!\x1b[0m');
+  console.error(result.error);
+  process.exit(1);
+}
+
+// Validate required environment variables
+const REQUIRED_ENV_VARS = [
+  'PORT',
+  'HOST',
+  'NODE_ENV',
+  'ADMIN_PASSWORD',
+  'SESSION_SECRET',
+  'MAX_ROUNDS',
+  'TURN_TIMER_SECONDS'
+];
+
+const missingVars = REQUIRED_ENV_VARS.filter(varName => !process.env[varName]);
+if (missingVars.length > 0) {
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Missing required environment variables:\x1b[0m');
+  missingVars.forEach(varName => {
+    console.error(`  \x1b[31m- ${varName}\x1b[0m`);
+  });
+  console.error('\x1b[33mPlease check your .env file against example.env\x1b[0m');
+  process.exit(1);
+}
+
 const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
-const fs = require('fs');
-const path = require('path');
+const os = require('os');
 
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
-const PORT = process.env.PORT || 3010;
+// ========================================
+// CONFIGURATION FROM .ENV
+// ========================================
+// Server Configuration
+const PORT = parseInt(process.env.PORT) || 3010;
+const HOST = process.env.HOST || '0.0.0.0';
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+// Admin Panel
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const ADMIN_SESSION_TIMEOUT = (parseInt(process.env.ADMIN_SESSION_TIMEOUT_SECONDS) || 3600) * 1000;
+
+// Security
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const ENABLE_RATE_LIMITING = process.env.ENABLE_RATE_LIMITING === 'true';
+const MAX_CONNECTIONS_PER_IP = parseInt(process.env.MAX_CONNECTIONS_PER_IP) || 10;
+
+// Game Configuration
+const MAX_ROUNDS = parseInt(process.env.MAX_ROUNDS) || 3;
+const TURN_TIMER_SECONDS = parseInt(process.env.TURN_TIMER_SECONDS) || 30;
+const MAX_SIMULATED_PLAYERS = parseInt(process.env.MAX_SIMULATED_PLAYERS) || 47;
+const BOARD_SIZE = parseInt(process.env.BOARD_SIZE) || 10;
+const INACTIVITY_THRESHOLD = (parseInt(process.env.INACTIVITY_THRESHOLD_SECONDS) || 45) * 1000;
+const WARNING_THRESHOLD = (parseInt(process.env.WARNING_THRESHOLD_SECONDS) || 30) * 1000;
+
+// Matchmaking
+const ENABLE_SPECTATOR_MODE = process.env.ENABLE_SPECTATOR_MODE !== 'false';
+const MAX_SPECTATORS = parseInt(process.env.MAX_SPECTATORS) || 50;
+const MATCHMAKING_TIMEOUT = (parseInt(process.env.MATCHMAKING_TIMEOUT_SECONDS) || 60) * 1000;
+
+// AI/Bot Configuration
+const BOT_MIN_DIFFICULTY = parseInt(process.env.BOT_MIN_DIFFICULTY) || 1;
+const BOT_MAX_DIFFICULTY = parseInt(process.env.BOT_MAX_DIFFICULTY) || 4;
+const BOT_MIN_DELAY = (parseFloat(process.env.BOT_MIN_DELAY_SECONDS) || 1.5) * 1000;
+const BOT_MAX_DELAY = (parseFloat(process.env.BOT_MAX_DELAY_SECONDS) || 2.5) * 1000;
+
+// Logging & Data Storage
+const MAX_GAME_LOGS = parseInt(process.env.MAX_GAME_LOGS) || 2000;
+const MAX_EVENT_LOGS = parseInt(process.env.MAX_EVENT_LOGS) || 2000;
+const MAX_LEADERBOARD_ENTRIES = parseInt(process.env.MAX_LEADERBOARD_ENTRIES) || 100;
+const ENABLE_CONSOLE_LOGGING = process.env.ENABLE_CONSOLE_LOGGING !== 'false';
+const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
+
+// Performance
+const STATS_UPDATE_INTERVAL = (parseInt(process.env.STATS_UPDATE_INTERVAL_SECONDS) || 3) * 1000;
+const SYSTEM_INFO_INTERVAL = (parseInt(process.env.SYSTEM_INFO_INTERVAL_SECONDS) || 5) * 1000;
+const ACTIVITY_CHECK_INTERVAL = (parseInt(process.env.ACTIVITY_CHECK_INTERVAL_SECONDS) || 10) * 1000;
+
+// Features
+const ENABLE_OFFLINE_MODE = process.env.ENABLE_OFFLINE_MODE !== 'false';
+const ENABLE_ONLINE_MODE = process.env.ENABLE_ONLINE_MODE !== 'false';
+const ENABLE_LEADERBOARDS = process.env.ENABLE_LEADERBOARDS !== 'false';
+const ENABLE_GAME_STATS = process.env.ENABLE_GAME_STATS !== 'false';
+
+// Print loaded configuration
+console.log('\x1b[1m\x1b[32m[CONFIG] Environment configuration loaded successfully\x1b[0m');
+console.log('\x1b[36m[CONFIG] Server: %s:%d [%s]\x1b[0m', HOST, PORT, NODE_ENV);
+console.log('\x1b[36m[CONFIG] Features: Online=%s, Offline=%s, Spectator=%s\x1b[0m',
+  ENABLE_ONLINE_MODE, ENABLE_OFFLINE_MODE, ENABLE_SPECTATOR_MODE);
+console.log('\x1b[36m[CONFIG] Game: %d rounds, %ds turn timer, %d max simulated players\x1b[0m',
+  MAX_ROUNDS, TURN_TIMER_SECONDS, MAX_SIMULATED_PLAYERS);
+console.log('\x1b[36m[CONFIG] Bot difficulty: %d-%d, delay: %.1fs-%.1fs\x1b[0m',
+  BOT_MIN_DIFFICULTY, BOT_MAX_DIFFICULTY, BOT_MIN_DELAY/1000, BOT_MAX_DELAY/1000);
 
 // Waterbird directory for JSON logging
 const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
@@ -54,7 +161,7 @@ Logger.success('server', 'Static file serving enabled', { directory: 'QuakerBeak
 
 // Route handlers for new structure
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index.html'));
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index-react.html'));
   Logger.info('route', 'Root route accessed', { path: '/' });
 });
 
@@ -73,7 +180,12 @@ app.get('/spectate', (req, res) => {
   Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
 
-Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate'] });
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'admin.html'));
+  Logger.info('route', 'Admin dashboard accessed', { path: '/admin' });
+});
+
+Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/admin'] });
 
 // File system utilities - check before creating
 function ensureDirectoryExists(dirPath) {
@@ -554,8 +666,8 @@ class AIBot {
 }
 
 function createBot() {
-  // 4-tier difficulty system: 1=Easy, 2=Medium, 3=Hard, 4=Extreme
-  const difficulty = Math.floor(Math.random() * 4) + 1; // Random 1-4
+  // Use configured difficulty range from .env
+  const difficulty = Math.floor(Math.random() * (BOT_MAX_DIFFICULTY - BOT_MIN_DIFFICULTY + 1)) + BOT_MIN_DIFFICULTY;
   const name = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
 
   const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
@@ -862,13 +974,11 @@ function updatePlayerActivity(socketId) {
 
 function checkPlayerActivity() {
   const now = Date.now();
-  const INACTIVE_THRESHOLD = 45000; // 45 seconds
-  const WARNING_THRESHOLD = 30000; // 30 seconds
 
   playerActivity.forEach((activity, socketId) => {
     const timeSinceActive = now - activity.lastActivity;
 
-    if (timeSinceActive > INACTIVE_THRESHOLD && activity.isActive) {
+    if (timeSinceActive > INACTIVITY_THRESHOLD && activity.isActive) {
       // Player is inactive
       Logger.warn('activity', 'Player inactive - checking if in game', { socketId, timeSinceActive });
 
@@ -897,8 +1007,8 @@ function checkPlayerActivity() {
   });
 }
 
-// Check player activity every 10 seconds
-setInterval(checkPlayerActivity, 10000);
+// Check player activity based on config
+setInterval(checkPlayerActivity, ACTIVITY_CHECK_INTERVAL);
 
 // Automated logging system
 function logGameEvent(eventType, data) {
@@ -911,8 +1021,8 @@ function logGameEvent(eventType, data) {
   const gameLogs = readJSONFile(GAME_LOG_PATH, []);
   gameLogs.push(logEntry);
 
-  // Keep last 2000 events
-  if (gameLogs.length > 2000) {
+  // Keep last N events (from config)
+  if (gameLogs.length > MAX_EVENT_LOGS) {
     gameLogs.shift();
   }
 
@@ -1273,16 +1383,16 @@ function startBattle(game) {
 
 function startTurnTimer(game) {
   const currentPlayer = game.currentTurn === game.player1.id ? game.player1 : game.player2;
-  Logger.timer('timer', `⏰ Turn timer started for ${currentPlayer.name}`, { timeLimit: '30s' });
+  Logger.timer('timer', `⏰ Turn timer started for ${currentPlayer.name}`, { timeLimit: `${TURN_TIMER_SECONDS}s` });
 
   clearTimeout(game.timer);
 
   game.timer = setTimeout(() => {
     handleForfeit(game, game.currentTurn);
-  }, 30000);
+  }, TURN_TIMER_SECONDS * 1000);
 
   // Send timer start to both players
-  const timeLeft = 30;
+  const timeLeft = TURN_TIMER_SECONDS;
 
   if (!game.player1.isBot && game.player1.socket) {
     game.player1.socket.emit('timerStart', { timeLeft });
@@ -1292,9 +1402,9 @@ function startTurnTimer(game) {
     game.player2.socket.emit('timerStart', { timeLeft });
   }
 
-  // If it's a bot's turn, make it attack after a delay
+  // If it's a bot's turn, make it attack after a delay (from .env config)
   if (currentPlayer.isBot) {
-    const delay = 1500 + Math.random() * 1000; // 1.5-2.5 seconds delay
+    const delay = BOT_MIN_DELAY + Math.random() * (BOT_MAX_DELAY - BOT_MIN_DELAY);
     Logger.ai('bot', `Bot ${currentPlayer.name} will attack in ${Math.round(delay)}ms`);
     setTimeout(() => {
       botTurn(game);
@@ -1646,7 +1756,7 @@ app.get('/api/leaderboard/:mode', (req, res) => {
   });
 
   Logger.success('api', `Leaderboard data sent for ${mode}`, { entries: leaderboard.length });
-  res.json(leaderboard.slice(0, 100)); // Top 100
+  res.json(leaderboard.slice(0, MAX_LEADERBOARD_ENTRIES));
 });
 
 // Live Stats API Endpoint
@@ -1687,6 +1797,57 @@ app.get('/api/logs/recent', (req, res) => {
   res.json(recentLogs);
 });
 
+// Admin Password Verification Endpoint
+app.post('/api/admin/verify', (req, res) => {
+  const { password } = req.body;
+  Logger.info('api', 'Admin password verification attempt');
+
+  if (password === ADMIN_PASSWORD) {
+    Logger.success('api', 'Admin password verified successfully');
+    res.json({ success: true, message: 'Access granted' });
+  } else {
+    Logger.warn('api', 'Admin password verification failed');
+    res.status(401).json({ success: false, message: 'Invalid password' });
+  }
+});
+
+// System Information API Endpoint
+app.get('/api/admin/system', (req, res) => {
+  Logger.info('api', 'System information requested');
+
+  const systemInfo = {
+    server: {
+      platform: os.platform(),
+      arch: os.arch(),
+      nodeVersion: process.version,
+      uptime: process.uptime(),
+      memory: {
+        total: os.totalmem(),
+        free: os.freemem(),
+        used: os.totalmem() - os.freemem(),
+        processUsed: process.memoryUsage().heapUsed
+      },
+      cpus: os.cpus().length,
+      hostname: os.hostname()
+    },
+    game: {
+      port: PORT,
+      environment: process.env.NODE_ENV || 'development',
+      maxRounds: process.env.MAX_ROUNDS || 3,
+      turnTimer: process.env.TURN_TIMER_SECONDS || 30,
+      maxSimulatedPlayers: process.env.MAX_SIMULATED_PLAYERS || 47
+    },
+    database: {
+      onlineLeaderboard: readJSONFile(ONLINE_LEADERBOARD_PATH, []).length,
+      offlineLeaderboard: readJSONFile(OFFLINE_LEADERBOARD_PATH, []).length,
+      totalLogs: readJSONFile(GAME_LOG_PATH, []).length
+    }
+  };
+
+  Logger.success('api', 'System information sent');
+  res.json(systemInfo);
+});
+
 // Update leaderboard after game
 function updateLeaderboard(playerName, isBot, won, mode) {
   if (isBot) return; // Don't track bot stats
@@ -1725,17 +1886,20 @@ function logGameToJSON(gameData) {
     timestamp: new Date().toISOString()
   });
 
-  // Keep only last 1000 games
-  if (gameLogs.length > 1000) {
+  // Keep only last N games (from config)
+  if (gameLogs.length > MAX_GAME_LOGS) {
     gameLogs.shift();
   }
 
   writeJSONFile(GAME_LOG_PATH, gameLogs);
 }
 
-httpServer.listen(PORT, '0.0.0.0', () => {
-  Logger.success('server', `🚀 Spatuletail - Game server running on http://0.0.0.0:${PORT}`, {
+httpServer.listen(PORT, HOST, () => {
+  Logger.success('server', `🚀 Spatuletail - Game server running on http://${HOST}:${PORT}`, {
     port: PORT,
-    host: '0.0.0.0'
+    host: HOST,
+    environment: NODE_ENV
   });
+  console.log('\x1b[32m[SERVER] Admin panel: http://localhost:%d/admin (password: %s)\x1b[0m', PORT,
+    ADMIN_PASSWORD === 'admin123' ? 'admin123 [CHANGE THIS!]' : '***');
 });
