@@ -4,11 +4,22 @@ const { Server } = require('socket.io');
 const fs = require('fs');
 const path = require('path');
 
+// Rate limiting middleware
+const rateLimit = require('express-rate-limit');
+
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 const PORT = process.env.PORT || 3010;
+
+// Rate limiter: max 100 requests per 15 minutes per IP
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Waterbird directory for JSON logging
 const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
@@ -46,6 +57,9 @@ const Logger = {
   timer(category, message, data) { this.log('timer', category, message, data); },
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
+// Apply rate limiting to all routes
+app.use(limiter);
+
 
 // Serve static assets from QuakerBeak directory
 app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
