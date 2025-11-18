@@ -1,1 +1,61 @@
-[]
+[
+  {
+    "timestamp": "2025-11-18T15:00:21.363Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "EFVyUXA4uD112HY_AAAB"
+  },
+  {
+    "timestamp": "2025-11-18T15:00:25.017Z",
+    "event": "playerJoin",
+    "socketId": "EFVyUXA4uD112HY_AAAB",
+    "playerName": "Guest",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-18T15:00:28.044Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "EFVyUXA4uD112HY_AAAB",
+    "playerName": "Guest"
+  },
+  {
+    "timestamp": "2025-11-18T15:00:28.046Z",
+    "event": "playerDisconnect",
+    "socketId": "EFVyUXA4uD112HY_AAAB",
+    "playerName": "Guest"
+  },
+  {
+    "timestamp": "2025-11-18T15:00:29.541Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "gdOucPzPBd8ZDG-PAAAD"
+  }
+]

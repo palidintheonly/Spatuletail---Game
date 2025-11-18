@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Battleship - Spectate Mode</title>
+    <link rel="stylesheet" href="/assets/css/game.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="loading-screen" class="active">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Connecting to Live Match...</div>
+        </div>
+
+        <div id="hud">
+            <div class="hud-top">
+                <button id="back-btn" class="hud-button">← Back to Menu</button>
+                <div id="match-info" class="match-info">
+                    <div class="player-vs">
+                        <span id="player1-name" class="player-name">Player 1</span>
+                        <span class="vs-text">VS</span>
+                        <span id="player2-name" class="player-name">Player 2</span>
+                    </div>
+                    <div class="match-score">
+                        <span id="player1-score">0</span>
+                        <span class="score-separator">-</span>
+                        <span id="player2-score">0</span>
+                    </div>
+                </div>
+                <div id="queue-status" class="queue-status">
+                    <span class="queue-icon">👥</span>
+                    <span id="queue-position">Position: #-</span>
+                </div>
+            </div>
+
+            <div class="hud-middle">
+                <div id="status-message" class="status-message spectator">Watching live match...</div>
+                <div id="turn-indicator" class="turn-indicator">
+                    <span class="current-turn-label">Current Turn:</span>
+                    <span id="current-turn" class="current-turn-player">-</span>
+                </div>
+            </div>
+
+            <div class="hud-bottom">
+                <div id="spectator-panel" class="spectator-panel">
+                    <div class="panel-section">
+                        <h3>Match Statistics</h3>
+                        <canvas id="stats-chart"></canvas>
+                    </div>
+
+                    <div class="panel-section">
+                        <h3>Recent Attacks</h3>
+                        <div id="attack-log" class="attack-log">
+                            <div class="log-empty">No attacks yet...</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h3>Queue Status</h3>
+                        <div id="queue-info" class="queue-info">
+                            <p>Players in queue: <span id="queue-count">0</span></p>
+                            <button id="join-queue-btn" class="action-button">Join Queue</button>
+                            <button id="leave-queue-btn" class="action-button secondary" style="display:none;">Leave Queue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="no-match-screen" class="no-match-screen">
+            <div class="no-match-container">
+                <div class="no-match-icon">👁️</div>
+                <h2>No Active Matches</h2>
+                <p>There are currently no live matches to spectate.</p>
+                <div class="queue-options">
+                    <button id="join-queue-main-btn" class="action-button primary">Join Queue for Next Match</button>
+                    <button id="back-to-menu-btn" class="action-button">Back to Menu</button>
+                </div>
+                <div id="waiting-info" class="waiting-info" style="display:none;">
+                    <div class="waiting-spinner"></div>
+                    <p>Waiting for players... (<span id="waiting-count">0</span> in queue)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="canvas-container"></div>
+    </div>
+
+    <script src="/assets/js/spectate-game.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Battleship - Online Battle</title>
+    <link rel="stylesheet" href="/assets/css/game.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="loading-screen" class="active">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Connecting to Battle Server...</div>
+        </div>
+
+        <div id="hud">
+            <div class="hud-top">
+                <button id="back-btn" class="hud-button">← Back to Menu</button>
+                <div id="player-info" class="player-info">
+                    <span id="player-name">Player</span>
+                    <span id="player-score">Score: 0</span>
+                </div>
+                <div id="timer" class="timer">30</div>
+            </div>
+
+            <div class="hud-middle">
+                <div id="status-message" class="status-message">Waiting for opponent...</div>
+            </div>
+
+            <div class="hud-bottom">
+                <div id="ship-legend" class="ship-legend">
+                    <h3>Your Fleet</h3>
+                    <div class="ships-list">
+                        <div class="ship-item" data-ship="carrier">
+                            <span class="ship-icon">🚢</span>
+                            <span class="ship-name">Carrier</span>
+                            <div class="ship-health">
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                            </div>
+                        </div>
+                        <div class="ship-item" data-ship="battleship">
+                            <span class="ship-icon">⚓</span>
+                            <span class="ship-name">Battleship</span>
+                            <div class="ship-health">
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                            </div>
+                        </div>
+                        <div class="ship-item" data-ship="cruiser">
+                            <span class="ship-icon">🛥️</span>
+                            <span class="ship-name">Cruiser</span>
+                            <div class="ship-health">
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                            </div>
+                        </div>
+                        <div class="ship-item" data-ship="submarine">
+                            <span class="ship-icon">🔱</span>
+                            <span class="ship-name">Submarine</span>
+                            <div class="ship-health">
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                            </div>
+                        </div>
+                        <div class="ship-item" data-ship="destroyer">
+                            <span class="ship-icon">⛵</span>
+                            <span class="ship-name">Destroyer</span>
+                            <div class="ship-health">
+                                <span class="health-cell"></span>
+                                <span class="health-cell"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="placement-screen" class="placement-screen">
+            <div class="placement-container">
+                <h2>Position Your Fleet</h2>
+                <p class="placement-instructions">
+                    Click to place ship | Press <kbd>R</kbd> to rotate | <kbd>Space</kbd> to auto-place all
+                </p>
+                <div id="current-ship" class="current-ship">
+                    <span class="ship-preview"></span>
+                    <span class="ship-name-large">Carrier</span>
+                </div>
+                <button id="auto-place-btn" class="action-button">Auto-Place All Ships</button>
+                <button id="ready-btn" class="action-button primary" disabled>Ready to Battle</button>
+            </div>
+        </div>
+
+        <div id="canvas-container"></div>
+    </div>
+
+    <script src="/assets/js/online-game.js"></script>
+</body>
+</html>
