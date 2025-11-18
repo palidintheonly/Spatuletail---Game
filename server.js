@@ -4,9 +4,16 @@ const { Server } = require('socket.io');
 const fs = require('fs');
 const path = require('path');
 
+const RateLimit = require('express-rate-limit');
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
+
+// Set up rate limiter: limit each IP to 100 requests per 15 minutes
+const limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
 
 const PORT = process.env.PORT || 3010;
 
@@ -43,6 +50,9 @@ const Logger = {
   error(category, message, data) { this.log('error', category, message, data); },
   network(category, message, data) { this.log('network', category, message, data); },
   game(category, message, data) { this.log('game', category, message, data); },
+// Apply rate limiter to all requests (for DoS protection)
+app.use(limiter);
+
   timer(category, message, data) { this.log('timer', category, message, data); },
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
