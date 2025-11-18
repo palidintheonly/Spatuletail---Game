@@ -57,5 +57,20 @@
       "averageGameDuration": 0
     },
     "socketId": "gdOucPzPBd8ZDG-PAAAD"
+  },
+  {
+    "timestamp": "2025-11-18T15:10:42.882Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "lsflMyzD6Tr1_wshAAAB"
   }
 ]
