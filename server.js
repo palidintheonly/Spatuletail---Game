@@ -47,9 +47,33 @@ const Logger = {
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
 
-app.use(express.static('public'));
+// Serve static assets from QuakerBeak directory
+app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
 app.use(express.json());
-Logger.success('server', 'Static file serving enabled', { directory: 'public' });
+Logger.success('server', 'Static file serving enabled', { directory: 'QuakerBeak/assets' });
+
+// Route handlers for new structure
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index.html'));
+  Logger.info('route', 'Root route accessed', { path: '/' });
+});
+
+app.get('/online', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'online.html'));
+  Logger.info('route', 'Online game route accessed', { path: '/online' });
+});
+
+app.get('/offline', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'offline.html'));
+  Logger.info('route', 'Offline game route accessed', { path: '/offline' });
+});
+
+app.get('/spectate', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'spectate.html'));
+  Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
+});
+
+Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate'] });
 
 // File system utilities - check before creating
 function ensureDirectoryExists(dirPath) {
