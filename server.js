@@ -112,6 +112,22 @@ let activeOnlineGame = null; // Only one online game at a time
 let activeOfflineGames = []; // Track all offline games
 let spectators = []; // Players waiting and spectating
 let queue = [];
+
+// Live game stats
+let liveStats = {
+  totalConnections: 0,
+  currentPlayers: 0,
+  gamesPlayed: 0,
+  onlineGamesPlayed: 0,
+  offlineGamesPlayed: 0,
+  totalHits: 0,
+  totalMisses: 0,
+  averageGameDuration: 0
+};
+
+// Player activity tracking
+const playerActivity = new Map(); // socketId -> { lastActivity, warnings, isActive }
+
 Logger.info('server', 'Game state initialized', {
   waitingPlayer: null,
   activeOnlineGame: null,
@@ -128,15 +144,27 @@ const BOT_NAMES = [
 ];
 Logger.info('server', 'Bot name pool loaded', { count: BOT_NAMES.length });
 
-// AI Bot classes with different difficulty levels
+// Ship types for traditional Battleship gameplay
+const SHIP_TYPES = [
+  { name: 'Carrier', length: 5, symbol: 'C' },
+  { name: 'Battleship', length: 4, symbol: 'B' },
+  { name: 'Cruiser', length: 3, symbol: 'R' },
+  { name: 'Submarine', length: 3, symbol: 'S' },
+  { name: 'Destroyer', length: 2, symbol: 'D' }
+];
+Logger.info('server', 'Ship types loaded', { ships: SHIP_TYPES.length, totalCells: 17 });
+
+// AI Bot classes with 4-tier difficulty system
 class AIBot {
   constructor(difficulty, name) {
     this.id = `bot_${Date.now()}_${Math.random()}`;
     this.name = name;
-    this.difficulty = difficulty;
+    this.difficulty = difficulty; // 1=Easy, 2=Medium, 3=Hard, 4=Extreme
     this.isBot = true;
     this.lastHit = null;
     this.huntMode = false;
+    this.targetQueue = []; // For smart targeting
+    this.hitShip = []; // Track hits on current ship
   }
 
   placeShips() {
@@ -144,42 +172,105 @@ class AIBot {
     const ships = [];
     const board = Array(10).fill(null).map(() => Array(10).fill(0));
 
-    for (let i = 0; i < 5; i++) {
+    // Place each ship type with proper length
+    for (let shipType of SHIP_TYPES) {
       let placed = false;
-      while (!placed) {
+      let attempts = 0;
+      const maxAttempts = 100;
+
+      while (!placed && attempts < maxAttempts) {
+        attempts++;
+        const horizontal = Math.random() < 0.5;
         const row = Math.floor(Math.random() * 10);
         const col = Math.floor(Math.random() * 10);
-        if (board[row][col] === 0) {
-          board[row][col] = 1;
-          ships.push({ row, col });
-          placed = true;
+
+        // Check if ship fits
+        if (horizontal && col + shipType.length <= 10) {
+          let canPlace = true;
+          // Check all cells are empty
+          for (let i = 0; i < shipType.length; i++) {
+            if (board[row][col + i] !== 0) {
+              canPlace = false;
+              break;
+            }
+          }
+
+          if (canPlace) {
+            // Place the ship
+            const shipCells = [];
+            for (let i = 0; i < shipType.length; i++) {
+              board[row][col + i] = 1;
+              shipCells.push({ row, col: col + i });
+            }
+            ships.push({
+              type: shipType.name,
+              length: shipType.length,
+              cells: shipCells,
+              hits: 0,
+              sunk: false
+            });
+            placed = true;
+          }
+        } else if (!horizontal && row + shipType.length <= 10) {
+          let canPlace = true;
+          // Check all cells are empty
+          for (let i = 0; i < shipType.length; i++) {
+            if (board[row + i][col] !== 0) {
+              canPlace = false;
+              break;
+            }
+          }
+
+          if (canPlace) {
+            // Place the ship
+            const shipCells = [];
+            for (let i = 0; i < shipType.length; i++) {
+              board[row + i][col] = 1;
+              shipCells.push({ row: row + i, col });
+            }
+            ships.push({
+              type: shipType.name,
+              length: shipType.length,
+              cells: shipCells,
+              hits: 0,
+              sunk: false
+            });
+            placed = true;
+          }
         }
+      }
+
+      if (!placed) {
+        Logger.error('bot', `Failed to place ${shipType.name} after ${maxAttempts} attempts`);
       }
     }
 
-    Logger.success('bot', `Bot ${this.name} placed all ships`, { shipCount: ships.length });
+    Logger.success('bot', `Bot ${this.name} placed all ships`, { shipCount: ships.length, difficulty: this.difficulty });
     return ships;
   }
 
   chooseAttack(enemyBoard) {
     Logger.ai('bot', `Bot ${this.name} choosing attack`, { difficulty: this.difficulty, huntMode: this.huntMode });
     let attack;
+
+    // 4-tier difficulty system: 1=Easy, 2=Medium, 3=Hard, 4=Extreme
     switch (this.difficulty) {
-      case 'easy':
+      case 1: // Easy - Pure random
         attack = this.randomAttack(enemyBoard);
         break;
-      case 'medium':
+      case 2: // Medium - Checkerboard pattern
         attack = this.smartRandomAttack(enemyBoard);
         break;
-      case 'hard':
+      case 3: // Hard - Hunt and target with adjacency
         attack = this.huntAndTargetAttack(enemyBoard);
         break;
-      case 'expert':
-        attack = this.expertAttack(enemyBoard);
+      case 4: // Extreme - Advanced targeting with ship tracking
+        attack = this.extremeAttack(enemyBoard);
         break;
       default:
         attack = this.randomAttack(enemyBoard);
     }
+
     Logger.ai('bot', `Bot ${this.name} selected target`, { row: attack.row, col: attack.col, difficulty: this.difficulty });
     return attack;
   }
@@ -264,14 +355,161 @@ class AIBot {
 
     return this.smartRandomAttack(board);
   }
+
+  extremeAttack(board) {
+    // Priority 1: Continue targeting if we have a target queue
+    if (this.targetQueue.length > 0) {
+      const target = this.targetQueue.shift();
+      if (board[target.row][target.col] === 0) {
+        return target;
+      }
+    }
+
+    // Priority 2: Find hits and add perpendicular targets
+    const hits = [];
+    for (let row = 0; row < 10; row++) {
+      for (let col = 0; col < 10; col++) {
+        if (board[row][col] === 2) { // Hit
+          hits.push({ row, col });
+        }
+      }
+    }
+
+    if (hits.length > 0) {
+      // Check for linear patterns (ship orientation)
+      if (hits.length >= 2) {
+        const first = hits[0];
+        const second = hits[1];
+
+        // Horizontal ship detected
+        if (first.row === second.row) {
+          const minCol = Math.min(first.col, second.col);
+          const maxCol = Math.max(first.col, second.col);
+
+          // Try to extend the line
+          if (maxCol + 1 < 10 && board[first.row][maxCol + 1] === 0) {
+            return { row: first.row, col: maxCol + 1 };
+          }
+          if (minCol - 1 >= 0 && board[first.row][minCol - 1] === 0) {
+            return { row: first.row, col: minCol - 1 };
+          }
+        }
+
+        // Vertical ship detected
+        if (first.col === second.col) {
+          const minRow = Math.min(first.row, second.row);
+          const maxRow = Math.max(first.row, second.row);
+
+          // Try to extend the line
+          if (maxRow + 1 < 10 && board[maxRow + 1][first.col] === 0) {
+            return { row: maxRow + 1, col: first.col };
+          }
+          if (minRow - 1 >= 0 && board[minRow - 1][first.col] === 0) {
+            return { row: minRow - 1, col: first.col };
+          }
+        }
+      }
+
+      // Add adjacent cells to target queue
+      const lastHit = hits[hits.length - 1];
+      const adjacent = [
+        { row: lastHit.row - 1, col: lastHit.col },
+        { row: lastHit.row + 1, col: lastHit.col },
+        { row: lastHit.row, col: lastHit.col - 1 },
+        { row: lastHit.row, col: lastHit.col + 1 }
+      ];
+
+      for (let pos of adjacent) {
+        if (pos.row >= 0 && pos.row < 10 && pos.col >= 0 && pos.col < 10) {
+          if (board[pos.row][pos.col] === 0) {
+            return pos;
+          }
+        }
+      }
+    }
+
+    // Priority 3: Probability-based targeting (prefer cells more likely to contain ships)
+    return this.probabilityAttack(board);
+  }
+
+  probabilityAttack(board) {
+    // Calculate probability for each cell based on possible ship placements
+    const probability = Array(10).fill(null).map(() => Array(10).fill(0));
+
+    // For each possible ship placement, increase probability of covered cells
+    for (let shipType of SHIP_TYPES) {
+      const length = shipType.length;
+
+      // Horizontal placements
+      for (let row = 0; row < 10; row++) {
+        for (let col = 0; col <= 10 - length; col++) {
+          let canPlace = true;
+          for (let i = 0; i < length; i++) {
+            if (board[row][col + i] !== 0) {
+              canPlace = false;
+              break;
+            }
+          }
+          if (canPlace) {
+            for (let i = 0; i < length; i++) {
+              probability[row][col + i]++;
+            }
+          }
+        }
+      }
+
+      // Vertical placements
+      for (let row = 0; row <= 10 - length; row++) {
+        for (let col = 0; col < 10; col++) {
+          let canPlace = true;
+          for (let i = 0; i < length; i++) {
+            if (board[row + i][col] !== 0) {
+              canPlace = false;
+              break;
+            }
+          }
+          if (canPlace) {
+            for (let i = 0; i < length; i++) {
+              probability[row + i][col]++;
+            }
+          }
+        }
+      }
+    }
+
+    // Find cell with highest probability
+    let maxProb = 0;
+    const bestCells = [];
+    for (let row = 0; row < 10; row++) {
+      for (let col = 0; col < 10; col++) {
+        if (board[row][col] === 0 && probability[row][col] > maxProb) {
+          maxProb = probability[row][col];
+          bestCells.length = 0;
+          bestCells.push({ row, col });
+        } else if (board[row][col] === 0 && probability[row][col] === maxProb) {
+          bestCells.push({ row, col });
+        }
+      }
+    }
+
+    if (bestCells.length > 0) {
+      return bestCells[Math.floor(Math.random() * bestCells.length)];
+    }
+
+    return this.randomAttack(board);
+  }
 }
 
 function createBot() {
-  const difficulties = ['easy', 'medium', 'hard', 'expert'];
-  const difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
+  // 4-tier difficulty system: 1=Easy, 2=Medium, 3=Hard, 4=Extreme
+  const difficulty = Math.floor(Math.random() * 4) + 1; // Random 1-4
   const name = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
+
+  const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
+  const difficultyName = difficultyNames[difficulty - 1];
+
   const bot = new AIBot(difficulty, name);
-  Logger.ai('bot', 'Bot created', { name, difficulty, id: bot.id });
+  Logger.ai('bot', 'Bot created', { name, difficulty, difficultyName, id: bot.id });
   return bot;
 }
 
@@ -341,27 +579,51 @@ class BattleshipGame {
     }
 
     let hit = false;
+    let hitShip = null;
+
+    // Check each ship's cells for a hit
     for (let ship of ships) {
-      if (ship.row === row && ship.col === col) {
-        hit = true;
-        board[row][col] = 2;
-        ship.hit = true;
+      for (let cell of ship.cells) {
+        if (cell.row === row && cell.col === col) {
+          hit = true;
+          board[row][col] = 2; // Mark as hit
+          cell.hit = true;
+          ship.hits++;
+          hitShip = ship;
 
-        // For AI: update last hit
-        if (this.player1.isBot) this.player1.lastHit = { row, col };
-        if (this.player2.isBot) this.player2.lastHit = { row, col };
+          // Check if ship is sunk
+          if (ship.hits >= ship.length) {
+            ship.sunk = true;
+            Logger.success('attack', `🚢 SHIP SUNK! ${attacker.name} sunk ${defender.name}'s ${ship.type}!`, {
+              shipType: ship.type,
+              length: ship.length
+            });
+          } else {
+            Logger.success('attack', `💥 HIT! ${attacker.name} hit ${defender.name}'s ${ship.type}`, {
+              row,
+              col,
+              hits: ship.hits,
+              length: ship.length
+            });
+          }
 
-        Logger.success('attack', `💥 HIT! ${attacker.name} hit ${defender.name}'s ship`, { row, col });
-        break;
+          // For AI: update last hit
+          if (this.player1.isBot) this.player1.lastHit = { row, col };
+          if (this.player2.isBot) this.player2.lastHit = { row, col };
+
+          break;
+        }
       }
+      if (hit) break;
     }
 
     if (!hit) {
-      board[row][col] = 1;
+      board[row][col] = 1; // Mark as miss
       Logger.info('attack', `Miss - ${attacker.name} missed`, { row, col });
     }
 
-    const allSunk = ships.every(s => s.hit);
+    // Check if all ships are sunk
+    const allSunk = ships.every(s => s.sunk);
     if (allSunk) {
       Logger.success('game', `🎯 All ships sunk! ${attacker.name} wins round ${this.currentRound}`, {
         attacker: attacker.name,
@@ -369,7 +631,7 @@ class BattleshipGame {
       });
     }
 
-    return { hit, allSunk, defenderId };
+    return { hit, allSunk, defenderId, ship: hitShip, sunk: hitShip?.sunk || false };
   }
 
   forfeitTurn(playerId) {
@@ -531,8 +793,115 @@ function findGameForSocket(socketId) {
   return null;
 }
 
+// Player activity monitoring
+function updatePlayerActivity(socketId) {
+  if (playerActivity.has(socketId)) {
+    playerActivity.get(socketId).lastActivity = Date.now();
+    playerActivity.get(socketId).isActive = true;
+  } else {
+    playerActivity.set(socketId, {
+      lastActivity: Date.now(),
+      warnings: 0,
+      isActive: true
+    });
+  }
+}
+
+function checkPlayerActivity() {
+  const now = Date.now();
+  const INACTIVE_THRESHOLD = 45000; // 45 seconds
+  const WARNING_THRESHOLD = 30000; // 30 seconds
+
+  playerActivity.forEach((activity, socketId) => {
+    const timeSinceActive = now - activity.lastActivity;
+
+    if (timeSinceActive > INACTIVE_THRESHOLD && activity.isActive) {
+      // Player is inactive
+      Logger.warn('activity', 'Player inactive - checking if in game', { socketId, timeSinceActive });
+
+      const game = findGameForSocket(socketId);
+      if (game && game.mode === 'offline') {
+        // Find the socket
+        const player = game.player1.id === socketId ? game.player1 : game.player2;
+        if (!player.isBot && player.socket) {
+          Logger.error('activity', 'Kicking inactive offline player', {
+            socketId,
+            playerName: player.name,
+            inactiveDuration: timeSinceActive
+          });
+
+          // This will be handled by the forfeit system
+          activity.isActive = false;
+        }
+      }
+    } else if (timeSinceActive > WARNING_THRESHOLD && activity.warnings === 0) {
+      activity.warnings = 1;
+      Logger.warn('activity', 'Player approaching inactivity threshold', {
+        socketId,
+        timeSinceActive
+      });
+    }
+  });
+}
+
+// Check player activity every 10 seconds
+setInterval(checkPlayerActivity, 10000);
+
+// Automated logging system
+function logGameEvent(eventType, data) {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    event: eventType,
+    ...data
+  };
+
+  const gameLogs = readJSONFile(GAME_LOG_PATH, []);
+  gameLogs.push(logEntry);
+
+  // Keep last 2000 events
+  if (gameLogs.length > 2000) {
+    gameLogs.shift();
+  }
+
+  writeJSONFile(GAME_LOG_PATH, gameLogs);
+  Logger.info('auto-log', `Event logged: ${eventType}`, data);
+}
+
+// Live stats update
+function updateLiveStats(updateType, data = {}) {
+  switch (updateType) {
+    case 'connection':
+      liveStats.totalConnections++;
+      liveStats.currentPlayers++;
+      break;
+    case 'disconnect':
+      liveStats.currentPlayers = Math.max(0, liveStats.currentPlayers - 1);
+      break;
+    case 'gameStart':
+      liveStats.gamesPlayed++;
+      if (data.mode === 'online') liveStats.onlineGamesPlayed++;
+      if (data.mode === 'offline') liveStats.offlineGamesPlayed++;
+      break;
+    case 'hit':
+      liveStats.totalHits++;
+      break;
+    case 'miss':
+      liveStats.totalMisses++;
+      break;
+  }
+
+  logGameEvent(updateType, { liveStats, ...data });
+}
+
 io.on('connection', (socket) => {
   Logger.network('socket', '🔌 New connection', { socketId: socket.id });
+  updateLiveStats('connection', { socketId: socket.id });
+  updatePlayerActivity(socket.id);
+
+  // Heartbeat handler for activity tracking
+  socket.on('heartbeat', () => {
+    updatePlayerActivity(socket.id);
+  });
 
   socket.on('join', (data) => {
     // Handle both old format (string) and new format (object)
@@ -541,6 +910,8 @@ io.on('connection', (socket) => {
 
     socket.playerName = playerName;
     socket.playerMode = mode;
+    updatePlayerActivity(socket.id);
+    logGameEvent('playerJoin', { socketId: socket.id, playerName, mode });
     Logger.info('player', `Player joined: ${socket.playerName}`, { socketId: socket.id, mode });
 
     // Offline mode: create game with bot (one at a time per player)
@@ -570,7 +941,13 @@ io.on('connection', (socket) => {
         maxRounds: 3
       });
 
-      socket.emit('botJoined', { botName: bot.name, difficulty: bot.difficulty });
+      const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
+      socket.emit('botJoined', {
+        botName: bot.name,
+        difficulty: bot.difficulty,
+        difficultyName: difficultyNames[bot.difficulty - 1],
+        shipTypes: SHIP_TYPES
+      });
       return;
     }
 
@@ -658,7 +1035,13 @@ io.on('connection', (socket) => {
     game.ships[botId] = bot.placeShips();
     game.ready[botId] = true;
 
-    socket.emit('botJoined', { botName: bot.name, difficulty: bot.difficulty });
+    const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
+    socket.emit('botJoined', {
+      botName: bot.name,
+      difficulty: bot.difficulty,
+      difficultyName: difficultyNames[bot.difficulty - 1],
+      shipTypes: SHIP_TYPES
+    });
     Logger.success('bot', `Bot ${bot.name} joined the game - converted to offline`, { gameId: game.id });
 
     if (game.ready[game.player1.id] && game.ready[game.player2.id]) {
@@ -670,6 +1053,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('placeShips', (ships) => {
+    updatePlayerActivity(socket.id);
     const game = findGameForSocket(socket.id);
 
     if (!game) {
@@ -678,14 +1062,28 @@ io.on('connection', (socket) => {
     }
 
     game.placeShips(socket.id, ships);
+    logGameEvent('shipsPlaced', {
+      gameId: game.id,
+      playerId: socket.id,
+      playerName: socket.playerName,
+      mode: game.mode
+    });
 
     if (game.ready[game.player1.id] && game.ready[game.player2.id]) {
       Logger.success('game', 'Both players ready - starting battle!', { gameId: game.id });
+      updateLiveStats('gameStart', { gameId: game.id, mode: game.mode });
+      logGameEvent('battleStart', {
+        gameId: game.id,
+        player1: game.player1.name,
+        player2: game.player2.name,
+        mode: game.mode
+      });
       startBattle(game);
     }
   });
 
   socket.on('attack', ({ row, col }) => {
+    updatePlayerActivity(socket.id);
     const game = findGameForSocket(socket.id);
 
     if (!game) {
@@ -704,6 +1102,9 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     Logger.network('socket', '🔌 Player disconnected', { socketId: socket.id, playerName: socket.playerName });
+    updateLiveStats('disconnect', { socketId: socket.id, playerName: socket.playerName });
+    playerActivity.delete(socket.id);
+    logGameEvent('playerDisconnect', { socketId: socket.id, playerName: socket.playerName });
 
     // Check if waiting player
     if (waitingPlayer && waitingPlayer.id === socket.id) {
@@ -857,6 +1258,34 @@ function processAttack(game, attackerId, row, col) {
 
   const attacker = attackerId === game.player1.id ? game.player1 : game.player2;
   const defender = result.defenderId === game.player1.id ? game.player1 : game.player2;
+
+  // Update live stats and log the attack
+  if (result.hit) {
+    updateLiveStats('hit', {
+      gameId: game.id,
+      attacker: attacker.name,
+      defender: defender.name,
+      position: { row, col }
+    });
+  } else {
+    updateLiveStats('miss', {
+      gameId: game.id,
+      attacker: attacker.name,
+      defender: defender.name,
+      position: { row, col }
+    });
+  }
+
+  logGameEvent('attack', {
+    gameId: game.id,
+    attacker: attacker.name,
+    defender: defender.name,
+    row,
+    col,
+    hit: result.hit,
+    allSunk: result.allSunk,
+    mode: game.mode
+  });
 
   if (!attacker.isBot && attacker.socket) {
     attacker.socket.emit('attackResult', {
@@ -1072,20 +1501,36 @@ function endGame(game) {
     });
   }
 
-  const gameIndex = activeGames.indexOf(game);
-  if (gameIndex !== -1) {
-    activeGames.splice(gameIndex, 1);
-    Logger.info('game', `Game removed from active games`, { gameId: game.id, remainingGames: activeGames.length });
+  // Remove from appropriate game list
+  if (game.mode === 'online' && activeOnlineGame === game) {
+    activeOnlineGame = null;
+    Logger.info('game', 'Online game removed');
+
+    // Notify spectators that game ended
+    broadcastToSpectators({
+      type: 'gameEnded',
+      winner: winner ? winner.name : 'tie',
+      scores: game.scores
+    });
+
+    // Start next online game with spectators
+    startNextOnlineGame();
+  } else if (game.mode === 'offline') {
+    const gameIndex = activeOfflineGames.indexOf(game);
+    if (gameIndex !== -1) {
+      activeOfflineGames.splice(gameIndex, 1);
+      Logger.info('game', `Offline game ${game.id} removed`, { remainingOfflineGames: activeOfflineGames.length });
+    }
   }
 
-  if (winnerId && winner && !winner.isBot) {
+  if (winnerId && winner && !winner.isBot && game.mode === 'online') {
     waitingPlayer = winner;
     winner.socket.emit('waiting');
     Logger.info('matchmaking', `Winner ${winner.name} waiting for next opponent`);
   }
 
   // Update leaderboard and log game
-  const mode = (game.player1.isBot || game.player2.isBot) ? 'offline' : 'online';
+  const mode = game.mode || ((game.player1.isBot || game.player2.isBot) ? 'offline' : 'online');
 
   if (winnerId && winner) {
     updateLeaderboard(winner.name, winner.isBot, true, mode);
@@ -1129,6 +1574,44 @@ app.get('/api/leaderboard/:mode', (req, res) => {
 
   Logger.success('api', `Leaderboard data sent for ${mode}`, { entries: leaderboard.length });
   res.json(leaderboard.slice(0, 100)); // Top 100
+});
+
+// Live Stats API Endpoint
+app.get('/api/stats/live', (req, res) => {
+  Logger.info('api', 'Live stats requested');
+
+  const stats = {
+    ...liveStats,
+    activeGames: {
+      online: activeOnlineGame ? 1 : 0,
+      offline: activeOfflineGames.length,
+      total: (activeOnlineGame ? 1 : 0) + activeOfflineGames.length
+    },
+    queue: {
+      waiting: waitingPlayer ? 1 : 0,
+      spectators: spectators.length
+    },
+    accuracy: liveStats.totalHits + liveStats.totalMisses > 0
+      ? ((liveStats.totalHits / (liveStats.totalHits + liveStats.totalMisses)) * 100).toFixed(2) + '%'
+      : '0%',
+    activePlayers: playerActivity.size,
+    timestamp: new Date().toISOString()
+  };
+
+  Logger.success('api', 'Live stats sent', stats);
+  res.json(stats);
+});
+
+// Game Log API Endpoint
+app.get('/api/logs/recent', (req, res) => {
+  const limit = parseInt(req.query.limit) || 50;
+  Logger.info('api', `Recent logs requested`, { limit });
+
+  const logs = readJSONFile(GAME_LOG_PATH, []);
+  const recentLogs = logs.slice(-limit).reverse(); // Last N logs, newest first
+
+  Logger.success('api', `Recent logs sent`, { count: recentLogs.length });
+  res.json(recentLogs);
 });
 
 // Update leaderboard after game

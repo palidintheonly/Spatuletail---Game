@@ -31,6 +31,14 @@ const Logger = {
 const socket = io();
 Logger.network('socket', 'Initializing Socket.IO connection');
 
+// Heartbeat system - send every 10 seconds to track activity
+setInterval(() => {
+  if (socket.connected) {
+    socket.emit('heartbeat');
+    Logger.info('heartbeat', 'Activity heartbeat sent');
+  }
+}, 10000);
+
 // Three.js setup
 let scene, camera, renderer, raycaster, mouse;
 let myBoard = [], enemyBoard = [];
@@ -47,6 +55,9 @@ let opponent = '';
 let timer = null;
 let timeLeft = 30;
 let gameMode = 'online'; // 'online' or 'offline'
+
+// Camera shake state
+let cameraShake = { active: false, intensity: 0, duration: 0, elapsed: 0, originalPos: null };
 
 Logger.info('init', 'Game state initialized', { gameState, shipsToPlace, round });
 
@@ -270,7 +281,46 @@ function attack(row, col) {
 
 function animate() {
   requestAnimationFrame(animate);
+
+  // Update particle effects
+  updateParticleEffects();
+
+  // Update camera shake
+  if (cameraShake.active) {
+    cameraShake.elapsed += 16; // ~16ms per frame at 60fps
+
+    if (cameraShake.elapsed >= cameraShake.duration) {
+      // Reset camera position
+      cameraShake.active = false;
+      if (cameraShake.originalPos) {
+        camera.position.copy(cameraShake.originalPos);
+      }
+    } else {
+      // Apply shake
+      const progress = cameraShake.elapsed / cameraShake.duration;
+      const intensity = cameraShake.intensity * (1 - progress); // Fade out
+
+      camera.position.x = cameraShake.originalPos.x + (Math.random() - 0.5) * intensity;
+      camera.position.y = cameraShake.originalPos.y + (Math.random() - 0.5) * intensity;
+      camera.position.z = cameraShake.originalPos.z + (Math.random() - 0.5) * intensity;
+    }
+  }
+
   renderer.render(scene, camera);
+}
+
+// Camera shake effect
+function shakeCamera(intensity = 0.2, duration = 300) {
+  if (!cameraShake.originalPos) {
+    cameraShake.originalPos = camera.position.clone();
+  }
+
+  cameraShake.active = true;
+  cameraShake.intensity = intensity;
+  cameraShake.duration = duration;
+  cameraShake.elapsed = 0;
+
+  Logger.game('effect', 'Camera shake activated', { intensity, duration });
 }
 
 // Socket handlers
@@ -331,23 +381,45 @@ socket.on('attackResult', (data) => {
     enemyBoard[row][col] = hit ? 3 : 2;
     enemyBoardMeshes[row][col].material.color.setHex(hit ? 0xf44336 : 0x2196F3);
 
+    // Get world position for particle effect
+    const worldPos = new THREE.Vector3();
+    enemyBoardMeshes[row][col].getWorldPosition(worldPos);
+
     if (hit) {
       Logger.success('attack', 'HIT on enemy board! 💥', { row, col });
       updateInfo('HIT! 💥');
+      // Add hit particle effect
+      addHitEffect(worldPos.x, worldPos.y + 1, worldPos.z);
+
+      // Add screen shake effect
+      shakeCamera(0.2, 300);
     } else {
       Logger.info('attack', 'Miss on enemy board', { row, col });
       updateInfo('Miss...');
+      // Add miss particle effect
+      addMissEffect(worldPos.x, worldPos.y + 1, worldPos.z);
     }
   } else {
     myBoard[row][col] = hit ? 3 : 2;
     myBoardMeshes[row][col].material.color.setHex(hit ? 0xf44336 : 0x2196F3);
 
+    // Get world position for particle effect
+    const worldPos = new THREE.Vector3();
+    myBoardMeshes[row][col].getWorldPosition(worldPos);
+
     if (hit) {
       Logger.error('attack', 'Enemy scored a HIT! 💥', { row, col });
       updateInfo('You were hit! 💥');
+      // Add hit particle effect
+      addHitEffect(worldPos.x, worldPos.y + 1, worldPos.z);
+
+      // Add screen shake effect
+      shakeCamera(0.3, 400);
     } else {
       Logger.info('attack', 'Enemy missed', { row, col });
       updateInfo('Enemy missed');
+      // Add miss particle effect
+      addMissEffect(worldPos.x, worldPos.y + 1, worldPos.z);
     }
   }
 });
@@ -471,6 +543,77 @@ socket.on('botJoined', (data) => {
   updateInfo('Bot is placing ships...');
 });
 
+// Spectator mode handlers
+socket.on('spectating', (data) => {
+  Logger.info('spectate', 'Entered spectator mode', { queuePosition: data.queuePosition });
+  gameState = 'spectating';
+
+  // Show spectator UI
+  showSpectatorMode(data);
+  updateStatus(`👁️ Spectating - Queue Position: #${data.queuePosition}`);
+  updateInfo('Watching current game. You will join the next match!');
+
+  // Add visual effect
+  addSpectatorOverlay();
+});
+
+socket.on('spectatorUpdate', (data) => {
+  Logger.info('spectate', 'Spectator update received', data);
+
+  if (data.type === 'gameStarted') {
+    updateInfo(`New game started: ${data.player1} vs ${data.player2}`);
+  } else if (data.type === 'gameEnded') {
+    updateInfo(`Game ended - Winner: ${data.winner}`);
+  }
+});
+
+socket.on('spectatorGameState', (data) => {
+  Logger.game('spectate', 'Received game state as spectator', data);
+
+  // Update spectator display with game info
+  const spectatorInfo = document.getElementById('spectatorInfo');
+  if (spectatorInfo) {
+    spectatorInfo.innerHTML = `
+      <div class="spectator-game-info">
+        <h3>🎮 Current Match</h3>
+        <p><strong>${data.player1}</strong> vs <strong>${data.player2}</strong></p>
+        <p>Round ${data.currentRound}/${data.maxRounds}</p>
+        <p>Current Turn: <span class="highlight">${data.currentTurn}</span></p>
+        <div class="spectator-scores">
+          <span>${data.player1}: ${data.scores[Object.keys(data.scores)[0]] || 0}</span>
+          <span>${data.player2}: ${data.scores[Object.keys(data.scores)[1]] || 0}</span>
+        </div>
+      </div>
+    `;
+  }
+});
+
+socket.on('queueUpdate', (data) => {
+  Logger.info('queue', 'Queue position updated', { position: data.position, total: data.totalInQueue });
+  updateStatus(`👁️ Spectating - Queue Position: #${data.position}`);
+
+  // Animate queue position change
+  animateQueueUpdate(data.position);
+});
+
+// Kick to menu handler (for inactive offline players)
+socket.on('kickToMenu', (data) => {
+  Logger.warn('game', 'Kicked to menu due to inactivity', data);
+
+  // Clear game state
+  clearInterval(timer);
+  gameState = 'waiting';
+
+  // Show notification
+  showKickNotification(data.reason);
+
+  // Reset and return to menu
+  setTimeout(() => {
+    resetGame();
+    showStartScreen();
+  }, 3000);
+});
+
 function updateStatus(text) {
   Logger.info('ui', 'Status updated', { text });
   document.getElementById('status').textContent = text;
@@ -559,4 +702,223 @@ function displayLeaderboard(data) {
       </li>
     `;
   }).join('');
+}
+
+// Modern Gaming UI Functions
+
+// Show spectator mode UI
+function showSpectatorMode(data) {
+  Logger.info('ui', 'Showing spectator mode UI', data);
+
+  // Hide game controls
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('canvas').style.display = 'block';
+
+  // Create spectator info panel if it doesn't exist
+  let spectatorPanel = document.getElementById('spectatorPanel');
+  if (!spectatorPanel) {
+    spectatorPanel = document.createElement('div');
+    spectatorPanel.id = 'spectatorPanel';
+    spectatorPanel.className = 'spectator-panel fade-in';
+    document.body.appendChild(spectatorPanel);
+  }
+
+  spectatorPanel.innerHTML = `
+    <div class="spectator-header">
+      <h2>👁️ SPECTATOR MODE</h2>
+      <div class="queue-badge pulse-glow">Queue Position: #${data.queuePosition}</div>
+    </div>
+    <div id="spectatorInfo" class="spectator-content"></div>
+    <p class="spectator-message">You'll join the next available match!</p>
+  `;
+  spectatorPanel.classList.remove('hidden');
+}
+
+// Add spectator overlay effect
+function addSpectatorOverlay() {
+  Logger.info('ui', 'Adding spectator overlay effect');
+
+  let overlay = document.getElementById('spectatorOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'spectatorOverlay';
+    overlay.className = 'spectator-overlay fade-in';
+    document.body.appendChild(overlay);
+  }
+
+  overlay.style.display = 'block';
+}
+
+// Animate queue position updates
+function animateQueueUpdate(position) {
+  Logger.info('ui', 'Animating queue position change', { position });
+
+  const queueBadge = document.querySelector('.queue-badge');
+  if (queueBadge) {
+    queueBadge.textContent = `Queue Position: #${position}`;
+
+    // Add bounce animation
+    queueBadge.classList.add('bounce');
+    setTimeout(() => {
+      queueBadge.classList.remove('bounce');
+    }, 600);
+
+    // Flash effect for position improvement
+    if (position <= 2) {
+      queueBadge.classList.add('flash-green');
+      setTimeout(() => {
+        queueBadge.classList.remove('flash-green');
+      }, 1000);
+    }
+  }
+}
+
+// Show kick notification with modern styling
+function showKickNotification(reason) {
+  Logger.warn('ui', 'Showing kick notification', { reason });
+
+  const notification = document.createElement('div');
+  notification.className = 'kick-notification slide-in-top';
+  notification.innerHTML = `
+    <div class="notification-content">
+      <div class="notification-icon">⚠️</div>
+      <h3>Returned to Menu</h3>
+      <p>${reason}</p>
+      <div class="notification-timer">Redirecting in 3 seconds...</div>
+    </div>
+  `;
+
+  document.body.appendChild(notification);
+
+  // Auto-remove after 3 seconds
+  setTimeout(() => {
+    notification.classList.add('fade-out');
+    setTimeout(() => notification.remove(), 500);
+  }, 2500);
+}
+
+// Show start screen with animations
+function showStartScreen() {
+  Logger.info('ui', 'Showing start screen');
+
+  document.getElementById('canvas').style.display = 'none';
+  document.getElementById('startScreen').classList.remove('hidden');
+
+  // Remove spectator panels
+  const spectatorPanel = document.getElementById('spectatorPanel');
+  const spectatorOverlay = document.getElementById('spectatorOverlay');
+
+  if (spectatorPanel) {
+    spectatorPanel.classList.add('fade-out');
+    setTimeout(() => spectatorPanel.remove(), 500);
+  }
+
+  if (spectatorOverlay) {
+    spectatorOverlay.style.display = 'none';
+  }
+
+  // Reset game state
+  gameState = 'waiting';
+  placingShips = true;
+  shipsToPlace = 5;
+  isMyTurn = false;
+}
+
+// Enhanced reset game function
+function resetGame() {
+  Logger.game('game', 'Resetting entire game state');
+
+  // Clear timers
+  clearInterval(timer);
+
+  // Reset game state
+  gameState = 'waiting';
+  placingShips = true;
+  shipsToPlace = 5;
+  round = 1;
+  isMyTurn = false;
+  opponent = '';
+
+  // Reset UI
+  document.getElementById('timerDisplay').style.display = 'none';
+  document.getElementById('yourScore').textContent = '0';
+  document.getElementById('oppScore').textContent = '0';
+  updateStatus('Waiting...');
+  updateInfo('');
+
+  // Reset boards
+  resetBoards();
+
+  Logger.success('game', 'Game reset complete');
+}
+
+// Particle effect system (for hits, misses, etc.)
+class ParticleEffect {
+  constructor(x, y, z, color, count = 20) {
+    this.particles = [];
+    this.createParticles(x, y, z, color, count);
+  }
+
+  createParticles(x, y, z, color, count) {
+    for (let i = 0; i < count; i++) {
+      const geometry = new THREE.SphereGeometry(0.1, 8, 8);
+      const material = new THREE.MeshBasicMaterial({ color });
+      const particle = new THREE.Mesh(geometry, material);
+
+      particle.position.set(x, y, z);
+      particle.velocity = new THREE.Vector3(
+        (Math.random() - 0.5) * 0.5,
+        Math.random() * 0.5,
+        (Math.random() - 0.5) * 0.5
+      );
+      particle.gravity = -0.02;
+      particle.life = 1.0;
+
+      scene.add(particle);
+      this.particles.push(particle);
+    }
+  }
+
+  update() {
+    this.particles = this.particles.filter(particle => {
+      particle.velocity.y += particle.gravity;
+      particle.position.add(particle.velocity);
+      particle.life -= 0.02;
+      particle.material.opacity = particle.life;
+
+      if (particle.life <= 0) {
+        scene.remove(particle);
+        return false;
+      }
+      return true;
+    });
+  }
+
+  isComplete() {
+    return this.particles.length === 0;
+  }
+}
+
+// Particle system manager
+const particleEffects = [];
+
+function addHitEffect(x, y, z) {
+  const effect = new ParticleEffect(x, y, z, 0xff0000, 30);
+  particleEffects.push(effect);
+  Logger.game('effect', 'Hit particle effect created', { x, y, z });
+}
+
+function addMissEffect(x, y, z) {
+  const effect = new ParticleEffect(x, y, z, 0x00aaff, 15);
+  particleEffects.push(effect);
+  Logger.game('effect', 'Miss particle effect created', { x, y, z });
+}
+
+function updateParticleEffects() {
+  for (let i = particleEffects.length - 1; i >= 0; i--) {
+    particleEffects[i].update();
+    if (particleEffects[i].isComplete()) {
+      particleEffects.splice(i, 1);
+    }
+  }
 }
