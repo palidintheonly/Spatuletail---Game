@@ -3,6 +3,15 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const fs = require('fs');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
+
+// Limit requests to 100 per 15 minutes per IP for "/spectate"
+const spectateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true, // Return rate limit info in the RateLimit-* headers
+  legacyHeaders: false, // Disable the X-RateLimit-* headers
+});
 
 const app = express();
 const httpServer = createServer(app);
@@ -68,7 +77,7 @@ app.get('/offline', (req, res) => {
   Logger.info('route', 'Offline game route accessed', { path: '/offline' });
 });
 
-app.get('/spectate', (req, res) => {
+app.get('/spectate', spectateLimiter, (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'spectate.html'));
   Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
