@@ -1,31 +1,61 @@
-# Spatuletail Game
+<div align="center">
 
-A 2-player turn-based battleship game with stunning Three.js 3D graphics and real-time multiplayer functionality powered by Socket.IO.
+# ⚓ Spatuletail - Game
 
-## NPM Package Installation
+**A 2-player turn-based battleship game with real-time multiplayer**
 
-### Fastest Method - Using npx (No Installation Required!)
+[![Version](https://img.shields.io/badge/version-2.3.1-blue.svg)](https://github.com/palidintheonly/Spatuletail---Game)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-Custom-orange.svg)](./LICENSE)
+[![NPM](https://img.shields.io/badge/npm-spatuletail--game-red.svg)](https://www.npmjs.com/package/spatuletail-game)
+
+[🎮 Features](#-features) • [📦 Installation](#-installation) • [⚙️ Configuration](#%EF%B8%8F-configuration) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation)
+
+</div>
+
+---
+
+## 🎮 Features
+
+- **🌐 Real-time Multiplayer** - Battle against real players worldwide with Socket.IO
+- **🤖 AI Training Mode** - Practice against 4 difficulty levels (Easy → Extreme)
+- **👁️ Spectator Mode** - Watch live matches and learn from top players
+- **📊 Live Statistics** - Real-time game analytics and leaderboards
+- **🎨 Modern UI** - Sleek design with particle effects and animations
+- **🔒 Security** - Rate limiting, admin protection, and input validation
+- **⚡ Fast Setup** - Run with `npx` in seconds - no installation required!
+- **📱 Responsive** - Full mobile and desktop support
+- **🎯 Classic Gameplay** - Traditional 5-ship battleship with 10x10 grid
+- **📄 Legal Pages** - Built-in Terms of Service and Privacy Policy
+
+---
+
+## 📦 Installation
+
+### ⚡ Fastest Method - Using npx (Recommended)
+
+Run the game instantly without installation:
 
 ```bash
 npx spatuletail-game
 ```
 
-This single command downloads and runs the game server instantly!
+That's it! The server starts automatically on `http://localhost:3010`
 
-### Install via NPM
+### 📥 Install via NPM
 
 ```bash
 npm install spatuletail-game
 ```
 
-### Install Globally
+### 🌍 Install Globally
 
 ```bash
 npm install -g spatuletail-game
 spatuletail
 ```
 
-### Local Project Installation
+### 🛠️ Local Project Installation
 
 ```bash
 npm install spatuletail-game
@@ -35,19 +65,9 @@ cp example.env .env
 npm start
 ```
 
-## Features
+### 🔧 Clone from GitHub
 
-- Real-time multiplayer gameplay
-- Beautiful 3D graphics using Three.js
-- Turn-based battleship mechanics
-- WebSocket communication via Socket.IO
-- Configurable game settings
-- Admin dashboard
-- Rate limiting and security features
-
-## Clone from GitHub
-
-If you prefer to clone the source code:
+For development or customization:
 
 ```bash
 git clone https://github.com/palidintheonly/Spatuletail---Game.git
@@ -58,81 +78,224 @@ cp example.env .env
 npm start
 ```
 
-## Configuration
+---
 
-Before running the server, you need to configure your environment variables:
+## ⚙️ Configuration
 
-1. Copy `example.env` to `.env`:
+Before running the server, configure your environment variables:
+
+1. **Copy the example environment file:**
    ```bash
    cp example.env .env
    ```
 
-2. Edit `.env` and configure the following required variables:
-   - `PORT` - Server port (default: 3000)
-   - `HOST` - Server host (default: localhost)
-   - `NODE_ENV` - Environment (development/production)
-   - `ADMIN_PASSWORD` - Admin dashboard password
-   - `SESSION_SECRET` - Session secret key
-   - `MAX_ROUNDS` - Maximum game rounds
-   - `TURN_TIMER_SECONDS` - Turn timer in seconds
+2. **Edit `.env` and configure required variables:**
 
-## Usage
+   | Variable | Default | Description |
+   |----------|---------|-------------|
+   | `PORT` | `3010` | Server port |
+   | `HOST` | `0.0.0.0` | Server host |
+   | `NODE_ENV` | `development` | Environment mode |
+   | `ADMIN_PASSWORD` | `admin123` | Admin dashboard password ⚠️ **CHANGE THIS!** |
+   | `SESSION_SECRET` | `your-secret-key` | Session encryption key |
+   | `MAX_ROUNDS` | `3` | Maximum game rounds |
+   | `TURN_TIMER_SECONDS` | `30` | Turn timer duration |
 
-Start the server:
+   > 💡 **Tip:** See `example.env` for all available configuration options
 
-```bash
-npm start
+---
+
+## 🚀 Quick Start
+
+1. **Start the server:**
+   ```bash
+   npm start
+   ```
+
+2. **Access the game:**
+   - Main Menu: `http://localhost:3010`
+   - Online Battle: `http://localhost:3010/online`
+   - AI Training: `http://localhost:3010/offline`
+   - Spectate: `http://localhost:3010/spectate`
+   - Admin Panel: `http://localhost:3010/admin`
+
+3. **Legal Pages:**
+   - Terms of Service: `http://localhost:3010/terms`
+   - Privacy Policy: `http://localhost:3010/privacy-policy`
+
+---
+
+## 📚 Documentation
+
+### 📂 Project Structure
+
+```
+Spatuletail-Game/
+├── QuakerBeak/          # Game client files
+│   ├── assets/          # CSS, JS, images
+│   └── views/           # HTML pages
+├── waterbird/           # Game data (leaderboards, logs)
+├── secretarybird/       # Legal pages (Terms, Privacy)
+├── server.js            # Main server file
+├── package.json         # NPM package config
+├── example.env          # Environment template
+├── LICENSE              # License information
+├── TERMS.md             # Terms of Service (GitHub)
+└── PRIVACY.md           # Privacy Policy (GitHub)
 ```
 
-The game will be available at `http://localhost:PORT` (where PORT is defined in your .env file).
+### 🎯 Game Modes
 
-## Requirements
+| Mode | Description | Players |
+|------|-------------|---------|
+| **Online Battle** | Real-time multiplayer against other players | 2 Players |
+| **AI Training** | Practice against AI (4 difficulty levels) | 1 Player + AI |
+| **Spectate** | Watch live matches and join the queue | Observer |
 
-- Node.js >= 14.0.0
-- Modern web browser with WebGL support
+### 🚢 Ship Types
 
-## Package Contents
+| Ship | Length | Symbol | Cells |
+|------|--------|--------|-------|
+| Carrier | 5 | 🚢 | █████ |
+| Battleship | 4 | ⚓ | ████ |
+| Cruiser | 3 | 🛥️ | ███ |
+| Submarine | 3 | 🔱 | ███ |
+| Destroyer | 2 | ⛵ | ██ |
 
-This NPM package includes:
-- Game server (`server.js`)
-- Game client files
-- Example configuration (`example.env`)
-- Setup script
+**Total:** 17 cells per player (equal for both sides)
 
-## Development
+### 🔐 Admin Panel
 
-To contribute or modify:
+Access the admin dashboard at `/admin` with your configured password:
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Make your changes
-4. Test locally
-5. Submit a pull request
+- Live server statistics
+- Active games monitoring
+- Player analytics
+- System information
+- Game logs
 
-## Dependencies
+---
 
-- **express** - Web server framework
-- **socket.io** - Real-time communication
-- **three.js** - 3D graphics (via three-orbit-controls)
-- **anime.js** - Animation library
-- **gsap** - Animation platform
-- **howler** - Audio library
-- **chart.js** - Statistics visualization
-- **cannon-es** - Physics engine
-- **matter-js** - 2D physics engine
-- **particles.js** - Particle effects
+## 🛡️ Security Features
 
-## License
+- ✅ Rate limiting (100 requests per 15 minutes)
+- ✅ Password-protected admin panel
+- ✅ Input validation and sanitization
+- ✅ Connection limits per IP (max 10)
+- ✅ Session timeouts
+- ✅ No data sent to external servers
 
-Custom License - See LICENSE file for details. You may use, modify, and distribute this software, but you may NOT rebrand or remove the "Spatuletail Game" name and branding.
+---
 
-## Support
+## 📄 Legal & Privacy
 
-For issues, questions, or contributions, please visit:
-- NPM Package: [npmjs.com/package/spatuletail-game](https://www.npmjs.com/package/spatuletail-game)
-- Issues: [GitHub Issues](https://github.com/palidintheonly/Spatuletail---Game/issues)
-- Repository: [GitHub](https://github.com/palidintheonly/Spatuletail---Game)
+This game includes built-in legal documentation:
 
-## Credits
+- **[Terms of Service](./TERMS.md)** - Usage terms and conditions
+- **[Privacy Policy](./PRIVACY.md)** - Data collection and privacy practices
+- **Web Pages:** Available at `/terms` and `/privacy-policy` when server is running
 
-Created with love for multiplayer gaming enthusiasts!
+> ℹ️ **Data Collection:** We only collect player names, game statistics, leaderboards, and temporary session data. See [PRIVACY.md](./PRIVACY.md) for full details.
+
+---
+
+## 🔧 Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| **express** | Web server framework |
+| **socket.io** | Real-time communication |
+| **gsap** | Animation platform |
+| **howler** | Audio library |
+| **chart.js** | Statistics visualization |
+| **cannon-es** | Physics engine |
+| **matter-js** | 2D physics engine |
+| **particles.js** | Particle effects |
+| **aos** | Scroll animations |
+| **dotenv** | Environment configuration |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+> ⚠️ **Important:** You may NOT rebrand or remove the "Spatuletail Game" name and branding. See [LICENSE](./LICENSE) for details.
+
+---
+
+## 📋 Requirements
+
+- **Node.js** >= 14.0.0
+- **Modern web browser** with WebGL support
+- **Network connection** for multiplayer features
+
+---
+
+## 🐛 Issues & Support
+
+Encountered a bug or have a question?
+
+- 📝 [Open an Issue](https://github.com/palidintheonly/Spatuletail---Game/issues)
+- 💬 [Discussions](https://github.com/palidintheonly/Spatuletail---Game/discussions)
+- 📦 [NPM Package](https://www.npmjs.com/package/spatuletail-game)
+
+---
+
+## 📜 License
+
+**Custom License** - See [LICENSE](./LICENSE) file for full details.
+
+### ⚖️ Key Points:
+
+- ✅ Free to use, modify, and distribute
+- ✅ Can be used for personal or commercial purposes
+- ❌ **Cannot** rebrand or remove "Spatuletail Game" name/branding
+- ❌ **Cannot** claim as your own original creation
+- ✅ **Must** retain attribution to original author (palidintheonly)
+
+For rebranding permission, contact via [GitHub](https://github.com/palidintheonly/Spatuletail---Game).
+
+---
+
+## 👨‍💻 Author
+
+**palidintheonly**
+
+- GitHub: [@palidintheonly](https://github.com/palidintheonly)
+- Repository: [Spatuletail---Game](https://github.com/palidintheonly/Spatuletail---Game)
+
+---
+
+## 🌟 Changelog
+
+### v2.3.1 (Latest)
+- ✨ Added Terms of Service and Privacy Policy pages
+- 📄 New `/terms` and `/privacy-policy` endpoints
+- 📁 Added `secretarybird/` directory for legal documents
+- 🔗 Footer links to legal pages on all game views
+- 📚 GitHub documentation: `TERMS.md` and `PRIVACY.md`
+- 🔄 Updated API version references
+
+### v2.1.0
+- 🎮 Enhanced game mechanics
+- 🐛 Bug fixes and improvements
+
+---
+
+<div align="center">
+
+**Made with ❤️ for multiplayer gaming enthusiasts**
+
+[![GitHub](https://img.shields.io/badge/GitHub-palidintheonly-181717?logo=github)](https://github.com/palidintheonly/Spatuletail---Game)
+[![NPM](https://img.shields.io/badge/NPM-spatuletail--game-CB3837?logo=npm)](https://www.npmjs.com/package/spatuletail-game)
+
+**[⬆ Back to Top](#-spatuletail---game)**
+
+</div>
