@@ -118,7 +118,7 @@ const ENABLE_GAME_STATS = process.env.ENABLE_GAME_STATS !== 'false';
 const API_VERSION = process.env.API_VERSION || 'v1';
 const API_FOOTER_ENABLED = process.env.API_FOOTER_ENABLED !== 'false';
 const API_FOOTER_NAME = process.env.API_FOOTER_NAME || 'Spatuletail Game API';
-const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '1.0.0';
+const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '2.3.1';
 const API_FOOTER_AUTHOR = process.env.API_FOOTER_AUTHOR || 'Spatuletail Development Team';
 const API_FOOTER_DOCS_URL = process.env.API_FOOTER_DOCS_URL || 'https://github.com/spatuletail/game';
 const API_FOOTER_TIMESTAMP = process.env.API_FOOTER_TIMESTAMP !== 'false';
@@ -271,7 +271,17 @@ app.get('/admin', (req, res) => {
   Logger.info('route', 'Admin dashboard accessed', { path: '/admin' });
 });
 
-Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/admin'] });
+app.get('/terms', (req, res) => {
+  res.sendFile(path.join(__dirname, 'secretarybird', 'terms.html'));
+  Logger.info('route', 'Terms of Service accessed', { path: '/terms' });
+});
+
+app.get('/privacy-policy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'secretarybird', 'privacy-policy.html'));
+  Logger.info('route', 'Privacy Policy accessed', { path: '/privacy-policy' });
+});
+
+Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/admin', '/terms', '/privacy-policy'] });
 
 // File system utilities - check before creating
 function ensureDirectoryExists(dirPath) {

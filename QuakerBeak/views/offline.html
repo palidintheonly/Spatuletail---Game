@@ -38,6 +38,7 @@
 
             <div class="hud-bottom">
                 <div id="ship-legend" class="ship-legend">
+                    <div class="legend-toggle" id="legend-toggle"></div>
                     <h3>Your Fleet</h3>
                     <div class="ships-list">
                         <div class="ship-item" data-ship="carrier">
@@ -109,6 +110,11 @@
 
         <div id="canvas-container"></div>
     </div>
+
+    <footer style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 1000; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5);">
+        <a href="/privacy-policy" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+        <a href="/terms" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Terms of Service</a>
+    </footer>
 
     <script src="/assets/js/offline-game.js"></script>
 </body>

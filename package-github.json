@@ -1,6 +1,6 @@
 {
   "name": "@palidintheonly/spatuletail-game",
-  "version": "2.0.3",
+  "version": "2.3.1",
   "description": "Spatuletail - Game: 2-player turn-based battleship with Three.js 3D graphics",
   "main": "server.js",
   "bin": {
@@ -60,6 +60,7 @@
     "example.env",
     "QuakerBeak/",
     "waterbird/",
+    "secretarybird/",
     "README.md",
     "LICENSE"
   ]

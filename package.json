@@ -1,6 +1,6 @@
 {
   "name": "spatuletail-game",
-  "version": "2.1.0",
+  "version": "2.3.1",
   "description": "Spatuletail - Game: 2-player turn-based battleship with 2D grid system (10x10, 200 cells total)",
   "main": "server.js",
   "bin": {
@@ -58,6 +58,7 @@
     "example.env",
     "QuakerBeak/",
     "waterbird/",
+    "secretarybird/",
     "README.md",
     "LICENSE"
   ]
