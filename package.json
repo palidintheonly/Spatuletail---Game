@@ -1,7 +1,7 @@
 {
   "name": "spatuletail-game",
-  "version": "2.0.3",
-  "description": "Spatuletail - Game: 2-player turn-based battleship with Three.js 3D graphics",
+  "version": "2.1.0",
+  "description": "Spatuletail - Game: 2-player turn-based battleship with 2D grid system (10x10, 200 cells total)",
   "main": "server.js",
   "bin": {
     "spatuletail": "./bin/spatuletail.js"
@@ -14,11 +14,12 @@
     "game",
     "battleship",
     "multiplayer",
-    "threejs",
+    "2d-grid",
     "socket.io",
-    "3d-graphics",
+    "html-css-grid",
     "turn-based",
-    "websocket"
+    "websocket",
+    "ai-opponent"
   ],
   "author": "palidintheonly",
   "license": "SEE LICENSE IN LICENSE",
