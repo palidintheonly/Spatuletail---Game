@@ -1,0 +1,66 @@
+{
+  "name": "@palidintheonly/spatuletail-game",
+  "version": "2.0.3",
+  "description": "Spatuletail - Game: 2-player turn-based battleship with Three.js 3D graphics",
+  "main": "server.js",
+  "bin": {
+    "spatuletail": "./bin/spatuletail.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "node setup.js"
+  },
+  "keywords": [
+    "game",
+    "battleship",
+    "multiplayer",
+    "threejs",
+    "socket.io",
+    "3d-graphics",
+    "turn-based",
+    "websocket"
+  ],
+  "author": "palidintheonly",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/palidintheonly/Spatuletail---Game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/palidintheonly/Spatuletail---Game/issues"
+  },
+  "homepage": "https://github.com/palidintheonly/Spatuletail---Game#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "animejs": "^4.2.2",
+    "aos": "^2.3.4",
+    "cannon-es": "^0.20.0",
+    "chart.js": "^4.5.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "gsap": "^3.13.0",
+    "howler": "^2.2.4",
+    "matter-js": "^0.20.0",
+    "particles-bg": "^2.5.5",
+    "particles.js": "^2.0.0",
+    "postprocessing": "^6.38.0",
+    "socket.io": "^4.6.1",
+    "three-orbit-controls": "^82.1.0"
+  },
+  "files": [
+    "bin/",
+    "server.js",
+    "setup.js",
+    "example.env",
+    "QuakerBeak/",
+    "waterbird/",
+    "README.md",
+    "LICENSE"
+  ]
+}
