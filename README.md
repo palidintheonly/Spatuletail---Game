@@ -12,7 +12,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/palidintheonly/Spatuletail---Game?style=flat&logo=github)](https://github.com/palidintheonly/Spatuletail---Game/stargazers)
 [![Downloads](https://img.shields.io/npm/dt/spatuletail-game?style=flat&logo=npm&color=CB3837)](https://www.npmjs.com/package/spatuletail-game)
 
-[🎮 Features](#-features) • [📦 Installation](#-installation) • [⚙️ Configuration](#%EF%B8%8F-configuration) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation)
+[🎮 Features](#-features) • [📦 Installation](#-installation) • [⚙️ Configuration](#%EF%B8%8F-configuration) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation) • [🚀 Development](#-development--publishing)
 
 </div>
 
@@ -51,11 +51,19 @@ That's it! The server starts automatically on `http://localhost:3010`
 npm install spatuletail-game
 ```
 
+Or from GitHub Packages:
+
+```bash
+npm install @palidintheonly/spatuletail-game --registry=https://npm.pkg.github.com
+```
+
 ### 🌍 Install Globally
 
 ```bash
 npm install -g spatuletail-game
-spatuletail
+spatuletail        # Start the server
+spatuletail setup  # Run setup wizard
+spatuletail help   # Show help
 ```
 
 ### 🛠️ Local Project Installation
@@ -80,6 +88,8 @@ cp example.env .env
 # Edit .env with your configuration
 npm start
 ```
+
+> 💡 **For Developers:** See the [Development & Publishing](#-development--publishing) section for version management and publishing workflows.
 
 ---
 
@@ -139,9 +149,14 @@ Spatuletail-Game/
 │   └── views/           # HTML pages
 ├── waterbird/           # Game data (leaderboards, logs)
 ├── secretarybird/       # Legal pages (Terms, Privacy)
+├── Go-away-bird/        # Publishing & version management scripts
+├── bin/                 # CLI executable (spatuletail command)
 ├── server.js            # Main server file
+├── setup.js             # Interactive setup wizard
 ├── package.json         # NPM package config
+├── package-github.json  # GitHub Packages config
 ├── example.env          # Environment template
+├── .npmrc               # NPM authentication (git-ignored)
 ├── LICENSE              # License information
 ├── TERMS.md             # Terms of Service (GitHub)
 └── PRIVACY.md           # Privacy Policy (GitHub)
@@ -219,6 +234,52 @@ This game includes built-in legal documentation:
 
 ---
 
+## 🚀 Development & Publishing
+
+### Version Management
+
+Bump version numbers automatically in both `package.json` and `package-github.json`:
+
+```bash
+npm run version:patch  # Bug fixes (2.3.6 → 2.3.7)
+npm run version:minor  # New features (2.3.6 → 2.4.0)
+npm run version:major  # Breaking changes (2.3.6 → 3.0.0)
+```
+
+### Publishing
+
+Publish to npm and/or GitHub Packages:
+
+```bash
+npm run publish:npm      # Publish to npm registry
+npm run publish:github   # Publish to GitHub Packages
+npm run publish:both     # Publish to both registries
+```
+
+### Complete Release Workflow
+
+```bash
+# 1. Bump version
+npm run version:patch
+
+# 2. Commit changes
+git add .
+git commit -m "Bump version to 2.3.7"
+
+# 3. Create git tag
+git tag v2.3.7
+
+# 4. Push to GitHub
+git push && git push --tags
+
+# 5. Publish packages
+npm run publish:both
+```
+
+> 📝 **Note:** Publishing requires authentication tokens configured in `.npmrc`. See project documentation for setup details.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -278,7 +339,16 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
-### v2.3.5 (Latest)
+### v2.3.6 (Latest)
+- 📦 Aligned npm and GitHub package descriptions to "2D grid system"
+- 🛠️ Added automated publishing scripts (`Go-away-bird/` directory)
+- 🔧 New version management commands (`npm run version:patch/minor/major`)
+- 📝 Automated package publishing with `npm run publish:npm/github/both`
+- 🎨 Updated CLI banner text to match package description
+- 📋 Added comprehensive publishing documentation
+- 🔐 Configured authentication for both npm and GitHub Packages registries
+
+### v2.3.5
 - 🐛 Fixed infinite loading screens with timeout handlers
 - ⚠️ Added connection error handling for all game modes
 - 🔄 Auto-updating GitHub badges with live stats

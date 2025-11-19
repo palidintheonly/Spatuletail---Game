@@ -1,4 +1,18 @@
 // Spectate Mode Client - Watch Live Matches
+
+// IMMEDIATE FAILSAFE: Remove loading screen after 5 seconds no matter what
+setTimeout(() => {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen && loadingScreen.classList.contains('active')) {
+    console.warn('[FAILSAFE] Forcing loading screen removal after 5 seconds');
+    loadingScreen.classList.remove('active');
+    const statusMsg = document.getElementById('status-message');
+    if (statusMsg) {
+      statusMsg.textContent = '⚠️ Connection issue detected. Please refresh if game doesn't load.';
+    }
+  }
+}, 5000);
+
 const Logger = {
   styles: {
     info: 'color: #4285F4; font-weight: bold',

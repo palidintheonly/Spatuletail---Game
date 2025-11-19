@@ -554,12 +554,21 @@
             retina_detect: true
         });
 
-        // Hide loading screen
+        // Hide loading screen - with fallback timeout
+        function hideLoading() {
+            const loadingEl = document.getElementById('loading');
+            if (loadingEl) {
+                loadingEl.classList.add('hidden');
+            }
+        }
+
+        // Hide on load event
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 500);
+            setTimeout(hideLoading, 500);
         });
+
+        // Fallback: Force hide after 3 seconds even if load event doesn't fire
+        setTimeout(hideLoading, 3000);
 
         // Navigation function
         function navigateTo(path) {
