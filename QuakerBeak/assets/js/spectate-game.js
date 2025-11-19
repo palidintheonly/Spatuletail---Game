@@ -130,6 +130,31 @@ socket.on('connect', () => {
   socket.emit('join', { name: playerName, mode: 'spectate' });
 });
 
+socket.on('connect_error', (error) => {
+  Logger.error('socket', 'Connection error', error);
+  document.getElementById('loading-screen')?.classList.remove('active');
+  const statusMsg = document.querySelector('.status-message');
+  if (statusMsg) statusMsg.textContent = '⚠️ Unable to connect to server. Please check if the server is running.';
+});
+
+socket.on('connect_timeout', () => {
+  Logger.error('socket', 'Connection timeout');
+  document.getElementById('loading-screen')?.classList.remove('active');
+  const statusMsg = document.querySelector('.status-message');
+  if (statusMsg) statusMsg.textContent = '⚠️ Connection timeout. Please refresh the page.';
+});
+
+// Fallback timeout to remove loading screen after 10 seconds
+setTimeout(() => {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen && loadingScreen.classList.contains('active')) {
+    Logger.warn('socket', 'Loading screen timeout - removing');
+    loadingScreen.classList.remove('active');
+    const statusMsg = document.querySelector('.status-message');
+    if (statusMsg) statusMsg.textContent = '⚠️ Connection taking too long. Please check server status.';
+  }
+}, 10000);
+
 socket.on('noActiveGames', () => {
   Logger.warn('spectate', 'No active games to watch');
   document.getElementById('no-match-screen')?.classList.remove('hidden');

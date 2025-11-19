@@ -324,6 +324,28 @@ socket.on('connect', () => {
   gameState = 'placing';
 });
 
+socket.on('connect_error', (error) => {
+  Logger.error('socket', 'Connection error', error);
+  document.getElementById('loading-screen').classList.remove('active');
+  updateStatusMessage('⚠️ Unable to connect to server. Please check if the server is running.');
+});
+
+socket.on('connect_timeout', () => {
+  Logger.error('socket', 'Connection timeout');
+  document.getElementById('loading-screen').classList.remove('active');
+  updateStatusMessage('⚠️ Connection timeout. Please refresh the page.');
+});
+
+// Fallback timeout to remove loading screen after 10 seconds
+setTimeout(() => {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen && loadingScreen.classList.contains('active')) {
+    Logger.warn('socket', 'Loading screen timeout - removing');
+    loadingScreen.classList.remove('active');
+    updateStatusMessage('⚠️ Connection taking too long. Please check server status.');
+  }
+}, 10000);
+
 socket.on('gameStart', (data) => {
   Logger.game('game', 'Game started', data);
   document.getElementById('player-name').textContent = data.playerName || 'You';
