@@ -192,193 +192,327 @@
         </div>
 
         <div class="content">
-            <p class="effective-date">Effective Date: January 19, 2025</p>
+            <p class="effective-date">Effective Date: November 19, 2025 | Version 3.0.0</p>
 
             <div class="important-box">
-                <strong>Our Commitment to Transparency:</strong> We collect ONLY the data explicitly listed in this policy. We do not collect, track, or store any additional personal information beyond what is necessary for the game to function. We are committed to being truthful and transparent about all data practices.
+                <strong>Our Commitment to 100% Transparency:</strong> This privacy policy discloses EXACTLY what data we collect, where it's stored, who can see it, and how to delete it. We are committed to complete honesty about all data practices. If something is not listed here, we do NOT collect it.
             </div>
 
             <h2>1. Introduction</h2>
             <p>This Privacy Policy explains how Spatuletail - Game ("we," "us," or "the Game") collects, uses, and protects your information when you use our online battleship game.</p>
             <p>By using the Game, you agree to the collection and use of information in accordance with this policy.</p>
 
-            <h2>2. Information We Collect</h2>
-            <p>We are committed to collecting ONLY the minimum data necessary for the Game to function. Below is a complete and exhaustive list of ALL data we collect:</p>
+            <h2>2. Complete List of Data We Collect</h2>
+            <p>We collect ONLY the data listed below. This list is exhaustive and complete:</p>
 
-            <h3>2.1 Data We Collect</h3>
+            <h3>2.1 Data Stored Permanently (JSON Files)</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Data Type</th>
+                        <th>What We Store</th>
                         <th>Purpose</th>
-                        <th>Storage Location</th>
+                        <th>Retention</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><span class="highlight">Player Names</span></td>
+                        <td>Your chosen username</td>
                         <td>Display in-game and on leaderboards</td>
-                        <td>Server (JSON files)</td>
+                        <td>Indefinitely (top 100 per mode)</td>
                     </tr>
                     <tr>
                         <td><span class="highlight">Game Statistics</span></td>
-                        <td>Track wins, losses, games played</td>
-                        <td>Server (JSON files)</td>
-                    </tr>
-                    <tr>
-                        <td><span class="highlight">Leaderboard Data</span></td>
-                        <td>Display rankings and achievements</td>
-                        <td>Server (JSON files)</td>
-                    </tr>
-                    <tr>
-                        <td><span class="highlight">IP Addresses</span></td>
-                        <td>Rate limiting and abuse prevention</td>
-                        <td>Server memory (temporary)</td>
-                    </tr>
-                    <tr>
-                        <td><span class="highlight">Session Data</span></td>
-                        <td>Maintain game state during active sessions</td>
-                        <td>Server memory (temporary)</td>
+                        <td>Wins, losses, games played</td>
+                        <td>Track rankings and achievements</td>
+                        <td>Indefinitely (top 100 per mode)</td>
                     </tr>
                     <tr>
                         <td><span class="highlight">Game Logs</span></td>
-                        <td>Track game events and improve gameplay</td>
-                        <td>Server (JSON files)</td>
+                        <td>Player names, socket IDs, game events, moves (row/col), timestamps, hits/misses</td>
+                        <td>Debugging and game improvement</td>
+                        <td>Rolling window (last 2,000 games)</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h3>2.2 Data We DO NOT Collect</h3>
-            <p>We explicitly DO NOT collect:</p>
-            <ul>
-                <li>Email addresses or contact information</li>
-                <li>Passwords or authentication credentials</li>
-                <li>Payment information or financial data</li>
-                <li>Device identifiers or fingerprints</li>
-                <li>Location data or geolocation</li>
-                <li>Cookies or tracking technologies (beyond session management)</li>
-                <li>Social media profiles or third-party account data</li>
-                <li>Browsing history or external website activity</li>
-                <li>Any other personal identifiable information not explicitly listed above</li>
-            </ul>
-
-            <h2>3. How We Use Your Information</h2>
-            <p>We use the collected data exclusively for:</p>
-            <ul>
-                <li><strong>Game Functionality:</strong> Enabling multiplayer features, matchmaking, and game state management</li>
-                <li><strong>Leaderboards:</strong> Displaying player rankings and statistics</li>
-                <li><strong>Security:</strong> Preventing abuse, cheating, and server overload through rate limiting</li>
-                <li><strong>Improvement:</strong> Analyzing game logs to improve gameplay and fix bugs</li>
-                <li><strong>Administration:</strong> Managing active games and monitoring server health</li>
-            </ul>
-
-            <h2>4. Data Storage and Retention</h2>
-
-            <h3>4.1 Storage Methods</h3>
-            <ul>
-                <li><strong>Persistent Storage:</strong> Leaderboards and game logs are stored in JSON files on the server</li>
-                <li><strong>Temporary Storage:</strong> Session data and IP addresses are stored in server memory only during active sessions</li>
-                <li><strong>Automatic Cleanup:</strong> Game logs are limited to the most recent 2,000 entries, and event logs to 2,000 entries</li>
-            </ul>
-
-            <h3>4.2 Data Retention Periods</h3>
+            <h3>2.2 Data Stored Temporarily (Server Memory Only)</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Data Type</th>
+                        <th>What We Store</th>
+                        <th>Purpose</th>
                         <th>Retention Period</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Session Data</td>
+                        <td><span class="highlight">Socket.IO Session IDs</span></td>
+                        <td>Random session identifier (e.g., "abc123xyz")</td>
+                        <td>Maintain game connection</td>
                         <td>Duration of active session only</td>
                     </tr>
                     <tr>
-                        <td>IP Addresses</td>
+                        <td><span class="highlight">IP Addresses</span></td>
+                        <td>Your IP address</td>
+                        <td>Rate limiting and abuse prevention</td>
+                        <td>15 minutes (via express-rate-limit)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Player Activity Data</span></td>
+                        <td>Last activity timestamp, warning count, active/inactive status</td>
+                        <td>Detect and kick inactive players</td>
                         <td>Duration of active session only</td>
                     </tr>
                     <tr>
-                        <td>Leaderboard Data</td>
-                        <td>Indefinitely (top 100 entries per mode)</td>
-                    </tr>
-                    <tr>
-                        <td>Game Logs</td>
-                        <td>Rolling window (last 2,000 games)</td>
-                    </tr>
-                    <tr>
-                        <td>Event Logs</td>
-                        <td>Rolling window (last 2,000 events)</td>
+                        <td><span class="highlight">Game State</span></td>
+                        <td>Current game boards, ships, turns</td>
+                        <td>Enable gameplay</td>
+                        <td>Duration of active game only</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h2>5. Data Sharing and Disclosure</h2>
-            <p><strong>We do NOT sell, trade, or share your data with third parties.</strong></p>
-            <p>The only data that is publicly visible:</p>
+            <h3>2.3 Data Visible in Console Logs</h3>
+            <p>The server logs the following to the console (visible to anyone with server access):</p>
+            <ul>
+                <li>Player names</li>
+                <li>Socket IDs</li>
+                <li>IP addresses</li>
+                <li>Connection events</li>
+                <li>Game events</li>
+                <li>Error messages</li>
+                <li>Timestamps</li>
+            </ul>
+            <p><strong>Important:</strong> If the server administrator saves console output to a file, this data may be retained longer than the session.</p>
+
+            <h3>2.4 Simulated Players (Transparency Disclosure)</h3>
+            <div class="important-box">
+                <p><strong>The "active players" count includes 1-47 simulated bot players that are NOT real users.</strong></p>
+                <ul>
+                    <li><strong>Purpose:</strong> Testing metric stability and server load simulation</li>
+                    <li><strong>Disclosure:</strong> These are fake placeholder players to test game systems</li>
+                    <li><strong>Removal:</strong> Will be removed in upcoming updates</li>
+                    <li><strong>Self-Hosted:</strong> Users running their own server can disable this by modifying MAX_SIMULATED_PLAYERS in .env</li>
+                </ul>
+            </div>
+
+            <h2>3. Data We DO NOT Collect</h2>
+            <p>We explicitly <strong>DO NOT</strong> collect:</p>
+            <ul>
+                <li>❌ Email addresses or contact information</li>
+                <li>❌ Passwords or authentication credentials (no accounts required)</li>
+                <li>❌ Payment information or financial data</li>
+                <li>❌ Device identifiers or fingerprints</li>
+                <li>❌ Precise location data (only IP address for rate limiting)</li>
+                <li>❌ Persistent cookies or tracking technologies (only session cookies)</li>
+                <li>❌ Social media profiles or third-party account data</li>
+                <li>❌ Browsing history or external website activity</li>
+                <li>❌ Any other personal identifiable information not explicitly listed above</li>
+            </ul>
+
+            <h2>4. How We Use Your Information</h2>
+            <p>We use the collected data exclusively for:</p>
+            <ul>
+                <li><strong>Game Functionality:</strong> Enabling multiplayer features, matchmaking, and game state management</li>
+                <li><strong>Leaderboards:</strong> Displaying player rankings and statistics</li>
+                <li><strong>Security:</strong> Preventing abuse, cheating, and server overload through rate limiting</li>
+                <li><strong>Debugging:</strong> Analyzing game logs to fix bugs and improve gameplay</li>
+                <li><strong>Administration:</strong> Monitoring server health and active games</li>
+                <li><strong>Testing:</strong> Simulated players for metric stability testing (temporary)</li>
+            </ul>
+            <p><strong>We do NOT:</strong></p>
+            <ul>
+                <li>❌ Sell or trade your data</li>
+                <li>❌ Share data with third parties</li>
+                <li>❌ Use data for marketing or advertising</li>
+                <li>❌ Track you across other websites</li>
+                <li>❌ Create user profiles beyond game statistics</li>
+            </ul>
+
+            <h2>5. Who Can Access Your Data</h2>
+
+            <h3>5.1 Public Data</h3>
+            <p>The following data is publicly visible to all players:</p>
             <ul>
                 <li>Player names on leaderboards</li>
                 <li>Win/loss statistics on leaderboards</li>
-                <li>Live game statistics (active players, games played)</li>
+                <li>Live game statistics (active players count, games played)</li>
             </ul>
 
-            <h2>6. Security Measures</h2>
-            <p>We implement security measures to protect your data:</p>
+            <h3>5.2 Admin Access</h3>
+            <div class="important-box">
+                <p><strong>Server administrators (palidintheonly) can access:</strong></p>
+                <ul>
+                    <li>All data listed in Section 2</li>
+                    <li>Admin panel with system information, game logs, leaderboards, and live stats</li>
+                    <li>Console logs with player names, socket IDs, and IP addresses</li>
+                    <li>Raw JSON files containing all persistent data</li>
+                </ul>
+            </div>
+
+            <h3>5.3 No Third-Party Access</h3>
+            <p><strong>We do NOT share data with any third parties, analytics services, or advertising networks.</strong></p>
+
+            <h2>6. Third-Party Libraries and Services</h2>
+            <p>The Game uses the following third-party software (all run locally on our server, no external data transmission):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library</th>
+                        <th>Purpose</th>
+                        <th>Data Sent to Third Party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Socket.io</td>
+                        <td>Real-time communication</td>
+                        <td>None (local server only)</td>
+                    </tr>
+                    <tr>
+                        <td>Express.js</td>
+                        <td>Web server framework</td>
+                        <td>None (local server only)</td>
+                    </tr>
+                    <tr>
+                        <td>express-rate-limit</td>
+                        <td>Rate limiting and IP tracking</td>
+                        <td>None (local server only)</td>
+                    </tr>
+                    <tr>
+                        <td>Particles.js, AOS, GSAP, Howler.js</td>
+                        <td>Visual and audio effects</td>
+                        <td>None (client-side only)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Important:</strong> All game functionality runs on our server. We do NOT use external analytics (Google Analytics, etc.), tracking services, advertising networks, or cloud storage.</p>
+
+            <h2>7. Data Storage and Security</h2>
+
+            <h3>7.1 Storage Methods</h3>
             <ul>
-                <li><strong>Rate Limiting:</strong> Prevents abuse and DDoS attacks (configurable, default: 100 requests per 15 minutes)</li>
+                <li><strong>Persistent Storage:</strong> JSON files in waterbird/ directory</li>
+                <li><strong>Temporary Storage:</strong> Server RAM (cleared on disconnect or restart)</li>
+                <li><strong>No Database:</strong> We use simple JSON files, not a database</li>
+                <li><strong>No Encryption:</strong> Data is stored in plain text JSON (it's a game, not sensitive personal data)</li>
+            </ul>
+
+            <h3>7.2 Security Measures</h3>
+            <p>We implement the following security measures:</p>
+            <ul>
+                <li><strong>Rate Limiting:</strong> Prevents abuse and DDoS attacks (100 requests per 15 minutes per IP by default)</li>
                 <li><strong>Admin Protection:</strong> Password-protected admin panel with session timeouts</li>
                 <li><strong>Input Validation:</strong> All user inputs are validated to prevent injection attacks</li>
-                <li><strong>Connection Limits:</strong> Maximum connections per IP address (default: 10)</li>
+                <li><strong>Connection Limits:</strong> Maximum connections per IP address (10 by default)</li>
+                <li><strong>Session Isolation:</strong> Game states are isolated between sessions</li>
             </ul>
 
-            <h2>7. Your Rights</h2>
-            <p>You have the right to:</p>
+            <h3>7.3 Security Limitations</h3>
+            <div class="important-box">
+                <p><strong>We are a small indie game project. Our security is basic:</strong></p>
+                <ul>
+                    <li>No encryption at rest (data stored in plain text)</li>
+                    <li>No HTTPS/SSL (unless you configure it yourself)</li>
+                    <li>No two-factor authentication</li>
+                    <li>No security audits or penetration testing</li>
+                    <li>Server access is limited to the project owner</li>
+                </ul>
+                <p><strong>If you need enterprise-grade security, do not use this game.</strong></p>
+            </div>
+
+            <h2>8. Your Rights and Data Control</h2>
+
+            <h3>8.1 Access</h3>
             <ul>
-                <li><strong>Access:</strong> View your leaderboard data by accessing the public leaderboards</li>
-                <li><strong>Delete:</strong> Request removal from leaderboards by contacting us</li>
-                <li><strong>Object:</strong> Choose not to participate by not using the Game</li>
-                <li><strong>Transparency:</strong> Request information about data we hold (limited to what's listed in Section 2)</li>
+                <li>✅ View your leaderboard data on the public leaderboards</li>
+                <li>✅ Request copies of your game logs</li>
             </ul>
 
-            <h2>8. Children's Privacy</h2>
-            <p>The Game does not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>
+            <h3>8.2 Deletion</h3>
+            <p><strong>You can request deletion of your data:</strong></p>
+            <ol>
+                <li><strong>Option 1:</strong> Open a GitHub issue at <a href="https://github.com/palidintheonly/Spatuletail---Game/issues" class="highlight" style="text-decoration: none;">GitHub Issues</a></li>
+                <li><strong>Option 2:</strong> Email <span class="highlight">monkeybyteshosting@gmail.com</span></li>
+            </ol>
+            <p><strong>We will delete:</strong></p>
+            <ul>
+                <li>Your leaderboard entries</li>
+                <li>Game logs containing your player name</li>
+                <li>Any other stored data associated with your username</li>
+            </ul>
+            <p><strong>We cannot delete:</strong></p>
+            <ul>
+                <li>Data already removed by automatic rotation (logs older than 2,000 entries)</li>
+                <li>Data in console logs saved by administrators</li>
+                <li>Temporary session data (automatically deleted when you disconnect)</li>
+            </ul>
+            <p><strong>Processing time:</strong> Up to 7 business days</p>
 
-            <h2>9. Data Controller</h2>
+            <h3>8.3 Anonymous Play</h3>
+            <p><strong>You can play anonymously:</strong></p>
+            <ul>
+                <li>No account required</li>
+                <li>No email required</li>
+                <li>Choose any username (we don't verify identity)</li>
+                <li>If you don't provide a name, you'll be assigned "Guest####" with random numbers</li>
+            </ul>
+
+            <h2>9. Children's Privacy</h2>
+            <p>The Game does not knowingly collect personal information from children under 13.</p>
+            <p><strong>Parents:</strong> If you believe your child has provided us with personal information, please contact us via GitHub or email and we will delete it promptly.</p>
+
+            <h2>10. Data Controller</h2>
             <p>The data controller for Spatuletail - Game is:</p>
             <p><strong>palidintheonly</strong><br>
-            Contact: <a href="https://github.com/palidintheonly/Spatuletail---Game" class="highlight" style="text-decoration: none;">https://github.com/palidintheonly/Spatuletail---Game</a></p>
+            <strong>GitHub:</strong> <a href="https://github.com/palidintheonly/Spatuletail---Game" class="highlight" style="text-decoration: none;">Spatuletail Game Repository</a><br>
+            <strong>Email:</strong> <span class="highlight">monkeybyteshosting@gmail.com</span></p>
 
-            <h2>10. Third-Party Services</h2>
-            <p>The Game uses the following third-party libraries for functionality (no data is sent to external servers):</p>
+            <h2>11. Self-Hosting and Data Control</h2>
+            <p><strong>If you run your own server:</strong></p>
             <ul>
-                <li>Socket.io - Real-time communication (local server only)</li>
-                <li>Express.js - Web server framework (local server only)</li>
-                <li>Particles.js - Visual effects (client-side only, no tracking)</li>
-                <li>AOS - Animation library (client-side only, no tracking)</li>
+                <li>✅ You control all data collection settings via .env configuration</li>
+                <li>✅ You can disable simulated players (MAX_SIMULATED_PLAYERS=0)</li>
+                <li>✅ You can adjust log retention (MAX_GAME_LOGS, MAX_EVENT_LOGS)</li>
+                <li>✅ You control who has admin access</li>
+                <li>✅ You can delete JSON files manually</li>
             </ul>
-            <p><strong>Important:</strong> All game functionality runs on our server. We do not use external analytics, tracking, or advertising services.</p>
+            <p><strong>You are responsible for:</strong></p>
+            <ul>
+                <li>Your own data privacy compliance</li>
+                <li>Informing your users about data collection</li>
+                <li>Securing your own server</li>
+            </ul>
 
-            <h2>11. Changes to This Policy</h2>
+            <h2>12. Changes to This Policy</h2>
             <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Effective Date."</p>
+            <p><strong>Version-controlled transparency:</strong> This policy is tracked in git, so you can see the full history of changes on GitHub.</p>
             <p>Continued use of the Game after changes constitutes acceptance of the updated policy.</p>
 
-            <h2>12. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy or wish to exercise your rights, please contact us:</p>
-            <p><a href="https://github.com/palidintheonly/Spatuletail---Game" class="highlight" style="text-decoration: none;">https://github.com/palidintheonly/Spatuletail---Game</a></p>
+            <h2>13. Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or wish to exercise your rights:</p>
+            <p><strong>GitHub Issues:</strong> <a href="https://github.com/palidintheonly/Spatuletail---Game/issues" class="highlight" style="text-decoration: none;">Submit an issue</a><br>
+            <strong>Email:</strong> <span class="highlight">monkeybyteshosting@gmail.com</span></p>
+            <p><strong>Response time:</strong> We aim to respond within 7 business days.</p>
 
-            <h2>13. Legal Compliance</h2>
+            <h2>14. Legal Compliance</h2>
             <p>This Privacy Policy complies with general data protection principles. We are committed to:</p>
             <ul>
-                <li><strong>Transparency:</strong> Being clear about what data we collect</li>
-                <li><strong>Minimization:</strong> Collecting only necessary data</li>
+                <li><strong>Transparency:</strong> Being 100% clear about what data we collect</li>
+                <li><strong>Minimization:</strong> Collecting only necessary data for game functionality</li>
                 <li><strong>Purpose Limitation:</strong> Using data only for stated purposes</li>
                 <li><strong>Accuracy:</strong> Maintaining accurate records</li>
-                <li><strong>Storage Limitation:</strong> Not keeping data longer than necessary</li>
+                <li><strong>Storage Limitation:</strong> Not keeping data longer than necessary (rolling logs)</li>
                 <li><strong>Security:</strong> Protecting data with appropriate measures</li>
+                <li><strong>Accountability:</strong> Taking responsibility for data practices</li>
             </ul>
 
             <p style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5);">
-                <strong>Last Updated:</strong> January 19, 2025<br>
+                <strong>Last Updated:</strong> November 19, 2025<br>
+                <strong>Version:</strong> 3.0.0<br>
                 <strong>Copyright © 2025 palidintheonly. All rights reserved.</strong>
             </p>
         </div>

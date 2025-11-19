@@ -155,7 +155,7 @@
         </div>
 
         <div class="content">
-            <p class="effective-date">Effective Date: January 19, 2025</p>
+            <p class="effective-date">Effective Date: November 19, 2025 | Version 3.0.0</p>
 
             <h2>1. Acceptance of Terms</h2>
             <p>By accessing and using Spatuletail - Game ("the Game"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use the Game.</p>
@@ -168,15 +168,19 @@
             <ul>
                 <li>Access and play the Game for personal or commercial purposes</li>
                 <li>View and interact with the Game's features and functionality</li>
+                <li>Self-host the Game on your own server (if you download the source code)</li>
+                <li>Modify the Game for personal use (if self-hosting)</li>
             </ul>
 
             <h3>2.2 Restrictions</h3>
             <p>You may NOT:</p>
             <ul>
-                <li>Rebrand, rename, or remove the <span class="highlight">"Spatuletail Game"</span> name, logo, or branding</li>
+                <li>Rebrand, rename, or remove the <span class="highlight">"Spatuletail Game"</span> name, logo, or branding without permission</li>
                 <li>Present the Game as your own original creation without proper attribution</li>
                 <li>Remove copyright notices or attribution to the original author <span class="highlight">(palidintheonly)</span></li>
                 <li>Use the Game for any illegal or unauthorized purpose</li>
+                <li>Attempt to reverse-engineer, decompile, or disassemble the compiled portions of the Game</li>
+                <li>Use automated bots or scripts to gain unfair advantages (cheating)</li>
             </ul>
 
             <h2>3. User Conduct</h2>
@@ -195,19 +199,50 @@
             <p>The Game offers multiple modes including:</p>
             <ul>
                 <li><strong>Online Battle:</strong> Real-time multiplayer against other players</li>
-                <li><strong>AI Training:</strong> Practice mode against AI opponents of varying difficulty</li>
+                <li><strong>AI Training:</strong> Practice mode against AI opponents of varying difficulty (Easy, Medium, Hard, Extreme)</li>
                 <li><strong>Spectate:</strong> Watch live matches and join the queue</li>
             </ul>
 
             <h3>4.2 Leaderboards and Statistics</h3>
-            <p>The Game maintains leaderboards and player statistics. By playing, you consent to your gameplay data being recorded and displayed on leaderboards.</p>
+            <p>The Game maintains leaderboards and player statistics. By playing, you consent to your gameplay data being recorded and displayed on public leaderboards.</p>
+            <p><strong>Important:</strong> Leaderboard data is public and visible to all players.</p>
+
+            <h3>4.3 Simulated Players (Transparency Disclosure)</h3>
+            <div class="important-box">
+                <p>The "active players" count displayed in the Game includes 1-47 simulated bot players that are NOT real users.</p>
+                <ul>
+                    <li><strong>Purpose:</strong> Testing metric stability and server load simulation</li>
+                    <li><strong>Transparency:</strong> These are fake placeholder players used for testing</li>
+                    <li><strong>Removal:</strong> This feature will be removed in upcoming updates</li>
+                    <li><strong>Self-Hosted:</strong> Users running their own server can disable this feature</li>
+                </ul>
+            </div>
 
             <h2>5. Account and Data</h2>
+
+            <h3>5.1 No Account Required</h3>
+            <p>The Game does NOT require user accounts, passwords, or email addresses.</p>
+            <ul>
+                <li>You only provide a player name (username)</li>
+                <li>Anonymous play is allowed (use any name you choose)</li>
+                <li>No identity verification</li>
+            </ul>
+
+            <h3>5.2 Data Responsibilities</h3>
             <p>You are responsible for:</p>
             <ul>
-                <li>Choosing an appropriate player name</li>
-                <li>Maintaining the security of your session</li>
+                <li>Choosing an appropriate and non-offensive player name</li>
+                <li>Understanding that your gameplay data will be recorded (see Privacy Policy)</li>
+                <li>Maintaining the security of your game session</li>
                 <li>All activities that occur under your connection</li>
+            </ul>
+
+            <h3>5.3 Data Rights</h3>
+            <p>See the Privacy Policy for complete information about:</p>
+            <ul>
+                <li>What data we collect</li>
+                <li>How to request data deletion</li>
+                <li>Your privacy rights</li>
             </ul>
 
             <h2>6. Availability and Modifications</h2>
@@ -227,6 +262,29 @@
             <h3>7.2 Limitation of Liability</h3>
             <p>IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE GAME.</p>
 
+            <h3>7.3 Service Availability</h3>
+            <p>We do NOT guarantee:</p>
+            <ul>
+                <li>24/7 uptime or availability</li>
+                <li>Bug-free operation</li>
+                <li>Data backup or recovery</li>
+                <li>Compatibility with all devices or browsers</li>
+                <li>Support or customer service</li>
+            </ul>
+            <p><strong>The Game is an indie project and may have bugs, downtime, or issues.</strong></p>
+
+            <h3>7.4 Security Limitations</h3>
+            <div class="important-box">
+                <p><strong>We are a small indie game project. Our security is basic:</strong></p>
+                <ul>
+                    <li>No encryption at rest (data stored in plain text)</li>
+                    <li>No HTTPS/SSL (unless you configure it yourself)</li>
+                    <li>No security audits or penetration testing</li>
+                    <li>Limited rate limiting and abuse prevention</li>
+                </ul>
+                <p><strong>If you need enterprise-grade security, do not use this Game.</strong></p>
+            </div>
+
             <h2>8. Attribution Requirements</h2>
             <p>All copies, modifications, or derivative works must:</p>
             <ul>
@@ -235,21 +293,65 @@
                 <li>Preserve the "Spatuletail Game" branding and identity</li>
             </ul>
 
-            <h2>9. Termination</h2>
-            <p>We may terminate or suspend your access immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
+            <h2>9. Self-Hosting and Redistribution</h2>
 
-            <h2>10. Governing Law</h2>
+            <h3>9.1 Self-Hosting Rights</h3>
+            <p>You are permitted to:</p>
+            <ul>
+                <li>Download and run the Game on your own server</li>
+                <li>Modify configuration settings via .env file</li>
+                <li>Customize game parameters (difficulty, timers, etc.)</li>
+                <li>Control your own data collection and privacy settings</li>
+            </ul>
+
+            <h3>9.2 Self-Hosting Responsibilities</h3>
+            <p>If you self-host the Game, you are responsible for:</p>
+            <ul>
+                <li>Your own data privacy compliance</li>
+                <li>Informing your users about data collection</li>
+                <li>Securing your own server</li>
+                <li>Complying with local laws and regulations</li>
+            </ul>
+
+            <h2>10. Rate Limiting and Abuse Prevention</h2>
+            <p>To prevent abuse and ensure fair play:</p>
+            <ul>
+                <li><strong>IP Rate Limiting:</strong> 100 requests per 15 minutes per IP address (default)</li>
+                <li><strong>Connection Limits:</strong> Maximum 10 connections per IP address (default)</li>
+                <li><strong>Inactivity Timeouts:</strong> Players inactive for 45 seconds may be kicked from games</li>
+                <li><strong>Turn Timers:</strong> Players have 30 seconds per turn (default)</li>
+                <li><strong>Forfeit System:</strong> Two consecutive missed turns results in game forfeit</li>
+            </ul>
+            <p><strong>Violating these limits may result in temporary or permanent bans.</strong></p>
+
+            <h2>11. Termination</h2>
+            <p>We may terminate or suspend your access immediately, without prior notice, for conduct that we believe:</p>
+            <ul>
+                <li>Violates these Terms</li>
+                <li>Is harmful to other users, us, or third parties</li>
+                <li>Involves cheating, hacking, or exploitation</li>
+                <li>Disrupts the Game's servers or infrastructure</li>
+                <li>Violates applicable laws</li>
+            </ul>
+            <p><strong>Offline players may be kicked</strong> from games after 45 seconds of inactivity with warnings.</p>
+
+            <h2>12. Governing Law</h2>
             <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law provisions.</p>
 
-            <h2>11. Contact Information</h2>
-            <p>For questions about these Terms or to request permission for rebranding, please contact:</p>
-            <p><a href="https://github.com/palidintheonly/Spatuletail---Game" class="highlight" style="text-decoration: none;">https://github.com/palidintheonly/Spatuletail---Game</a></p>
+            <h2>13. Contact Information</h2>
+            <p>For questions about these Terms, permission requests, or to report violations:</p>
+            <p><strong>GitHub Issues:</strong> <a href="https://github.com/palidintheonly/Spatuletail---Game/issues" class="highlight" style="text-decoration: none;">Submit an issue</a><br>
+            <strong>Email:</strong> <span class="highlight">monkeybyteshosting@gmail.com</span></p>
+            <p><strong>Response time:</strong> We aim to respond within 7 business days.</p>
 
-            <h2>12. Changes to Terms</h2>
-            <p>We reserve the right to update these Terms at any time. Continued use of the Game after changes constitutes acceptance of the modified Terms.</p>
+            <h2>14. Changes to Terms</h2>
+            <p>We reserve the right to update these Terms at any time. Changes will be posted on this page with an updated "Effective Date."</p>
+            <p><strong>Version-controlled transparency:</strong> These Terms are tracked in git, so you can see the full history of changes on GitHub.</p>
+            <p>Continued use of the Game after changes constitutes acceptance of the modified Terms.</p>
 
             <p style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5);">
-                <strong>Last Updated:</strong> January 19, 2025<br>
+                <strong>Last Updated:</strong> November 19, 2025<br>
+                <strong>Version:</strong> 3.0.0<br>
                 <strong>Copyright © 2025 palidintheonly. All rights reserved.</strong>
             </p>
         </div>

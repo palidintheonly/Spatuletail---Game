@@ -241,9 +241,9 @@ This game includes built-in legal documentation:
 Bump version numbers automatically in both `package.json` and `package-github.json`:
 
 ```bash
-npm run version:patch  # Bug fixes (2.3.6 → 2.3.7)
-npm run version:minor  # New features (2.3.6 → 2.4.0)
-npm run version:major  # Breaking changes (2.3.6 → 3.0.0)
+npm run version:patch  # Bug fixes (3.0.0 → 3.0.1)
+npm run version:minor  # New features (3.0.0 → 3.1.0)
+npm run version:major  # Breaking changes (3.0.0 → 4.0.0)
 ```
 
 ### Publishing
@@ -264,10 +264,10 @@ npm run version:patch
 
 # 2. Commit changes
 git add .
-git commit -m "Bump version to 2.3.7"
+git commit -m "Bump version to 3.0.1"
 
 # 3. Create git tag
-git tag v2.3.7
+git tag v3.0.1
 
 # 4. Push to GitHub
 git push && git push --tags
@@ -339,7 +339,9 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
-### v2.3.6 (Latest)
+### v3.0.0 (Latest)
+- 🚀 Major version release with loading screen improvements
+- 🛡️ Added multiple failsafe timeouts to prevent infinite loading screens
 - 📦 Aligned npm and GitHub package descriptions to "2D grid system"
 - 🛠️ Added automated publishing scripts (`Go-away-bird/` directory)
 - 🔧 New version management commands (`npm run version:patch/minor/major`)

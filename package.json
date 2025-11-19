@@ -1,6 +1,6 @@
 {
   "name": "spatuletail-game",
-  "version": "2.3.6",
+  "version": "3.0.0",
   "description": "Spatuletail - Game: 2-player turn-based battleship with 2D grid system (10x10, 200 cells total)",
   "main": "server.js",
   "bin": {
