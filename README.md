@@ -4,10 +4,13 @@
 
 **A 2-player turn-based battleship game with real-time multiplayer**
 
-[![Version](https://img.shields.io/badge/version-2.3.1-blue.svg)](https://github.com/palidintheonly/Spatuletail---Game)
-[![Node Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org)
-[![License](https://img.shields.io/badge/license-Custom-orange.svg)](./LICENSE)
-[![NPM](https://img.shields.io/badge/npm-spatuletail--game-red.svg)](https://www.npmjs.com/package/spatuletail-game)
+[![NPM Version](https://img.shields.io/npm/v/spatuletail-game?style=flat&logo=npm&color=CB3837)](https://www.npmjs.com/package/spatuletail-game)
+[![GitHub Release](https://img.shields.io/github/v/release/palidintheonly/Spatuletail---Game?style=flat&logo=github&color=181717)](https://github.com/palidintheonly/Spatuletail---Game/releases)
+[![Node Version](https://img.shields.io/node/v/spatuletail-game?style=flat&logo=node.js&color=339933)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-Custom-orange?style=flat)](./LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/palidintheonly/Spatuletail---Game?style=flat&logo=github)](https://github.com/palidintheonly/Spatuletail---Game/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/palidintheonly/Spatuletail---Game?style=flat&logo=github)](https://github.com/palidintheonly/Spatuletail---Game/stargazers)
+[![Downloads](https://img.shields.io/npm/dt/spatuletail-game?style=flat&logo=npm&color=CB3837)](https://www.npmjs.com/package/spatuletail-game)
 
 [🎮 Features](#-features) • [📦 Installation](#-installation) • [⚙️ Configuration](#%EF%B8%8F-configuration) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation)
 
@@ -95,7 +98,7 @@ Before running the server, configure your environment variables:
    |----------|---------|-------------|
    | `PORT` | `3010` | Server port |
    | `HOST` | `0.0.0.0` | Server host |
-   | `NODE_ENV` | `development` | Environment mode |
+   | `NODE_ENV` | `alpha-prebuild-canary` | Environment mode |
    | `ADMIN_PASSWORD` | `admin123` | Admin dashboard password ⚠️ **CHANGE THIS!** |
    | `SESSION_SECRET` | `your-secret-key` | Session encryption key |
    | `MAX_ROUNDS` | `3` | Maximum game rounds |
@@ -275,7 +278,13 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
-### v2.3.1 (Latest)
+### v2.3.5 (Latest)
+- 🐛 Fixed infinite loading screens with timeout handlers
+- ⚠️ Added connection error handling for all game modes
+- 🔄 Auto-updating GitHub badges with live stats
+- 📊 Improved error feedback for users
+
+### v2.3.1
 - ✨ Added Terms of Service and Privacy Policy pages
 - 📄 New `/terms` and `/privacy-policy` endpoints
 - 📁 Added `secretarybird/` directory for legal documents
@@ -293,8 +302,9 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 **Made with ❤️ for multiplayer gaming enthusiasts**
 
-[![GitHub](https://img.shields.io/badge/GitHub-palidintheonly-181717?logo=github)](https://github.com/palidintheonly/Spatuletail---Game)
-[![NPM](https://img.shields.io/badge/NPM-spatuletail--game-CB3837?logo=npm)](https://www.npmjs.com/package/spatuletail-game)
+[![GitHub](https://img.shields.io/badge/GitHub-palidintheonly-181717?logo=github&style=for-the-badge)](https://github.com/palidintheonly/Spatuletail---Game)
+[![NPM](https://img.shields.io/badge/NPM-spatuletail--game-CB3837?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/spatuletail-game)
+[![Node.js](https://img.shields.io/badge/Node.js-14+-339933?logo=node.js&style=for-the-badge)](https://nodejs.org)
 
 **[⬆ Back to Top](#-spatuletail---game)**
 
