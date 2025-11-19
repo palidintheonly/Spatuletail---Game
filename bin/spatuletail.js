@@ -21,7 +21,7 @@ function log(message, color = COLORS.reset) {
 function showBanner() {
   log('\n' + '='.repeat(60), COLORS.cyan);
   log('  🎮 SPATULETAIL GAME 🎮', COLORS.bright + COLORS.green);
-  log('  2-Player Turn-Based Battleship with 3D Graphics', COLORS.blue);
+  log('  2-Player Turn-Based Battleship with 2D Grid System', COLORS.blue);
   log('='.repeat(60) + '\n', COLORS.cyan);
 }
 

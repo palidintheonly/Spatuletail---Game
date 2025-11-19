@@ -1,24 +1,31 @@
 {
   "name": "@palidintheonly/spatuletail-game",
-  "version": "2.3.1",
-  "description": "Spatuletail - Game: 2-player turn-based battleship with Three.js 3D graphics",
+  "version": "2.3.6",
+  "description": "Spatuletail - Game: 2-player turn-based battleship with 2D grid system (10x10, 200 cells total)",
   "main": "server.js",
   "bin": {
     "spatuletail": "./bin/spatuletail.js"
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "node setup.js"
+    "postinstall": "node setup.js",
+    "version:patch": "node Go-away-bird/bump-version.js patch",
+    "version:minor": "node Go-away-bird/bump-version.js minor",
+    "version:major": "node Go-away-bird/bump-version.js major",
+    "publish:npm": "npm publish",
+    "publish:github": "node Go-away-bird/publish-github.js",
+    "publish:both": "npm run publish:npm && npm run publish:github"
   },
   "keywords": [
     "game",
     "battleship",
     "multiplayer",
-    "threejs",
+    "2d-grid",
     "socket.io",
-    "3d-graphics",
+    "html-css-grid",
     "turn-based",
-    "websocket"
+    "websocket",
+    "ai-opponent"
   ],
   "author": "palidintheonly",
   "license": "SEE LICENSE IN LICENSE",
@@ -55,6 +62,7 @@
   },
   "files": [
     "bin/",
+    "Go-away-bird/",
     "server.js",
     "setup.js",
     "example.env",
