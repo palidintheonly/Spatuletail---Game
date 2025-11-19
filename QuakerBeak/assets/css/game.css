@@ -38,7 +38,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 /* Loading Screen */
@@ -264,6 +265,51 @@ body {
     border-radius: 15px;
     padding: 20px;
     max-width: 400px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.ship-legend.collapsed {
+    padding: 10px 20px;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.ship-legend.collapsed .ships-list {
+    display: none;
+}
+
+.legend-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+.legend-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.legend-toggle::before {
+    content: '▼';
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.ship-legend.collapsed .legend-toggle::before {
+    transform: rotate(-90deg);
 }
 
 .ship-legend h3 {
@@ -681,6 +727,11 @@ body {
     height: 100%;
     width: 100%;
     padding: 100px 20px 20px;
+    pointer-events: none;
+}
+
+.boards-wrapper > * {
+    pointer-events: auto;
 }
 
 .board-container {
@@ -727,6 +778,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    pointer-events: auto;
 }
 
 .my-board .grid-cell {

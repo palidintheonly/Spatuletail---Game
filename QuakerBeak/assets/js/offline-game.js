@@ -507,6 +507,12 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// Fleet legend toggle
+document.getElementById('legend-toggle')?.addEventListener('click', () => {
+  const legend = document.getElementById('ship-legend');
+  legend.classList.toggle('collapsed');
+});
+
 // UI event listeners
 document.getElementById('back-btn')?.addEventListener('click', () => {
   if (confirm('Leave game?')) {
