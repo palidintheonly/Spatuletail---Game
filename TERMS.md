@@ -237,7 +237,7 @@ If any provision of these Terms is held to be unenforceable or invalid, such pro
 
 ## 16. Entire Agreement
 
-These Terms, together with the Privacy Policy, constitute the entire agreement between you and palidintheonly regarding the use of the Game.
+These Terms, together with the Privacy Policy, constitute the entire agreement between you and **palidintheonly** regarding the use of the Game.
 
 ---
 
