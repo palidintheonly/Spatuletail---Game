@@ -5,28 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Spatuletail - Game Mode Selection</title>
+    <title>Spatuletail - Offline AI Battle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-colour: transparent; }
         :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #ff6b6b;
-            --accent-color: #ffd93d;
+            --primary-colour: #00d4ff;
+            --secondary-colour: #ff6b6b;
+            --accent-colour: #ffd93d;
             --dark-bg: #0a0e27;
             --card-bg: rgba(20, 25, 50, 0.95);
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glow-primary: 0 0 30px rgba(0, 212, 255, 0.6);
             --glow-secondary: 0 0 30px rgba(255, 107, 107, 0.6);
-            --glow-accent: 0 0 30px rgba(255, 217, 61, 0.6);
         }
-
         body {
             font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
@@ -35,472 +27,121 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* Animated background particles */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
+        #particles-js { position: fixed; inset: 0; z-index: 0; }
         .container {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 28px;
         }
-
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: slideDown 0.8s ease-out;
-        }
-
+        .header { text-align: center; animation: slideDown 0.8s ease-out; }
         .header h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2rem, 7vw, 3.6rem);
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-colour), var(--accent-colour));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-text-fill-colour: transparent;
             text-shadow: var(--glow-primary);
-            margin-bottom: 15px;
             letter-spacing: 3px;
+            margin-bottom: 12px;
         }
-
-        .header p {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-        }
-
-        .game-modes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
+        .header p { colour: rgba(255, 255, 255, 0.72); font-size: 1.05rem; }
+        .game-modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
         .mode-card {
             background: var(--card-bg);
-            border-radius: 25px;
-            padding: 40px 30px;
-            border: 2px solid transparent;
+            border: 2px solid var(--secondary-colour);
+            border-radius: 22px;
+            padding: 38px 28px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.35s ease;
             backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 14px 40px rgba(0,0,0,0.35);
         }
-
-        .mode-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .mode-card:hover::before {
-            opacity: 1;
-        }
-
-        .mode-card.online {
-            border-color: var(--primary-color);
-        }
-
-        .mode-card.online:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--glow-primary), 0 20px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .mode-card.offline {
-            border-color: var(--secondary-color);
-        }
-
-        .mode-card.offline:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--glow-secondary), 0 20px 40px rgba(255, 107, 107, 0.3);
-        }
-
-        .mode-card.spectate {
-            border-color: var(--accent-color);
-        }
-
-        .mode-card.spectate:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--glow-accent), 0 20px 40px rgba(255, 217, 61, 0.3);
-        }
-
-        .mode-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .mode-card.online .mode-icon {
-            animation-delay: 0s;
-        }
-
-        .mode-card.offline .mode-icon {
-            animation-delay: 0.5s;
-        }
-
-        .mode-card.spectate .mode-icon {
-            animation-delay: 1s;
-        }
-
-        .mode-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .mode-card.online .mode-title {
-            color: var(--primary-color);
-        }
-
-        .mode-card.offline .mode-title {
-            color: var(--secondary-color);
-        }
-
-        .mode-card.spectate .mode-title {
-            color: var(--accent-color);
-        }
-
-        .mode-description {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .mode-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .mode-features li {
-            padding: 8px 0;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .mode-features li::before {
-            content: '✓ ';
-            color: inherit;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .mode-card.online .mode-features li::before {
-            color: var(--primary-color);
-        }
-
-        .mode-card.offline .mode-features li::before {
-            color: var(--secondary-color);
-        }
-
-        .mode-card.spectate .mode-features li::before {
-            color: var(--accent-color);
-        }
-
+        .mode-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--glow-secondary), 0 18px 48px rgba(0,0,0,0.45); }
+        .mode-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
+        .mode-title { font-size: 1.8rem; font-weight: 800; colour: var(--secondary-colour); margin-bottom: 10px; }
+        .mode-description { colour: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 16px; }
+        .mode-features { list-style: none; margin-bottom: 22px; }
+        .mode-features li { padding: 7px 0; colour: rgba(255,255,255,0.7); font-size: 0.95rem; }
+        .mode-features li::before { content: '- '; colour: var(--secondary-colour); font-weight: 700; margin-right: 6px; }
         .play-button {
             width: 100%;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 14px 26px;
+            font-size: 1.1rem;
             font-weight: 700;
             border: none;
-            border-radius: 15px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
+            background: linear-gradient(135deg, var(--secondary-colour), #c0392b);
+            colour: #fff;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 1.6px;
         }
-
-        .play-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .play-button:active::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .mode-card.online .play-button {
-            background: linear-gradient(135deg, var(--primary-color), #00a8cc);
-            color: #0a0e27;
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .mode-card.online .play-button:hover {
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
-            transform: scale(1.05);
-        }
-
-        .mode-card.offline .play-button {
-            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
-            color: #fff;
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        .mode-card.offline .play-button:hover {
-            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
-            transform: scale(1.05);
-        }
-
-        .mode-card.spectate .play-button {
-            background: linear-gradient(135deg, var(--accent-color), #f39c12);
-            color: #0a0e27;
-            box-shadow: 0 5px 20px rgba(255, 217, 61, 0.4);
-        }
-
-        .mode-card.spectate .play-button:hover {
-            box-shadow: 0 8px 30px rgba(255, 217, 61, 0.6);
-            transform: scale(1.05);
-        }
-
+        .play-button:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(255, 107, 107, 0.55); }
         .stats-bar {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
+            border-radius: 18px;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 5px;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .header {
-                margin-bottom: 30px;
-            }
-
-            .game-modes {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .mode-card {
-                padding: 30px 20px;
-            }
-
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .mode-icon {
-                font-size: 3rem;
-            }
-
-            .mode-title {
-                font-size: 1.5rem;
-            }
-
-            .play-button {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Touch feedback */
-        @media (hover: none) {
-            .mode-card:active {
-                transform: scale(0.98);
-            }
-
-            .play-button:active {
-                transform: scale(0.95);
-            }
-        }
-
-        /* Loading animation */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s;
-        }
-
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top-color: var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; colour: var(--primary-colour); display: block; }
+        .stat-label { font-size: 0.95rem; colour: rgba(255,255,255,0.65); margin-top: 5px; }
+        .loading { position: fixed; inset: 0; background: var(--dark-bg); display: flex; justify-content: centre; align-items: centre; z-index: 9999; opacity: 1; transition: opacity 0.5s; }
+        .loading.hidden { opacity: 0; pointer-events: none; }
+        .spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1); border-top-colour: var(--primary-colour); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-40px);} to { opacity: 1; transform: translateY(0);} }
+        @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
+        @keyframes spin { to { transform: rotate(360deg);} }
+        @media (max-width: 768px) { .container { padding: 16px; gap: 18px; } .mode-card { padding: 28px 20px; } }
+        @media (max-width: 480px) { .header h1 { font-size: 2.4rem; } .mode-title { font-size: 1.5rem; } .mode-icon { font-size: 3rem; } }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <div class="loading" id="loading"><div class="spinner"></div></div>
 
     <div class="container">
         <header class="header" data-aos="fade-down">
             <h1>SPATULETAIL - GAME</h1>
-            <p>Choose your battle mode and dominate the seas</p>
+            <p>Offline battles with classic Battleship gameplay.</p>
         </header>
 
         <div class="game-modes">
-            <div class="mode-card online" data-aos="fade-up" data-aos-delay="100" onclick="navigateTo('/online')">
-                <span class="mode-icon">⚔️</span>
-                <h2 class="mode-title">Online Battle</h2>
-                <p class="mode-description">Challenge real players in intense tactical warfare</p>
+            <div class="mode-card" data-aos="fade-up" data-aos-delay="80" onclick="navigateTo('/offline')">
+                <span class="mode-icon">⚓</span>
+                <h2 class="mode-title">OFFLINE</h2>
+                <p class="mode-description">Battle against AI opponents in offline mode. Place your fleet and engage in strategic naval combat.</p>
                 <ul class="mode-features">
-                    <li>Live multiplayer combat</li>
-                    <li>Global leaderboards</li>
-                    <li>Real-time match statistics</li>
-                    <li>Competitive ranking system</li>
+                    <li>AI opponent with adaptive targeting</li>
+                    <li>Turn-based tactical gameplay</li>
+                    <li>Practice your strategies offline</li>
+                    <li>Classic 10x10 Battleship grid</li>
                 </ul>
-                <button class="play-button">Launch Battle</button>
-            </div>
-
-            <div class="mode-card offline" data-aos="fade-up" data-aos-delay="200" onclick="navigateTo('/offline')">
-                <span class="mode-icon">🤖</span>
-                <h2 class="mode-title">AI Training</h2>
-                <p class="mode-description">Test your skills against advanced AI opponents</p>
-                <ul class="mode-features">
-                    <li>4 difficulty levels (Easy → Extreme)</li>
-                    <li>Smart adaptive AI</li>
-                    <li>Practice mode</li>
-                    <li>Skill progression tracking</li>
-                </ul>
-                <button class="play-button">Start Training</button>
-            </div>
-
-            <div class="mode-card spectate" data-aos="fade-up" data-aos-delay="300" onclick="navigateTo('/spectate')">
-                <span class="mode-icon">👁️</span>
-                <h2 class="mode-title">Spectate</h2>
-                <p class="mode-description">Watch live battles and join the queue</p>
-                <ul class="mode-features">
-                    <li>Watch ongoing matches</li>
-                    <li>Join game queue</li>
-                    <li>Learn from top players</li>
-                    <li>Live match commentary</li>
-                </ul>
-                <button class="play-button">Watch Now</button>
+                <button class="play-button">Start Battle</button>
             </div>
         </div>
 
-        <div class="stats-bar" data-aos="fade-up" data-aos-delay="400">
+        <div class="stats-bar" data-aos="fade-up" data-aos-delay="160">
             <div class="stat-item">
                 <span class="stat-value" id="activePlayers">-</span>
-                <span class="stat-label">Active Players Online</span>
+                <span class="stat-label">Active Players</span>
             </div>
             <div class="stat-item">
                 <span class="stat-value" id="gamesPlayed">-</span>
-                <span class="stat-label">Games Today</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="onlineGames">-</span>
-                <span class="stat-label">Live Matches</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="spectators">-</span>
-                <span class="stat-label">Spectators</span>
+                <span class="stat-label">Offline Games Today</span>
             </div>
         </div>
     </div>
@@ -509,118 +150,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script>
-        // Initialize AOS animations
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true
-        });
-
-        // Initialize particles.js background
+        AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
         particlesJS('particles-js', {
             particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#00d4ff' },
+                number: { value: 70, density: { enable: true, value_area: 800 } },
+                colour: { value: '#00d4ff' },
                 shape: { type: 'circle' },
-                opacity: { value: 0.3, random: true },
+                opacity: { value: 0.25, random: true },
                 size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#00d4ff',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: true,
-                    out_mode: 'out'
-                }
+                line_linked: { enable: true, distance: 150, colour: '#00d4ff', opacity: 0.18, width: 1 },
+                move: { enable: true, speed: 2, random: true, out_mode: 'out' }
             },
             interactivity: {
                 detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'grab' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
-                    push: { particles_nb: 4 }
-                }
+                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { grab: { distance: 140, line_linked: { opacity: 0.45 } }, push: { particles_nb: 4 } }
             },
             retina_detect: true
         });
-
-        // Hide loading screen - with fallback timeout
         function hideLoading() {
             const loadingEl = document.getElementById('loading');
-            if (loadingEl) {
-                loadingEl.classList.add('hidden');
-            }
+            if (loadingEl) loadingEl.classList.add('hidden');
         }
-
-        // Hide on load event
-        window.addEventListener('load', () => {
-            setTimeout(hideLoading, 500);
-        });
-
-        // Fallback: Force hide after 3 seconds even if load event doesn't fire
+        window.addEventListener('load', () => setTimeout(hideLoading, 500));
         setTimeout(hideLoading, 3000);
-
-        // Navigation function
         function navigateTo(path) {
-            anime({
-                targets: '.mode-card',
-                scale: [1, 0.8],
-                opacity: [1, 0],
-                duration: 300,
-                easing: 'easeInQuad',
-                complete: () => {
-                    window.location.href = path;
-                }
-            });
+            anime({ targets: '.mode-card', scale: [1, 0.95], opacity: [1, 0.2], duration: 260, easing: 'easeInQuad', complete: () => { window.location.href = path; } });
         }
-
-        // Fetch and display live stats
         async function updateStats() {
             try {
                 const response = await fetch('/api/v1/stats/live');
                 const result = await response.json();
-                const stats = result.data || result; // Handle both wrapped and unwrapped responses
-
-                document.getElementById('activePlayers').textContent = stats.activePlayers || 0;
-                document.getElementById('gamesPlayed').textContent = stats.gamesPlayed || 0;
-                document.getElementById('onlineGames').textContent = stats.activeGames?.online || 0;
-                document.getElementById('spectators').textContent = stats.spectators || 0;
-
-                // Animate stat values
-                anime({
-                    targets: '.stat-value',
-                    scale: [0.8, 1],
-                    duration: 600,
-                    easing: 'easeOutElastic(1, .6)'
-                });
+                const stats = result.data || result;
+                const activePlayersEl = document.getElementById('activePlayers');
+                const gamesPlayedEl = document.getElementById('gamesPlayed');
+                if (activePlayersEl) activePlayersEl.textContent = stats.activePlayers || 0;
+                if (gamesPlayedEl) gamesPlayedEl.textContent = stats.gamesPlayed || 0;
+                anime({ targets: '.stat-value', scale: [0.85, 1], duration: 520, easing: 'easeOutElastic(1, .6)' });
             } catch (error) {
                 console.error('Failed to fetch stats:', error);
             }
         }
-
-        // Update stats on load and every 5 seconds
         updateStats();
         setInterval(updateStats, 5000);
-
-        // Add touch feedback for mobile
         if ('ontouchstart' in window) {
             document.querySelectorAll('.mode-card').forEach(card => {
-                card.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.98)';
-                });
-                card.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
+                card.addEventListener('touchstart', function() { this.style.transform = 'scale(0.98)'; });
+                card.addEventListener('touchend', function() { this.style.transform = ''; });
             });
         }
     </script>

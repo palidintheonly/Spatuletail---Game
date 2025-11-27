@@ -86,8 +86,8 @@ const INACTIVITY_THRESHOLD = (parseInt(process.env.INACTIVITY_THRESHOLD_SECONDS)
 const WARNING_THRESHOLD = (parseInt(process.env.WARNING_THRESHOLD_SECONDS) || 30) * 1000;
 
 // Matchmaking
-const ENABLE_SPECTATOR_MODE = process.env.ENABLE_SPECTATOR_MODE !== 'false';
-const MAX_SPECTATORS = parseInt(process.env.MAX_SPECTATORS) || 50;
+const ENABLE_SPECTATOR_MODE = false; // Spectate removed
+const MAX_SPECTATORS = 0;
 const MATCHMAKING_TIMEOUT = (parseInt(process.env.MATCHMAKING_TIMEOUT_SECONDS) || 60) * 1000;
 
 // AI/Bot Configuration
@@ -100,6 +100,7 @@ const BOT_MAX_DELAY = (parseFloat(process.env.BOT_MAX_DELAY_SECONDS) || 2.5) * 1
 const MAX_GAME_LOGS = parseInt(process.env.MAX_GAME_LOGS) || 2000;
 const MAX_EVENT_LOGS = parseInt(process.env.MAX_EVENT_LOGS) || 2000;
 const MAX_LEADERBOARD_ENTRIES = parseInt(process.env.MAX_LEADERBOARD_ENTRIES) || 100;
+const MAX_TURN_LOGS = parseInt(process.env.MAX_TURN_LOGS) || 5000;
 const ENABLE_CONSOLE_LOGGING = process.env.ENABLE_CONSOLE_LOGGING !== 'false';
 const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
 
@@ -110,15 +111,16 @@ const ACTIVITY_CHECK_INTERVAL = (parseInt(process.env.ACTIVITY_CHECK_INTERVAL_SE
 
 // Features
 const ENABLE_OFFLINE_MODE = process.env.ENABLE_OFFLINE_MODE !== 'false';
-const ENABLE_ONLINE_MODE = process.env.ENABLE_ONLINE_MODE !== 'false';
+const ENABLE_ONLINE_MODE = false; // Online removed
 const ENABLE_LEADERBOARDS = process.env.ENABLE_LEADERBOARDS !== 'false';
 const ENABLE_GAME_STATS = process.env.ENABLE_GAME_STATS !== 'false';
+const ONLINE_PLAY_DISABLED = true; // Temporary maintenance flag for online mode
 
 // API Configuration
 const API_VERSION = process.env.API_VERSION || 'v1';
 const API_FOOTER_ENABLED = process.env.API_FOOTER_ENABLED !== 'false';
 const API_FOOTER_NAME = process.env.API_FOOTER_NAME || 'Spatuletail Game API';
-const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '2.3.5';
+const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '3.0.0';
 const API_FOOTER_AUTHOR = process.env.API_FOOTER_AUTHOR || 'Spatuletail Development Team';
 const API_FOOTER_DOCS_URL = process.env.API_FOOTER_DOCS_URL || 'https://github.com/spatuletail/game';
 const API_FOOTER_TIMESTAMP = process.env.API_FOOTER_TIMESTAMP !== 'false';
@@ -138,6 +140,7 @@ const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
 const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.json');
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
+const TURN_LOG_PATH = path.join(WATERBIRD_DIR, 'turns-db.json');
 
 // Server Logger with ANSI colors (Google style)
 const Logger = {
@@ -252,19 +255,9 @@ app.get('/', (req, res) => {
   Logger.info('route', 'Root route accessed', { path: '/' });
 });
 
-app.get('/online', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'online.html'));
-  Logger.info('route', 'Online game route accessed', { path: '/online' });
-});
-
 app.get('/offline', (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'offline.html'));
   Logger.info('route', 'Offline game route accessed', { path: '/offline' });
-});
-
-app.get('/spectate', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'spectate.html'));
-  Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
 
 app.get('/admin', (req, res) => {
@@ -285,7 +278,7 @@ app.get('/privacy-policy', (req, res) => {
   Logger.info('route', 'Privacy Policy accessed', { path: '/privacy-policy' });
 });
 
-Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/admin', '/terms', '/privacy-policy'] });
+Logger.success('server', 'All routes configured', { routes: ['/', '/offline', '/admin', '/terms', '/privacy-policy'] });
 
 // File system utilities - check before creating
 function ensureDirectoryExists(dirPath) {
@@ -340,21 +333,17 @@ ensureDirectoryExists(WATERBIRD_DIR);
 ensureFileExists(ONLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
+ensureFileExists(TURN_LOG_PATH, '[]');
 Logger.success('init', 'Waterbird directory initialized');
 
 // Game state - separate tracking for online and offline games
-let waitingPlayer = null;
-let activeOnlineGame = null; // Only one online game at a time
 let activeOfflineGames = []; // Track all offline games
-let spectators = []; // Players waiting and spectating
-let queue = [];
 
 // Live game stats
 let liveStats = {
   totalConnections: 0,
   currentPlayers: 0,
   gamesPlayed: 0,
-  onlineGamesPlayed: 0,
   offlineGamesPlayed: 0,
   totalHits: 0,
   totalMisses: 0,
@@ -394,11 +383,7 @@ function toggleRandomSimulatedPlayer() {
 toggleRandomSimulatedPlayer();
 
 Logger.info('server', 'Game state initialized', {
-  waitingPlayer: null,
-  activeOnlineGame: null,
-  activeOfflineGames: 0,
-  spectators: 0,
-  queue: 0
+  activeOfflineGames: 0
 });
 
 // Bot names pool (realistic usernames)
@@ -767,11 +752,10 @@ class AIBot {
 
 function createBot() {
   // Use configured difficulty range from .env
-  const difficulty = Math.floor(Math.random() * (BOT_MAX_DIFFICULTY - BOT_MIN_DIFFICULTY + 1)) + BOT_MIN_DIFFICULTY;
+  const difficulty = Math.max(BOT_MIN_DIFFICULTY, Math.min(BOT_MAX_DIFFICULTY, 2));
   const name = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
 
-  const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
-  const difficultyName = difficultyNames[difficulty - 1];
+  const difficultyName = 'Testing Level';
 
   const bot = new AIBot(difficulty, name);
   Logger.ai('bot', 'Bot created', { name, difficulty, difficultyName, id: bot.id });
@@ -787,6 +771,7 @@ class BattleshipGame {
     this.maxRounds = 3;
     this.scores = { [player1.id]: 0, [player2.id]: 0 };
     this.currentTurn = player1.id;
+    this.turnNumber = 1;
     this.boards = {
       [player1.id]: this.createBoard(),
       [player2.id]: this.createBoard()
@@ -1012,6 +997,7 @@ class BattleshipGame {
 
   nextRound() {
     this.currentRound++;
+    this.turnNumber = 1;
     Logger.game('round', `Starting round ${this.currentRound}`, {
       player1: this.player1.name,
       player2: this.player2.name,
@@ -1033,6 +1019,7 @@ class BattleshipGame {
       [this.player1.id]: 0,
       [this.player2.id]: 0
     };
+    this.turnNumber = 1;
   }
 
   getWinner() {
@@ -1044,91 +1031,8 @@ class BattleshipGame {
   }
 }
 
-// Helper functions for spectator mode
-function broadcastToSpectators(data) {
-  Logger.info('spectate', 'Broadcasting to spectators', { spectatorCount: spectators.length, dataType: data.type });
-  spectators.forEach(spectator => {
-    if (spectator.socket) {
-      spectator.socket.emit('spectatorUpdate', data);
-    }
-  });
-}
-
-function sendSpectatorGameState(socket, game) {
-  if (!game) {
-    Logger.warn('spectate', 'Cannot send game state - no active game');
-    return;
-  }
-
-  Logger.info('spectate', 'Sending game state to spectator', { gameId: game.id });
-  socket.emit('spectatorGameState', {
-    player1: game.player1.name,
-    player2: game.player2.name,
-    currentRound: game.currentRound,
-    maxRounds: game.maxRounds,
-    scores: game.scores,
-    currentTurn: game.currentTurn === game.player1.id ? game.player1.name : game.player2.name
-  });
-}
-
-function startNextOnlineGame() {
-  if (spectators.length >= 2 && !activeOnlineGame) {
-    Logger.info('matchmaking', 'Starting next online game from spectator queue', { spectatorCount: spectators.length });
-
-    const player1 = spectators.shift();
-    const player2 = spectators.shift();
-
-    const game = new BattleshipGame(player1, player2);
-    game.mode = 'online';
-    activeOnlineGame = game;
-
-    Logger.success('matchmaking', `Match found from queue! ${game.player1.name} vs ${game.player2.name}`, {
-      gameId: game.id,
-      remainingSpectators: spectators.length
-    });
-
-    game.player1.socket.emit('gameStart', {
-      opponent: game.player2.name,
-      round: 1,
-      maxRounds: 3
-    });
-
-    game.player2.socket.emit('gameStart', {
-      opponent: game.player1.name,
-      round: 1,
-      maxRounds: 3
-    });
-
-    // Notify remaining spectators
-    broadcastToSpectators({
-      type: 'gameStarted',
-      player1: game.player1.name,
-      player2: game.player2.name
-    });
-
-    // Update queue positions for remaining spectators
-    spectators.forEach((spectator, index) => {
-      spectator.socket.emit('queueUpdate', {
-        position: index + 1,
-        totalInQueue: spectators.length
-      });
-    });
-  } else if (spectators.length === 1 && !activeOnlineGame) {
-    Logger.info('matchmaking', 'Only one spectator - setting as waiting player');
-    waitingPlayer = spectators.shift();
-    waitingPlayer.socket.emit('waiting');
-  }
-}
-
 // Helper function to find game for a socket
 function findGameForSocket(socketId) {
-  // Check online game
-  if (activeOnlineGame) {
-    if (activeOnlineGame.player1.id === socketId || activeOnlineGame.player2.id === socketId) {
-      return activeOnlineGame;
-    }
-  }
-
   // Check offline games
   for (let game of activeOfflineGames) {
     if (game.player1.id === socketId || game.player2.id === socketId) {
@@ -1213,6 +1117,48 @@ function logGameEvent(eventType, data) {
   Logger.info('auto-log', `Event logged: ${eventType}`, data);
 }
 
+function formatScoresFor(game, viewerId) {
+  const opponentId = viewerId === game.player1.id ? game.player2.id : game.player1.id;
+  return {
+    you: game.scores[viewerId] || 0,
+    opponent: game.scores[opponentId] || 0
+  };
+}
+
+// Local turn database (persistent JSON)
+function logTurnRecord(game, attackerId, row, col, result, nextTurnId) {
+  const attacker = attackerId === game.player1.id ? game.player1 : game.player2;
+  const defender = result.defenderId === game.player1.id ? game.player1 : game.player2;
+
+  const turnEntry = {
+    id: `${game.id}-${game.turnNumber}-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    gameId: game.id,
+    mode: game.mode,
+    round: game.currentRound,
+    turn: game.turnNumber,
+    attacker: { id: attacker.id, name: attacker.name, isBot: !!attacker.isBot },
+    defender: { id: defender.id, name: defender.name, isBot: !!defender.isBot },
+    position: { row, col },
+    hit: result.hit,
+    sunk: result.sunk,
+    ship: result.ship ? result.ship.type : null,
+    allSunk: result.allSunk,
+    nextTurn: nextTurnId
+  };
+
+  const turnLogsRaw = readJSONFile(TURN_LOG_PATH, []);
+  const turnLogs = Array.isArray(turnLogsRaw) ? turnLogsRaw : [];
+  turnLogs.push(turnEntry);
+
+  if (turnLogs.length > MAX_TURN_LOGS) {
+    turnLogs.splice(0, turnLogs.length - MAX_TURN_LOGS);
+  }
+
+  writeJSONFile(TURN_LOG_PATH, turnLogs);
+  Logger.info('turn-db', 'Turn recorded to local DB', { gameId: game.id, turn: game.turnNumber, attacker: attacker.name, hit: result.hit });
+}
+
 // Live stats update
 function updateLiveStats(updateType, data = {}) {
   switch (updateType) {
@@ -1225,8 +1171,7 @@ function updateLiveStats(updateType, data = {}) {
       break;
     case 'gameStart':
       liveStats.gamesPlayed++;
-      if (data.mode === 'online') liveStats.onlineGamesPlayed++;
-      if (data.mode === 'offline') liveStats.offlineGamesPlayed++;
+      liveStats.offlineGamesPlayed++;
       break;
     case 'hit':
       liveStats.totalHits++;
@@ -1252,168 +1197,52 @@ io.on('connection', (socket) => {
   socket.on('join', (data) => {
     // Handle both old format (string) and new format (object)
     const playerName = typeof data === 'string' ? data : (data.name || `Guest${socket.id.substring(0, 4)}`);
-    const mode = typeof data === 'object' ? data.mode : 'online';
+    const requestedMode = typeof data === 'object' ? data.mode : 'offline';
 
     socket.playerName = playerName;
-    socket.playerMode = mode;
+    socket.playerMode = 'offline';
     updatePlayerActivity(socket.id);
-    logGameEvent('playerJoin', { socketId: socket.id, playerName, mode });
-    Logger.info('player', `Player joined: ${socket.playerName}`, { socketId: socket.id, mode });
+    logGameEvent('playerJoin', { socketId: socket.id, playerName, mode: 'offline', requestedMode });
+    Logger.info('player', `Player joined (offline only): ${socket.playerName}`, { socketId: socket.id });
 
-    // Spectate mode: watch active game or wait in queue
-    if (mode === 'spectate') {
-      if (activeOnlineGame) {
-        spectators.push({ id: socket.id, socket, name: socket.playerName });
-        socket.emit('spectating', {
-          message: 'Watching live match',
-          queuePosition: spectators.length
-        });
-        Logger.info('spectate', `${socket.playerName} is spectating`, {
-          queuePosition: spectators.length,
-          totalSpectators: spectators.length
-        });
-        sendSpectatorGameState(socket, activeOnlineGame);
-      } else {
-        socket.emit('noActiveGames');
-        Logger.info('spectate', `${socket.playerName} found no active games`);
-      }
-      return;
+    // Always start an offline game with a bot
+    const existingIdx = activeOfflineGames.findIndex(g =>
+      g.player1.id === socket.id || g.player2.id === socket.id
+    );
+    if (existingIdx !== -1) {
+      const oldGame = activeOfflineGames[existingIdx];
+      Logger.warn('offline', 'Replacing existing offline game for socket', {
+        socketId: socket.id,
+        oldGameId: oldGame.id
+      });
+      clearTimeout(oldGame.timer);
+      activeOfflineGames.splice(existingIdx, 1);
     }
 
-    // Offline mode: create game with bot (one at a time per player)
-    if (mode === 'offline') {
-      // If this socket already had an offline game, clean it up first
-      const existingIdx = activeOfflineGames.findIndex(g =>
-        g.player1.id === socket.id || g.player2.id === socket.id
-      );
-      if (existingIdx !== -1) {
-        const oldGame = activeOfflineGames[existingIdx];
-        Logger.warn('offline', 'Replacing existing offline game for socket', {
-          socketId: socket.id,
-          oldGameId: oldGame.id
-        });
-        clearTimeout(oldGame.timer);
-        activeOfflineGames.splice(existingIdx, 1);
-      }
-
-      Logger.info('offline', `Starting offline game for ${socket.playerName}`);
-      const bot = createBot();
-      const game = new BattleshipGame(
-        { id: socket.id, socket, name: socket.playerName, isBot: false },
-        bot
-      );
-      game.mode = 'offline';
-      activeOfflineGames.push(game);
-
-      // Bot places ships automatically
-      game.ships[bot.id] = bot.placeShips();
-      game.ready[bot.id] = true;
-
-      Logger.success('offline', `Offline game created: ${socket.playerName} vs ${bot.name}`, {
-        gameId: game.id,
-        botDifficulty: bot.difficulty,
-        totalOfflineGames: activeOfflineGames.length
-      });
-
-      socket.emit('gameStart', {
-        opponent: bot.name,
-        round: 1,
-        maxRounds: 3
-      });
-
-      const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
-      socket.emit('botJoined', {
-        botName: bot.name,
-        difficulty: bot.difficulty,
-        difficultyName: difficultyNames[bot.difficulty - 1],
-        shipTypes: SHIP_TYPES
-      });
-      return;
-    }
-
-    // Online mode: matchmaking
-    if (mode === 'online' && !activeOnlineGame && !waitingPlayer) {
-      // No active game, no waiting player - become waiting player
-      waitingPlayer = { id: socket.id, socket, name: socket.playerName, isBot: false };
-      socket.emit('waiting');
-      Logger.info('matchmaking', `${socket.playerName} is waiting for opponent`, { socketId: socket.id });
-    } else if (mode === 'online' && !activeOnlineGame && waitingPlayer) {
-      // No active game, but there's a waiting player - start game
-      const game = new BattleshipGame(waitingPlayer, { id: socket.id, socket, name: socket.playerName, isBot: false });
-      game.mode = 'online';
-      activeOnlineGame = game;
-
-      Logger.success('matchmaking', `Match found! ${game.player1.name} vs ${game.player2.name}`, {
-        gameId: game.id
-      });
-
-      game.player1.socket.emit('gameStart', {
-        opponent: game.player2.name,
-        round: 1,
-        maxRounds: 3
-      });
-
-      game.player2.socket.emit('gameStart', {
-        opponent: game.player1.name,
-        round: 1,
-        maxRounds: 3
-      });
-
-      waitingPlayer = null;
-
-      // Notify spectators
-      broadcastToSpectators({
-        type: 'gameStarted',
-        player1: game.player1.name,
-        player2: game.player2.name
-      });
-    } else if (mode === 'online') {
-      // Game in progress - add to spectators (online mode auto-spectate)
-      spectators.push({ id: socket.id, socket, name: socket.playerName });
-      socket.emit('spectating', {
-        message: 'Game in progress. You are now spectating.',
-        queuePosition: spectators.length
-      });
-      Logger.info('spectate', `${socket.playerName} auto-spectating online game`, {
-        queuePosition: spectators.length,
-        totalSpectators: spectators.length
-      });
-
-      // Send current game state to spectator
-      if (activeOnlineGame) {
-        sendSpectatorGameState(socket, activeOnlineGame);
-      }
-    }
-  });
-
-  socket.on('continueWithBot', () => {
-    Logger.info('bot', 'Player requested to continue with bot', { socketId: socket.id });
-    const game = activeOnlineGame;
-
-    if (!game || (game.player1.id !== socket.id && game.player2.id !== socket.id)) {
-      Logger.warn('bot', 'No active game found for bot request', { socketId: socket.id });
-      return;
-    }
-
+    Logger.info('offline', `Starting offline game for ${socket.playerName}`);
     const bot = createBot();
-
-    if (game.player1.id === socket.id) {
-      Logger.info('bot', `Replacing player2 with bot ${bot.name}`, { difficulty: bot.difficulty });
-      game.player2 = bot;
-    } else {
-      Logger.info('bot', `Replacing player1 with bot ${bot.name}`, { difficulty: bot.difficulty });
-      game.player1 = bot;
-    }
-
-    // Convert to offline game
+    const game = new BattleshipGame(
+      { id: socket.id, socket, name: socket.playerName, isBot: false },
+      bot
+    );
     game.mode = 'offline';
     activeOfflineGames.push(game);
-    activeOnlineGame = null;
 
     // Bot places ships automatically
-    const botId = bot.id;
-    game.ships[botId] = bot.placeShips();
-    game.ready[botId] = true;
+    game.ships[bot.id] = bot.placeShips();
+    game.ready[bot.id] = true;
+
+    Logger.success('offline', `Offline game created: ${socket.playerName} vs ${bot.name}`, {
+      gameId: game.id,
+      botDifficulty: bot.difficulty,
+      totalOfflineGames: activeOfflineGames.length
+    });
+
+    socket.emit('gameStart', {
+      opponent: bot.name,
+      round: 1,
+      maxRounds: 3
+    });
 
     const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
     socket.emit('botJoined', {
@@ -1422,14 +1251,6 @@ io.on('connection', (socket) => {
       difficultyName: difficultyNames[bot.difficulty - 1],
       shipTypes: SHIP_TYPES
     });
-    Logger.success('bot', `Bot ${bot.name} joined the game - converted to offline`, { gameId: game.id });
-
-    if (game.ready[game.player1.id] && game.ready[game.player2.id]) {
-      startBattle(game);
-    }
-
-    // Start next online game with spectators if any
-    startNextOnlineGame();
   });
 
   socket.on('placeShips', (ships) => {
@@ -1509,55 +1330,6 @@ io.on('connection', (socket) => {
     updateLiveStats('disconnect', { socketId: socket.id, playerName: socket.playerName });
     playerActivity.delete(socket.id);
     logGameEvent('playerDisconnect', { socketId: socket.id, playerName: socket.playerName });
-
-    // Check if waiting player
-    if (waitingPlayer && waitingPlayer.id === socket.id) {
-      Logger.info('matchmaking', `Waiting player ${socket.playerName} disconnected`);
-      waitingPlayer = null;
-      return;
-    }
-
-    // Check if spectator
-    const spectatorIndex = spectators.findIndex(s => s.id === socket.id);
-    if (spectatorIndex !== -1) {
-      spectators.splice(spectatorIndex, 1);
-      Logger.info('spectate', `Spectator ${socket.playerName} disconnected`, { remainingSpectators: spectators.length });
-
-      // Update queue positions for remaining spectators
-      spectators.forEach((spectator, index) => {
-        spectator.socket.emit('queueUpdate', {
-          position: index + 1,
-          totalInQueue: spectators.length
-        });
-      });
-      return;
-    }
-
-    // Check if in online game
-    if (activeOnlineGame) {
-      if (activeOnlineGame.player1.id === socket.id || activeOnlineGame.player2.id === socket.id) {
-        const disconnectedPlayer = activeOnlineGame.player1.id === socket.id ? activeOnlineGame.player1 : activeOnlineGame.player2;
-        const winner = activeOnlineGame.player1.id === socket.id ? activeOnlineGame.player2 : activeOnlineGame.player1;
-
-        Logger.warn('game', `${disconnectedPlayer.name} disconnected from online game`, {
-          gameId: activeOnlineGame.id,
-          winner: winner.name
-        });
-
-        if (!winner.isBot && winner.socket) {
-          winner.socket.emit('opponentDisconnected', {
-            message: 'Opponent disconnected. Continue with bot?'
-          });
-          Logger.info('game', `Offering bot replacement to ${winner.name}`);
-        } else {
-          activeOnlineGame = null;
-          Logger.info('game', `Online game removed - no human players remaining`);
-          startNextOnlineGame();
-        }
-        return;
-      }
-    }
-
     // Check if in offline game
     const offlineGameIndex = activeOfflineGames.findIndex(g =>
       g.player1.id === socket.id || g.player2.id === socket.id
@@ -1691,11 +1463,19 @@ function processAttack(game, attackerId, row, col) {
     mode: game.mode
   });
 
+  const nextTurnId = result.allSunk ? null : (attackerId === game.player1.id ? game.player2.id : game.player1.id);
+  logTurnRecord(game, attackerId, row, col, result, nextTurnId);
+  game.turnNumber++;
+
   if (!attacker.isBot && attacker.socket) {
     attacker.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: true
+      sunk: result.sunk,
+      ship: result.ship?.type || null,
+      allSunk: result.allSunk,
+      enemy: true,
+      isAttacker: true
     });
   }
 
@@ -1703,7 +1483,11 @@ function processAttack(game, attackerId, row, col) {
     defender.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: false
+      sunk: result.sunk,
+      ship: result.ship?.type || null,
+      allSunk: result.allSunk,
+      enemy: false,
+      isAttacker: false
     });
   }
 
@@ -1716,7 +1500,7 @@ function processAttack(game, attackerId, row, col) {
       if (!game.player1.isBot && game.player1.socket) {
         game.player1.socket.emit('roundEnd', {
           winner: attackerId,
-          scores: game.scores,
+          scores: formatScoresFor(game, game.player1.id),
           nextRound: game.currentRound + 1
         });
       }
@@ -1724,7 +1508,7 @@ function processAttack(game, attackerId, row, col) {
       if (!game.player2.isBot && game.player2.socket) {
         game.player2.socket.emit('roundEnd', {
           winner: attackerId,
-          scores: game.scores,
+          scores: formatScoresFor(game, game.player2.id),
           nextRound: game.currentRound + 1
         });
       }
@@ -1799,7 +1583,7 @@ function handleForfeit(game, playerId) {
       winner.socket.emit('gameOver', {
         winner: winnerId,
         reason: `${loser.name} forfeited twice in a row`,
-        scores: game.scores
+        scores: formatScoresFor(game, winner.id)
       });
     }
 
@@ -1807,28 +1591,17 @@ function handleForfeit(game, playerId) {
       loser.socket.emit('gameOver', {
         winner: winnerId,
         reason: 'You forfeited twice in a row',
-        scores: game.scores
+        scores: formatScoresFor(game, loser.id)
       });
     }
 
     // Remove from appropriate game list
-    if (game.mode === 'online' && activeOnlineGame === game) {
-      activeOnlineGame = null;
-      Logger.info('game', 'Online game removed due to forfeit');
-
-      // Start next online game with spectators
-      startNextOnlineGame();
-    } else if (game.mode === 'offline') {
+    if (game.mode === 'offline') {
       const gameIndex = activeOfflineGames.indexOf(game);
       if (gameIndex !== -1) {
         activeOfflineGames.splice(gameIndex, 1);
         Logger.info('game', `Offline game ${game.id} removed due to forfeit`, { remainingOfflineGames: activeOfflineGames.length });
       }
-    }
-
-    if (!winner.isBot && game.mode === 'online') {
-      waitingPlayer = winner;
-      winner.socket.emit('waiting');
     }
   } else {
     const forfeiter = playerId === game.player1.id ? game.player1 : game.player2;
@@ -1894,32 +1667,21 @@ function endGame(game) {
   if (!game.player1.isBot && game.player1.socket) {
     game.player1.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: formatScoresFor(game, game.player1.id),
+      reason: winner ? `${winner.name} wins!` : 'Game tied'
     });
   }
 
   if (!game.player2.isBot && game.player2.socket) {
     game.player2.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: formatScoresFor(game, game.player2.id),
+      reason: winner ? `${winner.name} wins!` : 'Game tied'
     });
   }
 
   // Remove from appropriate game list
-  if (game.mode === 'online' && activeOnlineGame === game) {
-    activeOnlineGame = null;
-    Logger.info('game', 'Online game removed');
-
-    // Notify spectators that game ended
-    broadcastToSpectators({
-      type: 'gameEnded',
-      winner: winner ? winner.name : 'tie',
-      scores: game.scores
-    });
-
-    // Start next online game with spectators
-    startNextOnlineGame();
-  } else if (game.mode === 'offline') {
+  if (game.mode === 'offline') {
     const gameIndex = activeOfflineGames.indexOf(game);
     if (gameIndex !== -1) {
       activeOfflineGames.splice(gameIndex, 1);
@@ -1927,14 +1689,8 @@ function endGame(game) {
     }
   }
 
-  if (winnerId && winner && !winner.isBot && game.mode === 'online') {
-    waitingPlayer = winner;
-    winner.socket.emit('waiting');
-    Logger.info('matchmaking', `Winner ${winner.name} waiting for next opponent`);
-  }
-
   // Update leaderboard and log game
-  const mode = game.mode || ((game.player1.isBot || game.player2.isBot) ? 'offline' : 'online');
+  const mode = 'offline';
 
   if (winnerId && winner) {
     updateLeaderboard(winner.name, winner.isBot, true, mode);
@@ -1987,14 +1743,10 @@ app.get(`/api/${API_VERSION}/stats/live`, (req, res) => {
   const stats = {
     ...liveStats,
     activeGames: {
-      online: activeOnlineGame ? 1 : 0,
       offline: activeOfflineGames.length,
-      total: (activeOnlineGame ? 1 : 0) + activeOfflineGames.length
+      total: activeOfflineGames.length
     },
-    queue: {
-      waiting: waitingPlayer ? 1 : 0,
-      spectators: spectators.length
-    },
+    queue: { waiting: 0, spectators: 0 },
     accuracy: liveStats.totalHits + liveStats.totalMisses > 0
       ? ((liveStats.totalHits / (liveStats.totalHits + liveStats.totalMisses)) * 100).toFixed(2) + '%'
       : '0%',
