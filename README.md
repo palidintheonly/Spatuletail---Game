@@ -20,9 +20,7 @@
 
 ## 🎮 Features
 
-- **🌐 Real-time Multiplayer** - Battle against real players worldwide with Socket.IO
-- **🤖 AI Training Mode** - Practice against 4 difficulty levels (Easy → Extreme)
-- **👁️ Spectator Mode** - Watch live matches and learn from top players
+- **🤖 AI Training Mode** - Practise against AI opponents with adaptive targeting
 - **📊 Live Statistics** - Real-time game analytics and leaderboards
 - **🎨 Modern UI** - Sleek design with particle effects and animations
 - **🔒 Security** - Rate limiting, admin protection, and input validation
@@ -127,9 +125,7 @@ Before running the server, configure your environment variables:
 
 2. **Access the game:**
    - Main Menu: `http://localhost:3010`
-   - Online Battle: `http://localhost:3010/online`
-   - AI Training: `http://localhost:3010/offline`
-   - Spectate: `http://localhost:3010/spectate`
+   - Offline Mode: `http://localhost:3010/offline`
    - Admin Panel: `http://localhost:3010/admin`
 
 3. **Legal Pages:**
@@ -166,9 +162,9 @@ Spatuletail-Game/
 
 | Mode | Description | Players |
 |------|-------------|---------|
-| **Online Battle** | Real-time multiplayer against other players | 2 Players |
-| **AI Training** | Practice against AI (4 difficulty levels) | 1 Player + AI |
-| **Spectate** | Watch live matches and join the queue | Observer |
+| **Offline Mode** | Practise against AI opponents with adaptive targeting | 1 Player + AI |
+
+**Note:** Online multiplayer and spectator modes are temporarily disabled and not currently available.
 
 ### 🚢 Ship Types
 
@@ -210,7 +206,7 @@ Access the admin dashboard at `/admin` with your configured password:
 This game includes built-in legal documentation:
 
 - **[Terms of Service](./TERMS.md)** - Usage terms and conditions
-- **[Privacy Policy](./PRIVACY.md)** - Data collection and privacy practices
+- **[Privacy Policy](./PRIVACY.md)** - Data collection and privacy practises
 - **Web Pages:** Available at `/terms` and `/privacy-policy` when server is running
 
 > ℹ️ **Data Collection:** We only collect player names, game statistics, leaderboards, and temporary session data. See [PRIVACY.md](./PRIVACY.md) for full details.
@@ -339,6 +335,7 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 ### v3.0.0 (Latest)
 =======
@@ -356,6 +353,16 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ### v3.0.0
 >>>>>>> Stashed changes
+=======
+### v4.0.0 (Latest)
+- 🌍 Converted all user-facing text to British English spelling
+- 🎮 Focussed game on offline AI mode
+- 🛡️ Updated legal pages with current game features
+- 📦 Removed outdated multiplayer and spectator mode references
+- 🎨 UI improvements and bug fixes
+
+### v3.0.0
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 - 🚀 Major version release with loading screen improvements
 - 🛡️ Added multiple failsafe timeouts to prevent infinite loading screens
 - 📦 Aligned npm and GitHub package descriptions to "2D grid system"

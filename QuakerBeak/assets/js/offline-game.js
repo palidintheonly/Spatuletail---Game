@@ -59,7 +59,12 @@ let enemyBoardCells = [];
 let isMyTurn = false;
 let timeLeft = 30;
 let timerInterval = null;
+<<<<<<< HEAD
 let aiDifficulty = 2; // Default: Medium
+=======
+let aiDifficulty = 2; // Fixed single level
+let enemyFleetStatus = [];
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 
 const SHIP_TYPES = [
   { name: 'Carrier', length: 5, icon: 'C' },
@@ -69,7 +74,54 @@ const SHIP_TYPES = [
   { name: 'Destroyer', length: 2, icon: 'D' }
 ];
 
+<<<<<<< HEAD
 const DIFFICULTY_NAMES = ['', 'Easy', 'Medium', 'Hard', 'Extreme'];
+=======
+const TESTING_LEVEL_LABEL = 'Testing Level';
+const DIFFICULTY_NAMES = ['', TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL];
+
+function resetEnemyLegend() {
+  enemyFleetStatus = SHIP_TYPES.map(ship => ({
+    name: ship.name,
+    icon: ship.icon,
+    length: ship.length,
+    hits: 0
+  }));
+  renderEnemyLegend();
+}
+
+function renderEnemyLegend() {
+  const list = document.getElementById('enemy-legend-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  enemyFleetStatus.forEach(ship => {
+    const chip = document.createElement('div');
+    chip.className = 'legend-chip';
+
+    const icon = document.createElement('span');
+    icon.className = 'ship-icon';
+    icon.textContent = ship.icon;
+
+    const name = document.createElement('span');
+    name.className = 'ship-name';
+    name.textContent = ship.name;
+
+    const hits = document.createElement('div');
+    hits.className = 'ship-hits';
+    for (let i = 0; i < ship.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'hit-dot' + (i < ship.hits ? ' destroyed' : '');
+      hits.appendChild(dot);
+    }
+
+    chip.appendChild(icon);
+    chip.appendChild(name);
+    chip.appendChild(hits);
+    list.appendChild(chip);
+  });
+}
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 
 // Heartbeat system
 setInterval(() => {
@@ -150,6 +202,10 @@ function onCellClick(boardType, row, col) {
   if (gameState === 'placing' && boardType === 'my') {
     placeShip(row, col);
   } else if (gameState === 'playing' && isMyTurn && boardType === 'enemy' && enemyBoard[row][col] === 0) {
+<<<<<<< HEAD
+=======
+    stopTimer(); // Avoid countdown firing while waiting for AI response
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     socket.emit('attack', { row, col });
     isMyTurn = false;
     updateStatusMessage('Attack sent! Waiting for result...');
@@ -212,9 +268,15 @@ function placeShip(row, col) {
   }
 
   cells.forEach(({ row, col }) => {
+<<<<<<< HEAD
     myBoard[row][col] = 1;
     myBoardCells[row][col].classList.add('ship');
     myBoardCells[row][col].dataset.icon = ship.icon;
+=======
+    myBoard[row][col] = 1;
+    myBoardCells[row][col].classList.add('ship');
+    myBoardCells[row][col].dataset.icon = ship.icon;
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     gsap.from(myBoardCells[row][col], { scale: 0.5, duration: 0.3, ease: 'back.out' });
   });
 
@@ -231,6 +293,7 @@ function placeShip(row, col) {
 }
 
 function autoPlaceShips() {
+<<<<<<< HEAD
   myBoard.forEach((row, r) => {
     row.forEach((cell, c) => {
       myBoard[r][c] = 0;
@@ -238,6 +301,15 @@ function autoPlaceShips() {
       delete myBoardCells[r][c].dataset.icon;
     });
   });
+=======
+  myBoard.forEach((row, r) => {
+    row.forEach((cell, c) => {
+      myBoard[r][c] = 0;
+      myBoardCells[r][c].classList.remove('ship');
+      delete myBoardCells[r][c].dataset.icon;
+    });
+  });
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
   myShips = [];
   currentShipIndex = 0;
 
@@ -265,9 +337,15 @@ function autoPlaceShips() {
 
       if (valid) {
         cells.forEach(({ row, col }) => {
+<<<<<<< HEAD
           myBoard[row][col] = 1;
           myBoardCells[row][col].classList.add('ship');
           myBoardCells[row][col].dataset.icon = ship.icon;
+=======
+          myBoard[row][col] = 1;
+          myBoardCells[row][col].classList.add('ship');
+          myBoardCells[row][col].dataset.icon = ship.icon;
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
           gsap.from(myBoardCells[row][col], { scale: 0.5, duration: 0.2, ease: 'back.out', delay: index * 0.1 });
         });
 
@@ -294,8 +372,32 @@ function updateShipPreview() {
   }
 }
 
+<<<<<<< HEAD
 function updateStatusMessage(message) {
   document.getElementById('status-message').textContent = message;
+=======
+let statusMessageTimeout;
+function updateStatusMessage(message, duration = 2500) {
+  const statusEl = document.getElementById('status-message');
+  if (!statusEl) return;
+
+  // Clear any existing timeout
+  if (statusMessageTimeout) {
+    clearTimeout(statusMessageTimeout);
+    statusMessageTimeout = null;
+  }
+
+  // Update message and show
+  statusEl.textContent = message;
+  statusEl.classList.add('visible');
+
+  // Auto-hide after duration (0 = stay visible)
+  if (duration > 0) {
+    statusMessageTimeout = setTimeout(() => {
+      statusEl.classList.remove('visible');
+    }, duration);
+  }
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 }
 
 function updateCell(boardType, row, col, state) {
@@ -322,8 +424,11 @@ socket.on('connect', () => {
   document.getElementById('loading-screen').classList.remove('active');
 
   const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
+<<<<<<< HEAD
   const difficultyInput = prompt('Choose AI difficulty (1=Easy, 2=Medium, 3=Hard, 4=Extreme):', '2');
   aiDifficulty = Math.max(1, Math.min(4, parseInt(difficultyInput) || 2));
+=======
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 
   socket.emit('join', { name: playerName, mode: 'offline', aiDifficulty });
   gameState = 'placing';
@@ -355,8 +460,13 @@ setTimeout(() => {
 
 function updateDifficultyDisplay() {
   const difficultyEl = document.getElementById('difficulty-level');
+<<<<<<< HEAD
   difficultyEl.textContent = DIFFICULTY_NAMES[aiDifficulty];
   difficultyEl.className = 'difficulty-value ' + DIFFICULTY_NAMES[aiDifficulty].toLowerCase();
+=======
+  difficultyEl.textContent = TESTING_LEVEL_LABEL;
+  difficultyEl.className = 'difficulty-value testing';
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 }
 
 socket.on('gameStart', (data) => {
@@ -371,6 +481,7 @@ socket.on('battleStart', (data) => {
   isMyTurn = data.isYourTurn;
 
   if (isMyTurn) {
+<<<<<<< HEAD
     updateStatusMessage('Your turn - Attack AI fleet!');
     startTimer();
   } else {
@@ -392,12 +503,48 @@ socket.on('turnChange', ({ isYourTurn }) => {
 
 socket.on('attackResult', (data) => {
   const { row, col, hit, sunk, ship, isAttacker } = data;
+=======
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
+    startTimer();
+  } else {
+    updateStatusMessage("AI's turn - Wait...", 0); // Show until turn ends
+  }
+});
+
+// Turn updates from server
+socket.on('turnChange', ({ isYourTurn }) => {
+  isMyTurn = !!isYourTurn;
+  if (isMyTurn) {
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
+    startTimer();
+  } else {
+    updateStatusMessage("AI's turn - Calculating...", 0); // Show until turn ends
+    stopTimer();
+  }
+});
+
+socket.on('attackResult', (data) => {
+  const isAttacker = data.isAttacker ?? data.enemy === true;
+  const row = data.row;
+  const col = data.col;
+  const hit = !!data.hit;
+  const sunk = !!data.sunk;
+  const ship = data.ship || 'Ship';
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 
   if (isAttacker) {
     enemyBoard[row][col] = hit ? 3 : 2;
     updateCell('enemy', row, col, sunk ? 'sunk' : (hit ? 'hit' : 'miss'));
 
     if (hit) {
+<<<<<<< HEAD
+=======
+      const shipStatus = ship ? enemyFleetStatus.find(s => s.name.toLowerCase() === ship.toLowerCase()) : null;
+      if (shipStatus) {
+        shipStatus.hits = Math.min(shipStatus.length, shipStatus.hits + 1);
+        renderEnemyLegend();
+      }
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
       sounds.hit.play();
       if (sunk) {
         Logger.success('game', `AI ${ship} destroyed!`);
@@ -425,7 +572,11 @@ socket.on('attackResult', (data) => {
 
     // Give control back to the player after the AI completes its shot
     isMyTurn = true;
+<<<<<<< HEAD
     updateStatusMessage('Your turn - Attack AI fleet!');
+=======
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     startTimer();
   }
 });
@@ -461,8 +612,12 @@ socket.on('gameOver', (data) => {
 
 socket.on('botJoined', (data) => {
   Logger.ai('ai', 'AI opponent initialized', data);
+<<<<<<< HEAD
   updateStatusMessage(`🤖 Playing against ${data.botName} (${data.difficultyName})`);
   aiDifficulty = data.difficulty;
+=======
+  updateStatusMessage(`??? Playing against ${data.botName} (${TESTING_LEVEL_LABEL})`);
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
   updateDifficultyDisplay();
 });
 
@@ -474,9 +629,15 @@ socket.on('disconnect', () => {
 function resetBoard() {
   myBoard.forEach((row, r) => {
     row.forEach((cell, c) => {
+<<<<<<< HEAD
       myBoard[r][c] = 0;
       myBoardCells[r][c].className = 'grid-cell';
       delete myBoardCells[r][c].dataset.icon;
+=======
+      myBoard[r][c] = 0;
+      myBoardCells[r][c].className = 'grid-cell';
+      delete myBoardCells[r][c].dataset.icon;
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     });
   });
 
@@ -488,6 +649,10 @@ function resetBoard() {
   });
 
   myShips = [];
+<<<<<<< HEAD
+=======
+  resetEnemyLegend();
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
   document.querySelectorAll('.ship-item').forEach(item => {
     item.classList.remove('destroyed');
     item.querySelectorAll('.health-cell').forEach(cell => cell.classList.remove('sunk'));
@@ -495,12 +660,25 @@ function resetBoard() {
 }
 
 function startTimer() {
+<<<<<<< HEAD
+=======
+  if (!isMyTurn) return;
+  stopTimer();
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
   timeLeft = 30;
   const timerEl = document.getElementById('timer');
   timerEl.textContent = timeLeft;
   timerEl.classList.remove('warning');
 
   timerInterval = setInterval(() => {
+<<<<<<< HEAD
+=======
+    if (!isMyTurn) {
+      stopTimer();
+      return;
+    }
+
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     timeLeft--;
     timerEl.textContent = timeLeft;
 
@@ -518,7 +696,13 @@ function startTimer() {
       }
       if (available.length > 0) {
         const target = available[Math.floor(Math.random() * available.length)];
+<<<<<<< HEAD
         socket.emit('attack', target);
+=======
+        isMyTurn = false;
+        socket.emit('attack', target);
+        updateStatusMessage('Attack sent! Waiting for result...');
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
       }
     }
   }, 1000);
@@ -527,6 +711,10 @@ function startTimer() {
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
+<<<<<<< HEAD
+=======
+    timerInterval = null;
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     document.getElementById('timer').classList.remove('warning');
   }
 }
@@ -578,9 +766,18 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
   }
 });
 
+<<<<<<< HEAD
 // Initialize on load
 window.addEventListener('load', () => {
   Logger.info('init', 'Initializing 2D Battleship AI training (10×10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
+=======
+// Initialise on load
+window.addEventListener('load', () => {
+  Logger.info('init', 'Initialising 2D Battleship AI training (10×10 grids, 200 cells total)');
+  initBoards();
+  updateShipPreview();
+  resetEnemyLegend();
+>>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
 });
