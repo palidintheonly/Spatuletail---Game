@@ -1,7 +1,7 @@
 {
   "name": "@palidintheonly/spatuletail-game",
-  "version": "3.0.0",
-  "description": "Spatuletail - Game: 2-player turn-based battleship with 2D grid system (10x10, 200 cells total)",
+  "version": "3.5.0",
+  "description": "Spatuletail - Game: Offline battleship with AI opponents and 2D grid system (10x10, 200 cells total)",
   "main": "server.js",
   "bin": {
     "spatuletail": "./bin/spatuletail.js"

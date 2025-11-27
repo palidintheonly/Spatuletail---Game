@@ -339,7 +339,23 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
+<<<<<<< Updated upstream
 ### v3.0.0 (Latest)
+=======
+### v3.5.0 (Latest)
+- 🌍 Converted all user-facing text to British English spelling
+- 🎮 Focussed game on offline AI mode only
+- 🛡️ Updated legal pages with current game features and British English
+- 📦 Removed outdated multiplayer and spectator mode references
+- 🎨 Fixed UI overlapping issues with legend repositioning
+- 🔧 Improved status message visibility system
+- 💫 Updated homepage with accurate feature descriptions
+- 📝 Comprehensive British English conversion in CSS (colour, centre)
+- ⚙️ Fixed z-index layering for better UI interaction
+- 🚀 Updated package descriptions to reflect offline-only gameplay
+
+### v3.0.0
+>>>>>>> Stashed changes
 - 🚀 Major version release with loading screen improvements
 - 🛡️ Added multiple failsafe timeouts to prevent infinite loading screens
 - 📦 Aligned npm and GitHub package descriptions to "2D grid system"
