@@ -116,4 +116,5 @@ tmp/
 # - CONFIGURATION.md
 # - README.md
 # - package.json
-BlueJay/profiles.json
+Kea/kea-profiles.json
+Kea/kea-sessions.json

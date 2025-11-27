@@ -369,6 +369,8 @@
         (() => {
             const API_BASE = '/api/v1/profile';
             const TOKEN_KEY = 'bluejay-token';
+            const USER_CACHE_KEY = 'bluejay-user-cache';
+            const AVATAR_CACHE_KEY = 'bluejay-avatars-cache';
             const guestAvatar = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="%2312233f"/><text x="48" y="58" text-anchor="middle" font-size="42" fill="%23ffffff" font-family="Arial, sans-serif">?</text></svg>';
             let avatars = [];
             let selectedAvatar = null;
@@ -391,6 +393,21 @@
             const logoutBtn = document.getElementById('logout-btn');
             const avatarSection = document.getElementById('avatar-picker-section');
             const saveAvatarBtn = document.getElementById('save-avatar-btn');
+
+            const setCookieToken = (token) => {
+                document.cookie = `${TOKEN_KEY}=${token}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax`;
+            };
+            const clearCookieToken = () => {
+                document.cookie = `${TOKEN_KEY}=; path=/; max-age=0; SameSite=Lax`;
+            };
+            const getCookieToken = () => {
+                const name = `${TOKEN_KEY}=`;
+                const cookie = document.cookie
+                    .split(';')
+                    .map(c => c.trim())
+                    .find(c => c.startsWith(name));
+                return cookie ? decodeURIComponent(cookie.slice(name.length)) : '';
+            };
 
             const unwrap = (data) => (data && typeof data === 'object' && 'data' in data ? data.data : data);
             const normalizeAvatars = (input) => {
@@ -425,6 +442,7 @@
                 avatarImage.src = guestAvatar;
                 guestIndicator.classList.add('show');
                 logoutBtn.classList.add('hidden');
+                localStorage.removeItem(USER_CACHE_KEY);
                 refreshAvatarSection();
             }
 
@@ -437,6 +455,7 @@
                 logoutBtn.classList.remove('hidden');
                 if (user?.avatar) selectedAvatar = user.avatar;
                 renderAvatars();
+                localStorage.setItem(USER_CACHE_KEY, JSON.stringify(user));
                 refreshAvatarSection();
             }
 
@@ -456,11 +475,26 @@
             }
 
             async function loadAvatars() {
+                const cached = localStorage.getItem(AVATAR_CACHE_KEY);
+                if (cached) {
+                    try {
+                        const parsed = JSON.parse(cached);
+                        const normalized = normalizeAvatars(parsed);
+                        if (normalized.length) {
+                            avatars = normalized;
+                            selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
+                            renderAvatars();
+                        }
+                    } catch (err) {
+                        console.warn('Avatar cache parse error', err);
+                    }
+                }
                 try {
                     const res = await fetch(`${API_BASE}/avatars`);
                     if (!res.ok) throw new Error('avatar fetch failed');
                     const payload = unwrap(await res.json());
                     avatars = normalizeAvatars(payload);
+                    localStorage.setItem(AVATAR_CACHE_KEY, JSON.stringify(avatars));
                 } catch (err) {
                     // Fallback list
                     avatars = [
@@ -498,9 +532,22 @@
             }
 
             async function hydrateProfile() {
-                const token = localStorage.getItem(TOKEN_KEY);
+                const token = localStorage.getItem(TOKEN_KEY) || getCookieToken();
+                const cachedUserRaw = localStorage.getItem(USER_CACHE_KEY);
+                const useCachedUser = () => {
+                    if (cachedUserRaw) {
+                        try {
+                            const parsed = JSON.parse(cachedUserRaw);
+                            setUser(parsed);
+                            return true;
+                        } catch (err) {
+                            console.warn('User cache parse error', err);
+                        }
+                    }
+                    return false;
+                };
                 if (!token) {
-                    setGuest();
+                    if (!useCachedUser()) setGuest();
                     return;
                 }
                 try {
@@ -508,13 +555,13 @@
                     if (!res.ok) throw new Error('Profile fetch failed');
                     const data = unwrap(await res.json());
                     if (data.guest || !data.user) {
-                        setGuest();
+                        if (!useCachedUser()) setGuest();
                         return;
                     }
                     setUser(data.user);
                 } catch (err) {
                     console.warn('Profile fetch error', err);
-                    setGuest();
+                    if (!useCachedUser()) setGuest();
                 }
             }
 
@@ -575,6 +622,7 @@
                     feedback('Logging in...');
                     const result = await submitAuth('login', { username, password });
                     localStorage.setItem(TOKEN_KEY, result.token);
+                    setCookieToken(result.token);
                     setUser(result.user);
                     toggleModal(false);
                     feedback('');
@@ -592,6 +640,7 @@
                     feedback('Creating account...');
                     const result = await submitAuth('signup', { username, password, avatar: selectedAvatar });
                     localStorage.setItem(TOKEN_KEY, result.token);
+                    setCookieToken(result.token);
                     setUser(result.user);
                     toggleModal(false);
                     feedback('');
@@ -603,6 +652,7 @@
             logoutBtn.addEventListener('click', async () => {
                 const token = localStorage.getItem(TOKEN_KEY);
                 localStorage.removeItem(TOKEN_KEY);
+                clearCookieToken();
                 try {
                     await fetch(`${API_BASE}/logout`, { method: 'POST', headers: token ? { 'x-bluejay-token': token } : undefined });
                 } catch (err) {

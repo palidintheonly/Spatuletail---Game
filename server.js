@@ -140,9 +140,10 @@ const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.jso
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
 
-// BlueJay directory for simple profile storage
-const BLUEJAY_DIR = path.join(__dirname, 'BlueJay');
-const BLUEJAY_PROFILE_PATH = path.join(BLUEJAY_DIR, 'profiles.json');
+// Kea directory for simple profile storage
+const KEA_DIR = path.join(__dirname, 'Kea');
+const KEA_PROFILE_PATH = path.join(KEA_DIR, 'kea-profiles.json');
+const KEA_SESSIONS_PATH = path.join(KEA_DIR, 'kea-sessions.json');
 
 // Server Logger with ANSI colors (Google style)
 const Logger = {
@@ -176,7 +177,7 @@ const Logger = {
 };
 
 // Curated rare bird avatars for profile selection
-const BLUEJAY_AVATARS = [
+const KEA_AVATARS = [
   {
     id: 'resplendent-quetzal',
     name: 'Resplendent Quetzal',
@@ -342,12 +343,30 @@ function ensureFileExists(filePath, defaultContent = '[]') {
 function readJSONFile(filePath, defaultValue = []) {
   try {
     if (fs.existsSync(filePath)) {
-      const data = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(data);
+        const raw = fs.readFileSync(filePath, 'utf8');
+        try {
+          return JSON.parse(raw);
+        } catch (innerErr) {
+          // Attempt recovery with trimmed content
+          const trimmed = raw.trim();
+          const parsed = JSON.parse(trimmed);
+          Logger.warn('fs', 'Recovered JSON after trim', { path: filePath });
+          return parsed;
+        }
     }
     return defaultValue;
   } catch (error) {
     Logger.error('fs', 'Error reading JSON file', { path: filePath, error: error.message });
+    // Attempt to repair file with defaultValue to keep system running
+    if (defaultValue !== undefined) {
+      try {
+        fs.writeFileSync(filePath, JSON.stringify(defaultValue, null, 2), 'utf8');
+        Logger.warn('fs', 'Repaired JSON file with default value', { path: filePath });
+        return defaultValue;
+      } catch (writeErr) {
+        Logger.error('fs', 'Failed to repair JSON file', { path: filePath, error: writeErr.message });
+      }
+    }
     return defaultValue;
   }
 }
@@ -384,12 +403,21 @@ function sanitizeProfile(profile) {
 }
 
 function loadProfiles() {
-  const profiles = readJSONFile(BLUEJAY_PROFILE_PATH, []);
+  const profiles = readJSONFile(KEA_PROFILE_PATH, []);
   return Array.isArray(profiles) ? profiles : [];
 }
 
 function saveProfiles(profiles) {
-  return writeJSONFile(BLUEJAY_PROFILE_PATH, profiles);
+  return writeJSONFile(KEA_PROFILE_PATH, profiles);
+}
+
+function loadSessions() {
+  const sessions = readJSONFile(KEA_SESSIONS_PATH, []);
+  return Array.isArray(sessions) ? sessions : [];
+}
+
+function saveSessions(sessions) {
+  return writeJSONFile(KEA_SESSIONS_PATH, sessions);
 }
 
 const activeProfileTokens = new Map(); // token -> { username, createdAt }
@@ -397,6 +425,7 @@ const activeProfileTokens = new Map(); // token -> { username, createdAt }
 function createSessionToken(username) {
   const token = crypto.randomBytes(24).toString('hex');
   activeProfileTokens.set(token, { username, createdAt: Date.now() });
+  saveSessions(Array.from(activeProfileTokens, ([tok, session]) => ({ token: tok, ...session })));
   return token;
 }
 
@@ -408,6 +437,13 @@ function getProfileFromToken(token) {
   return profiles.find(p => p.username.toLowerCase() === session.username.toLowerCase()) || null;
 }
 
+function removeSessionToken(token) {
+  if (activeProfileTokens.has(token)) {
+    activeProfileTokens.delete(token);
+    saveSessions(Array.from(activeProfileTokens, ([tok, session]) => ({ token: tok, ...session })));
+  }
+}
+
 // Initialize waterbird directory and files
 Logger.info('init', 'Initializing waterbird directory and files...');
 ensureDirectoryExists(WATERBIRD_DIR);
@@ -416,11 +452,18 @@ ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
 Logger.success('init', 'Waterbird directory initialized');
 
-// Initialize BlueJay directory and profile store
-Logger.info('init', 'Initializing BlueJay directory and profile store...');
-ensureDirectoryExists(BLUEJAY_DIR);
-ensureFileExists(BLUEJAY_PROFILE_PATH, '[]');
-Logger.success('init', 'BlueJay directory initialized', { path: BLUEJAY_PROFILE_PATH });
+// Initialize Kea directory and profile store
+Logger.info('init', 'Initializing Kea directory and profile store...');
+ensureDirectoryExists(KEA_DIR);
+ensureFileExists(KEA_PROFILE_PATH, '[]');
+ensureFileExists(KEA_SESSIONS_PATH, '[]');
+const persistedSessions = loadSessions();
+persistedSessions.forEach(sess => {
+  if (sess && sess.token && sess.username) {
+    activeProfileTokens.set(sess.token, { username: sess.username, createdAt: sess.createdAt || Date.now() });
+  }
+});
+Logger.success('init', 'Kea directory initialized', { path: KEA_PROFILE_PATH, sessions: activeProfileTokens.size });
 
 // Game state - separate tracking for online and offline games
 let waitingPlayer = null;
@@ -2044,10 +2087,10 @@ function endGame(game) {
   });
 }
 
-// BlueJay Profile APIs (lightweight, local JSON-backed)
+// Kea Profile APIs (lightweight, local JSON-backed)
 app.get(`/api/${API_VERSION}/profile/avatars`, (req, res) => {
   Logger.info('api', 'Avatar list requested');
-  res.json(BLUEJAY_AVATARS);
+  res.json(KEA_AVATARS);
 });
 
 app.get(`/api/${API_VERSION}/profile/me`, (req, res) => {
@@ -2124,10 +2167,8 @@ app.post(`/api/${API_VERSION}/profile/login`, (req, res) => {
 
 app.post(`/api/${API_VERSION}/profile/logout`, (req, res) => {
   const token = (req.headers['x-bluejay-token'] || '').trim();
-  if (token && activeProfileTokens.has(token)) {
-    activeProfileTokens.delete(token);
-    Logger.info('api', 'Logout successful', { token });
-  }
+  removeSessionToken(token);
+  Logger.info('api', 'Logout successful', { token: token ? 'cleared' : 'none' });
   res.json({ success: true });
 });
 
@@ -2140,7 +2181,7 @@ app.post(`/api/${API_VERSION}/profile/avatar`, (req, res) => {
     return res.status(401).json({ error: 'Not authenticated' });
   }
 
-  const avatarList = BLUEJAY_AVATARS.map(a => a.id);
+  const avatarList = KEA_AVATARS.map(a => a.id);
   if (!avatarList.includes(avatar)) {
     return res.status(400).json({ error: 'Invalid avatar selection' });
   }
