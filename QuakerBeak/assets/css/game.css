@@ -966,11 +966,7 @@ body {
 }
 
 .grid-cell.hit::after {
-<<<<<<< HEAD
     content: '✖';
-=======
-    content: 'X';
->>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     position: absolute;
     top: 50%;
     left: 50%;
@@ -986,11 +982,7 @@ body {
 }
 
 .grid-cell.miss::after {
-<<<<<<< HEAD
     content: '•';
-=======
-    content: 'o';
->>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1007,11 +999,7 @@ body {
 }
 
 .grid-cell.sunk::after {
-<<<<<<< HEAD
     content: '☠';
-=======
-    content: '!';
->>>>>>> f0480c38b2d667e9e6567ab625df5eee4de4573b
     position: absolute;
     top: 50%;
     left: 50%;

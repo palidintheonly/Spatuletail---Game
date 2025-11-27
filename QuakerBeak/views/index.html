@@ -133,18 +133,12 @@
                 <button class="play-button">Start Battle</button>
             </div>
         </div>
-
-        <div class="stats-bar" data-aos="fade-up" data-aos-delay="160">
-            <div class="stat-item">
-                <span class="stat-value" id="activePlayers">-</span>
-                <span class="stat-label">Active Players</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="gamesPlayed">-</span>
-                <span class="stat-label">Offline Games Today</span>
-            </div>
-        </div>
     </div>
+
+    <footer style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 1000; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5);">
+        <a href="/privacy-policy" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+        <a href="/terms" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Terms of Service</a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -177,22 +171,6 @@
         function navigateTo(path) {
             anime({ targets: '.mode-card', scale: [1, 0.95], opacity: [1, 0.2], duration: 260, easing: 'easeInQuad', complete: () => { window.location.href = path; } });
         }
-        async function updateStats() {
-            try {
-                const response = await fetch('/api/v1/stats/live');
-                const result = await response.json();
-                const stats = result.data || result;
-                const activePlayersEl = document.getElementById('activePlayers');
-                const gamesPlayedEl = document.getElementById('gamesPlayed');
-                if (activePlayersEl) activePlayersEl.textContent = stats.activePlayers || 0;
-                if (gamesPlayedEl) gamesPlayedEl.textContent = stats.gamesPlayed || 0;
-                anime({ targets: '.stat-value', scale: [0.85, 1], duration: 520, easing: 'easeOutElastic(1, .6)' });
-            } catch (error) {
-                console.error('Failed to fetch stats:', error);
-            }
-        }
-        updateStats();
-        setInterval(updateStats, 5000);
         if ('ontouchstart' in window) {
             document.querySelectorAll('.mode-card').forEach(card => {
                 card.addEventListener('touchstart', function() { this.style.transform = 'scale(0.98)'; });
