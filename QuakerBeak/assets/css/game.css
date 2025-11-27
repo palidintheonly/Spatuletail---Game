@@ -824,12 +824,13 @@ body {
 }
 
 .grid-cell.ship::after {
-    content: '🚢';
+    content: attr(data-icon);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Hit State */
@@ -840,12 +841,12 @@ body {
 }
 
 .grid-cell.hit::after {
-    content: '💥';
+    content: '✖';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
 }
 
 /* Miss State */
@@ -856,12 +857,12 @@ body {
 }
 
 .grid-cell.miss::after {
-    content: '💦';
+    content: '•';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 /* Sunk State */
@@ -873,12 +874,12 @@ body {
 }
 
 .grid-cell.sunk::after {
-    content: '☠️';
+    content: '☠';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 
 @keyframes sinkAnimation {

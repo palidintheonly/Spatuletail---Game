@@ -1260,6 +1260,13 @@ io.on('connection', (socket) => {
     logGameEvent('playerJoin', { socketId: socket.id, playerName, mode });
     Logger.info('player', `Player joined: ${socket.playerName}`, { socketId: socket.id, mode });
 
+    // Spectate temporarily disabled
+    if (mode === 'spectate') {
+      Logger.warn('spectate', 'Spectate is temporarily disabled', { socketId: socket.id });
+      socket.emit('spectateDisabled', { message: 'Spectate mode is temporarily unavailable. Please check back soon.' });
+      return;
+    }
+
     // Spectate mode: watch active game or wait in queue
     if (mode === 'spectate') {
       if (activeOnlineGame) {

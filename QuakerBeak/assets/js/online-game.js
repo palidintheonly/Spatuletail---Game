@@ -63,11 +63,11 @@ let timeLeft = 30;
 let timerInterval = null;
 
 const SHIP_TYPES = [
-  { name: 'Carrier', length: 5, icon: '🚢' },
-  { name: 'Battleship', length: 4, icon: '⚓' },
-  { name: 'Cruiser', length: 3, icon: '🛥️' },
-  { name: 'Submarine', length: 3, icon: '🔱' },
-  { name: 'Destroyer', length: 2, icon: '⛵' }
+  { name: 'Carrier', length: 5, icon: 'C' },
+  { name: 'Battleship', length: 4, icon: 'B' },
+  { name: 'Cruiser', length: 3, icon: 'R' },
+  { name: 'Submarine', length: 3, icon: 'S' },
+  { name: 'Destroyer', length: 2, icon: 'D' }
 ];
 
 // Heartbeat system
@@ -223,6 +223,7 @@ function placeShip(row, col) {
   cells.forEach(({ row, col }) => {
     myBoard[row][col] = 1;
     myBoardCells[row][col].classList.add('ship');
+    myBoardCells[row][col].dataset.icon = ship.icon;
 
     // Animate placement
     gsap.from(myBoardCells[row][col], { scale: 0.5, duration: 0.3, ease: 'back.out' });
@@ -246,6 +247,7 @@ function autoPlaceShips() {
     row.forEach((cell, c) => {
       myBoard[r][c] = 0;
       myBoardCells[r][c].classList.remove('ship');
+      delete myBoardCells[r][c].dataset.icon;
     });
   });
   myShips = [];
@@ -278,6 +280,7 @@ function autoPlaceShips() {
         cells.forEach(({ row, col }) => {
           myBoard[row][col] = 1;
           myBoardCells[row][col].classList.add('ship');
+          myBoardCells[row][col].dataset.icon = ship.icon;
           gsap.from(myBoardCells[row][col], { scale: 0.5, duration: 0.2, ease: 'back.out', delay: index * 0.1 });
         });
 
@@ -379,16 +382,16 @@ socket.on('battleStart', (data) => {
   }
 });
 
-socket.on('yourTurn', () => {
-  isMyTurn = true;
-  updateStatusMessage('Your turn - Attack enemy fleet!');
-  startTimer();
-});
-
-socket.on('opponentTurn', () => {
-  isMyTurn = false;
-  updateStatusMessage("Opponent's turn - Wait...");
-  stopTimer();
+// Turn updates from server
+socket.on('turnChange', ({ isYourTurn }) => {
+  isMyTurn = !!isYourTurn;
+  if (isMyTurn) {
+    updateStatusMessage('Your turn - Attack enemy fleet!');
+    startTimer();
+  } else {
+    updateStatusMessage("Opponent's turn - Wait...");
+    stopTimer();
+  }
 });
 
 socket.on('attackResult', (data) => {
@@ -484,6 +487,7 @@ function resetBoard() {
     row.forEach((cell, c) => {
       myBoard[r][c] = 0;
       myBoardCells[r][c].className = 'grid-cell';
+      delete myBoardCells[r][c].dataset.icon;
     });
   });
 
