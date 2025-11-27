@@ -59,7 +59,7 @@ let enemyBoardCells = [];
 let isMyTurn = false;
 let timeLeft = 30;
 let timerInterval = null;
-let aiDifficulty = 2; // Default: Medium
+let aiDifficulty = 2; // Fixed single level
 let enemyFleetStatus = [];
 
 const SHIP_TYPES = [
@@ -70,7 +70,8 @@ const SHIP_TYPES = [
   { name: 'Destroyer', length: 2, icon: 'D' }
 ];
 
-const DIFFICULTY_NAMES = ['', 'Easy', 'Medium', 'Hard', 'Extreme'];
+const TESTING_LEVEL_LABEL = 'Testing Level';
+const DIFFICULTY_NAMES = ['', TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL, TESTING_LEVEL_LABEL];
 
 function resetEnemyLegend() {
   enemyFleetStatus = SHIP_TYPES.map(ship => ({
@@ -338,8 +339,27 @@ function updateShipPreview() {
   }
 }
 
-function updateStatusMessage(message) {
-  document.getElementById('status-message').textContent = message;
+let statusMessageTimeout;
+function updateStatusMessage(message, duration = 2500) {
+  const statusEl = document.getElementById('status-message');
+  if (!statusEl) return;
+
+  // Clear any existing timeout
+  if (statusMessageTimeout) {
+    clearTimeout(statusMessageTimeout);
+    statusMessageTimeout = null;
+  }
+
+  // Update message and show
+  statusEl.textContent = message;
+  statusEl.classList.add('visible');
+
+  // Auto-hide after duration (0 = stay visible)
+  if (duration > 0) {
+    statusMessageTimeout = setTimeout(() => {
+      statusEl.classList.remove('visible');
+    }, duration);
+  }
 }
 
 function updateCell(boardType, row, col, state) {
@@ -366,8 +386,6 @@ socket.on('connect', () => {
   document.getElementById('loading-screen').classList.remove('active');
 
   const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
-  const difficultyInput = prompt('Choose AI difficulty (1=Easy, 2=Medium, 3=Hard, 4=Extreme):', '2');
-  aiDifficulty = Math.max(1, Math.min(4, parseInt(difficultyInput) || 2));
 
   socket.emit('join', { name: playerName, mode: 'offline', aiDifficulty });
   gameState = 'placing';
@@ -399,8 +417,8 @@ setTimeout(() => {
 
 function updateDifficultyDisplay() {
   const difficultyEl = document.getElementById('difficulty-level');
-  difficultyEl.textContent = DIFFICULTY_NAMES[aiDifficulty];
-  difficultyEl.className = 'difficulty-value ' + DIFFICULTY_NAMES[aiDifficulty].toLowerCase();
+  difficultyEl.textContent = TESTING_LEVEL_LABEL;
+  difficultyEl.className = 'difficulty-value testing';
 }
 
 socket.on('gameStart', (data) => {
@@ -415,10 +433,10 @@ socket.on('battleStart', (data) => {
   isMyTurn = data.isYourTurn;
 
   if (isMyTurn) {
-    updateStatusMessage('Your turn - Attack AI fleet!');
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
     startTimer();
   } else {
-    updateStatusMessage("AI's turn - Wait...");
+    updateStatusMessage("AI's turn - Wait...", 0); // Show until turn ends
   }
 });
 
@@ -426,10 +444,10 @@ socket.on('battleStart', (data) => {
 socket.on('turnChange', ({ isYourTurn }) => {
   isMyTurn = !!isYourTurn;
   if (isMyTurn) {
-    updateStatusMessage('Your turn - Attack AI fleet!');
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
     startTimer();
   } else {
-    updateStatusMessage("AI's turn - Calculating...");
+    updateStatusMessage("AI's turn - Calculating...", 0); // Show until turn ends
     stopTimer();
   }
 });
@@ -479,7 +497,7 @@ socket.on('attackResult', (data) => {
 
     // Give control back to the player after the AI completes its shot
     isMyTurn = true;
-    updateStatusMessage('Your turn - Attack AI fleet!');
+    updateStatusMessage('Your turn - Attack AI fleet!', 0); // Show until turn ends
     startTimer();
   }
 });
@@ -515,8 +533,7 @@ socket.on('gameOver', (data) => {
 
 socket.on('botJoined', (data) => {
   Logger.ai('ai', 'AI opponent initialized', data);
-  updateStatusMessage(`🤖 Playing against ${data.botName} (${data.difficultyName})`);
-  aiDifficulty = data.difficulty;
+  updateStatusMessage(`??? Playing against ${data.botName} (${TESTING_LEVEL_LABEL})`);
   updateDifficultyDisplay();
 });
 
@@ -643,9 +660,9 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
   }
 });
 
-// Initialize on load
+// Initialise on load
 window.addEventListener('load', () => {
-  Logger.info('init', 'Initializing 2D Battleship AI training (10×10 grids, 200 cells total)');
+  Logger.info('init', 'Initialising 2D Battleship AI training (10×10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
   resetEnemyLegend();
