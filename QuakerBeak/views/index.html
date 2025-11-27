@@ -107,11 +107,225 @@
         @keyframes spin { to { transform: rotate(360deg);} }
         @media (max-width: 768px) { .container { padding: 16px; gap: 18px; } .mode-card { padding: 28px 20px; } }
         @media (max-width: 480px) { .header h1 { font-size: 2.4rem; } .mode-title { font-size: 1.5rem; } .mode-icon { font-size: 3rem; } }
+        .profile-widget {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(10px);
+            z-index: 1200;
+        }
+        .profile-widget .avatar-button {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 107, 0.15));
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            cursor: pointer;
+        }
+        .profile-widget .avatar-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .guest-indicator {
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            color: #fff;
+            font-weight: 800;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        .guest-indicator.show { display: inline-flex; }
+        .profile-label .profile-name { font-weight: 800; letter-spacing: 0.5px; }
+        .profile-label .profile-status { font-size: 0.85rem; opacity: 0.75; }
+        .profile-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1400;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .profile-modal-overlay.open { opacity: 1; pointer-events: all; }
+        .profile-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            background: linear-gradient(180deg, rgba(20, 25, 50, 0.95), rgba(8, 12, 30, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 20px;
+            width: min(440px, calc(100% - 32px));
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 212, 255, 0.12);
+            z-index: 1410;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .profile-modal.open { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: all; }
+        .profile-modal h3 { margin-bottom: 6px; letter-spacing: 0.5px; }
+        .profile-subtext { color: rgba(255, 255, 255, 0.72); margin-bottom: 14px; font-size: 0.95rem; }
+        .profile-tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
+        .profile-tabs button {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+        }
+        .profile-tabs button.active {
+            background: linear-gradient(135deg, #00d4ff, #ff6b6b);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+            border-color: transparent;
+        }
+        .profile-form { display: flex; flex-direction: column; gap: 12px; }
+        .profile-form label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.95rem; }
+        .profile-form input {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.25);
+            color: #fff;
+        }
+        .avatar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .avatar-option {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            padding: 0;
+            cursor: pointer;
+            height: 110px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .avatar-option img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .avatar-option .avatar-name {
+            position: absolute;
+            bottom: 6px;
+            left: 6px;
+            right: 6px;
+            padding: 6px 8px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.45);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .avatar-option.selected { border-color: #00d4ff; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.4); }
+        .profile-primary, .profile-secondary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .profile-primary {
+            background: linear-gradient(135deg, #ff6b6b, #c0392b);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.35);
+        }
+        .profile-primary:hover { transform: translateY(-1px); }
+        .profile-secondary {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .profile-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            cursor: pointer;
+        }
+        .profile-feedback { min-height: 20px; font-size: 0.92rem; color: #9be7ff; }
+        .profile-feedback.error { color: #ff8a8a; }
+        .hidden { display: none !important; }
+        @media (max-width: 640px) { .profile-widget { top: 12px; left: 12px; transform: scale(0.95); } }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
     <div class="loading" id="loading"><div class="spinner"></div></div>
+
+    <div class="profile-widget" id="profile-widget">
+        <button class="avatar-button" id="avatar-button" aria-label="Open player profile">
+            <img id="avatar-image" src="" alt="Player avatar">
+            <span class="guest-indicator" id="guest-indicator">?</span>
+        </button>
+        <div class="profile-label">
+            <div class="profile-name" id="profile-name">Guest</div>
+            <div class="profile-status" id="profile-status">Untracked</div>
+        </div>
+    </div>
+
+    <div class="profile-modal-overlay" id="profile-modal-overlay"></div>
+    <div class="profile-modal" id="profile-modal" aria-modal="true" role="dialog">
+        <button class="profile-close" id="profile-modal-close" aria-label="Close profile">×</button>
+        <h3>Player Profile</h3>
+        <p class="profile-subtext">Pick a rare bird avatar and sign in to save locally.</p>
+        <div class="profile-tabs">
+            <button data-profile-tab="login" class="active">Login</button>
+            <button data-profile-tab="signup">Sign Up</button>
+        </div>
+        <form id="login-form" class="profile-form">
+            <label>
+                Username
+                <input type="text" name="username" autocomplete="username" required>
+            </label>
+            <label>
+                Password
+                <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button type="submit" class="profile-primary">Login</button>
+        </form>
+        <form id="signup-form" class="profile-form hidden">
+            <label>
+                Username
+                <input type="text" name="username" autocomplete="new-username" required>
+            </label>
+            <label>
+                Password
+                <input type="password" name="password" autocomplete="new-password" required>
+            </label>
+            <div class="avatar-grid" id="avatar-grid"></div>
+            <button type="submit" class="profile-primary">Create Account</button>
+        </form>
+        <div class="profile-feedback" id="profile-feedback"></div>
+        <button type="button" class="profile-secondary hidden" id="logout-btn">Sign out</button>
+    </div>
 
     <div class="container">
         <header class="header" data-aos="fade-down">
@@ -144,6 +358,201 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script>
+        // Profile UI for homepage
+        (() => {
+            const API_BASE = '/api/v1/profile';
+            const TOKEN_KEY = 'bluejay-token';
+            const guestAvatar = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="%2312233f"/><text x="48" y="58" text-anchor="middle" font-size="42" fill="%23ffffff" font-family="Arial, sans-serif">?</text></svg>';
+            let avatars = [];
+            let selectedAvatar = null;
+
+            const avatarButton = document.getElementById('avatar-button');
+            const avatarImage = document.getElementById('avatar-image');
+            const guestIndicator = document.getElementById('guest-indicator');
+            const profileName = document.getElementById('profile-name');
+            const profileStatus = document.getElementById('profile-status');
+            const modal = document.getElementById('profile-modal');
+            const overlay = document.getElementById('profile-modal-overlay');
+            const closeBtn = document.getElementById('profile-modal-close');
+            const tabButtons = document.querySelectorAll('[data-profile-tab]');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const avatarGrid = document.getElementById('avatar-grid');
+            const feedbackEl = document.getElementById('profile-feedback');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            function feedback(message, isError = false) {
+                feedbackEl.textContent = message || '';
+                feedbackEl.classList.toggle('error', !!isError);
+            }
+
+            function resolveAvatar(avatarId) {
+                const match = avatars.find(a => a.id === avatarId);
+                if (match) return match.image;
+                if (avatarId && avatarId.startsWith('http')) return avatarId;
+                return guestAvatar;
+            }
+
+            function setGuest() {
+                profileName.textContent = 'Guest';
+                profileStatus.textContent = 'Untracked';
+                avatarImage.src = guestAvatar;
+                guestIndicator.classList.add('show');
+                logoutBtn.classList.add('hidden');
+            }
+
+            function setUser(user) {
+                profileName.textContent = user?.username || 'Player';
+                profileStatus.textContent = 'Profile active';
+                avatarImage.src = resolveAvatar(user?.avatar);
+                guestIndicator.classList.remove('show');
+                logoutBtn.classList.remove('hidden');
+                if (user?.avatar) selectedAvatar = user.avatar;
+                renderAvatars();
+            }
+
+            function toggleModal(open, tab = 'login') {
+                modal.classList.toggle('open', open);
+                overlay.classList.toggle('open', open);
+                if (open) switchTab(tab);
+            }
+
+            function switchTab(tab) {
+                tabButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-profile-tab') === tab));
+                loginForm.classList.toggle('hidden', tab !== 'login');
+                signupForm.classList.toggle('hidden', tab !== 'signup');
+                feedback('');
+            }
+
+            async function loadAvatars() {
+                try {
+                    const res = await fetch(`${API_BASE}/avatars`);
+                    if (!res.ok) throw new Error('avatar fetch failed');
+                    avatars = await res.json();
+                } catch (err) {
+                    // Fallback list
+                    avatars = [
+                        { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', image: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Pharomachrus_mocinno_-Costa_Rica-8.jpg' },
+                        { id: 'shoebill', name: 'Shoebill', image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Balaeniceps_rex_-_Pair.jpg' },
+                        { id: 'philippine-eagle', name: 'Philippine Eagle', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Philippine_Eagle_front_view.jpg' },
+                        { id: 'victoria-crowned-pigeon', name: 'Victoria Crowned Pigeon', image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Victoria_crowned_pigeon_-closeup-8a.jpg' }
+                    ];
+                }
+                selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
+                renderAvatars();
+            }
+
+            function renderAvatars() {
+                if (!avatarGrid) return;
+                avatarGrid.innerHTML = '';
+                avatars.forEach(avatar => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'avatar-option';
+                    btn.dataset.avatarId = avatar.id;
+                    btn.innerHTML = `
+                        <img src="${avatar.image}" alt="${avatar.name}">
+                        <span class="avatar-name">${avatar.name}</span>
+                    `;
+                    btn.addEventListener('click', () => {
+                        selectedAvatar = avatar.id;
+                        document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+                        btn.classList.add('selected');
+                    });
+                    if (avatar.id === selectedAvatar) btn.classList.add('selected');
+                    avatarGrid.appendChild(btn);
+                });
+            }
+
+            async function hydrateProfile() {
+                const token = localStorage.getItem(TOKEN_KEY);
+                if (!token) {
+                    setGuest();
+                    return;
+                }
+                try {
+                    const res = await fetch(`${API_BASE}/me`, { headers: { 'x-bluejay-token': token } });
+                    if (!res.ok) throw new Error('Profile fetch failed');
+                    const data = await res.json();
+                    if (data.guest || !data.user) {
+                        setGuest();
+                        return;
+                    }
+                    setUser(data.user);
+                } catch (err) {
+                    console.warn('Profile fetch error', err);
+                    setGuest();
+                }
+            }
+
+            async function submitAuth(path, body) {
+                const res = await fetch(`${API_BASE}/${path}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                if (!res.ok) {
+                    const error = await res.json().catch(() => ({}));
+                    throw new Error(error.error || 'Request failed');
+                }
+                return res.json();
+            }
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(loginForm);
+                const username = formData.get('username');
+                const password = formData.get('password');
+                try {
+                    feedback('Logging in...');
+                    const result = await submitAuth('login', { username, password });
+                    localStorage.setItem(TOKEN_KEY, result.token);
+                    setUser(result.user);
+                    toggleModal(false);
+                    feedback('');
+                } catch (err) {
+                    feedback(err.message, true);
+                }
+            });
+
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(signupForm);
+                const username = formData.get('username');
+                const password = formData.get('password');
+                try {
+                    feedback('Creating account...');
+                    const result = await submitAuth('signup', { username, password, avatar: selectedAvatar });
+                    localStorage.setItem(TOKEN_KEY, result.token);
+                    setUser(result.user);
+                    toggleModal(false);
+                    feedback('');
+                } catch (err) {
+                    feedback(err.message, true);
+                }
+            });
+
+            logoutBtn.addEventListener('click', async () => {
+                const token = localStorage.getItem(TOKEN_KEY);
+                localStorage.removeItem(TOKEN_KEY);
+                try {
+                    await fetch(`${API_BASE}/logout`, { method: 'POST', headers: token ? { 'x-bluejay-token': token } : undefined });
+                } catch (err) {
+                    console.warn('Logout error', err);
+                }
+                setGuest();
+                toggleModal(false);
+            });
+
+            avatarButton.addEventListener('click', () => toggleModal(true, 'login'));
+            overlay.addEventListener('click', () => toggleModal(false));
+            closeBtn.addEventListener('click', () => toggleModal(false));
+            tabButtons.forEach(btn => btn.addEventListener('click', () => switchTab(btn.getAttribute('data-profile-tab'))));
+
+            setGuest();
+            loadAvatars().then(hydrateProfile);
+        })();
+
         AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
         particlesJS('particles-js', {
             particles: {
