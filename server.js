@@ -1199,7 +1199,9 @@ function logGameEvent(eventType, data) {
     ...data
   };
 
-  const gameLogs = readJSONFile(GAME_LOG_PATH, []);
+  // Ensure we always have an array even if the file was manually edited
+  const gameLogsRaw = readJSONFile(GAME_LOG_PATH, []);
+  const gameLogs = Array.isArray(gameLogsRaw) ? gameLogsRaw : [];
   gameLogs.push(logEntry);
 
   // Keep last N events (from config)
@@ -2085,7 +2087,9 @@ function updateLeaderboard(playerName, isBot, won, mode) {
 function logGameToJSON(gameData) {
   Logger.info('game-log', 'Logging game to JSON', { gameId: gameData.gameId });
 
-  const gameLogs = readJSONFile(GAME_LOG_PATH, []);
+  // Ensure array integrity in case file was malformed
+  const gameLogsRaw = readJSONFile(GAME_LOG_PATH, []);
+  const gameLogs = Array.isArray(gameLogsRaw) ? gameLogsRaw : [];
   gameLogs.push({
     ...gameData,
     timestamp: new Date().toISOString()
