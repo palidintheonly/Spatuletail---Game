@@ -25,11 +25,11 @@ echo [32m OK: GitHub token configured [0m
 
 REM Backup original package.json
 echo [34m Backing up package.json... [0m
-copy package.json package.json.backup >nul
+copy package.json package-tern.json >nul
 
 REM Update package.json for GitHub Packages
 echo [34m Updating package.json for GitHub Packages... [0m
-copy package-github.json package.json >nul
+copy albatross.json package.json >nul
 
 REM Show what will be published
 echo.
@@ -42,7 +42,7 @@ REM Confirm before publishing
 set /p confirm="Do you want to publish to GitHub Packages? (y/n): "
 if /i not "%confirm%"=="y" (
   echo [33m Publishing cancelled. [0m
-  del package.json.backup
+  del package-tern.json
   exit /b 0
 )
 
@@ -53,7 +53,7 @@ if errorlevel 1 (
   echo.
   echo [31m ERROR: Publishing failed! [0m
   echo [33m Restoring original package.json... [0m
-  move /y package.json.backup package.json >nul
+  move /y package-tern.json package.json >nul
   exit /b 1
 )
 
@@ -69,7 +69,7 @@ echo.
 
 REM Restore original package.json
 echo [34m Restoring original package.json... [0m
-move /y package.json.backup package.json >nul
+move /y package-tern.json package.json >nul
 
 echo.
 echo [32m Done! [0m

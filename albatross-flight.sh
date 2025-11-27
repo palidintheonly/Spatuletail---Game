@@ -34,11 +34,11 @@ echo -e "${COLORS_GREEN}✓ GitHub token configured${COLORS_NC}"
 
 # Backup original package.json
 echo -e "${COLORS_BLUE}📦 Backing up package.json...${COLORS_NC}"
-cp package.json package.json.backup
+cp package.json package-tern.json
 
 # Update package.json for GitHub Packages
 echo -e "${COLORS_BLUE}📝 Updating package.json for GitHub Packages...${COLORS_NC}"
-cp package-github.json package.json
+cp albatross.json package.json
 
 # Show what will be published
 echo ""
@@ -68,7 +68,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo ""
     echo -e "${COLORS_RED}❌ Publishing failed!${COLORS_NC}"
     echo -e "${COLORS_YELLOW}Restoring original package.json...${COLORS_NC}"
-    mv package.json.backup package.json
+    mv package-tern.json package.json
     exit 1
   fi
 else
@@ -77,7 +77,7 @@ fi
 
 # Restore original package.json
 echo -e "${COLORS_BLUE}🔄 Restoring original package.json...${COLORS_NC}"
-mv package.json.backup package.json
+mv package-tern.json package.json
 
 echo ""
 echo -e "${COLORS_GREEN}Done!${COLORS_NC}"

@@ -25,22 +25,22 @@ function banner() {
 }
 
 async function setupEnv() {
-  // Primary .env location (package directory where server.js runs)
-  const packageEnvPath = path.join(__dirname, '.env');
-  const exampleEnvPath = path.join(__dirname, 'example.env');
+  // Primary bird-coded env location (package directory where osprey.js runs)
+  const packageEnvPath = path.join(__dirname, '.egret.env');
+  const exampleEnvPath = path.join(__dirname, 'egret.env');
 
-  // Check if .env already exists in package directory
+  // Check if .egret.env already exists in package directory
   if (fs.existsSync(packageEnvPath)) {
-    log('✓ .env file already exists in package directory.', COLORS.green);
+    log('✓ .egret.env file already exists in package directory.', COLORS.green);
     log('  Location: ' + packageEnvPath, COLORS.cyan);
-    log('  To reconfigure, delete .env and run: spatuletail setup\n', COLORS.yellow);
+    log('  To reconfigure, delete .egret.env and run: spatuletail setup\n', COLORS.yellow);
     return;
   }
 
-  // Check if example.env exists
+  // Check if egret.env exists
   if (!fs.existsSync(exampleEnvPath)) {
-    log('✗ example.env not found!', COLORS.red);
-    log('  Please ensure example.env exists in the package directory.\n', COLORS.yellow);
+    log('✗ egret.env not found!', COLORS.red);
+    log('  Please ensure egret.env exists in the package directory.\n', COLORS.yellow);
     return;
   }
 
@@ -49,15 +49,15 @@ async function setupEnv() {
   log('Welcome to Spatuletail Game!', COLORS.bright);
   log('This wizard will help you set up your environment configuration.\n', COLORS.blue);
 
-  // Copy example.env to package directory .env
+  // Copy egret.env to package directory .egret.env
   try {
     fs.copyFileSync(exampleEnvPath, packageEnvPath);
-    log('✓ Created .env file from example.env', COLORS.green);
+    log('✓ Created .egret.env file from egret.env', COLORS.green);
     log('  Location: ' + packageEnvPath + '\n', COLORS.cyan);
     log('─'.repeat(60), COLORS.cyan);
     log('NEXT STEPS:', COLORS.bright + COLORS.yellow);
     log('─'.repeat(60) + '\n', COLORS.cyan);
-    log('1. Edit the .env file with your preferred configuration:', COLORS.blue);
+    log('1. Edit the .egret.env file with your preferred configuration:', COLORS.blue);
     log('   - Set your PORT (default: 3000)', COLORS.reset);
     log('   - Set your ADMIN_PASSWORD for the admin dashboard', COLORS.reset);
     log('   - Configure SESSION_SECRET (use a random string)', COLORS.reset);
@@ -70,9 +70,9 @@ async function setupEnv() {
     log('For more information, see README.md', COLORS.yellow);
     log('Happy gaming! 🎮\n', COLORS.green);
   } catch (error) {
-    log('✗ Failed to create .env file:', COLORS.red);
+    log('✗ Failed to create .egret.env file:', COLORS.red);
     log(error.message, COLORS.red);
-    log('\nPlease manually copy example.env to .env\n', COLORS.yellow);
+    log('\nPlease manually copy egret.env to .egret.env\n', COLORS.yellow);
   }
 }
 

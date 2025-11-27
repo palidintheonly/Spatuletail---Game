@@ -60,7 +60,7 @@ The server logs the following to the console (visible to anyone with server acce
 - **Purpose:** Testing metric stability and server load simulation
 - **Disclosure:** These are fake placeholder players to test game systems
 - **Removal:** Will be removed in upcoming updates
-- **Self-Hosted:** Users running their own server can disable this by modifying `MAX_SIMULATED_PLAYERS` in `.env`
+- **Self-Hosted:** Users running their own server can disable this by modifying `MAX_SIMULATED_PLAYERS` in `.egret.env`
 
 ## 3. Data We DO NOT Collect
 
@@ -218,7 +218,7 @@ Email: monkeybyteshosting@gmail.com
 ## 11. Self-Hosting and Data Control
 
 **If you run your own server:**
-- ✅ You control all data collection settings via `.env` configuration
+- ✅ You control all data collection settings via `.egret.env` configuration
 - ✅ You can disable simulated players (`MAX_SIMULATED_PLAYERS=0`)
 - ✅ You can adjust log retention (`MAX_GAME_LOGS`, `MAX_EVENT_LOGS`)
 - ✅ You control who has admin access

@@ -1,25 +1,25 @@
 // ========================================
 // ENVIRONMENT CONFIGURATION
 // ========================================
-// Check if .env file exists
+// Check if .egret.env file exists
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const envPath = path.join(__dirname, '.env');
+const envPath = path.join(__dirname, '.egret.env');
 if (!fs.existsSync(envPath)) {
-  console.error('\x1b[1m\x1b[31m[FATAL ERROR] .env file not found!\x1b[0m');
-  console.error('\x1b[33mPlease copy example.env to .env and configure your settings.\x1b[0m');
-  console.error('\x1b[33mCommand: cp example.env .env\x1b[0m');
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] .egret.env file not found!\x1b[0m');
+  console.error('\x1b[33mPlease copy egret.env to .egret.env and configure your settings.\x1b[0m');
+  console.error('\x1b[33mCommand: cp egret.env .egret.env\x1b[0m');
   process.exit(1);
 }
 
 // Load environment variables
 const dotenv = require('dotenv');
-const result = dotenv.config();
+const result = dotenv.config({ path: envPath });
 
 if (result.error) {
-  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Failed to parse .env file!\x1b[0m');
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Failed to parse .egret.env file!\x1b[0m');
   console.error(result.error);
   process.exit(1);
 }
@@ -41,7 +41,7 @@ if (missingVars.length > 0) {
   missingVars.forEach(varName => {
     console.error(`  \x1b[31m- ${varName}\x1b[0m`);
   });
-  console.error('\x1b[33mPlease check your .env file against example.env\x1b[0m');
+  console.error('\x1b[33mPlease check your .egret.env file against egret.env\x1b[0m');
   process.exit(1);
 }
 
@@ -56,7 +56,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 // ========================================
-// CONFIGURATION FROM .ENV
+// CONFIGURATION FROM .EGRET.ENV
 // ========================================
 // Server Configuration
 const PORT = parseInt(process.env.PORT) || 3010;
@@ -889,7 +889,7 @@ class AIBot {
 }
 
 function createBot() {
-  // Use configured difficulty range from .env
+  // Use configured difficulty range from .egret.env
   const difficulty = Math.floor(Math.random() * (BOT_MAX_DIFFICULTY - BOT_MIN_DIFFICULTY + 1)) + BOT_MIN_DIFFICULTY;
   const name = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
 
@@ -1753,7 +1753,7 @@ function startTurnTimer(game) {
     game.player2.socket.emit('timerStart', { timeLeft });
   }
 
-  // If it's a bot's turn, make it attack after a delay (from .env config)
+  // If it's a bot's turn, make it attack after a delay (from .egret.env config)
   if (currentPlayer.isBot) {
     const delay = BOT_MIN_DELAY + Math.random() * (BOT_MAX_DELAY - BOT_MIN_DELAY);
     Logger.ai('bot', `Bot ${currentPlayer.name} will attack in ${Math.round(delay)}ms`);
