@@ -247,7 +247,8 @@ if (API_FOOTER_ENABLED) {
 
 // Route handlers for new structure
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index-react.html'));
+  // Use the non-React landing page to avoid in-browser Babel/React warnings
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'index.html'));
   Logger.info('route', 'Root route accessed', { path: '/' });
 });
 
@@ -270,6 +271,9 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'admin.html'));
   Logger.info('route', 'Admin dashboard accessed', { path: '/admin' });
 });
+
+// Quietly handle missing favicon to avoid noisy 404s in the console
+app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
 app.get('/terms', (req, res) => {
   res.sendFile(path.join(__dirname, 'secretarybird', 'terms.html'));

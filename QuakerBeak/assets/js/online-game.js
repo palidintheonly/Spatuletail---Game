@@ -8,7 +8,7 @@ setTimeout(() => {
     loadingScreen.classList.remove('active');
     const statusMsg = document.getElementById('status-message');
     if (statusMsg) {
-      statusMsg.textContent = '⚠️ Connection issue detected. Please refresh if game doesn't load.';
+      statusMsg.textContent = 'Connection issue detected. Refresh if the game does not load.';
     }
   }
 }, 5000);
@@ -96,7 +96,7 @@ function initBoards() {
 
   container.appendChild(boardsWrapper);
 
-  Logger.success('game', '2D Battleship grids initialized - 10×10 boards (200 cells total)');
+  Logger.success('game', '2D Battleship grids initialized - 10x10 boards (200 cells total)');
 }
 
 function createBoardContainer(boardType, title) {

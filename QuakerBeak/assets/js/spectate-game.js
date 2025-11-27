@@ -8,7 +8,7 @@ setTimeout(() => {
     loadingScreen.classList.remove('active');
     const statusMsg = document.getElementById('status-message');
     if (statusMsg) {
-      statusMsg.textContent = '⚠️ Connection issue detected. Please refresh if game doesn't load.';
+      statusMsg.textContent = 'Connection issue detected. Refresh if the game does not load.';
     }
   }
 }, 5000);
