@@ -395,7 +395,12 @@ socket.on('turnChange', ({ isYourTurn }) => {
 });
 
 socket.on('attackResult', (data) => {
-  const { row, col, hit, sunk, ship, isAttacker } = data;
+  const isAttacker = data.isAttacker ?? data.enemy === true;
+  const row = data.row;
+  const col = data.col;
+  const hit = !!data.hit;
+  const sunk = !!data.sunk;
+  const ship = data.ship || 'Ship';
 
   if (isAttacker) {
     // Your attack on enemy board
@@ -406,13 +411,13 @@ socket.on('attackResult', (data) => {
       sounds.hit.play();
       if (sunk) {
         Logger.success('game', `Enemy ${ship} sunk!`);
-        updateStatusMessage(`💥 Enemy ${ship} destroyed!`);
+        updateStatusMessage(`Enemy ${ship} destroyed!`);
       } else {
-        updateStatusMessage('🎯 Direct hit!');
+        updateStatusMessage('Direct hit!');
       }
     } else {
       sounds.miss.play();
-      updateStatusMessage('💦 Miss!');
+      updateStatusMessage('Miss!');
     }
   } else {
     // Enemy attack on your board
@@ -421,9 +426,9 @@ socket.on('attackResult', (data) => {
 
     if (hit && sunk) {
       updateShipLegend(ship, true);
-      updateStatusMessage(`⚠️ Your ${ship} was destroyed!`);
+      updateStatusMessage(`Your ${ship} was destroyed!`);
     } else if (hit) {
-      updateStatusMessage('⚠️ Enemy hit your ship!');
+      updateStatusMessage('Enemy hit your ship!');
     } else {
       updateStatusMessage('Enemy missed!');
     }

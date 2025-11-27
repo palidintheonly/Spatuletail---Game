@@ -391,7 +391,12 @@ socket.on('turnChange', ({ isYourTurn }) => {
 });
 
 socket.on('attackResult', (data) => {
-  const { row, col, hit, sunk, ship, isAttacker } = data;
+  const isAttacker = data.isAttacker ?? data.enemy === true;
+  const row = data.row;
+  const col = data.col;
+  const hit = !!data.hit;
+  const sunk = !!data.sunk;
+  const ship = data.ship || 'Ship';
 
   if (isAttacker) {
     enemyBoard[row][col] = hit ? 3 : 2;

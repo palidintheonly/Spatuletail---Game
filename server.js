@@ -1702,7 +1702,11 @@ function processAttack(game, attackerId, row, col) {
     attacker.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: true
+      sunk: result.sunk,
+      ship: result.ship?.type || null,
+      allSunk: result.allSunk,
+      enemy: true,
+      isAttacker: true
     });
   }
 
@@ -1710,7 +1714,11 @@ function processAttack(game, attackerId, row, col) {
     defender.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: false
+      sunk: result.sunk,
+      ship: result.ship?.type || null,
+      allSunk: result.allSunk,
+      enemy: false,
+      isAttacker: false
     });
   }
 
