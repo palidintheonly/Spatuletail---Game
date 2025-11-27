@@ -232,6 +232,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+    pointer-events: none; /* Prevent status banner from blocking board clicks */
 }
 
 .status-message.spectator {

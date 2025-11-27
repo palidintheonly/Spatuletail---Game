@@ -1282,6 +1282,20 @@ io.on('connection', (socket) => {
 
     // Offline mode: create game with bot (one at a time per player)
     if (mode === 'offline') {
+      // If this socket already had an offline game, clean it up first
+      const existingIdx = activeOfflineGames.findIndex(g =>
+        g.player1.id === socket.id || g.player2.id === socket.id
+      );
+      if (existingIdx !== -1) {
+        const oldGame = activeOfflineGames[existingIdx];
+        Logger.warn('offline', 'Replacing existing offline game for socket', {
+          socketId: socket.id,
+          oldGameId: oldGame.id
+        });
+        clearTimeout(oldGame.timer);
+        activeOfflineGames.splice(existingIdx, 1);
+      }
+
       Logger.info('offline', `Starting offline game for ${socket.playerName}`);
       const bot = createBot();
       const game = new BattleshipGame(

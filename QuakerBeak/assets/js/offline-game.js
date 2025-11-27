@@ -419,6 +419,11 @@ socket.on('attackResult', (data) => {
     } else {
       updateStatusMessage('AI missed!');
     }
+
+    // Give control back to the player after the AI completes its shot
+    isMyTurn = true;
+    updateStatusMessage('Your turn - Attack AI fleet!');
+    startTimer();
   }
 });
 
