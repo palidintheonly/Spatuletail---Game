@@ -14,9 +14,9 @@
 # ----------------------------------------
 # Environment & Secrets (NEVER COMMIT!)
 # ----------------------------------------
-.env
-.env.local
-.env.*.local
+.egret.env
+.egret.env.local
+.egret.env.*.local
 *.pem
 *.key
 *.cert
@@ -39,6 +39,7 @@ pnpm-lock.yaml
 # ----------------------------------------
 *.tgz
 package.json.backup
+package-tern.json
 
 # ----------------------------------------
 # Logs
@@ -112,7 +113,9 @@ tmp/
 # Keep These Files (Public Templates)
 # ----------------------------------------
 # These should be committed:
-# - example.env
+# - egret.env
 # - CONFIGURATION.md
 # - README.md
 # - package.json
+Kea/kea-profiles.json
+Kea/kea-sessions.json

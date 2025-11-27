@@ -1,24 +1,25 @@
 // ========================================
 // ENVIRONMENT CONFIGURATION
 // ========================================
-// Check if .env file exists
+// Check if .egret.env file exists
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
-const envPath = path.join(__dirname, '.env');
+const envPath = path.join(__dirname, '.egret.env');
 if (!fs.existsSync(envPath)) {
-  console.error('\x1b[1m\x1b[31m[FATAL ERROR] .env file not found!\x1b[0m');
-  console.error('\x1b[33mPlease copy example.env to .env and configure your settings.\x1b[0m');
-  console.error('\x1b[33mCommand: cp example.env .env\x1b[0m');
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] .egret.env file not found!\x1b[0m');
+  console.error('\x1b[33mPlease copy egret.env to .egret.env and configure your settings.\x1b[0m');
+  console.error('\x1b[33mCommand: cp egret.env .egret.env\x1b[0m');
   process.exit(1);
 }
 
 // Load environment variables
 const dotenv = require('dotenv');
-const result = dotenv.config();
+const result = dotenv.config({ path: envPath });
 
 if (result.error) {
-  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Failed to parse .env file!\x1b[0m');
+  console.error('\x1b[1m\x1b[31m[FATAL ERROR] Failed to parse .egret.env file!\x1b[0m');
   console.error(result.error);
   process.exit(1);
 }
@@ -40,7 +41,7 @@ if (missingVars.length > 0) {
   missingVars.forEach(varName => {
     console.error(`  \x1b[31m- ${varName}\x1b[0m`);
   });
-  console.error('\x1b[33mPlease check your .env file against example.env\x1b[0m');
+  console.error('\x1b[33mPlease check your .egret.env file against egret.env\x1b[0m');
   process.exit(1);
 }
 
@@ -55,7 +56,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 // ========================================
-// CONFIGURATION FROM .ENV
+// CONFIGURATION FROM .EGRET.ENV
 // ========================================
 // Server Configuration
 const PORT = parseInt(process.env.PORT) || 3010;
@@ -139,6 +140,11 @@ const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.jso
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
 
+// Kea directory for simple profile storage
+const KEA_DIR = path.join(__dirname, 'Kea');
+const KEA_PROFILE_PATH = path.join(KEA_DIR, 'kea-profiles.json');
+const KEA_SESSIONS_PATH = path.join(KEA_DIR, 'kea-sessions.json');
+
 // Server Logger with ANSI colors (Google style)
 const Logger = {
   colors: {
@@ -169,6 +175,30 @@ const Logger = {
   timer(category, message, data) { this.log('timer', category, message, data); },
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
+
+// Curated rare bird avatars for profile selection
+const KEA_AVATARS = [
+  {
+    id: 'resplendent-quetzal',
+    name: 'Resplendent Quetzal',
+    image: '/assets/avatars/quetzal.jpg'
+  },
+  {
+    id: 'shoebill',
+    name: 'Shoebill',
+    image: '/assets/avatars/shoebill.jpg'
+  },
+  {
+    id: 'philippine-eagle',
+    name: 'Philippine Eagle',
+    image: '/assets/avatars/philippine-eagle.jpg'
+  },
+  {
+    id: 'victoria-crowned-pigeon',
+    name: 'Victoria Crowned Pigeon',
+    image: '/assets/avatars/victoria-pigeon.jpg'
+  }
+];
 
 // Serve static assets from QuakerBeak directory
 app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
@@ -313,12 +343,30 @@ function ensureFileExists(filePath, defaultContent = '[]') {
 function readJSONFile(filePath, defaultValue = []) {
   try {
     if (fs.existsSync(filePath)) {
-      const data = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(data);
+        const raw = fs.readFileSync(filePath, 'utf8');
+        try {
+          return JSON.parse(raw);
+        } catch (innerErr) {
+          // Attempt recovery with trimmed content
+          const trimmed = raw.trim();
+          const parsed = JSON.parse(trimmed);
+          Logger.warn('fs', 'Recovered JSON after trim', { path: filePath });
+          return parsed;
+        }
     }
     return defaultValue;
   } catch (error) {
     Logger.error('fs', 'Error reading JSON file', { path: filePath, error: error.message });
+    // Attempt to repair file with defaultValue to keep system running
+    if (defaultValue !== undefined) {
+      try {
+        fs.writeFileSync(filePath, JSON.stringify(defaultValue, null, 2), 'utf8');
+        Logger.warn('fs', 'Repaired JSON file with default value', { path: filePath });
+        return defaultValue;
+      } catch (writeErr) {
+        Logger.error('fs', 'Failed to repair JSON file', { path: filePath, error: writeErr.message });
+      }
+    }
     return defaultValue;
   }
 }
@@ -334,6 +382,68 @@ function writeJSONFile(filePath, data) {
   }
 }
 
+function hashPassword(password, salt = crypto.randomBytes(16).toString('hex')) {
+  const passwordHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+  return { salt, passwordHash };
+}
+
+function verifyPassword(password, user) {
+  if (!user || !user.salt || !user.passwordHash) return false;
+  const attempt = crypto.pbkdf2Sync(password, user.salt, 10000, 64, 'sha512').toString('hex');
+  return attempt === user.passwordHash;
+}
+
+function sanitizeProfile(profile) {
+  if (!profile) return null;
+  return {
+    username: profile.username,
+    avatar: profile.avatar || null,
+    createdAt: profile.createdAt
+  };
+}
+
+function loadProfiles() {
+  const profiles = readJSONFile(KEA_PROFILE_PATH, []);
+  return Array.isArray(profiles) ? profiles : [];
+}
+
+function saveProfiles(profiles) {
+  return writeJSONFile(KEA_PROFILE_PATH, profiles);
+}
+
+function loadSessions() {
+  const sessions = readJSONFile(KEA_SESSIONS_PATH, []);
+  return Array.isArray(sessions) ? sessions : [];
+}
+
+function saveSessions(sessions) {
+  return writeJSONFile(KEA_SESSIONS_PATH, sessions);
+}
+
+const activeProfileTokens = new Map(); // token -> { username, createdAt }
+
+function createSessionToken(username) {
+  const token = crypto.randomBytes(24).toString('hex');
+  activeProfileTokens.set(token, { username, createdAt: Date.now() });
+  saveSessions(Array.from(activeProfileTokens, ([tok, session]) => ({ token: tok, ...session })));
+  return token;
+}
+
+function getProfileFromToken(token) {
+  if (!token) return null;
+  const session = activeProfileTokens.get(token);
+  if (!session) return null;
+  const profiles = loadProfiles();
+  return profiles.find(p => p.username.toLowerCase() === session.username.toLowerCase()) || null;
+}
+
+function removeSessionToken(token) {
+  if (activeProfileTokens.has(token)) {
+    activeProfileTokens.delete(token);
+    saveSessions(Array.from(activeProfileTokens, ([tok, session]) => ({ token: tok, ...session })));
+  }
+}
+
 // Initialize waterbird directory and files
 Logger.info('init', 'Initializing waterbird directory and files...');
 ensureDirectoryExists(WATERBIRD_DIR);
@@ -341,6 +451,19 @@ ensureFileExists(ONLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
 Logger.success('init', 'Waterbird directory initialized');
+
+// Initialize Kea directory and profile store
+Logger.info('init', 'Initializing Kea directory and profile store...');
+ensureDirectoryExists(KEA_DIR);
+ensureFileExists(KEA_PROFILE_PATH, '[]');
+ensureFileExists(KEA_SESSIONS_PATH, '[]');
+const persistedSessions = loadSessions();
+persistedSessions.forEach(sess => {
+  if (sess && sess.token && sess.username) {
+    activeProfileTokens.set(sess.token, { username: sess.username, createdAt: sess.createdAt || Date.now() });
+  }
+});
+Logger.success('init', 'Kea directory initialized', { path: KEA_PROFILE_PATH, sessions: activeProfileTokens.size });
 
 // Game state - separate tracking for online and offline games
 let waitingPlayer = null;
@@ -766,7 +889,7 @@ class AIBot {
 }
 
 function createBot() {
-  // Use configured difficulty range from .env
+  // Use configured difficulty range from .egret.env
   const difficulty = Math.floor(Math.random() * (BOT_MAX_DIFFICULTY - BOT_MIN_DIFFICULTY + 1)) + BOT_MIN_DIFFICULTY;
   const name = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
 
@@ -1630,7 +1753,7 @@ function startTurnTimer(game) {
     game.player2.socket.emit('timerStart', { timeLeft });
   }
 
-  // If it's a bot's turn, make it attack after a delay (from .env config)
+  // If it's a bot's turn, make it attack after a delay (from .egret.env config)
   if (currentPlayer.isBot) {
     const delay = BOT_MIN_DELAY + Math.random() * (BOT_MAX_DELAY - BOT_MIN_DELAY);
     Logger.ai('bot', `Bot ${currentPlayer.name} will attack in ${Math.round(delay)}ms`);
@@ -1963,6 +2086,119 @@ function endGame(game) {
     mode
   });
 }
+
+// Kea Profile APIs (lightweight, local JSON-backed)
+app.get(`/api/${API_VERSION}/profile/avatars`, (req, res) => {
+  Logger.info('api', 'Avatar list requested');
+  res.json(KEA_AVATARS);
+});
+
+app.get(`/api/${API_VERSION}/profile/me`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  const profile = getProfileFromToken(token);
+
+  if (!profile) {
+    return res.json({ guest: true, user: null });
+  }
+
+  res.json({
+    guest: false,
+    user: sanitizeProfile(profile)
+  });
+});
+
+app.post(`/api/${API_VERSION}/profile/signup`, (req, res) => {
+  const { username, password, avatar } = req.body || {};
+  Logger.info('api', 'Signup attempt received', { username });
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const trimmedName = username.trim();
+  if (trimmedName.length < 3) {
+    return res.status(400).json({ error: 'Username must be at least 3 characters' });
+  }
+
+  const profiles = loadProfiles();
+  const existing = profiles.find(p => p.username.toLowerCase() === trimmedName.toLowerCase());
+  if (existing) {
+    return res.status(409).json({ error: 'Username is already taken' });
+  }
+
+  const { salt, passwordHash } = hashPassword(password);
+  const newProfile = {
+    username: trimmedName,
+    salt,
+    passwordHash,
+    avatar: avatar || null,
+    createdAt: new Date().toISOString()
+  };
+
+  profiles.push(newProfile);
+  saveProfiles(profiles);
+
+  const token = createSessionToken(trimmedName);
+  Logger.success('api', 'Signup successful', { username: trimmedName });
+  res.json({ success: true, token, user: sanitizeProfile(newProfile) });
+});
+
+app.post(`/api/${API_VERSION}/profile/login`, (req, res) => {
+  const { username, password } = req.body || {};
+  Logger.info('api', 'Login attempt received', { username });
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const trimmedName = username.trim();
+  const profiles = loadProfiles();
+  const user = profiles.find(p => p.username.toLowerCase() === trimmedName.toLowerCase());
+
+  if (!user || !verifyPassword(password, user)) {
+    Logger.warn('api', 'Login failed', { username });
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  const token = createSessionToken(user.username);
+  Logger.success('api', 'Login successful', { username: user.username });
+  res.json({ success: true, token, user: sanitizeProfile(user) });
+});
+
+app.post(`/api/${API_VERSION}/profile/logout`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  removeSessionToken(token);
+  Logger.info('api', 'Logout successful', { token: token ? 'cleared' : 'none' });
+  res.json({ success: true });
+});
+
+app.post(`/api/${API_VERSION}/profile/avatar`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  const { avatar } = req.body || {};
+  const profile = getProfileFromToken(token);
+
+  if (!profile) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  const avatarList = KEA_AVATARS.map(a => a.id);
+  if (!avatarList.includes(avatar)) {
+    return res.status(400).json({ error: 'Invalid avatar selection' });
+  }
+
+  const profiles = loadProfiles();
+  const idx = profiles.findIndex(p => p.username.toLowerCase() === profile.username.toLowerCase());
+  if (idx === -1) {
+    return res.status(404).json({ error: 'Profile not found' });
+  }
+
+  profiles[idx].avatar = avatar;
+  saveProfiles(profiles);
+
+  const updatedProfile = sanitizeProfile(profiles[idx]);
+  Logger.success('api', 'Avatar updated', { username: updatedProfile.username, avatar });
+  res.json({ success: true, user: updatedProfile });
+});
 
 // API Endpoints for Leaderboard
 app.get(`/api/${API_VERSION}/leaderboard/:mode`, (req, res) => {

@@ -31,7 +31,7 @@ function showHelp() {
   log('  spatuletail [command]\n', COLORS.reset);
   log('COMMANDS:', COLORS.bright + COLORS.yellow);
   log('  start     Start the game server (default)', COLORS.reset);
-  log('  setup     Run setup wizard to configure .env', COLORS.reset);
+  log('  setup     Run setup wizard to configure .egret.env', COLORS.reset);
   log('  help      Show this help message\n', COLORS.reset);
   log('EXAMPLES:', COLORS.bright + COLORS.yellow);
   log('  spatuletail           # Start the server', COLORS.reset);
@@ -41,7 +41,7 @@ function showHelp() {
 
 async function runSetup() {
   const packageDir = path.join(__dirname, '..');
-  const setupPath = path.join(packageDir, 'setup.js');
+  const setupPath = path.join(packageDir, 'sparrow.js');
 
   if (!fs.existsSync(setupPath)) {
     log('✗ Setup script not found!', COLORS.red);
@@ -62,19 +62,19 @@ async function runSetup() {
 
 async function startServer() {
   const packageDir = path.join(__dirname, '..');
-  const serverPath = path.join(packageDir, 'server.js');
-  const envPath = path.join(packageDir, '.env');
+  const serverPath = path.join(packageDir, 'osprey.js');
+  const envPath = path.join(packageDir, '.egret.env');
 
   showBanner();
 
-  // Check if .env exists in package directory
+  // Check if .egret.env exists in package directory
   if (!fs.existsSync(envPath)) {
-    log('⚠ No .env file found in package directory!', COLORS.yellow);
+    log('⚠ No .egret.env file found in package directory!', COLORS.yellow);
     log('  Expected location: ' + envPath, COLORS.cyan);
     log('Running setup wizard first...\n', COLORS.blue);
 
     await new Promise((resolve) => {
-      const setup = spawn('node', [path.join(__dirname, '..', 'setup.js')], {
+      const setup = spawn('node', [path.join(__dirname, '..', 'sparrow.js')], {
         stdio: 'inherit',
         cwd: packageDir
       });
@@ -84,15 +84,15 @@ async function startServer() {
 
     // Check again after setup
     if (!fs.existsSync(envPath)) {
-      log('\n✗ Setup did not create .env file.', COLORS.red);
+      log('\n✗ Setup did not create .egret.env file.', COLORS.red);
       log('Please run: spatuletail setup\n', COLORS.yellow);
-      log('Or manually copy example.env to .env in: ' + packageDir + '\n', COLORS.yellow);
+      log('Or manually copy egret.env to .egret.env in: ' + packageDir + '\n', COLORS.yellow);
       process.exit(1);
     }
 
     log('\n' + '─'.repeat(60) + '\n', COLORS.cyan);
   } else {
-    log('✓ Using .env from: ' + envPath + '\n', COLORS.green);
+    log('✓ Using .egret.env from: ' + envPath + '\n', COLORS.green);
   }
 
   log('🚀 Starting Spatuletail Game Server...\n', COLORS.bright + COLORS.green);

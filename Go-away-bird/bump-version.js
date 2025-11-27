@@ -41,7 +41,7 @@ function bumpVersion(version, type) {
 try {
   const root = path.join(__dirname, '..');
   const packagePath = path.join(root, 'package.json');
-  const githubPackagePath = path.join(root, 'package-github.json');
+  const githubPackagePath = path.join(root, 'albatross.json');
 
   const bumpType = process.argv[2] || 'patch';
 
@@ -74,7 +74,7 @@ try {
   fs.writeFileSync(githubPackagePath, JSON.stringify(githubPkg, null, 2) + '\n');
 
   log('✓ Updated package.json', COLORS.green);
-  log('✓ Updated package-github.json\n', COLORS.green);
+  log('✓ Updated albatross.json\n', COLORS.green);
 
   log('='.repeat(60), COLORS.cyan);
   log(`  Version bumped: ${oldVersion} → ${newVersion}`, COLORS.bright + COLORS.green);

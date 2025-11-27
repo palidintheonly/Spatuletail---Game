@@ -69,8 +69,8 @@ spatuletail help   # Show help
 ```bash
 npm install spatuletail-game
 cd node_modules/spatuletail-game
-cp example.env .env
-# Edit .env with your configuration
+cp egret.env .egret.env
+# Edit .egret.env with your configuration
 npm start
 ```
 
@@ -82,8 +82,8 @@ For development or customization:
 git clone https://github.com/palidintheonly/Spatuletail---Game.git
 cd Spatuletail---Game
 npm install
-cp example.env .env
-# Edit .env with your configuration
+cp egret.env .egret.env
+# Edit .egret.env with your configuration
 npm start
 ```
 
@@ -95,12 +95,12 @@ npm start
 
 Before running the server, configure your environment variables:
 
-1. **Copy the example environment file:**
+1. **Copy the egret environment file:**
    ```bash
-   cp example.env .env
-   ```
+   cp egret.env .egret.env
+```
 
-2. **Edit `.env` and configure required variables:**
+2. **Edit `.egret.env` and configure required variables:**
 
    | Variable | Default | Description |
    |----------|---------|-------------|
@@ -112,7 +112,7 @@ Before running the server, configure your environment variables:
    | `MAX_ROUNDS` | `3` | Maximum game rounds |
    | `TURN_TIMER_SECONDS` | `30` | Turn timer duration |
 
-   > 💡 **Tip:** See `example.env` for all available configuration options
+   > 💡 **Tip:** See `egret.env` for all available configuration options
 
 ---
 
@@ -146,12 +146,12 @@ Spatuletail-Game/
 ├── waterbird/           # Game data (leaderboards, logs)
 ├── secretarybird/       # Legal pages (Terms, Privacy)
 ├── Go-away-bird/        # Publishing & version management scripts
-├── bin/                 # CLI executable (spatuletail command)
-├── server.js            # Main server file
-├── setup.js             # Interactive setup wizard
+├── robin/               # CLI executable (spatuletail command)
+├── osprey.js            # Main server file
+├── sparrow.js           # Interactive setup wizard
 ├── package.json         # NPM package config
-├── package-github.json  # GitHub Packages config
-├── example.env          # Environment template
+├── albatross.json       # GitHub Packages config
+├── egret.env            # Environment template
 ├── .npmrc               # NPM authentication (git-ignored)
 ├── LICENSE              # License information
 ├── TERMS.md             # Terms of Service (GitHub)
@@ -234,7 +234,7 @@ This game includes built-in legal documentation:
 
 ### Version Management
 
-Bump version numbers automatically in both `package.json` and `package-github.json`:
+Bump version numbers automatically in both `package.json` and `albatross.json`:
 
 ```bash
 npm run version:patch  # Bug fixes (3.0.0 → 3.0.1)

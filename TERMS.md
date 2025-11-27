@@ -165,7 +165,7 @@ All copies, modifications, or derivative works must:
 
 You are permitted to:
 - Download and run the Game on your own server
-- Modify configuration settings via `.env` file
+- Modify configuration settings via `.egret.env` file
 - Customize game parameters (difficulty, timers, etc.)
 - Control your own data collection and privacy settings
 

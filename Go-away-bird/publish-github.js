@@ -19,8 +19,8 @@ function log(message, color = COLORS.reset) {
 try {
   const root = path.join(__dirname, '..');
   const packagePath = path.join(root, 'package.json');
-  const githubPackagePath = path.join(root, 'package-github.json');
-  const backupPath = path.join(root, 'package-npm.json');
+  const githubPackagePath = path.join(root, 'albatross.json');
+  const backupPath = path.join(root, 'package-tern.json');
 
   log('\n' + '='.repeat(60), COLORS.cyan);
   log('  Publishing to GitHub Packages', COLORS.green);
@@ -29,12 +29,12 @@ try {
   // Step 1: Backup current package.json
   log('1. Backing up package.json...', COLORS.blue);
   fs.copyFileSync(packagePath, backupPath);
-  log('   ✓ Created backup: package-npm.json\n', COLORS.green);
+  log('   ✓ Created backup: package-tern.json\n', COLORS.green);
 
   // Step 2: Copy GitHub package config
   log('2. Using GitHub package configuration...', COLORS.blue);
   fs.copyFileSync(githubPackagePath, packagePath);
-  log('   ✓ Switched to package-github.json\n', COLORS.green);
+  log('   ✓ Switched to albatross.json\n', COLORS.green);
 
   // Step 3: Publish to GitHub
   log('3. Publishing to GitHub Packages...', COLORS.blue);
@@ -57,7 +57,7 @@ try {
   // Attempt to restore package.json
   try {
     const root = path.join(__dirname, '..');
-    const backupPath = path.join(root, 'package-npm.json');
+    const backupPath = path.join(root, 'package-tern.json');
     if (fs.existsSync(backupPath)) {
       fs.copyFileSync(backupPath, path.join(root, 'package.json'));
       fs.unlinkSync(backupPath);
