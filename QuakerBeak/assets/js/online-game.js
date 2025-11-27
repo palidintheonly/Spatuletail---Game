@@ -70,6 +70,16 @@ const SHIP_TYPES = [
   { name: 'Destroyer', length: 2, icon: 'D' }
 ];
 
+function showOnlineDisabled(message) {
+  gameState = 'disabled';
+  stopTimer();
+  const overlay = document.getElementById('online-disabled-overlay');
+  const msgEl = document.getElementById('online-disabled-message');
+  if (overlay) overlay.classList.add('active');
+  if (msgEl && message) msgEl.textContent = message;
+  updateStatusMessage(message || 'Online mode is temporarily unavailable.');
+}
+
 // Heartbeat system
 setInterval(() => {
   if (socket.connected) {
@@ -352,6 +362,11 @@ socket.on('connect_timeout', () => {
   Logger.error('socket', 'Connection timeout');
   document.getElementById('loading-screen').classList.remove('active');
   updateStatusMessage('⚠️ Connection timeout. Please refresh the page.');
+});
+
+socket.on('onlineDisabled', (data) => {
+  Logger.warn('online', 'Online mode disabled by server', data);
+  showOnlineDisabled(data?.message);
 });
 
 // Fallback timeout to remove loading screen after 10 seconds

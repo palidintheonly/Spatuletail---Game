@@ -114,12 +114,13 @@ const ENABLE_OFFLINE_MODE = process.env.ENABLE_OFFLINE_MODE !== 'false';
 const ENABLE_ONLINE_MODE = process.env.ENABLE_ONLINE_MODE !== 'false';
 const ENABLE_LEADERBOARDS = process.env.ENABLE_LEADERBOARDS !== 'false';
 const ENABLE_GAME_STATS = process.env.ENABLE_GAME_STATS !== 'false';
+const ONLINE_PLAY_DISABLED = true; // Temporary maintenance flag for online mode
 
 // API Configuration
 const API_VERSION = process.env.API_VERSION || 'v1';
 const API_FOOTER_ENABLED = process.env.API_FOOTER_ENABLED !== 'false';
 const API_FOOTER_NAME = process.env.API_FOOTER_NAME || 'Spatuletail Game API';
-const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '2.3.5';
+const API_FOOTER_VERSION = process.env.API_FOOTER_VERSION || '3.0.0';
 const API_FOOTER_AUTHOR = process.env.API_FOOTER_AUTHOR || 'Spatuletail Development Team';
 const API_FOOTER_DOCS_URL = process.env.API_FOOTER_DOCS_URL || 'https://github.com/spatuletail/game';
 const API_FOOTER_TIMESTAMP = process.env.API_FOOTER_TIMESTAMP !== 'false';
@@ -1016,6 +1017,7 @@ class BattleshipGame {
 
   nextRound() {
     this.currentRound++;
+    this.turnNumber = 1;
     Logger.game('round', `Starting round ${this.currentRound}`, {
       player1: this.player1.name,
       player2: this.player2.name,
@@ -1077,6 +1079,10 @@ function sendSpectatorGameState(socket, game) {
 }
 
 function startNextOnlineGame() {
+  if (ONLINE_PLAY_DISABLED) {
+    Logger.warn('matchmaking', 'Online play is temporarily disabled - skipping queue');
+    return;
+  }
   if (spectators.length >= 2 && !activeOnlineGame) {
     Logger.info('matchmaking', 'Starting next online game from spectator queue', { spectatorCount: spectators.length });
 
@@ -1332,6 +1338,15 @@ io.on('connection', (socket) => {
         Logger.info('spectate', `${socket.playerName} found no active games`);
       }
       return;
+    }
+
+    // Online mode temporarily disabled
+    if (mode === 'online' || mode === undefined) {
+      if (ONLINE_PLAY_DISABLED) {
+        Logger.warn('online', 'Online play request rejected - disabled', { socketId: socket.id, playerName: socket.playerName });
+        socket.emit('onlineDisabled', { message: 'Online battles are temporarily disabled. Please play Offline mode while we update servers.' });
+        return;
+      }
     }
 
     // Offline mode: create game with bot (one at a time per player)
@@ -1895,7 +1910,7 @@ function handleForfeit(game, playerId) {
       winner.socket.emit('gameOver', {
         winner: winnerId,
         reason: `${loser.name} forfeited twice in a row`,
-        scores: game.scores
+        scores: formatScoresFor(game, winner.id)
       });
     }
 
@@ -1903,7 +1918,7 @@ function handleForfeit(game, playerId) {
       loser.socket.emit('gameOver', {
         winner: winnerId,
         reason: 'You forfeited twice in a row',
-        scores: game.scores
+        scores: formatScoresFor(game, loser.id)
       });
     }
 
@@ -1990,14 +2005,16 @@ function endGame(game) {
   if (!game.player1.isBot && game.player1.socket) {
     game.player1.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: formatScoresFor(game, game.player1.id),
+      reason: winner ? `${winner.name} wins!` : 'Game tied'
     });
   }
 
   if (!game.player2.isBot && game.player2.socket) {
     game.player2.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: formatScoresFor(game, game.player2.id),
+      reason: winner ? `${winner.name} wins!` : 'Game tied'
     });
   }
 

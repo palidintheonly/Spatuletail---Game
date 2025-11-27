@@ -60,6 +60,7 @@ let isMyTurn = false;
 let timeLeft = 30;
 let timerInterval = null;
 let aiDifficulty = 2; // Default: Medium
+let enemyFleetStatus = [];
 
 const SHIP_TYPES = [
   { name: 'Carrier', length: 5, icon: 'C' },
@@ -70,6 +71,48 @@ const SHIP_TYPES = [
 ];
 
 const DIFFICULTY_NAMES = ['', 'Easy', 'Medium', 'Hard', 'Extreme'];
+
+function resetEnemyLegend() {
+  enemyFleetStatus = SHIP_TYPES.map(ship => ({
+    name: ship.name,
+    icon: ship.icon,
+    length: ship.length,
+    hits: 0
+  }));
+  renderEnemyLegend();
+}
+
+function renderEnemyLegend() {
+  const list = document.getElementById('enemy-legend-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  enemyFleetStatus.forEach(ship => {
+    const chip = document.createElement('div');
+    chip.className = 'legend-chip';
+
+    const icon = document.createElement('span');
+    icon.className = 'ship-icon';
+    icon.textContent = ship.icon;
+
+    const name = document.createElement('span');
+    name.className = 'ship-name';
+    name.textContent = ship.name;
+
+    const hits = document.createElement('div');
+    hits.className = 'ship-hits';
+    for (let i = 0; i < ship.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'hit-dot' + (i < ship.hits ? ' destroyed' : '');
+      hits.appendChild(dot);
+    }
+
+    chip.appendChild(icon);
+    chip.appendChild(name);
+    chip.appendChild(hits);
+    list.appendChild(chip);
+  });
+}
 
 // Heartbeat system
 setInterval(() => {
@@ -404,6 +447,11 @@ socket.on('attackResult', (data) => {
     updateCell('enemy', row, col, sunk ? 'sunk' : (hit ? 'hit' : 'miss'));
 
     if (hit) {
+      const shipStatus = ship ? enemyFleetStatus.find(s => s.name.toLowerCase() === ship.toLowerCase()) : null;
+      if (shipStatus) {
+        shipStatus.hits = Math.min(shipStatus.length, shipStatus.hits + 1);
+        renderEnemyLegend();
+      }
       sounds.hit.play();
       if (sunk) {
         Logger.success('game', `AI ${ship} destroyed!`);
@@ -494,6 +542,7 @@ function resetBoard() {
   });
 
   myShips = [];
+  resetEnemyLegend();
   document.querySelectorAll('.ship-item').forEach(item => {
     item.classList.remove('destroyed');
     item.querySelectorAll('.health-cell').forEach(cell => cell.classList.remove('sunk'));
@@ -599,4 +648,5 @@ window.addEventListener('load', () => {
   Logger.info('init', 'Initializing 2D Battleship AI training (10×10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
+  resetEnemyLegend();
 });

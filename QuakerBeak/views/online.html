@@ -18,6 +18,14 @@
             <div class="loading-text">Connecting to Battle Server...</div>
         </div>
 
+        <div id="online-disabled-overlay" class="mode-disabled-overlay">
+            <div class="mode-disabled-card">
+                <h1>Online Battles Disabled</h1>
+                <p id="online-disabled-message">Online mode is temporarily unavailable. Please try Offline while we update servers.</p>
+                <button class="btn" onclick="window.location.href='/'">Return to Menu</button>
+            </div>
+        </div>
+
         <div id="hud">
             <div class="hud-top">
                 <button id="back-btn" class="hud-button">← Back to Menu</button>
@@ -26,6 +34,30 @@
                     <span id="player-score">Score: 0</span>
                 </div>
                 <div id="timer" class="timer">30</div>
+            </div>
+
+            <div class="legend-stack">
+                <div class="legend-bar status-legend">
+                    <div class="legend-title">Shot Markers</div>
+                    <div class="legend-list">
+                        <div class="legend-chip status-hit">
+                            <span class="legend-icon">⌖</span>
+                            <span class="legend-label">Direct Hit</span>
+                        </div>
+                        <div class="legend-chip status-miss">
+                            <span class="legend-icon">✕</span>
+                            <span class="legend-label">Miss</span>
+                        </div>
+                        <div class="legend-chip status-sunk">
+                            <span class="legend-icon">⦿</span>
+                            <span class="legend-label">Ship Sunk</span>
+                        </div>
+                        <div class="legend-chip status-ready">
+                            <span class="legend-icon">▢</span>
+                            <span class="legend-label">Unknown</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="hud-middle">
