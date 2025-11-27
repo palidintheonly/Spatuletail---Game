@@ -154,6 +154,7 @@ function onCellClick(boardType, row, col) {
   if (gameState === 'placing' && boardType === 'my') {
     placeShip(row, col);
   } else if (gameState === 'playing' && isMyTurn && boardType === 'enemy' && enemyBoard[row][col] === 0) {
+    stopTimer(); // Prevent countdown from firing again while waiting for server
     socket.emit('attack', { row, col });
     isMyTurn = false;
     updateStatusMessage('Attack sent! Waiting for result...');
@@ -512,12 +513,19 @@ function resetBoard() {
 }
 
 function startTimer() {
+  if (!isMyTurn) return;
+  stopTimer();
   timeLeft = 30;
   const timerEl = document.getElementById('timer');
   timerEl.textContent = timeLeft;
   timerEl.classList.remove('warning');
 
   timerInterval = setInterval(() => {
+    if (!isMyTurn) {
+      stopTimer();
+      return;
+    }
+
     timeLeft--;
     timerEl.textContent = timeLeft;
 
@@ -528,6 +536,7 @@ function startTimer() {
     if (timeLeft <= 0) {
       stopTimer();
       // Auto-attack random cell
+      if (!isMyTurn) return;
       const available = [];
       for (let r = 0; r < 10; r++) {
         for (let c = 0; c < 10; c++) {
@@ -536,7 +545,9 @@ function startTimer() {
       }
       if (available.length > 0) {
         const target = available[Math.floor(Math.random() * available.length)];
+        isMyTurn = false;
         socket.emit('attack', target);
+        updateStatusMessage('Attack sent! Waiting for result...');
       }
     }
   }, 1000);
@@ -545,6 +556,7 @@ function startTimer() {
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
+    timerInterval = null;
     document.getElementById('timer').classList.remove('warning');
   }
 }

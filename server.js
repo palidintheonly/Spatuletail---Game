@@ -100,6 +100,7 @@ const BOT_MAX_DELAY = (parseFloat(process.env.BOT_MAX_DELAY_SECONDS) || 2.5) * 1
 const MAX_GAME_LOGS = parseInt(process.env.MAX_GAME_LOGS) || 2000;
 const MAX_EVENT_LOGS = parseInt(process.env.MAX_EVENT_LOGS) || 2000;
 const MAX_LEADERBOARD_ENTRIES = parseInt(process.env.MAX_LEADERBOARD_ENTRIES) || 100;
+const MAX_TURN_LOGS = parseInt(process.env.MAX_TURN_LOGS) || 5000;
 const ENABLE_CONSOLE_LOGGING = process.env.ENABLE_CONSOLE_LOGGING !== 'false';
 const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
 
@@ -138,6 +139,7 @@ const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
 const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.json');
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
+const TURN_LOG_PATH = path.join(WATERBIRD_DIR, 'turns-db.json');
 
 // Server Logger with ANSI colors (Google style)
 const Logger = {
@@ -340,6 +342,7 @@ ensureDirectoryExists(WATERBIRD_DIR);
 ensureFileExists(ONLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
+ensureFileExists(TURN_LOG_PATH, '[]');
 Logger.success('init', 'Waterbird directory initialized');
 
 // Game state - separate tracking for online and offline games
@@ -787,6 +790,7 @@ class BattleshipGame {
     this.maxRounds = 3;
     this.scores = { [player1.id]: 0, [player2.id]: 0 };
     this.currentTurn = player1.id;
+    this.turnNumber = 1;
     this.boards = {
       [player1.id]: this.createBoard(),
       [player2.id]: this.createBoard()
@@ -1033,6 +1037,7 @@ class BattleshipGame {
       [this.player1.id]: 0,
       [this.player2.id]: 0
     };
+    this.turnNumber = 1;
   }
 
   getWinner() {
@@ -1211,6 +1216,48 @@ function logGameEvent(eventType, data) {
 
   writeJSONFile(GAME_LOG_PATH, gameLogs);
   Logger.info('auto-log', `Event logged: ${eventType}`, data);
+}
+
+function formatScoresFor(game, viewerId) {
+  const opponentId = viewerId === game.player1.id ? game.player2.id : game.player1.id;
+  return {
+    you: game.scores[viewerId] || 0,
+    opponent: game.scores[opponentId] || 0
+  };
+}
+
+// Local turn database (persistent JSON)
+function logTurnRecord(game, attackerId, row, col, result, nextTurnId) {
+  const attacker = attackerId === game.player1.id ? game.player1 : game.player2;
+  const defender = result.defenderId === game.player1.id ? game.player1 : game.player2;
+
+  const turnEntry = {
+    id: `${game.id}-${game.turnNumber}-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    gameId: game.id,
+    mode: game.mode,
+    round: game.currentRound,
+    turn: game.turnNumber,
+    attacker: { id: attacker.id, name: attacker.name, isBot: !!attacker.isBot },
+    defender: { id: defender.id, name: defender.name, isBot: !!defender.isBot },
+    position: { row, col },
+    hit: result.hit,
+    sunk: result.sunk,
+    ship: result.ship ? result.ship.type : null,
+    allSunk: result.allSunk,
+    nextTurn: nextTurnId
+  };
+
+  const turnLogsRaw = readJSONFile(TURN_LOG_PATH, []);
+  const turnLogs = Array.isArray(turnLogsRaw) ? turnLogsRaw : [];
+  turnLogs.push(turnEntry);
+
+  if (turnLogs.length > MAX_TURN_LOGS) {
+    turnLogs.splice(0, turnLogs.length - MAX_TURN_LOGS);
+  }
+
+  writeJSONFile(TURN_LOG_PATH, turnLogs);
+  Logger.info('turn-db', 'Turn recorded to local DB', { gameId: game.id, turn: game.turnNumber, attacker: attacker.name, hit: result.hit });
 }
 
 // Live stats update
@@ -1728,6 +1775,10 @@ function processAttack(game, attackerId, row, col) {
     mode: game.mode
   });
 
+  const nextTurnId = result.allSunk ? null : (attackerId === game.player1.id ? game.player2.id : game.player1.id);
+  logTurnRecord(game, attackerId, row, col, result, nextTurnId);
+  game.turnNumber++;
+
   if (!attacker.isBot && attacker.socket) {
     attacker.socket.emit('attackResult', {
       row, col,
@@ -1761,7 +1812,7 @@ function processAttack(game, attackerId, row, col) {
       if (!game.player1.isBot && game.player1.socket) {
         game.player1.socket.emit('roundEnd', {
           winner: attackerId,
-          scores: game.scores,
+          scores: formatScoresFor(game, game.player1.id),
           nextRound: game.currentRound + 1
         });
       }
@@ -1769,7 +1820,7 @@ function processAttack(game, attackerId, row, col) {
       if (!game.player2.isBot && game.player2.socket) {
         game.player2.socket.emit('roundEnd', {
           winner: attackerId,
-          scores: game.scores,
+          scores: formatScoresFor(game, game.player2.id),
           nextRound: game.currentRound + 1
         });
       }
