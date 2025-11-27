@@ -180,22 +180,22 @@ const BLUEJAY_AVATARS = [
   {
     id: 'resplendent-quetzal',
     name: 'Resplendent Quetzal',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Pharomachrus_mocinno_-Costa_Rica-8.jpg'
+    image: '/assets/avatars/quetzal.jpg'
   },
   {
     id: 'shoebill',
     name: 'Shoebill',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Balaeniceps_rex_-_Pair.jpg'
+    image: '/assets/avatars/shoebill.jpg'
   },
   {
     id: 'philippine-eagle',
     name: 'Philippine Eagle',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Philippine_Eagle_front_view.jpg'
+    image: '/assets/avatars/philippine-eagle.jpg'
   },
   {
     id: 'victoria-crowned-pigeon',
     name: 'Victoria Crowned Pigeon',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Victoria_crowned_pigeon_-closeup-8a.jpg'
+    image: '/assets/avatars/victoria-pigeon.jpg'
   }
 ];
 
@@ -2129,6 +2129,34 @@ app.post(`/api/${API_VERSION}/profile/logout`, (req, res) => {
     Logger.info('api', 'Logout successful', { token });
   }
   res.json({ success: true });
+});
+
+app.post(`/api/${API_VERSION}/profile/avatar`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  const { avatar } = req.body || {};
+  const profile = getProfileFromToken(token);
+
+  if (!profile) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  const avatarList = BLUEJAY_AVATARS.map(a => a.id);
+  if (!avatarList.includes(avatar)) {
+    return res.status(400).json({ error: 'Invalid avatar selection' });
+  }
+
+  const profiles = loadProfiles();
+  const idx = profiles.findIndex(p => p.username.toLowerCase() === profile.username.toLowerCase());
+  if (idx === -1) {
+    return res.status(404).json({ error: 'Profile not found' });
+  }
+
+  profiles[idx].avatar = avatar;
+  saveProfiles(profiles);
+
+  const updatedProfile = sanitizeProfile(profiles[idx]);
+  Logger.success('api', 'Avatar updated', { username: updatedProfile.username, avatar });
+  res.json({ success: true, user: updatedProfile });
 });
 
 // API Endpoints for Leaderboard

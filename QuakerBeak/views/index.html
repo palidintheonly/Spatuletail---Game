@@ -8,11 +8,11 @@
     <title>Spatuletail - Offline AI Battle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-colour: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         :root {
-            --primary-colour: #00d4ff;
-            --secondary-colour: #ff6b6b;
-            --accent-colour: #ffd93d;
+            --primary-color: #00d4ff;
+            --secondary-color: #ff6b6b;
+            --accent-color: #ffd93d;
             --dark-bg: #0a0e27;
             --card-bg: rgba(20, 25, 50, 0.95);
             --glass-bg: rgba(255, 255, 255, 0.05);
@@ -44,18 +44,19 @@
         .header h1 {
             font-size: clamp(2rem, 7vw, 3.6rem);
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary-colour), var(--accent-colour));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
-            -webkit-text-fill-colour: transparent;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-shadow: var(--glow-primary);
             letter-spacing: 3px;
             margin-bottom: 12px;
         }
-        .header p { colour: rgba(255, 255, 255, 0.72); font-size: 1.05rem; }
+        .header p { color: rgba(255, 255, 255, 0.72); font-size: 1.05rem; }
         .game-modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
         .mode-card {
             background: var(--card-bg);
-            border: 2px solid var(--secondary-colour);
+            border: 2px solid var(--secondary-color);
             border-radius: 22px;
             padding: 38px 28px;
             cursor: pointer;
@@ -65,11 +66,11 @@
         }
         .mode-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--glow-secondary), 0 18px 48px rgba(0,0,0,0.45); }
         .mode-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
-        .mode-title { font-size: 1.8rem; font-weight: 800; colour: var(--secondary-colour); margin-bottom: 10px; }
-        .mode-description { colour: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 16px; }
+        .mode-title { font-size: 1.8rem; font-weight: 800; color: var(--secondary-color); margin-bottom: 10px; }
+        .mode-description { color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 16px; }
         .mode-features { list-style: none; margin-bottom: 22px; }
-        .mode-features li { padding: 7px 0; colour: rgba(255,255,255,0.7); font-size: 0.95rem; }
-        .mode-features li::before { content: '- '; colour: var(--secondary-colour); font-weight: 700; margin-right: 6px; }
+        .mode-features li { padding: 7px 0; color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+        .mode-features li::before { content: '- '; color: var(--secondary-color); font-weight: 700; margin-right: 6px; }
         .play-button {
             width: 100%;
             padding: 14px 26px;
@@ -79,8 +80,8 @@
             border-radius: 14px;
             cursor: pointer;
             transition: all 0.25s ease;
-            background: linear-gradient(135deg, var(--secondary-colour), #c0392b);
-            colour: #fff;
+            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+            color: #fff;
             box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
             text-transform: uppercase;
             letter-spacing: 1.6px;
@@ -97,11 +98,11 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
         .stat-item { text-align: center; }
-        .stat-value { font-size: 2rem; font-weight: 800; colour: var(--primary-colour); display: block; }
-        .stat-label { font-size: 0.95rem; colour: rgba(255,255,255,0.65); margin-top: 5px; }
-        .loading { position: fixed; inset: 0; background: var(--dark-bg); display: flex; justify-content: centre; align-items: centre; z-index: 9999; opacity: 1; transition: opacity 0.5s; }
+        .stat-value { font-size: 2rem; font-weight: 800; color: var(--primary-color); display: block; }
+        .stat-label { font-size: 0.95rem; color: rgba(255,255,255,0.65); margin-top: 5px; }
+        .loading { position: fixed; inset: 0; background: var(--dark-bg); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 1; transition: opacity 0.5s; }
         .loading.hidden { opacity: 0; pointer-events: none; }
-        .spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1); border-top-colour: var(--primary-colour); border-radius: 50%; animation: spin 1s linear infinite; }
+        .spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1); border-top-color: var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-40px);} to { opacity: 1; transform: translateY(0);} }
         @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
         @keyframes spin { to { transform: rotate(360deg);} }
@@ -320,9 +321,15 @@
                 Password
                 <input type="password" name="password" autocomplete="new-password" required>
             </label>
-            <div class="avatar-grid" id="avatar-grid"></div>
             <button type="submit" class="profile-primary">Create Account</button>
         </form>
+        <div id="avatar-picker-section" class="hidden">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; margin-bottom:8px;">
+                <div class="profile-subtext" style="margin:0;">Select a rare bird avatar</div>
+                <button type="button" class="profile-secondary hidden" id="save-avatar-btn" style="width:auto; padding:10px 14px;">Save Avatar</button>
+            </div>
+            <div class="avatar-grid" id="avatar-grid"></div>
+        </div>
         <div class="profile-feedback" id="profile-feedback"></div>
         <button type="button" class="profile-secondary hidden" id="logout-btn">Sign out</button>
     </div>
@@ -365,6 +372,8 @@
             const guestAvatar = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="%2312233f"/><text x="48" y="58" text-anchor="middle" font-size="42" fill="%23ffffff" font-family="Arial, sans-serif">?</text></svg>';
             let avatars = [];
             let selectedAvatar = null;
+            let isAuthenticated = false;
+            let currentTab = 'login';
 
             const avatarButton = document.getElementById('avatar-button');
             const avatarImage = document.getElementById('avatar-image');
@@ -380,6 +389,21 @@
             const avatarGrid = document.getElementById('avatar-grid');
             const feedbackEl = document.getElementById('profile-feedback');
             const logoutBtn = document.getElementById('logout-btn');
+            const avatarSection = document.getElementById('avatar-picker-section');
+            const saveAvatarBtn = document.getElementById('save-avatar-btn');
+
+            const unwrap = (data) => (data && typeof data === 'object' && 'data' in data ? data.data : data);
+            const normalizeAvatars = (input) => {
+                if (Array.isArray(input)) return input;
+                if (input && Array.isArray(input.data)) return input.data;
+                return [];
+            };
+
+            function refreshAvatarSection() {
+                const showAvatars = isAuthenticated || currentTab === 'signup';
+                avatarSection.classList.toggle('hidden', !showAvatars);
+                saveAvatarBtn.classList.toggle('hidden', !isAuthenticated);
+            }
 
             function feedback(message, isError = false) {
                 feedbackEl.textContent = message || '';
@@ -387,6 +411,7 @@
             }
 
             function resolveAvatar(avatarId) {
+                avatars = normalizeAvatars(avatars);
                 const match = avatars.find(a => a.id === avatarId);
                 if (match) return match.image;
                 if (avatarId && avatarId.startsWith('http')) return avatarId;
@@ -394,14 +419,17 @@
             }
 
             function setGuest() {
+                isAuthenticated = false;
                 profileName.textContent = 'Guest';
                 profileStatus.textContent = 'Untracked';
                 avatarImage.src = guestAvatar;
                 guestIndicator.classList.add('show');
                 logoutBtn.classList.add('hidden');
+                refreshAvatarSection();
             }
 
             function setUser(user) {
+                isAuthenticated = true;
                 profileName.textContent = user?.username || 'Player';
                 profileStatus.textContent = 'Profile active';
                 avatarImage.src = resolveAvatar(user?.avatar);
@@ -409,6 +437,7 @@
                 logoutBtn.classList.remove('hidden');
                 if (user?.avatar) selectedAvatar = user.avatar;
                 renderAvatars();
+                refreshAvatarSection();
             }
 
             function toggleModal(open, tab = 'login') {
@@ -418,24 +447,27 @@
             }
 
             function switchTab(tab) {
+                currentTab = tab;
                 tabButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-profile-tab') === tab));
                 loginForm.classList.toggle('hidden', tab !== 'login');
                 signupForm.classList.toggle('hidden', tab !== 'signup');
                 feedback('');
+                refreshAvatarSection();
             }
 
             async function loadAvatars() {
                 try {
                     const res = await fetch(`${API_BASE}/avatars`);
                     if (!res.ok) throw new Error('avatar fetch failed');
-                    avatars = await res.json();
+                    const payload = unwrap(await res.json());
+                    avatars = normalizeAvatars(payload);
                 } catch (err) {
                     // Fallback list
                     avatars = [
-                        { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', image: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Pharomachrus_mocinno_-Costa_Rica-8.jpg' },
-                        { id: 'shoebill', name: 'Shoebill', image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Balaeniceps_rex_-_Pair.jpg' },
-                        { id: 'philippine-eagle', name: 'Philippine Eagle', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Philippine_Eagle_front_view.jpg' },
-                        { id: 'victoria-crowned-pigeon', name: 'Victoria Crowned Pigeon', image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Victoria_crowned_pigeon_-closeup-8a.jpg' }
+                        { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', image: '/assets/avatars/quetzal.jpg' },
+                        { id: 'shoebill', name: 'Shoebill', image: '/assets/avatars/shoebill.jpg' },
+                        { id: 'philippine-eagle', name: 'Philippine Eagle', image: '/assets/avatars/philippine-eagle.jpg' },
+                        { id: 'victoria-crowned-pigeon', name: 'Victoria Crowned Pigeon', image: '/assets/avatars/victoria-pigeon.jpg' }
                     ];
                 }
                 selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
@@ -443,6 +475,7 @@
             }
 
             function renderAvatars() {
+                avatars = normalizeAvatars(avatars);
                 if (!avatarGrid) return;
                 avatarGrid.innerHTML = '';
                 avatars.forEach(avatar => {
@@ -473,7 +506,7 @@
                 try {
                     const res = await fetch(`${API_BASE}/me`, { headers: { 'x-bluejay-token': token } });
                     if (!res.ok) throw new Error('Profile fetch failed');
-                    const data = await res.json();
+                    const data = unwrap(await res.json());
                     if (data.guest || !data.user) {
                         setGuest();
                         return;
@@ -493,9 +526,44 @@
                 });
                 if (!res.ok) {
                     const error = await res.json().catch(() => ({}));
-                    throw new Error(error.error || 'Request failed');
+                    const payload = unwrap(error);
+                    throw new Error((payload && payload.error) || `Request failed (${res.status})`);
                 }
-                return res.json();
+                const data = unwrap(await res.json());
+                return data;
+            }
+
+            async function saveAvatarSelection() {
+                if (!selectedAvatar) {
+                    feedback('Pick an avatar first', true);
+                    return;
+                }
+                const token = localStorage.getItem(TOKEN_KEY);
+                if (!token) {
+                    feedback('Log in to save your avatar', true);
+                    return;
+                }
+                try {
+                    feedback('Saving avatar...');
+                    const res = await fetch(`${API_BASE}/avatar`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-bluejay-token': token
+                        },
+                        body: JSON.stringify({ avatar: selectedAvatar })
+                    });
+                    if (!res.ok) {
+                        const errJson = await res.json().catch(() => ({}));
+                        const payload = unwrap(errJson);
+                        throw new Error((payload && payload.error) || `Request failed (${res.status})`);
+                    }
+                    const data = unwrap(await res.json());
+                    if (data && data.user) setUser(data.user);
+                    feedback('Avatar saved!');
+                } catch (err) {
+                    feedback(err.message, true);
+                }
             }
 
             loginForm.addEventListener('submit', async (e) => {
@@ -548,6 +616,7 @@
             overlay.addEventListener('click', () => toggleModal(false));
             closeBtn.addEventListener('click', () => toggleModal(false));
             tabButtons.forEach(btn => btn.addEventListener('click', () => switchTab(btn.getAttribute('data-profile-tab'))));
+            saveAvatarBtn.addEventListener('click', saveAvatarSelection);
 
             setGuest();
             loadAvatars().then(hydrateProfile);
@@ -557,11 +626,11 @@
         particlesJS('particles-js', {
             particles: {
                 number: { value: 70, density: { enable: true, value_area: 800 } },
-                colour: { value: '#00d4ff' },
+                color: { value: '#00d4ff' },
                 shape: { type: 'circle' },
                 opacity: { value: 0.25, random: true },
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, colour: '#00d4ff', opacity: 0.18, width: 1 },
+                line_linked: { enable: true, distance: 150, color: '#00d4ff', opacity: 0.18, width: 1 },
                 move: { enable: true, speed: 2, random: true, out_mode: 'out' }
             },
             interactivity: {
