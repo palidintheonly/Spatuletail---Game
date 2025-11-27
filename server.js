@@ -1404,12 +1404,40 @@ io.on('connection', (socket) => {
 
     const bot = createBot();
 
-    if (game.player1.id === socket.id) {
-      Logger.info('bot', `Replacing player2 with bot ${bot.name}`, { difficulty: bot.difficulty });
-      game.player2 = bot;
-    } else {
-      Logger.info('bot', `Replacing player1 with bot ${bot.name}`, { difficulty: bot.difficulty });
-      game.player1 = bot;
+    const replacingPlayerKey = game.player1.id === socket.id ? 'player2' : 'player1';
+    const humanPlayer = replacingPlayerKey === 'player2' ? game.player1 : game.player2;
+    const replacedPlayer = game[replacingPlayerKey];
+    const botId = bot.id;
+
+    Logger.info('bot', `Replacing ${replacingPlayerKey} with bot ${bot.name}`, {
+      difficulty: bot.difficulty,
+      replacedPlayer: replacedPlayer?.name
+    });
+
+    // Preserve the current round state so the match can continue smoothly
+    const carriedBoard = game.boards[replacedPlayer.id] || game.createBoard();
+    const carriedShips = game.ships[replacedPlayer.id] || bot.placeShips();
+    const carriedScore = game.scores[replacedPlayer.id] ?? 0;
+    const carriedReady = game.ready[replacedPlayer.id] ?? true;
+    const carriedForfeits = game.consecutiveForfeits[replacedPlayer.id] ?? 0;
+
+    game[replacingPlayerKey] = bot;
+
+    game.boards[botId] = carriedBoard;
+    game.ships[botId] = carriedShips;
+    game.ready[botId] = carriedReady; // Bot inherits readiness (defaults to ready with ships)
+    game.scores[botId] = carriedScore;
+    game.consecutiveForfeits[botId] = carriedForfeits;
+
+    delete game.boards[replacedPlayer.id];
+    delete game.ships[replacedPlayer.id];
+    delete game.ready[replacedPlayer.id];
+    delete game.scores[replacedPlayer.id];
+    delete game.consecutiveForfeits[replacedPlayer.id];
+
+    // If the disconnected player had the turn, hand it to the remaining human to avoid being stuck
+    if (game.currentTurn === replacedPlayer.id || (game.currentTurn !== humanPlayer.id && game.currentTurn !== botId)) {
+      game.currentTurn = humanPlayer.id;
     }
 
     // Convert to offline game
@@ -1417,10 +1445,12 @@ io.on('connection', (socket) => {
     activeOfflineGames.push(game);
     activeOnlineGame = null;
 
-    // Bot places ships automatically
-    const botId = bot.id;
-    game.ships[botId] = bot.placeShips();
-    game.ready[botId] = true;
+    // Ensure the human player remains marked as ready
+    if (game.ready[humanPlayer.id] === undefined) {
+      game.ready[humanPlayer.id] = true;
+    }
+
+    clearTimeout(game.timer);
 
     const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
     socket.emit('botJoined', {
