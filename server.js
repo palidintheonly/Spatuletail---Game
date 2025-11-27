@@ -4,6 +4,7 @@
 // Check if .env file exists
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const envPath = path.join(__dirname, '.env');
 if (!fs.existsSync(envPath)) {
@@ -139,6 +140,10 @@ const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.jso
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
 
+// BlueJay directory for simple profile storage
+const BLUEJAY_DIR = path.join(__dirname, 'BlueJay');
+const BLUEJAY_PROFILE_PATH = path.join(BLUEJAY_DIR, 'profiles.json');
+
 // Server Logger with ANSI colors (Google style)
 const Logger = {
   colors: {
@@ -169,6 +174,30 @@ const Logger = {
   timer(category, message, data) { this.log('timer', category, message, data); },
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
+
+// Curated rare bird avatars for profile selection
+const BLUEJAY_AVATARS = [
+  {
+    id: 'resplendent-quetzal',
+    name: 'Resplendent Quetzal',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Pharomachrus_mocinno_-Costa_Rica-8.jpg'
+  },
+  {
+    id: 'shoebill',
+    name: 'Shoebill',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Balaeniceps_rex_-_Pair.jpg'
+  },
+  {
+    id: 'philippine-eagle',
+    name: 'Philippine Eagle',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Philippine_Eagle_front_view.jpg'
+  },
+  {
+    id: 'victoria-crowned-pigeon',
+    name: 'Victoria Crowned Pigeon',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Victoria_crowned_pigeon_-closeup-8a.jpg'
+  }
+];
 
 // Serve static assets from QuakerBeak directory
 app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
@@ -334,6 +363,51 @@ function writeJSONFile(filePath, data) {
   }
 }
 
+function hashPassword(password, salt = crypto.randomBytes(16).toString('hex')) {
+  const passwordHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+  return { salt, passwordHash };
+}
+
+function verifyPassword(password, user) {
+  if (!user || !user.salt || !user.passwordHash) return false;
+  const attempt = crypto.pbkdf2Sync(password, user.salt, 10000, 64, 'sha512').toString('hex');
+  return attempt === user.passwordHash;
+}
+
+function sanitizeProfile(profile) {
+  if (!profile) return null;
+  return {
+    username: profile.username,
+    avatar: profile.avatar || null,
+    createdAt: profile.createdAt
+  };
+}
+
+function loadProfiles() {
+  const profiles = readJSONFile(BLUEJAY_PROFILE_PATH, []);
+  return Array.isArray(profiles) ? profiles : [];
+}
+
+function saveProfiles(profiles) {
+  return writeJSONFile(BLUEJAY_PROFILE_PATH, profiles);
+}
+
+const activeProfileTokens = new Map(); // token -> { username, createdAt }
+
+function createSessionToken(username) {
+  const token = crypto.randomBytes(24).toString('hex');
+  activeProfileTokens.set(token, { username, createdAt: Date.now() });
+  return token;
+}
+
+function getProfileFromToken(token) {
+  if (!token) return null;
+  const session = activeProfileTokens.get(token);
+  if (!session) return null;
+  const profiles = loadProfiles();
+  return profiles.find(p => p.username.toLowerCase() === session.username.toLowerCase()) || null;
+}
+
 // Initialize waterbird directory and files
 Logger.info('init', 'Initializing waterbird directory and files...');
 ensureDirectoryExists(WATERBIRD_DIR);
@@ -341,6 +415,12 @@ ensureFileExists(ONLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
 Logger.success('init', 'Waterbird directory initialized');
+
+// Initialize BlueJay directory and profile store
+Logger.info('init', 'Initializing BlueJay directory and profile store...');
+ensureDirectoryExists(BLUEJAY_DIR);
+ensureFileExists(BLUEJAY_PROFILE_PATH, '[]');
+Logger.success('init', 'BlueJay directory initialized', { path: BLUEJAY_PROFILE_PATH });
 
 // Game state - separate tracking for online and offline games
 let waitingPlayer = null;
@@ -1963,6 +2043,93 @@ function endGame(game) {
     mode
   });
 }
+
+// BlueJay Profile APIs (lightweight, local JSON-backed)
+app.get(`/api/${API_VERSION}/profile/avatars`, (req, res) => {
+  Logger.info('api', 'Avatar list requested');
+  res.json(BLUEJAY_AVATARS);
+});
+
+app.get(`/api/${API_VERSION}/profile/me`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  const profile = getProfileFromToken(token);
+
+  if (!profile) {
+    return res.json({ guest: true, user: null });
+  }
+
+  res.json({
+    guest: false,
+    user: sanitizeProfile(profile)
+  });
+});
+
+app.post(`/api/${API_VERSION}/profile/signup`, (req, res) => {
+  const { username, password, avatar } = req.body || {};
+  Logger.info('api', 'Signup attempt received', { username });
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const trimmedName = username.trim();
+  if (trimmedName.length < 3) {
+    return res.status(400).json({ error: 'Username must be at least 3 characters' });
+  }
+
+  const profiles = loadProfiles();
+  const existing = profiles.find(p => p.username.toLowerCase() === trimmedName.toLowerCase());
+  if (existing) {
+    return res.status(409).json({ error: 'Username is already taken' });
+  }
+
+  const { salt, passwordHash } = hashPassword(password);
+  const newProfile = {
+    username: trimmedName,
+    salt,
+    passwordHash,
+    avatar: avatar || null,
+    createdAt: new Date().toISOString()
+  };
+
+  profiles.push(newProfile);
+  saveProfiles(profiles);
+
+  const token = createSessionToken(trimmedName);
+  Logger.success('api', 'Signup successful', { username: trimmedName });
+  res.json({ success: true, token, user: sanitizeProfile(newProfile) });
+});
+
+app.post(`/api/${API_VERSION}/profile/login`, (req, res) => {
+  const { username, password } = req.body || {};
+  Logger.info('api', 'Login attempt received', { username });
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const trimmedName = username.trim();
+  const profiles = loadProfiles();
+  const user = profiles.find(p => p.username.toLowerCase() === trimmedName.toLowerCase());
+
+  if (!user || !verifyPassword(password, user)) {
+    Logger.warn('api', 'Login failed', { username });
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  const token = createSessionToken(user.username);
+  Logger.success('api', 'Login successful', { username: user.username });
+  res.json({ success: true, token, user: sanitizeProfile(user) });
+});
+
+app.post(`/api/${API_VERSION}/profile/logout`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  if (token && activeProfileTokens.has(token)) {
+    activeProfileTokens.delete(token);
+    Logger.info('api', 'Logout successful', { token });
+  }
+  res.json({ success: true });
+});
 
 // API Endpoints for Leaderboard
 app.get(`/api/${API_VERSION}/leaderboard/:mode`, (req, res) => {
