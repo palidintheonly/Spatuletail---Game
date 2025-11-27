@@ -1,6 +1,6 @@
 {
   "name": "spatuletail-game",
-  "version": "3.5.0",
+  "version": "5.0.0",
   "description": "Spatuletail - Game: Offline battleship with AI opponents and 2D grid system (10x10, 200 cells total)",
   "main": "osprey.js",
   "bin": {
@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node osprey.js",
     "postinstall": "node sparrow.js",
+    "build": "node -e \"console.log('Build: nothing to compile; static assets served as-is.')\"",
     "version:patch": "node Go-away-bird/bump-version.js patch",
     "version:minor": "node Go-away-bird/bump-version.js minor",
     "version:major": "node Go-away-bird/bump-version.js major",

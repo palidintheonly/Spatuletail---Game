@@ -335,7 +335,12 @@ For rebranding permission, contact via [GitHub](https://github.com/palidintheonl
 
 ## 🌟 Changelog
 
-### v3.5.0 (Latest)
+### v5.0.0 (Latest)
+- Adopted bird codenames for core runtime, setup, CLI, env, and publish artifacts
+- Default env/template renamed to `.egret.env`/`egret.env` with API footer version set to 5.0.0
+- Updated docs and legal version tags to reflect v5.0.0
+
+### v3.5.0
 - 🌍 Converted all user-facing text to British English spelling
 - 🎮 Focussed game on offline AI mode only
 - 🛡️ Updated legal pages with current game features and British English
