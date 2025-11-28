@@ -127,19 +127,49 @@
             width: 54px;
             height: 54px;
             border-radius: 14px;
-            border: 1px solid rgba(0, 212, 255, 0.35);
+            border: 2px solid transparent;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 107, 0.15));
-            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
             padding: 0;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .profile-widget .avatar-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.4), 0 8px 24px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.6);
+        }
+        .profile-widget .avatar-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.6), 0 8px 24px rgba(0, 212, 255, 0.4);
+        }
+        .profile-widget .avatar-button.loading::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+            animation: shimmer 1.5s infinite;
         }
         .profile-widget .avatar-button img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .profile-widget .avatar-button img.loaded {
+            opacity: 1;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.4), 0 8px 24px rgba(0, 212, 255, 0.2); }
         }
         .guest-indicator {
             position: absolute;
@@ -148,15 +178,79 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #ff6b6b, #c0392b);
             color: #fff;
             font-weight: 800;
             display: none;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.2);
+            animation: pulse-badge 2s ease-in-out infinite;
+            z-index: 10;
         }
         .guest-indicator.show { display: inline-flex; }
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 4px 12px rgba(255, 107, 107, 0.7), 0 0 0 3px rgba(255, 255, 255, 0.3); }
+        }
+        .avatar-preview-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .avatar-preview-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .avatar-preview-content {
+            position: relative;
+            max-width: 400px;
+            max-height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(0, 212, 255, 0.4);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .avatar-preview-overlay.show .avatar-preview-content {
+            transform: scale(1);
+        }
+        .avatar-preview-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .avatar-preview-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .avatar-preview-close:hover {
+            background: rgba(255, 107, 107, 0.9);
+            border-color: #fff;
+            transform: scale(1.1);
+        }
         .profile-label .profile-name { font-weight: 800; letter-spacing: 0.5px; }
         .profile-label .profile-status { font-size: 0.85rem; opacity: 0.75; }
         .profile-modal-overlay {
@@ -213,30 +307,104 @@
             background: rgba(0, 0, 0, 0.25);
             color: #fff;
         }
-        .avatar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            max-height: 340px;
+            overflow-y: auto;
+            padding: 2px;
+        }
+        .avatar-grid::-webkit-scrollbar { width: 6px; }
+        .avatar-grid::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .avatar-grid::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.3); border-radius: 10px; }
+        .avatar-grid::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
         .avatar-option {
             position: relative;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             border: 2px solid transparent;
             padding: 0;
             cursor: pointer;
-            height: 110px;
+            height: 120px;
             background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .avatar-option img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .avatar-option:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+        }
+        .avatar-option:focus {
+            outline: none;
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.3);
+        }
+        .avatar-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .avatar-option img.loaded {
+            opacity: 1;
+        }
+        .avatar-option:hover img {
+            transform: scale(1.05);
+        }
         .avatar-option .avatar-name {
             position: absolute;
-            bottom: 6px;
-            left: 6px;
-            right: 6px;
-            padding: 6px 8px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.45);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 10px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
             font-size: 0.85rem;
             font-weight: 700;
+            text-align: center;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
-        .avatar-option.selected { border-color: #00d4ff; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.4); }
+        .avatar-option:hover .avatar-name {
+            opacity: 1;
+        }
+        .avatar-option.selected {
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.4), 0 8px 24px rgba(0, 212, 255, 0.3);
+            transform: scale(1.02);
+        }
+        .avatar-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: checkmark-pop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes checkmark-pop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .avatar-option.loading::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+            animation: shimmer 1.5s infinite;
+            z-index: 1;
+        }
         .profile-primary, .profile-secondary {
             width: 100%;
             padding: 12px;
@@ -275,6 +443,517 @@
         .profile-feedback.error { color: #ff8a8a; }
         .hidden { display: none !important; }
         @media (max-width: 640px) { .profile-widget { top: 12px; left: 12px; transform: scale(0.95); } }
+
+        /* ===== AVATAR ENHANCEMENT FRAMEWORK (Ready for activation) ===== */
+        /*
+         * This framework provides customizable visual enhancements for user avatars.
+         * Enhancements are NOT active by default - they must be enabled by setting
+         * data attributes on the avatar button element.
+         *
+         * ACTIVATION:
+         * Add properties to user object: avatarBorder, avatarBadge, avatarGlow
+         * These will be automatically applied when user logs in (see setUser function)
+         *
+         * AVAILABLE ENHANCEMENTS:
+         *
+         * 1. BORDERS (data-border):
+         *    - bronze: Basic bronze gradient border
+         *    - silver: Animated silver shimmer border
+         *    - gold: Animated gold shimmer border
+         *    - diamond: Cyan diamond border with gradient animation
+         *    - legendary: Rainbow animated border (most prestigious)
+         *
+         * 2. BADGES (data-badge):
+         *    - wins-10: Bronze "10" badge for 10 wins
+         *    - wins-50: Silver "50" badge for 50 wins
+         *    - wins-100: Gold "💯" badge for 100 wins
+         *    - champion: Crown badge with pulse animation
+         *    - legend: Star badge with rainbow gradient
+         *
+         * 3. GLOWS (data-glow):
+         *    - blue: Pulsing blue glow effect
+         *    - red: Pulsing red glow effect
+         *    - gold: Pulsing gold glow effect
+         *    - rainbow: Color-cycling rainbow glow (most rare)
+         *
+         * TESTING:
+         * Use browser console: testAvatarEffects('gold', 'champion', 'blue')
+         *
+         * IMPLEMENTATION NOTES:
+         * - Effects can be combined (e.g., border + badge + glow)
+         * - Suggested reward progression: bronze → silver → gold → diamond → legendary
+         * - Consider unlocking effects based on wins, achievements, or special events
+         */
+
+        /* Border styles - activated with data-border attribute */
+        .avatar-button[data-border="bronze"]::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #cd7f32, #8b5a00) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .avatar-button[data-border="silver"]::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #c0c0c0, #808080) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: shimmer-border 3s linear infinite;
+        }
+
+        .avatar-button[data-border="gold"]::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: shimmer-border 2s linear infinite;
+        }
+
+        .avatar-button[data-border="diamond"]::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #b9f2ff, #00d4ff, #b9f2ff, #00d4ff) border-box;
+            background-size: 200% 200%;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: shimmer-border 1.5s linear infinite, gradient-rotate 4s ease infinite;
+        }
+
+        .avatar-button[data-border="legendary"]::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 14px;
+            border: 4px solid transparent;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #00d4ff, #ff6b6b) border-box;
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: rainbow-border 3s linear infinite;
+        }
+
+        @keyframes shimmer-border {
+            0% { filter: brightness(1) hue-rotate(0deg); }
+            50% { filter: brightness(1.2) hue-rotate(10deg); }
+            100% { filter: brightness(1) hue-rotate(0deg); }
+        }
+
+        @keyframes gradient-rotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes rainbow-border {
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            50% { background-position: 100% 50%; filter: hue-rotate(30deg); }
+            100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+        }
+
+        /* Glow effects - activated with data-glow attribute */
+        .avatar-button[data-glow="blue"] {
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.4);
+            animation: pulse-glow-blue 2s ease-in-out infinite;
+        }
+
+        .avatar-button[data-glow="red"] {
+            box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3), 0 0 20px rgba(255, 107, 107, 0.6), 0 0 40px rgba(255, 107, 107, 0.4);
+            animation: pulse-glow-red 2s ease-in-out infinite;
+        }
+
+        .avatar-button[data-glow="gold"] {
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.5);
+            animation: pulse-glow-gold 2s ease-in-out infinite;
+        }
+
+        .avatar-button[data-glow="rainbow"] {
+            animation: pulse-glow-rainbow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow-blue {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.4); }
+            50% { box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.6); }
+        }
+
+        @keyframes pulse-glow-red {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3), 0 0 20px rgba(255, 107, 107, 0.6), 0 0 40px rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.5), 0 0 30px rgba(255, 107, 107, 0.8), 0 0 60px rgba(255, 107, 107, 0.6); }
+        }
+
+        @keyframes pulse-glow-gold {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 215, 0, 0.7); }
+        }
+
+        @keyframes pulse-glow-rainbow {
+            0% { box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.4); }
+            16% { box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4); }
+            33% { box-shadow: 0 0 0 2px rgba(255, 255, 0, 0.3), 0 0 20px rgba(255, 255, 0, 0.6), 0 0 40px rgba(255, 255, 0, 0.4); }
+            50% { box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.6), 0 0 40px rgba(0, 255, 0, 0.4); }
+            66% { box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.3), 0 0 20px rgba(0, 0, 255, 0.6), 0 0 40px rgba(0, 0, 255, 0.4); }
+            83% { box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.3), 0 0 20px rgba(138, 43, 226, 0.6), 0 0 40px rgba(138, 43, 226, 0.4); }
+            100% { box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.4); }
+        }
+
+        /* Badge overlays - activated with data-badge attribute */
+        .avatar-button[data-badge]::before {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            z-index: 15;
+            border: 2px solid var(--dark-bg);
+        }
+
+        .avatar-button[data-badge="wins-10"]::before {
+            content: '10';
+            background: linear-gradient(135deg, #cd7f32, #8b5a00);
+            color: #fff;
+        }
+
+        .avatar-button[data-badge="wins-50"]::before {
+            content: '50';
+            background: linear-gradient(135deg, #c0c0c0, #808080);
+            color: #fff;
+        }
+
+        .avatar-button[data-badge="wins-100"]::before {
+            content: '💯';
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #fff;
+        }
+
+        .avatar-button[data-badge="champion"]::before {
+            content: '👑';
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        .avatar-button[data-badge="legend"]::before {
+            content: '⭐';
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #00d4ff);
+            background-size: 200% 200%;
+            animation: badge-pulse 2s ease-in-out infinite, gradient-rotate 3s ease infinite;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Combined effects - when multiple attributes are applied */
+        .avatar-button[data-border][data-glow] {
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-button[data-border="legendary"][data-glow="rainbow"] {
+            animation: rainbow-border 3s linear infinite, pulse-glow-rainbow 3s ease-in-out infinite;
+        }
+        /* ===== END AVATAR ENHANCEMENT FRAMEWORK ===== */
+
+        /* ===== BATTLE PASS SYSTEM ===== */
+        .battlepass-widget {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 280px;
+            background: rgba(20, 25, 50, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 14px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            z-index: 1200;
+            transition: transform 0.3s ease;
+        }
+        .battlepass-widget.collapsed {
+            transform: translateX(calc(100% - 50px));
+        }
+        .battlepass-toggle {
+            position: absolute;
+            left: -36px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 48px;
+            background: rgba(20, 25, 50, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .battlepass-toggle:hover {
+            background: rgba(30, 35, 60, 0.95);
+        }
+        .battlepass-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .battlepass-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+        .battlepass-tier-badge {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.4);
+        }
+        .battlepass-progress {
+            margin-bottom: 12px;
+        }
+        .battlepass-progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .battlepass-progress-bar {
+            height: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .battlepass-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        .battlepass-progress-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: progress-shimmer 2s infinite;
+        }
+        @keyframes progress-shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .battlepass-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .battlepass-stat {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .battlepass-stat-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+        .battlepass-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2px;
+        }
+        .battlepass-rewards {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .battlepass-rewards-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .battlepass-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+        .battlepass-tier {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .battlepass-tier:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .battlepass-tier-number {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2px;
+        }
+        .battlepass-tier-icon {
+            font-size: 1.2rem;
+            filter: grayscale(1) brightness(0.5);
+            transition: filter 0.3s ease;
+        }
+        .battlepass-tier.unlocked {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        .battlepass-tier.unlocked .battlepass-tier-icon {
+            filter: none;
+        }
+        .battlepass-tier.unlocked .battlepass-tier-number {
+            color: #00d4ff;
+        }
+        .battlepass-tier.active {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            animation: tier-pulse 2s ease-in-out infinite;
+        }
+        .battlepass-tier.active .battlepass-tier-number {
+            color: #ffd700;
+        }
+        @keyframes tier-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+        }
+        .battlepass-tier-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: rgba(10, 14, 39, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 8px 10px;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .battlepass-tier:hover .battlepass-tier-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+        .battlepass-view-all {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            color: #00d4ff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .battlepass-view-all:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        .battlepass-notification {
+            position: fixed;
+            top: 90px;
+            right: 18px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.95), rgba(0, 153, 204, 0.95));
+            border: 2px solid #00d4ff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+            z-index: 1300;
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 280px;
+        }
+        .battlepass-notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .battlepass-notification-title {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .battlepass-notification-message {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .battlepass-notification-rewards {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 640px) {
+            .battlepass-widget { top: 12px; right: 12px; width: 240px; }
+            .battlepass-tier-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+        }
+        /* ===== END BATTLE PASS SYSTEM ===== */
     </style>
 </head>
 <body>
@@ -290,6 +969,51 @@
             <div class="profile-name" id="profile-name">Guest</div>
             <div class="profile-status" id="profile-status">Untracked</div>
         </div>
+    </div>
+
+    <div class="avatar-preview-overlay" id="avatar-preview-overlay">
+        <div class="avatar-preview-content">
+            <img id="avatar-preview-image" src="" alt="Avatar preview">
+            <button class="avatar-preview-close" id="avatar-preview-close" aria-label="Close preview">×</button>
+        </div>
+    </div>
+
+    <div class="battlepass-widget" id="battlepass-widget">
+        <div class="battlepass-toggle" id="battlepass-toggle">⚔</div>
+        <div class="battlepass-header">
+            <div class="battlepass-title">Battle Pass</div>
+            <div class="battlepass-tier-badge" id="battlepass-tier-badge">Tier 1</div>
+        </div>
+        <div class="battlepass-progress">
+            <div class="battlepass-progress-label">
+                <span id="battlepass-progress-text">0 / 500 XP</span>
+                <span id="battlepass-progress-percent">0%</span>
+            </div>
+            <div class="battlepass-progress-bar">
+                <div class="battlepass-progress-fill" id="battlepass-progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="battlepass-stats">
+            <div class="battlepass-stat">
+                <div class="battlepass-stat-value" id="battlepass-wins">0</div>
+                <div class="battlepass-stat-label">Wins</div>
+            </div>
+            <div class="battlepass-stat">
+                <div class="battlepass-stat-value" id="battlepass-losses">0</div>
+                <div class="battlepass-stat-label">Losses</div>
+            </div>
+        </div>
+        <div class="battlepass-rewards">
+            <div class="battlepass-rewards-title">Tier Rewards</div>
+            <div class="battlepass-tier-grid" id="battlepass-tier-grid"></div>
+        </div>
+        <button class="battlepass-view-all" id="battlepass-view-all">View All Rewards</button>
+    </div>
+
+    <div class="battlepass-notification" id="battlepass-notification">
+        <div class="battlepass-notification-title">Tier Unlocked!</div>
+        <div class="battlepass-notification-message" id="battlepass-notification-message"></div>
+        <div class="battlepass-notification-rewards" id="battlepass-notification-rewards"></div>
     </div>
 
     <div class="profile-modal-overlay" id="profile-modal-overlay"></div>
@@ -393,6 +1117,76 @@
             const logoutBtn = document.getElementById('logout-btn');
             const avatarSection = document.getElementById('avatar-picker-section');
             const saveAvatarBtn = document.getElementById('save-avatar-btn');
+            const previewOverlay = document.getElementById('avatar-preview-overlay');
+            const previewImage = document.getElementById('avatar-preview-image');
+            const previewClose = document.getElementById('avatar-preview-close');
+
+            // Lazy load images with error handling
+            const loadImage = (src) => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve(src);
+                    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+                    img.src = src;
+                });
+            };
+
+            // Preload avatar images for better UX
+            const preloadAvatars = async () => {
+                const imagePromises = avatars.map(avatar => {
+                    if (avatar.image && !avatar.image.startsWith('data:')) {
+                        return loadImage(avatar.image).catch(err => {
+                            console.warn(`Failed to preload avatar ${avatar.id}:`, err);
+                            return null;
+                        });
+                    }
+                    return Promise.resolve(null);
+                });
+                await Promise.all(imagePromises);
+            };
+
+            // Set image with loading state
+            const setAvatarImage = async (imgElement, src, fallback = guestAvatar) => {
+                if (!imgElement) return;
+
+                const parentBtn = imgElement.closest('button');
+                if (parentBtn) parentBtn.classList.add('loading');
+
+                try {
+                    await loadImage(src);
+                    imgElement.src = src;
+                    imgElement.classList.add('loaded');
+                } catch (err) {
+                    console.warn('Avatar load failed, using fallback:', err);
+                    imgElement.src = fallback;
+                    imgElement.classList.add('loaded');
+                } finally {
+                    if (parentBtn) parentBtn.classList.remove('loading');
+                }
+            };
+
+            // Show avatar preview on click
+            const showAvatarPreview = (src, name = '') => {
+                previewImage.src = src;
+                previewImage.alt = name ? `${name} avatar` : 'Avatar preview';
+                previewOverlay.classList.add('show');
+            };
+
+            const hideAvatarPreview = () => {
+                previewOverlay.classList.remove('show');
+            };
+
+            previewClose.addEventListener('click', hideAvatarPreview);
+            previewOverlay.addEventListener('click', (e) => {
+                if (e.target === previewOverlay) hideAvatarPreview();
+            });
+
+            // Keyboard navigation for preview
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && previewOverlay.classList.contains('show')) {
+                    hideAvatarPreview();
+                }
+            });
 
             const setCookieToken = (token) => {
                 document.cookie = `${TOKEN_KEY}=${token}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax`;
@@ -439,21 +1233,37 @@
                 isAuthenticated = false;
                 profileName.textContent = 'Guest';
                 profileStatus.textContent = 'Untracked';
-                avatarImage.src = guestAvatar;
+                setAvatarImage(avatarImage, guestAvatar);
                 guestIndicator.classList.add('show');
                 logoutBtn.classList.add('hidden');
                 localStorage.removeItem(USER_CACHE_KEY);
                 refreshAvatarSection();
+                // Clear any avatar enhancements
+                avatarButton.removeAttribute('data-border');
+                avatarButton.removeAttribute('data-badge');
+                avatarButton.removeAttribute('data-glow');
             }
 
             function setUser(user) {
                 isAuthenticated = true;
                 profileName.textContent = user?.username || 'Player';
                 profileStatus.textContent = 'Profile active';
-                avatarImage.src = resolveAvatar(user?.avatar);
+                setAvatarImage(avatarImage, resolveAvatar(user?.avatar));
                 guestIndicator.classList.remove('show');
                 logoutBtn.classList.remove('hidden');
                 if (user?.avatar) selectedAvatar = user.avatar;
+
+                // Apply avatar enhancements (ready for future use)
+                if (user?.avatarBorder) {
+                    avatarButton.setAttribute('data-border', user.avatarBorder);
+                }
+                if (user?.avatarBadge) {
+                    avatarButton.setAttribute('data-badge', user.avatarBadge);
+                }
+                if (user?.avatarGlow) {
+                    avatarButton.setAttribute('data-glow', user.avatarGlow);
+                }
+
                 renderAvatars();
                 localStorage.setItem(USER_CACHE_KEY, JSON.stringify(user));
                 refreshAvatarSection();
@@ -475,6 +1285,7 @@
             }
 
             async function loadAvatars() {
+                // Load from cache first for instant display
                 const cached = localStorage.getItem(AVATAR_CACHE_KEY);
                 if (cached) {
                     try {
@@ -484,49 +1295,110 @@
                             avatars = normalized;
                             selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
                             renderAvatars();
+                            // Preload cached avatars in background
+                            preloadAvatars().catch(err => console.warn('Preload failed:', err));
                         }
                     } catch (err) {
                         console.warn('Avatar cache parse error', err);
                     }
                 }
+
+                // Fetch fresh data from API
                 try {
                     const res = await fetch(`${API_BASE}/avatars`);
                     if (!res.ok) throw new Error('avatar fetch failed');
                     const payload = unwrap(await res.json());
-                    avatars = normalizeAvatars(payload);
-                    localStorage.setItem(AVATAR_CACHE_KEY, JSON.stringify(avatars));
+                    const freshAvatars = normalizeAvatars(payload);
+
+                    // Update if changed
+                    if (JSON.stringify(freshAvatars) !== JSON.stringify(avatars)) {
+                        avatars = freshAvatars;
+                        localStorage.setItem(AVATAR_CACHE_KEY, JSON.stringify(avatars));
+                        renderAvatars();
+                        // Preload new avatars
+                        preloadAvatars().catch(err => console.warn('Preload failed:', err));
+                    }
                 } catch (err) {
-                    // Fallback list
-                    avatars = [
-                        { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', image: '/assets/avatars/quetzal.jpg' },
-                        { id: 'shoebill', name: 'Shoebill', image: '/assets/avatars/shoebill.jpg' },
-                        { id: 'philippine-eagle', name: 'Philippine Eagle', image: '/assets/avatars/philippine-eagle.jpg' },
-                        { id: 'victoria-crowned-pigeon', name: 'Victoria Crowned Pigeon', image: '/assets/avatars/victoria-pigeon.jpg' }
-                    ];
+                    console.warn('Failed to fetch avatars from API:', err);
+                    // Use fallback list if no cache and API fails
+                    if (!avatars.length) {
+                        avatars = [
+                            { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', image: '/assets/avatars/quetzal.jpg' },
+                            { id: 'shoebill', name: 'Shoebill', image: '/assets/avatars/shoebill.jpg' },
+                            { id: 'philippine-eagle', name: 'Philippine Eagle', image: '/assets/avatars/philippine-eagle.jpg' },
+                            { id: 'victoria-crowned-pigeon', name: 'Victoria Crowned Pigeon', image: '/assets/avatars/victoria-pigeon.jpg' }
+                        ];
+                        selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
+                        renderAvatars();
+                        preloadAvatars().catch(err => console.warn('Preload failed:', err));
+                    }
                 }
-                selectedAvatar = selectedAvatar || (avatars[0] && avatars[0].id);
-                renderAvatars();
+
+                if (!selectedAvatar && avatars.length) {
+                    selectedAvatar = avatars[0].id;
+                }
             }
 
             function renderAvatars() {
                 avatars = normalizeAvatars(avatars);
                 if (!avatarGrid) return;
                 avatarGrid.innerHTML = '';
-                avatars.forEach(avatar => {
+
+                avatars.forEach((avatar, index) => {
                     const btn = document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'avatar-option';
                     btn.dataset.avatarId = avatar.id;
-                    btn.innerHTML = `
-                        <img src="${avatar.image}" alt="${avatar.name}">
-                        <span class="avatar-name">${avatar.name}</span>
-                    `;
-                    btn.addEventListener('click', () => {
-                        selectedAvatar = avatar.id;
-                        document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
-                        btn.classList.add('selected');
+                    btn.setAttribute('aria-label', `Select ${avatar.name} avatar`);
+                    btn.setAttribute('tabindex', '0');
+
+                    const img = document.createElement('img');
+                    img.alt = avatar.name;
+                    img.dataset.src = avatar.image; // Lazy load
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'avatar-name';
+                    nameSpan.textContent = avatar.name;
+
+                    btn.appendChild(img);
+                    btn.appendChild(nameSpan);
+
+                    // Select avatar on click
+                    btn.addEventListener('click', (e) => {
+                        if (!e.target.closest('.avatar-preview-btn')) {
+                            selectedAvatar = avatar.id;
+                            document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+                            btn.classList.add('selected');
+                            btn.setAttribute('aria-selected', 'true');
+                        }
                     });
-                    if (avatar.id === selectedAvatar) btn.classList.add('selected');
+
+                    // Keyboard navigation
+                    btn.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            selectedAvatar = avatar.id;
+                            document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+                            btn.classList.add('selected');
+                        }
+                    });
+
+                    // Double click to preview
+                    btn.addEventListener('dblclick', () => {
+                        showAvatarPreview(avatar.image, avatar.name);
+                    });
+
+                    // Lazy load image
+                    btn.classList.add('loading');
+                    setAvatarImage(img, avatar.image).then(() => {
+                        btn.classList.remove('loading');
+                    });
+
+                    if (avatar.id === selectedAvatar) {
+                        btn.classList.add('selected');
+                        btn.setAttribute('aria-selected', 'true');
+                    }
+
                     avatarGrid.appendChild(btn);
                 });
             }
@@ -670,7 +1542,337 @@
 
             setGuest();
             loadAvatars().then(hydrateProfile);
+
+            // ===== AVATAR ENHANCEMENT ACTIVATION =====
+            // To enable borders, badges, and glow effects, set these properties on user object:
+            // Example user object from backend:
+            // {
+            //   username: "Player",
+            //   avatar: "avatar-id",
+            //   avatarBorder: "gold",      // Options: bronze, silver, gold, diamond, legendary
+            //   avatarBadge: "champion",    // Options: wins-10, wins-50, wins-100, champion, legend
+            //   avatarGlow: "blue"          // Options: blue, red, gold, rainbow
+            // }
+            //
+            // For testing, you can manually apply effects in console:
+            // window.testAvatarEffects = (border, badge, glow) => {
+            //   const btn = document.getElementById('avatar-button');
+            //   if (border) btn.setAttribute('data-border', border);
+            //   if (badge) btn.setAttribute('data-badge', badge);
+            //   if (glow) btn.setAttribute('data-glow', glow);
+            // };
+            //
+            // Usage: testAvatarEffects('legendary', 'champion', 'rainbow')
+            // ==========================================
+
+            window.testAvatarEffects = (border, badge, glow) => {
+                const btn = document.getElementById('avatar-button');
+                if (border) btn.setAttribute('data-border', border);
+                else btn.removeAttribute('data-border');
+                if (badge) btn.setAttribute('data-badge', badge);
+                else btn.removeAttribute('data-badge');
+                if (glow) btn.setAttribute('data-glow', glow);
+                else btn.removeAttribute('data-glow');
+                console.log(`Avatar effects applied: border=${border}, badge=${badge}, glow=${glow}`);
+            };
         })();
+
+        // ===== BATTLE PASS SYSTEM =====
+        (() => {
+            const BP_STORAGE_KEY = 'bluejay-battlepass';
+            const WIN_XP = 100;
+            const LOSS_XP = 30;
+            const XP_PER_TIER = 500;
+            const MAX_TIER = 10;
+
+            // Define tier rewards
+            const TIER_REWARDS = [
+                { tier: 1, icon: '🥉', name: 'Bronze Starter', border: 'bronze', badge: null, glow: null },
+                { tier: 2, icon: '🎖️', name: 'Badge Warrior', border: 'bronze', badge: 'wins-10', glow: null },
+                { tier: 3, icon: '💙', name: 'Blue Flame', border: 'bronze', badge: 'wins-10', glow: 'blue' },
+                { tier: 4, icon: '🥈', name: 'Silver Knight', border: 'silver', badge: 'wins-10', glow: 'blue' },
+                { tier: 5, icon: '⭐', name: 'Star Achiever', border: 'silver', badge: 'wins-50', glow: 'blue' },
+                { tier: 6, icon: '❤️', name: 'Red Warrior', border: 'silver', badge: 'wins-50', glow: 'red' },
+                { tier: 7, icon: '🥇', name: 'Gold Champion', border: 'gold', badge: 'wins-50', glow: 'red' },
+                { tier: 8, icon: '💯', name: 'Elite Master', border: 'gold', badge: 'wins-100', glow: 'red' },
+                { tier: 9, icon: '✨', name: 'Golden Legend', border: 'gold', badge: 'wins-100', glow: 'gold' },
+                { tier: 10, icon: '👑', name: 'Ultimate Champion', border: 'legendary', badge: 'champion', glow: 'rainbow' }
+            ];
+
+            const bpWidget = document.getElementById('battlepass-widget');
+            const bpToggle = document.getElementById('battlepass-toggle');
+            const bpTierBadge = document.getElementById('battlepass-tier-badge');
+            const bpProgressText = document.getElementById('battlepass-progress-text');
+            const bpProgressPercent = document.getElementById('battlepass-progress-percent');
+            const bpProgressFill = document.getElementById('battlepass-progress-fill');
+            const bpWins = document.getElementById('battlepass-wins');
+            const bpLosses = document.getElementById('battlepass-losses');
+            const bpTierGrid = document.getElementById('battlepass-tier-grid');
+            const bpViewAll = document.getElementById('battlepass-view-all');
+            const bpNotification = document.getElementById('battlepass-notification');
+            const bpNotificationMessage = document.getElementById('battlepass-notification-message');
+            const bpNotificationRewards = document.getElementById('battlepass-notification-rewards');
+
+            let battlePassData = {
+                currentTier: 1,
+                currentXP: 0,
+                totalWins: 0,
+                totalLosses: 0,
+                unlockedRewards: []
+            };
+
+            // Load battle pass data from storage
+            function loadBattlePass() {
+                try {
+                    const saved = localStorage.getItem(BP_STORAGE_KEY);
+                    if (saved) {
+                        battlePassData = { ...battlePassData, ...JSON.parse(saved) };
+                    }
+                } catch (err) {
+                    console.warn('Failed to load battle pass data:', err);
+                }
+                renderBattlePass();
+            }
+
+            // Save battle pass data to storage
+            function saveBattlePass() {
+                try {
+                    localStorage.setItem(BP_STORAGE_KEY, JSON.stringify(battlePassData));
+                } catch (err) {
+                    console.warn('Failed to save battle pass data:', err);
+                }
+            }
+
+            // Calculate tier from XP
+            function calculateTier(xp) {
+                const tier = Math.floor(xp / XP_PER_TIER) + 1;
+                return Math.min(tier, MAX_TIER);
+            }
+
+            // Get current tier XP (XP within current tier)
+            function getCurrentTierXP(totalXP) {
+                return totalXP % XP_PER_TIER;
+            }
+
+            // Render battle pass UI
+            function renderBattlePass() {
+                const currentTierXP = getCurrentTierXP(battlePassData.currentXP);
+                const progress = (currentTierXP / XP_PER_TIER) * 100;
+                const tier = calculateTier(battlePassData.currentXP);
+
+                // Update tier badge
+                bpTierBadge.textContent = `Tier ${tier}`;
+
+                // Update progress bar
+                bpProgressText.textContent = `${currentTierXP} / ${XP_PER_TIER} XP`;
+                bpProgressPercent.textContent = `${Math.floor(progress)}%`;
+                bpProgressFill.style.width = `${progress}%`;
+
+                // Update stats
+                bpWins.textContent = battlePassData.totalWins;
+                bpLosses.textContent = battlePassData.totalLosses;
+
+                // Render tier grid
+                renderTierGrid();
+
+                // Apply current rewards to avatar
+                applyRewards();
+            }
+
+            // Render tier grid
+            function renderTierGrid() {
+                bpTierGrid.innerHTML = '';
+                const currentTier = calculateTier(battlePassData.currentXP);
+
+                TIER_REWARDS.forEach((reward) => {
+                    const tierDiv = document.createElement('div');
+                    tierDiv.className = 'battlepass-tier';
+
+                    if (reward.tier < currentTier) {
+                        tierDiv.classList.add('unlocked');
+                    } else if (reward.tier === currentTier) {
+                        tierDiv.classList.add('active');
+                    }
+
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'battlepass-tier-tooltip';
+                    tooltip.textContent = reward.name;
+
+                    const number = document.createElement('div');
+                    number.className = 'battlepass-tier-number';
+                    number.textContent = reward.tier;
+
+                    const icon = document.createElement('div');
+                    icon.className = 'battlepass-tier-icon';
+                    icon.textContent = reward.icon;
+
+                    tierDiv.appendChild(tooltip);
+                    tierDiv.appendChild(number);
+                    tierDiv.appendChild(icon);
+
+                    bpTierGrid.appendChild(tierDiv);
+                });
+            }
+
+            // Apply rewards to avatar
+            function applyRewards() {
+                const currentTier = calculateTier(battlePassData.currentXP);
+                if (currentTier > 0 && currentTier <= MAX_TIER) {
+                    const reward = TIER_REWARDS[currentTier - 1];
+                    const avatarBtn = document.getElementById('avatar-button');
+
+                    if (avatarBtn) {
+                        if (reward.border) {
+                            avatarBtn.setAttribute('data-border', reward.border);
+                        }
+                        if (reward.badge) {
+                            avatarBtn.setAttribute('data-badge', reward.badge);
+                        }
+                        if (reward.glow) {
+                            avatarBtn.setAttribute('data-glow', reward.glow);
+                        }
+                    }
+                }
+            }
+
+            // Show notification when tier is unlocked
+            function showTierNotification(tier) {
+                const reward = TIER_REWARDS[tier - 1];
+                if (!reward) return;
+
+                bpNotificationMessage.textContent = `You've reached ${reward.name}!`;
+
+                const rewardIcons = [];
+                if (reward.border) rewardIcons.push('🛡️');
+                if (reward.badge) rewardIcons.push('🏅');
+                if (reward.glow) rewardIcons.push('✨');
+
+                bpNotificationRewards.textContent = rewardIcons.join(' ');
+
+                bpNotification.classList.add('show');
+
+                setTimeout(() => {
+                    bpNotification.classList.remove('show');
+                }, 4000);
+            }
+
+            // Add XP and check for tier up
+            function addXP(amount) {
+                const oldTier = calculateTier(battlePassData.currentXP);
+                battlePassData.currentXP += amount;
+                const newTier = calculateTier(battlePassData.currentXP);
+
+                saveBattlePass();
+                renderBattlePass();
+
+                // Check if tier increased
+                if (newTier > oldTier && newTier <= MAX_TIER) {
+                    setTimeout(() => {
+                        showTierNotification(newTier);
+                    }, 500);
+                }
+            }
+
+            // Check if user is logged in
+            function isUserLoggedIn() {
+                const token = localStorage.getItem('bluejay-token');
+                const userCache = localStorage.getItem('bluejay-user-cache');
+                return !!(token && userCache);
+            }
+
+            // Record game result (only for logged-in users)
+            function recordGameResult(isWin) {
+                if (!isUserLoggedIn()) {
+                    console.warn('Battle Pass: User must be logged in to earn XP');
+                    return false;
+                }
+
+                if (isWin) {
+                    battlePassData.totalWins++;
+                    addXP(WIN_XP);
+                } else {
+                    battlePassData.totalLosses++;
+                    addXP(LOSS_XP);
+                }
+                return true;
+            }
+
+            // Toggle widget collapsed state
+            bpToggle.addEventListener('click', () => {
+                bpWidget.classList.toggle('collapsed');
+                bpToggle.textContent = bpWidget.classList.contains('collapsed') ? '⚔' : '✕';
+            });
+
+            // View all rewards button
+            bpViewAll.addEventListener('click', () => {
+                let message = 'Battle Pass Rewards:\n\n';
+                TIER_REWARDS.forEach((reward) => {
+                    const rewards = [];
+                    if (reward.border) rewards.push(`${reward.border} border`);
+                    if (reward.badge) rewards.push(`${reward.badge} badge`);
+                    if (reward.glow) rewards.push(`${reward.glow} glow`);
+                    message += `Tier ${reward.tier}: ${reward.name}\n${reward.icon} ${rewards.join(', ')}\n\n`;
+                });
+                alert(message);
+            });
+
+            // Show login required notification
+            function showLoginRequiredNotification() {
+                bpNotificationMessage.textContent = 'Please log in to earn Battle Pass XP!';
+                bpNotificationRewards.textContent = '🔒';
+                bpNotification.style.background = 'linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(192, 57, 43, 0.95))';
+                bpNotification.style.borderColor = '#ff6b6b';
+                bpNotification.classList.add('show');
+
+                setTimeout(() => {
+                    bpNotification.classList.remove('show');
+                    // Reset to default colors
+                    bpNotification.style.background = '';
+                    bpNotification.style.borderColor = '';
+                }, 3000);
+            }
+
+            // Expose functions for game integration
+            window.BattlePass = {
+                recordWin: () => {
+                    const success = recordGameResult(true);
+                    if (!success) showLoginRequiredNotification();
+                    return success;
+                },
+                recordLoss: () => {
+                    const success = recordGameResult(false);
+                    if (!success) showLoginRequiredNotification();
+                    return success;
+                },
+                getCurrentTier: () => calculateTier(battlePassData.currentXP),
+                getProgress: () => ({
+                    tier: calculateTier(battlePassData.currentXP),
+                    xp: battlePassData.currentXP,
+                    tierXP: getCurrentTierXP(battlePassData.currentXP),
+                    wins: battlePassData.totalWins,
+                    losses: battlePassData.totalLosses,
+                    isLoggedIn: isUserLoggedIn()
+                }),
+                isLoggedIn: () => isUserLoggedIn(),
+                reset: () => {
+                    if (confirm('Reset Battle Pass progress? This cannot be undone.')) {
+                        battlePassData = {
+                            currentTier: 1,
+                            currentXP: 0,
+                            totalWins: 0,
+                            totalLosses: 0,
+                            unlockedRewards: []
+                        };
+                        saveBattlePass();
+                        renderBattlePass();
+                    }
+                }
+            };
+
+            // Initialize
+            loadBattlePass();
+        })();
+        // ===== END BATTLE PASS SYSTEM =====
 
         AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
         particlesJS('particles-js', {
