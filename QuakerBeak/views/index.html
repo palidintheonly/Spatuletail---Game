@@ -5,27 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Spatuletail - Offline AI Battle</title>
+    <title>Spatuletail | War Command Center</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #ff6b6b;
-            --accent-color: #ffd93d;
-            --dark-bg: #0a0e27;
-            --card-bg: rgba(20, 25, 50, 0.95);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glow-primary: 0 0 30px rgba(0, 212, 255, 0.6);
-            --glow-secondary: 0 0 30px rgba(255, 107, 107, 0.6);
+            --war-olive: #4a5a3c;
+            --war-dark: #1a1f15;
+            --war-gold: #d4af37;
+            --war-red: #8b1a1a;
+            --war-steel: #4a5c6a;
+            --tactical-green: #3d5a40;
+            --camo-light: rgba(106, 128, 97, 0.15);
+            --feather-accent: #b8936e;
+            --command-glow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+            font-family: 'Impact', 'Arial Black', 'Segoe UI', sans-serif;
+            background:
+                linear-gradient(135deg, rgba(26, 31, 21, 0.9) 0%, rgba(58, 70, 52, 0.8) 50%, rgba(29, 35, 25, 0.9) 100%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(74, 90, 60, 0.03) 10px, rgba(74, 90, 60, 0.03) 20px),
+                radial-gradient(circle at 20% 30%, rgba(61, 90, 64, 0.2), transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(139, 26, 26, 0.15), transparent 50%),
+                #1a1f15;
             min-height: 100vh;
-            color: #fff;
+            color: #f0f0e8;
             overflow-x: hidden;
             position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.02"><path d="M50 10 L60 30 L80 35 L65 50 L68 70 L50 60 L32 70 L35 50 L20 35 L40 30 Z" fill="%23d4af37"/></svg>') repeat;
+            background-size: 150px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
         }
         #particles-js { position: fixed; inset: 0; z-index: 0; }
         .container {
@@ -40,53 +56,184 @@
             justify-content: center;
             gap: 28px;
         }
-        .header { text-align: center; animation: slideDown 0.8s ease-out; }
+        .header {
+            text-align: center;
+            animation: slideDown 0.8s ease-out;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(74, 90, 60, 0.3), rgba(61, 90, 64, 0.2));
+            border: 3px solid var(--war-gold);
+            border-radius: 8px;
+            box-shadow: var(--command-glow), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        .header::before {
+            content: '⚔';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: var(--war-dark);
+            padding: 4px 16px;
+            border: 2px solid var(--war-gold);
+            border-radius: 4px;
+        }
         .header h1 {
-            font-size: clamp(2rem, 7vw, 3.6rem);
+            font-size: clamp(2.2rem, 7vw, 4rem);
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--war-gold), var(--feather-accent));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: var(--glow-primary);
-            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 4px;
             margin-bottom: 12px;
+            font-family: 'Impact', sans-serif;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
-        .header p { color: rgba(255, 255, 255, 0.72); font-size: 1.05rem; }
+        .header p {
+            color: rgba(240, 240, 232, 0.85);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
         .game-modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
         .mode-card {
-            background: var(--card-bg);
-            border: 2px solid var(--secondary-color);
-            border-radius: 22px;
+            background:
+                linear-gradient(135deg, rgba(58, 70, 52, 0.85), rgba(42, 50, 38, 0.9)),
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(106, 128, 97, 0.05) 2px, rgba(106, 128, 97, 0.05) 4px);
+            border: 3px solid var(--war-gold);
+            border-radius: 8px;
             padding: 38px 28px;
             cursor: pointer;
             transition: all 0.35s ease;
             backdrop-filter: blur(10px);
-            box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+            box-shadow:
+                0 14px 40px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(212, 175, 55, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .mode-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--glow-secondary), 0 18px 48px rgba(0,0,0,0.45); }
-        .mode-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
-        .mode-title { font-size: 1.8rem; font-weight: 800; color: var(--secondary-color); margin-bottom: 10px; }
-        .mode-description { color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 16px; }
-        .mode-features { list-style: none; margin-bottom: 22px; }
-        .mode-features li { padding: 7px 0; color: rgba(255,255,255,0.7); font-size: 0.95rem; }
-        .mode-features li::before { content: '- '; color: var(--secondary-color); font-weight: 700; margin-right: 6px; }
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--war-gold), transparent);
+            opacity: 0.6;
+        }
+        .mode-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--command-glow), 0 18px 48px rgba(0,0,0,0.6);
+            border-color: var(--feather-accent);
+        }
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+        }
+        .mode-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--war-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-family: 'Impact', sans-serif;
+        }
+        .mode-description {
+            color: rgba(240, 240, 232, 0.85);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        .mode-features { list-style: none; margin-bottom: 24px; }
+        .mode-features li {
+            padding: 9px 0;
+            color: rgba(240, 240, 232, 0.8);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        .mode-features li::before {
+            content: '▸ ';
+            color: var(--war-gold);
+            font-weight: 900;
+            margin-right: 8px;
+        }
         .play-button {
             width: 100%;
-            padding: 14px 26px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 14px;
+            padding: 16px 26px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            border: 3px solid var(--war-gold);
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.25s ease;
-            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(135deg, var(--war-red), #6b0f0f);
+            color: #f0f0e8;
+            box-shadow:
+                0 8px 24px rgba(139, 26, 26, 0.6),
+                inset 0 1px 0 rgba(212, 175, 55, 0.4),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.6);
             text-transform: uppercase;
-            letter-spacing: 1.6px;
+            letter-spacing: 2px;
+            font-family: 'Impact', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            position: relative;
+            overflow: hidden;
         }
-        .play-button:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(255, 107, 107, 0.55); }
+        .play-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        .play-button:hover::before {
+            left: 100%;
+        }
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--command-glow), 0 12px 30px rgba(139, 26, 26, 0.8);
+            border-color: var(--feather-accent);
+        }
+        .leaderboard-button {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 2px solid var(--war-gold);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: linear-gradient(135deg, rgba(74, 90, 60, 0.6), rgba(61, 90, 64, 0.7));
+            color: var(--war-gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Impact', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            margin-top: 12px;
+        }
+        .leaderboard-button:hover {
+            transform: scale(1.03);
+            box-shadow: var(--command-glow), 0 6px 18px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(74, 90, 60, 0.8), rgba(61, 90, 64, 0.9));
+        }
         .stats-bar {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -1121,27 +1268,29 @@
 
     <div class="container">
         <header class="header" data-aos="fade-down">
-            <h1>SPATULETAIL - GAME</h1>
-            <p>Offline battles with classic Battleship gameplay.</p>
+            <h1>SPATULETAIL WAR COMMAND</h1>
+            <p>🦅 TACTICAL BIRD WARFARE • STRATEGIC NAVAL COMBAT 🦅</p>
         </header>
 
         <div class="game-modes">
             <div class="mode-card" data-aos="fade-up" data-aos-delay="80" onclick="navigateTo('/offline')">
-                <span class="mode-icon">⚓</span>
-                <h2 class="mode-title">OFFLINE</h2>
-                <p class="mode-description">Battle against AI opponents in offline mode. Place your fleet and engage in strategic naval combat.</p>
+                <span class="mode-icon">🦅</span>
+                <h2 class="mode-title">⚔ OFFLINE WARFARE ⚔</h2>
+                <p class="mode-description">Deploy your avian armada against elite AI commanders. Tactical bird warfare awaits on the high seas!</p>
                 <ul class="mode-features">
-                    <li>AI opponent with adaptive targeting</li>
-                    <li>Turn-based tactical gameplay</li>
-                    <li>Practice your strategies offline</li>
-                    <li>Classic 10x10 Battleship grid</li>
+                    <li>Elite AI bird commanders</li>
+                    <li>Strategic turn-based combat</li>
+                    <li>Master war tactics offline</li>
+                    <li>10x10 tactical grid system</li>
                 </ul>
-                <button class="play-button">Start Battle</button>
+                <button class="play-button">⚔ Start Battle ⚔</button>
+                <button class="leaderboard-button" onclick="window.location.href='/leaderboards'">🏆 War Birds Leaderboard 🏆</button>
             </div>
         </div>
     </div>
 
     <footer style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 1000; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5);">
+        <a href="/leaderboards" style="color: rgba(255, 215, 0, 0.9); text-decoration: none; margin: 0 10px; font-weight: 700;">🏆 Leaderboards</a> |
         <a href="/privacy-policy" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
         <a href="/terms" style="color: rgba(0, 212, 255, 0.8); text-decoration: none; margin: 0 10px;">Terms of Service</a>
     </footer>
