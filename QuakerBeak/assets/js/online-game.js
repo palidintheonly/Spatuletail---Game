@@ -1,4 +1,4 @@
-// Offline Battleship Game Client - 2D Grid Implementation (No Three.js)
+// Online Battleship Game Client - 2D Grid Implementation (No Three.js)
 
 // IMMEDIATE FAILSAFE: Remove loading screen after 5 seconds no matter what
 setTimeout(() => {
@@ -19,7 +19,7 @@ const Logger = {
     success: 'color: #0F9D58; font-weight: bold',
     warning: 'color: #F4B400; font-weight: bold',
     error: 'color: #DB4437; font-weight: bold',
-    ai: 'color: #7CB342; font-weight: bold',
+    network: 'color: #AB47BC; font-weight: bold',
     game: 'color: #00ACC1; font-weight: bold'
   },
   log(level, category, message, data) {
@@ -31,14 +31,15 @@ const Logger = {
   success(c, m, d) { this.log('success', c, m, d); },
   warn(c, m, d) { this.log('warning', c, m, d); },
   error(c, m, d) { this.log('error', c, m, d); },
-  ai(c, m, d) { this.log('ai', c, m, d); },
+  network(c, m, d) { this.log('network', c, m, d); },
   game(c, m, d) { this.log('game', c, m, d); }
 };
 
+// Socket connection
 const socket = io();
-Logger.info('socket', 'Connecting to server for offline AI training...');
+Logger.network('socket', 'Connecting to server...');
 
-// Sound system
+// Sound system using Howler
 const sounds = {
   hit: new Howl({ src: ['https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'], volume: 0.5 }),
   miss: new Howl({ src: ['https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'], volume: 0.3 }),
@@ -50,6 +51,7 @@ const sounds = {
 // Game state
 let gameState = 'connecting';
 let myShips = [];
+let enemyShips = [];
 let currentShipIndex = 0;
 let shipOrientation = 'horizontal';
 let myBoard = [];
@@ -59,8 +61,6 @@ let enemyBoardCells = [];
 let isMyTurn = false;
 let timeLeft = 30;
 let timerInterval = null;
-let aiDifficulty = 2; // Default: Medium
-const enemyFleetLegend = {};
 
 const SHIP_TYPES = [
   { name: 'Carrier', length: 5, icon: 'C' },
@@ -70,7 +70,15 @@ const SHIP_TYPES = [
   { name: 'Destroyer', length: 2, icon: 'D' }
 ];
 
-const DIFFICULTY_NAMES = ['', 'Easy', 'Medium', 'Hard', 'Extreme'];
+function showOnlineDisabled(message) {
+  gameState = 'disabled';
+  stopTimer();
+  const overlay = document.getElementById('online-disabled-overlay');
+  const msgEl = document.getElementById('online-disabled-message');
+  if (overlay) overlay.classList.add('active');
+  if (msgEl && message) msgEl.textContent = message;
+  updateStatusMessage(message || 'Online mode is temporarily unavailable.');
+}
 
 // Heartbeat system
 setInterval(() => {
@@ -84,18 +92,21 @@ function initBoards() {
   const container = document.getElementById('canvas-container');
   container.innerHTML = '';
 
+  // Create boards wrapper
   const boardsWrapper = document.createElement('div');
   boardsWrapper.className = 'boards-wrapper';
 
+  // Create My Board
   const myBoardContainer = createBoardContainer('my', 'Your Fleet');
   boardsWrapper.appendChild(myBoardContainer);
 
-  const enemyBoardContainer = createBoardContainer('enemy', 'AI Fleet');
+  // Create Enemy Board
+  const enemyBoardContainer = createBoardContainer('enemy', 'Enemy Fleet');
   boardsWrapper.appendChild(enemyBoardContainer);
 
   container.appendChild(boardsWrapper);
 
-  Logger.success('game', '2D Battleship grids initialized - 10×10 boards (200 cells total)');
+  Logger.success('game', '2D Battleship grids initialized - 10x10 boards (200 cells total)');
 }
 
 function createBoardContainer(boardType, title) {
@@ -127,13 +138,15 @@ function createBoardContainer(boardType, title) {
       cell.dataset.row = row;
       cell.dataset.col = col;
 
+      // Add row/col labels
       if (col === 0) {
         cell.dataset.rowLabel = row + 1;
       }
       if (row === 0) {
-        cell.dataset.colLabel = String.fromCharCode(65 + col);
+        cell.dataset.colLabel = String.fromCharCode(65 + col); // A-J
       }
 
+      // Event listeners
       cell.addEventListener('click', () => onCellClick(boardType, row, col));
       cell.addEventListener('mouseenter', () => onCellHover(boardType, row, col, true));
       cell.addEventListener('mouseleave', () => onCellHover(boardType, row, col, false));
@@ -151,20 +164,24 @@ function onCellClick(boardType, row, col) {
   if (gameState === 'placing' && boardType === 'my') {
     placeShip(row, col);
   } else if (gameState === 'playing' && isMyTurn && boardType === 'enemy' && enemyBoard[row][col] === 0) {
+    stopTimer(); // Prevent countdown from firing again while waiting for server
     socket.emit('attack', { row, col });
     isMyTurn = false;
-    stopTimer();
     updateStatusMessage('Attack sent! Waiting for result...');
   }
 }
 
 function onCellHover(boardType, row, col, isEntering) {
+  const cell = (boardType === 'my' ? myBoardCells : enemyBoardCells)[row][col];
+
   if (gameState === 'placing' && boardType === 'my' && isEntering) {
+    // Show ship placement preview
     highlightShipPlacement(row, col, true);
   } else if (gameState === 'placing' && boardType === 'my' && !isEntering) {
+    // Remove preview
     highlightShipPlacement(row, col, false);
   } else if (gameState === 'playing' && isMyTurn && boardType === 'enemy' && enemyBoard[row][col] === 0) {
-    const cell = enemyBoardCells[row][col];
+    // Hover effect for attack
     cell.classList.toggle('hover', isEntering);
   }
 }
@@ -213,10 +230,13 @@ function placeShip(row, col) {
     cells.push({ row: r, col: c });
   }
 
+  // Place ship on board
   cells.forEach(({ row, col }) => {
     myBoard[row][col] = 1;
     myBoardCells[row][col].classList.add('ship');
     myBoardCells[row][col].dataset.icon = ship.icon;
+
+    // Animate placement
     gsap.from(myBoardCells[row][col], { scale: 0.5, duration: 0.3, ease: 'back.out' });
   });
 
@@ -228,11 +248,12 @@ function placeShip(row, col) {
 
   if (currentShipIndex >= SHIP_TYPES.length) {
     document.getElementById('ready-btn').disabled = false;
-    updateStatusMessage('All ships placed! Click Start Battle.');
+    updateStatusMessage('All ships placed! Click Ready to Battle.');
   }
 }
 
 function autoPlaceShips() {
+  // Clear existing ships
   myBoard.forEach((row, r) => {
     row.forEach((cell, c) => {
       myBoard[r][c] = 0;
@@ -243,6 +264,7 @@ function autoPlaceShips() {
   myShips = [];
   currentShipIndex = 0;
 
+  // Place all ships randomly
   SHIP_TYPES.forEach((ship, index) => {
     let placed = false;
 
@@ -283,7 +305,7 @@ function autoPlaceShips() {
   sounds.place.play();
   document.getElementById('ready-btn').disabled = false;
   updateShipPreview();
-  updateStatusMessage('Ships auto-placed! Click Start Battle.');
+  updateStatusMessage('Ships auto-placed! Click Ready to Battle.');
 }
 
 function updateShipPreview() {
@@ -304,8 +326,10 @@ function updateCell(boardType, row, col, state) {
   const cells = boardType === 'my' ? myBoardCells : enemyBoardCells;
   const cell = cells[row][col];
 
+  // Remove previous state classes
   cell.classList.remove('hit', 'miss', 'sunk');
 
+  // Add new state
   if (state === 'hit') {
     cell.classList.add('hit');
     gsap.from(cell, { scale: 1.5, duration: 0.4, ease: 'elastic.out' });
@@ -320,29 +344,12 @@ function updateCell(boardType, row, col, state) {
 
 // Socket event handlers
 socket.on('connect', () => {
-  Logger.info('socket', 'Connected to server');
+  Logger.network('socket', 'Connected to server');
   document.getElementById('loading-screen').classList.remove('active');
 
-  // Check if user is logged in
-  let playerName = 'Guest';
-  try {
-    const token = localStorage.getItem('bluejay-token');
-    const userCache = localStorage.getItem('bluejay-user-cache');
-    if (token && userCache) {
-      const user = JSON.parse(userCache);
-      playerName = user.username || 'Guest';
-    }
-  } catch (err) {
-    console.warn('Failed to load user data:', err);
-  }
-
-  // Use medium difficulty by default (single round game)
-  aiDifficulty = 2;
-
-  socket.emit('join', { name: playerName, mode: 'offline', aiDifficulty });
+  const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
+  socket.emit('join', { name: playerName, mode: 'online' });
   gameState = 'placing';
-
-  updateDifficultyDisplay();
 });
 
 socket.on('connect_error', (error) => {
@@ -357,6 +364,11 @@ socket.on('connect_timeout', () => {
   updateStatusMessage('⚠️ Connection timeout. Please refresh the page.');
 });
 
+socket.on('onlineDisabled', (data) => {
+  Logger.warn('online', 'Online mode disabled by server', data);
+  showOnlineDisabled(data?.message);
+});
+
 // Fallback timeout to remove loading screen after 10 seconds
 setTimeout(() => {
   const loadingScreen = document.getElementById('loading-screen');
@@ -367,22 +379,10 @@ setTimeout(() => {
   }
 }, 10000);
 
-function updateDifficultyDisplay() {
-  const difficultyEl = document.getElementById('difficulty-level');
-  difficultyEl.textContent = DIFFICULTY_NAMES[aiDifficulty];
-  difficultyEl.className = 'difficulty-value ' + DIFFICULTY_NAMES[aiDifficulty].toLowerCase();
-}
-
 socket.on('gameStart', (data) => {
-  Logger.game('game', 'Game started against AI', data);
+  Logger.game('game', 'Game started', data);
   document.getElementById('player-name').textContent = data.playerName || 'You';
-  updateStatusMessage(`Opponent: ${data.opponent || 'AI Bot'}`);
-});
-
-socket.on('queued', (data) => {
-  Logger.info('queue', 'Added to game queue', data);
-  updateStatusMessage(`⏳ Server at capacity (${data.activeGames}/${data.maxGames} games) - Queue position: ${data.position}`);
-  gameState = 'queued';
+  updateStatusMessage(`Opponent: ${data.opponent || 'Waiting...'}`);
 });
 
 socket.on('battleStart', (data) => {
@@ -391,10 +391,10 @@ socket.on('battleStart', (data) => {
   isMyTurn = data.isYourTurn;
 
   if (isMyTurn) {
-    updateStatusMessage('Your turn - Attack AI fleet!');
+    updateStatusMessage('Your turn - Attack enemy fleet!');
     startTimer();
   } else {
-    updateStatusMessage("AI's turn - Wait...");
+    updateStatusMessage("Opponent's turn - Wait...");
   }
 });
 
@@ -402,51 +402,51 @@ socket.on('battleStart', (data) => {
 socket.on('turnChange', ({ isYourTurn }) => {
   isMyTurn = !!isYourTurn;
   if (isMyTurn) {
-    updateStatusMessage('Your turn - Attack AI fleet!');
+    updateStatusMessage('Your turn - Attack enemy fleet!');
     startTimer();
   } else {
-    updateStatusMessage("AI's turn - Calculating...");
+    updateStatusMessage("Opponent's turn - Wait...");
     stopTimer();
   }
 });
 
 socket.on('attackResult', (data) => {
-  const { row, col, hit, sunk, ship, enemy, isAttacker: payloadIsAttacker } = data;
-  const isAttacker = payloadIsAttacker ?? enemy === true;
-
-  // Always pause the local timer until the server confirms whose turn it is next
-  stopTimer();
-  isMyTurn = false;
+  const isAttacker = data.isAttacker ?? data.enemy === true;
+  const row = data.row;
+  const col = data.col;
+  const hit = !!data.hit;
+  const sunk = !!data.sunk;
+  const ship = data.ship || 'Ship';
 
   if (isAttacker) {
+    // Your attack on enemy board
     enemyBoard[row][col] = hit ? 3 : 2;
     updateCell('enemy', row, col, sunk ? 'sunk' : (hit ? 'hit' : 'miss'));
 
     if (hit) {
       sounds.hit.play();
-      if (sunk && ship) {
-        Logger.success('game', `AI ${ship} destroyed!`);
-        markEnemyShipSunk(ship);
-        updateStatusMessage(`AI ${ship} destroyed! Waiting for AI response...`);
+      if (sunk) {
+        Logger.success('game', `Enemy ${ship} sunk!`);
+        updateStatusMessage(`Enemy ${ship} destroyed!`);
       } else {
-        updateStatusMessage('Direct hit on AI! Waiting for AI response...');
+        updateStatusMessage('Direct hit!');
       }
     } else {
       sounds.miss.play();
-      updateStatusMessage('Miss! Waiting for AI response...');
+      updateStatusMessage('Miss!');
     }
   } else {
+    // Enemy attack on your board
     myBoard[row][col] = hit ? 3 : 2;
     updateCell('my', row, col, sunk ? 'sunk' : (hit ? 'hit' : 'miss'));
 
-    if (hit && sunk && ship) {
+    if (hit && sunk) {
       updateShipLegend(ship, true);
-      updateStatusMessage(`Your ${ship} was destroyed by AI!`);
-      Logger.ai('ai', `AI sunk your ${ship}`);
+      updateStatusMessage(`Your ${ship} was destroyed!`);
     } else if (hit) {
-      updateStatusMessage('AI hit your ship!');
+      updateStatusMessage('Enemy hit your ship!');
     } else {
-      updateStatusMessage('AI missed! Awaiting your turn...');
+      updateStatusMessage('Enemy missed!');
     }
   }
 });
@@ -456,6 +456,7 @@ socket.on('roundEnd', (data) => {
   const won = data.winner === socket.id;
   updateStatusMessage(won ? `🎉 Round ${data.round} Won!` : `💀 Round ${data.round} Lost!`);
 
+  // Update scores
   document.getElementById('player-score').textContent = `Score: ${data.scores.you || 0}`;
 
   setTimeout(() => {
@@ -470,25 +471,8 @@ socket.on('roundEnd', (data) => {
 socket.on('gameOver', (data) => {
   gameState = 'finished';
   const won = data.winner === socket.id;
-  updateStatusMessage(won ? '🏆 VICTORY! You beat the AI!' : '💀 DEFEAT! AI wins!');
+  updateStatusMessage(won ? '🏆 VICTORY! You won the game!' : '💀 DEFEAT! Better luck next time!');
   won ? sounds.victory.play() : sounds.defeat.play();
-
-  if (data.battlepass) {
-    const { xpAwarded, tier, totalXP } = data.battlepass;
-    Logger.success('battlepass', 'Battle Pass updated', { xpAwarded, tier, totalXP });
-    updateStatusMessage(`${won ? 'Win' : 'Loss'}: +${xpAwarded} XP (Tier ${tier}, Total ${totalXP})`);
-  }
-
-  // Record Battle Pass progress
-  if (window.BattlePass) {
-    if (won) {
-      const success = window.BattlePass.recordWin();
-      Logger.success('battlepass', 'Victory recorded', { xpGained: 100, success });
-    } else {
-      const success = window.BattlePass.recordLoss();
-      Logger.info('battlepass', 'Loss recorded', { xpGained: 30, success });
-    }
-  }
 
   setTimeout(() => {
     if (confirm('Game Over! Return to menu?')) {
@@ -497,11 +481,20 @@ socket.on('gameOver', (data) => {
   }, 3000);
 });
 
+socket.on('opponentDisconnected', (data) => {
+  Logger.warn('game', 'Opponent disconnected', data);
+  updateStatusMessage('⚠️ Opponent disconnected!');
+
+  if (confirm('Opponent left. Continue with AI bot?')) {
+    socket.emit('continueWithBot');
+  } else {
+    window.location.href = '/';
+  }
+});
+
 socket.on('botJoined', (data) => {
-  Logger.ai('ai', 'AI opponent initialized', data);
+  Logger.info('game', 'Bot joined', data);
   updateStatusMessage(`🤖 Playing against ${data.botName} (${data.difficultyName})`);
-  aiDifficulty = data.difficulty;
-  updateDifficultyDisplay();
 });
 
 socket.on('disconnect', () => {
@@ -510,6 +503,7 @@ socket.on('disconnect', () => {
 });
 
 function resetBoard() {
+  // Reset my board
   myBoard.forEach((row, r) => {
     row.forEach((cell, c) => {
       myBoard[r][c] = 0;
@@ -518,6 +512,7 @@ function resetBoard() {
     });
   });
 
+  // Reset enemy board
   enemyBoard.forEach((row, r) => {
     row.forEach((cell, c) => {
       enemyBoard[r][c] = 0;
@@ -530,18 +525,22 @@ function resetBoard() {
     item.classList.remove('destroyed');
     item.querySelectorAll('.health-cell').forEach(cell => cell.classList.remove('sunk'));
   });
-
-  // Reset enemy fleet legend
-  buildEnemyLegend();
 }
 
 function startTimer() {
+  if (!isMyTurn) return;
+  stopTimer();
   timeLeft = 30;
   const timerEl = document.getElementById('timer');
   timerEl.textContent = timeLeft;
   timerEl.classList.remove('warning');
 
   timerInterval = setInterval(() => {
+    if (!isMyTurn) {
+      stopTimer();
+      return;
+    }
+
     timeLeft--;
     timerEl.textContent = timeLeft;
 
@@ -551,6 +550,8 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       stopTimer();
+      // Auto-attack random cell
+      if (!isMyTurn) return;
       const available = [];
       for (let r = 0; r < 10; r++) {
         for (let c = 0; c < 10; c++) {
@@ -559,7 +560,9 @@ function startTimer() {
       }
       if (available.length > 0) {
         const target = available[Math.floor(Math.random() * available.length)];
+        isMyTurn = false;
         socket.emit('attack', target);
+        updateStatusMessage('Attack sent! Waiting for result...');
       }
     }
   }, 1000);
@@ -568,6 +571,7 @@ function startTimer() {
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
+    timerInterval = null;
     document.getElementById('timer').classList.remove('warning');
   }
 }
@@ -580,49 +584,6 @@ function updateShipLegend(shipName, sunk) {
       cell.classList.add('sunk');
     });
   }
-}
-
-function buildEnemyLegend() {
-  const list = document.getElementById('enemy-legend-list');
-  if (!list) return;
-  list.innerHTML = '';
-  Object.keys(enemyFleetLegend).forEach(key => delete enemyFleetLegend[key]);
-  SHIP_TYPES.forEach(ship => {
-    const chip = document.createElement('div');
-    chip.className = 'legend-chip status-ready';
-    chip.dataset.ship = ship.name.toLowerCase();
-
-    const icon = document.createElement('span');
-    icon.className = 'legend-icon';
-    icon.textContent = ship.icon;
-
-    const label = document.createElement('span');
-    label.className = 'legend-label';
-    label.textContent = ship.name;
-
-    const hits = document.createElement('div');
-    hits.className = 'ship-hits';
-    for (let i = 0; i < ship.length; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'hit-dot';
-      hits.appendChild(dot);
-    }
-
-    chip.appendChild(icon);
-    chip.appendChild(label);
-    chip.appendChild(hits);
-    list.appendChild(chip);
-
-    enemyFleetLegend[ship.name] = { chip, dots: hits.querySelectorAll('.hit-dot') };
-  });
-}
-
-function markEnemyShipSunk(shipName) {
-  const entry = enemyFleetLegend[shipName];
-  if (!entry) return;
-  entry.chip.classList.remove('status-ready');
-  entry.chip.classList.add('status-sunk');
-  entry.dots.forEach(dot => dot.classList.add('destroyed'));
 }
 
 // Keyboard controls
@@ -656,7 +617,7 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
     document.getElementById('placement-screen').classList.add('hidden');
     socket.emit('placeShips', myShips);
     gameState = 'waiting';
-    updateStatusMessage('Waiting for AI to finish setup...');
+    updateStatusMessage('Waiting for opponent to finish placement...');
   } else {
     alert('Please place all ships first!');
   }
@@ -664,8 +625,7 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
 
 // Initialize on load
 window.addEventListener('load', () => {
-  Logger.info('init', 'Initializing 2D Battleship AI training (10x10 grids, 200 cells total)');
+  Logger.info('init', 'Initializing 2D Battleship game (10×10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
-  buildEnemyLegend();
 });

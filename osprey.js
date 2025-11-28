@@ -99,6 +99,12 @@ const MAX_EVENT_LOGS = parseInt(process.env.MAX_EVENT_LOGS) || 2000;
 const MAX_LEADERBOARD_ENTRIES = parseInt(process.env.MAX_LEADERBOARD_ENTRIES) || 100;
 const ENABLE_CONSOLE_LOGGING = process.env.ENABLE_CONSOLE_LOGGING !== 'false';
 const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
+const BATTLEPASS_WIN_XP = 100;
+const BATTLEPASS_LOSS_XP = 30;
+const BATTLEPASS_XP_PER_TIER = 500;
+const BATTLEPASS_MAX_TIER = 10;
+const BATTLEPASS_DECAY_PER_TIER = 0.05; // reduce XP as tier climbs
+const BATTLEPASS_MIN_MULTIPLIER = 0.4;
 
 // Performance
 const STATS_UPDATE_INTERVAL = (parseInt(process.env.STATS_UPDATE_INTERVAL_SECONDS) || 3) * 1000;
@@ -135,6 +141,7 @@ const WATERBIRD_DIR = path.join(__dirname, 'waterbird');
 const ONLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'online-leaderboard.json');
 const OFFLINE_LEADERBOARD_PATH = path.join(WATERBIRD_DIR, 'offline-leaderboard.json');
 const GAME_LOG_PATH = path.join(WATERBIRD_DIR, 'game-log.json');
+const BATTLEPASS_DB_PATH = path.join(WATERBIRD_DIR, 'battlepass.json');
 
 // Kea directory for simple profile storage
 const KEA_DIR = path.join(__dirname, 'Kea');
@@ -365,7 +372,8 @@ function readJSONFile(filePath, defaultValue = []) {
 function writeJSONFile(filePath, data) {
   try {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
-    Logger.success('fs', 'JSON file written', { path: filePath, entries: data.length });
+    const entries = Array.isArray(data) ? data.length : (data && typeof data === 'object' ? Object.keys(data).length : 0);
+    Logger.success('fs', 'JSON file written', { path: filePath, entries });
     return true;
   } catch (error) {
     Logger.error('fs', 'Error writing JSON file', { path: filePath, error: error.message });
@@ -441,6 +449,7 @@ ensureDirectoryExists(WATERBIRD_DIR);
 ensureFileExists(ONLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(OFFLINE_LEADERBOARD_PATH, '[]');
 ensureFileExists(GAME_LOG_PATH, '[]');
+ensureFileExists(BATTLEPASS_DB_PATH, '{}');
 Logger.success('init', 'Waterbird directory initialized');
 
 // Initialize Kea directory and profile store
@@ -455,6 +464,7 @@ persistedSessions.forEach(sess => {
   }
 });
 Logger.success('init', 'Kea directory initialized', { path: KEA_PROFILE_PATH, sessions: activeProfileTokens.size });
+syncBattlePassProfiles();
 
 // Game state - separate tracking for online and offline games
 let waitingPlayer = null;
@@ -2051,6 +2061,15 @@ function endGame(game) {
 
   const winnerId = game.getWinner();
   const winner = winnerId ? (winnerId === game.player1.id ? game.player1 : game.player2) : null;
+  const loser = winnerId ? (winnerId === game.player1.id ? game.player2 : game.player1) : null;
+
+  const battlePassResults = {};
+  [game.player1, game.player2].forEach(player => {
+    if (!player.isBot) {
+      const isWin = winnerId ? winnerId === player.id : false;
+      battlePassResults[player.id] = awardBattlePassXP(player.name, isWin);
+    }
+  });
 
   if (winner) {
     Logger.success('game', `🎉 ${winner.name} WINS THE GAME!`, { finalScores: game.scores });
@@ -2061,14 +2080,16 @@ function endGame(game) {
   if (!game.player1.isBot && game.player1.socket) {
     game.player1.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: game.scores,
+      battlepass: battlePassResults[game.player1.id] || null
     });
   }
 
   if (!game.player2.isBot && game.player2.socket) {
     game.player2.socket.emit('gameOver', {
       winner: winnerId,
-      scores: game.scores
+      scores: game.scores,
+      battlepass: battlePassResults[game.player2.id] || null
     });
   }
 
@@ -2107,7 +2128,6 @@ function endGame(game) {
     updateLeaderboard(winner.name, winner.isBot, true, mode);
   }
 
-  const loser = winnerId ? (winnerId === game.player1.id ? game.player2 : game.player1) : null;
   if (loser) {
     updateLeaderboard(loser.name, loser.isBot, false, mode);
   }
@@ -2231,6 +2251,7 @@ app.post(`/api/${API_VERSION}/profile/signup`, (req, res) => {
   saveProfiles(profiles);
 
   const token = createSessionToken(trimmedName);
+  initBattlePassProfile(trimmedName);
   Logger.success('api', 'Signup successful', { username: trimmedName });
   res.json({ success: true, token, user: sanitizeProfile(newProfile) });
 });
@@ -2253,6 +2274,7 @@ app.post(`/api/${API_VERSION}/profile/login`, (req, res) => {
   }
 
   const token = createSessionToken(user.username);
+  initBattlePassProfile(user.username);
   Logger.success('api', 'Login successful', { username: user.username });
   res.json({ success: true, token, user: sanitizeProfile(user) });
 });
@@ -2391,6 +2413,84 @@ app.get(`/api/${API_VERSION}/system`, (req, res) => {
   Logger.success('api', 'System information sent');
   res.json(systemInfo);
 });
+
+// Battle Pass persistence helpers
+function loadBattlePassDB() {
+  const data = readJSONFile(BATTLEPASS_DB_PATH, {});
+  if (data && typeof data === 'object' && !Array.isArray(data)) return data;
+  return {};
+}
+
+function saveBattlePassDB(db) {
+  return writeJSONFile(BATTLEPASS_DB_PATH, db);
+}
+
+function calculateBattlePassTier(xp) {
+  const tier = Math.floor(xp / BATTLEPASS_XP_PER_TIER) + 1;
+  return Math.min(Math.max(tier, 1), BATTLEPASS_MAX_TIER);
+}
+
+function awardBattlePassXP(playerName, isWin) {
+  if (!playerName) return null;
+
+  const db = loadBattlePassDB();
+  const key = playerName.toLowerCase();
+  const profile = db[key] || { name: playerName, xp: 0, wins: 0, losses: 0, tier: 1 };
+
+  const currentTier = calculateBattlePassTier(profile.xp);
+  const baseXP = isWin ? BATTLEPASS_WIN_XP : BATTLEPASS_LOSS_XP;
+  const decay = Math.max(BATTLEPASS_MIN_MULTIPLIER, 1 - (currentTier - 1) * BATTLEPASS_DECAY_PER_TIER);
+  const gained = Math.max(5, Math.round(baseXP * decay));
+
+  profile.xp += gained;
+  if (isWin) profile.wins = (profile.wins || 0) + 1;
+  else profile.losses = (profile.losses || 0) + 1;
+  profile.tier = calculateBattlePassTier(profile.xp);
+  profile.lastUpdated = new Date().toISOString();
+
+  db[key] = profile;
+  saveBattlePassDB(db);
+
+  Logger.success('battlepass', `Battle Pass updated for ${playerName}`, {
+    gained,
+    tier: profile.tier,
+    totalXP: profile.xp,
+    wins: profile.wins,
+    losses: profile.losses
+  });
+
+  return {
+    xpAwarded: gained,
+    totalXP: profile.xp,
+    tier: profile.tier,
+    wins: profile.wins,
+    losses: profile.losses
+  };
+}
+
+function initBattlePassProfile(playerName) {
+  if (!playerName) return;
+  const db = loadBattlePassDB();
+  const key = playerName.toLowerCase();
+  if (!db[key]) {
+    db[key] = {
+      name: playerName,
+      xp: 0,
+      wins: 0,
+      losses: 0,
+      tier: 1,
+      lastUpdated: new Date().toISOString()
+    };
+    saveBattlePassDB(db);
+    Logger.info('battlepass', 'Initialized battle pass profile', { playerName });
+  }
+}
+
+function syncBattlePassProfiles() {
+  const profiles = loadProfiles();
+  profiles.forEach(p => initBattlePassProfile(p.username));
+  Logger.info('battlepass', 'Synced battle pass profiles with user DB', { count: profiles.length });
+}
 
 // Update leaderboard after game
 function updateLeaderboard(playerName, isBot, won, mode) {
