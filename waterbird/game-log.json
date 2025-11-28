@@ -12374,5 +12374,5658 @@
     "rounds": 1,
     "mode": "offline",
     "timestamp": "2025-11-28T17:39:56.691Z"
+  },
+  {
+    "timestamp": "2025-11-28T18:04:34.955Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "3ODZsX3_r4s2_O_BAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T18:04:34.967Z",
+    "event": "playerJoin",
+    "socketId": "3ODZsX3_r4s2_O_BAAAB",
+    "playerName": "XPPilot1764353074021",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:04:38.025Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "6XX7ZfsSSGyYUHS6AAAB"
+  },
+  {
+    "timestamp": "2025-11-28T18:04:38.035Z",
+    "event": "playerJoin",
+    "socketId": "6XX7ZfsSSGyYUHS6AAAB",
+    "playerName": "QueuePlayer1",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.550Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "bdgxDdVeoV8pAdnlAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.566Z",
+    "event": "playerJoin",
+    "socketId": "bdgxDdVeoV8pAdnlAAAB",
+    "playerName": "XPPilot1764354140808",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.591Z",
+    "event": "shipsPlaced",
+    "gameId": 1764354142581,
+    "playerId": "bdgxDdVeoV8pAdnlAAAB",
+    "playerName": "XPPilot1764354140808",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.604Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.620Z",
+    "event": "battleStart",
+    "gameId": 1764354142581,
+    "player1": "XPPilot1764354140808",
+    "player2": "ThunderStrike",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.642Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:22.659Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:23.981Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:24.013Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:24.032Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:24.046Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.015Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.029Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.046Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.059Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.606Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.620Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.633Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 7,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.649Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.851Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.865Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.883Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:25.901Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.414Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.440Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.457Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.471Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.786Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.797Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.817Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:26.836Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:27.355Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:27.586Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:27.648Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:27.678Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:28.763Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:28.781Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:28.797Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:28.812Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:29.730Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:29.746Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:29.761Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:29.779Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.399Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.414Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.430Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.446Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.639Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.655Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.672Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:30.685Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.019Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.036Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.052Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 19,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.065Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.985Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 19,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:31.999Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.018Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 20,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.035Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.575Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 21,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.590Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.606Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 22,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:32.623Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:33.546Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 22,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:33.566Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:33.581Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 23,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:33.596Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:34.216Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 24,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:34.231Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:34.248Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 25,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:34.261Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:35.081Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 26,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:35.096Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:35.130Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 27,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:35.150Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:36.093Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 28,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:36.112Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:36.183Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 29,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:36.536Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:37.490Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:37.510Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:37.526Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 1,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:37.539Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 1,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.117Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.137Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.153Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 33,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.169Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.771Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 34,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.790Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.810Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 35,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:38.826Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.603Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.621Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.643Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 37,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.657Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.855Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 38,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:39.873Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:40.178Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 39,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:40.278Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.197Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.216Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.244Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.257Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.813Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 42,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.824Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.843Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 43,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:41.860Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:42.939Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 44,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.019Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.040Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 44,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.135Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.863Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 45,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.881Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.909Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:43.923Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:45.279Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:45.292Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:45.310Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 47,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:45.325Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:46.126Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 48,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:46.147Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:46.168Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 49,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:46.186Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:47.604Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 50,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:47.724Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:47.750Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 51,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:47.769Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:48.847Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 52,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:48.867Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:48.923Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 53,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:48.943Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:49.465Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 54,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:49.503Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:49.523Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 55,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:49.544Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:51.053Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 56,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:51.065Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:51.084Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 57,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:51.096Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:51.995Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 58,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.007Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.024Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 59,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.040Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.369Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 60,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.387Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.403Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 60,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:52.419Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:53.337Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 61,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:53.351Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:53.365Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 12,
+      "totalMisses": 61,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:53.378Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:54.628Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 61,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:54.644Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:54.666Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 62,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:54.679Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:55.537Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 63,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:55.767Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:55.786Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 64,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:55.836Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.039Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 64,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.065Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.085Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.105Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.897Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.915Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 3,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.930Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:56.946Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.035Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.049Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.065Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 67,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.078Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.752Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 68,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.766Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.781Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 69,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:58.792Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:59.456Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 70,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:59.471Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:22:59.488Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 71,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:22:59.504Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:00.805Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 72,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:00.829Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:00.850Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:00.864Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:01.974Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:01.993Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:02.005Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:02.016Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:03.488Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 75,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:03.504Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:03.522Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 18,
+      "totalMisses": 75,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:03.539Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:04.828Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 18,
+      "totalMisses": 76,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:04.842Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:04.860Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 18,
+      "totalMisses": 77,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:04.878Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:05.819Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 77,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:05.834Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:05.858Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 78,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:05.876Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.354Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 78,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.372Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.389Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 79,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.401Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.853Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 79,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.872Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.894Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 80,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:07.912Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:08.980Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 81,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:08.992Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.008Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 82,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.022Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.668Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 83,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.681Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.702Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 84,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:09.718Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:10.378Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 85,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:10.397Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:10.435Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 86,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:10.462Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.284Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 86,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.297Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 3,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.313Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 87,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.327Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.542Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 88,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.560Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.577Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 88,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:11.590Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.424Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 89,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.442Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.457Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 89,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.476Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.808Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 90,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.921Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.937Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 91,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:12.951Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.108Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 92,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.121Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.147Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 93,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.166Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.788Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 94,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.806Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.834Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 95,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:14.850Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.237Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 95,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.254Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.266Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 96,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.280Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.696Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 97,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.759Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.784Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 98,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.798Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.960Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 99,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:15.983Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:16.053Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 100,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:16.141Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:17.380Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 101,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:17.396Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:17.408Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 102,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:17.421Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:18.538Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 103,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:18.554Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:18.571Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 104,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:18.586Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:19.706Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 105,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 0,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:19.721Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 0,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:19.739Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 105,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:19.754Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:20.811Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 106,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 8,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:20.826Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 8,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:20.845Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 107,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:20.858Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.061Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 108,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.124Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.141Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 108,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.158Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.883Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 109,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.900Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.956Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 109,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:22.971Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 8,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:23.493Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 110,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:23.504Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:23.524Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 111,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:23.541Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:24.565Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 112,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:24.598Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:24.625Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 113,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:24.645Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:25.118Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 114,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 7,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:25.137Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 7,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:25.156Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 114,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:25.172Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.047Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 115,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.067Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 3,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.104Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 116,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.367Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.786Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 117,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.815Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.847Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 118,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:26.871Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.181Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 119,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 6,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.202Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 6,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.222Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 120,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.237Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.712Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 121,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.734Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.769Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 30,
+      "totalMisses": 121,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:28.790Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:30.176Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 121,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:30.195Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:30.207Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 122,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:30.223Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:31.096Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 123,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:31.112Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:31.134Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 124,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:31.148Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:32.330Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 125,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 9,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:32.348Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 9,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:32.363Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 126,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:32.378Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:33.593Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 127,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:33.614Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 4,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:33.645Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 128,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:33.662Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:34.961Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 129,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 2,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:34.981Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 2,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:35.000Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 130,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 8,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:35.018Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "XPPilot1764354140808",
+    "defender": "ThunderStrike",
+    "row": 8,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:36.386Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 130,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "position": {
+      "row": 1,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T18:23:36.398Z",
+    "event": "attack",
+    "gameId": 1764354142581,
+    "attacker": "ThunderStrike",
+    "defender": "XPPilot1764354140808",
+    "row": 1,
+    "col": 0,
+    "hit": true,
+    "allSunk": true,
+    "mode": "offline"
+  },
+  {
+    "gameId": 1764354142581,
+    "player1": "XPPilot1764354140808",
+    "player2": "ThunderStrike",
+    "winner": "ThunderStrike",
+    "scores": {
+      "bdgxDdVeoV8pAdnlAAAB": 0,
+      "bot_1764354142580_0.10848201175263439": 1
+    },
+    "rounds": 1,
+    "mode": "offline",
+    "timestamp": "2025-11-28T18:23:36.436Z"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:42.417Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "NT8lQYsNs7bdkIPHAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:42.433Z",
+    "event": "playerJoin",
+    "socketId": "NT8lQYsNs7bdkIPHAAAB",
+    "playerName": "QueuePlayer1",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:42.460Z",
+    "event": "shipsPlaced",
+    "gameId": 1764354222450,
+    "playerId": "NT8lQYsNs7bdkIPHAAAB",
+    "playerName": "QueuePlayer1",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:42.479Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354222450,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:42.493Z",
+    "event": "battleStart",
+    "gameId": 1764354222450,
+    "player1": "QueuePlayer1",
+    "player2": "ProGamer420",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:43.532Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 2,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "70QDlYh3P0CsVq5XAAAD"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:43.547Z",
+    "event": "playerJoin",
+    "socketId": "70QDlYh3P0CsVq5XAAAD",
+    "playerName": "QueuePlayer2",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:44.076Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "NT8lQYsNs7bdkIPHAAAB",
+    "playerName": "QueuePlayer1"
+  },
+  {
+    "timestamp": "2025-11-28T18:23:44.085Z",
+    "event": "playerDisconnect",
+    "socketId": "NT8lQYsNs7bdkIPHAAAB",
+    "playerName": "QueuePlayer1"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:39.736Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "uWG35v05-TC0EOxuAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:39.756Z",
+    "event": "playerJoin",
+    "socketId": "uWG35v05-TC0EOxuAAAB",
+    "playerName": "QueuePlayer1",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:39.781Z",
+    "event": "shipsPlaced",
+    "gameId": 1764354339774,
+    "playerId": "uWG35v05-TC0EOxuAAAB",
+    "playerName": "QueuePlayer1",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:39.801Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764354339774,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:39.819Z",
+    "event": "battleStart",
+    "gameId": 1764354339774,
+    "player1": "QueuePlayer1",
+    "player2": "xXDarkLordXx",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:40.859Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 2,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "3Q3EqLYP14JYHfCKAAAD"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:40.888Z",
+    "event": "playerJoin",
+    "socketId": "3Q3EqLYP14JYHfCKAAAD",
+    "playerName": "QueuePlayer2",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:41.421Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "uWG35v05-TC0EOxuAAAB",
+    "playerName": "QueuePlayer1"
+  },
+  {
+    "timestamp": "2025-11-28T18:25:41.430Z",
+    "event": "playerDisconnect",
+    "socketId": "uWG35v05-TC0EOxuAAAB",
+    "playerName": "QueuePlayer1"
   }
 ]
