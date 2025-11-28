@@ -119,3 +119,4 @@ tmp/
 # - package.json
 Kea/kea-profiles.json
 Kea/kea-sessions.json
+tests/offline-battlepass-test.js
