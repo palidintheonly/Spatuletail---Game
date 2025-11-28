@@ -544,13 +544,13 @@ const BOT_NAMES = [
 ];
 Logger.info('server', 'Bot name pool loaded', { count: BOT_NAMES.length });
 
-// Ship types for traditional Battleship gameplay
+// Ship types for War Birds gameplay
 const SHIP_TYPES = [
-  { name: 'Carrier', length: 5, symbol: 'C' },
-  { name: 'Battleship', length: 4, symbol: 'B' },
-  { name: 'Cruiser', length: 3, symbol: 'R' },
-  { name: 'Submarine', length: 3, symbol: 'S' },
-  { name: 'Destroyer', length: 2, symbol: 'D' }
+  { name: 'Eagle Carrier', length: 5, symbol: '🦅' },
+  { name: 'Parrot Warship', length: 4, symbol: '🦜' },
+  { name: 'Falcon Cruiser', length: 3, symbol: '🦆' },
+  { name: 'Owl Stealth', length: 3, symbol: '🦉' },
+  { name: 'Swift Striker', length: 2, symbol: '🕊' }
 ];
 Logger.info('server', 'Ship types loaded', { ships: SHIP_TYPES.length, totalCells: 17 });
 
@@ -1619,8 +1619,8 @@ io.on('connection', (socket) => {
         gameId: game.id
       });
       socket.emit('placementError', {
-        error: 'Invalid ship placement',
-        message: 'You must place all 5 ships correctly (Carrier, Battleship, Cruiser, Submarine, Destroyer)',
+        error: 'Invalid squadron deployment',
+        message: 'You must deploy all 5 war birds correctly (Eagle Carrier, Parrot Warship, Falcon Cruiser, Owl Stealth, Swift Striker)',
         expectedShips: SHIP_TYPES.map(st => ({ name: st.name, length: st.length }))
       });
       return;

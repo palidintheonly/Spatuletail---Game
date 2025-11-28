@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -338,36 +338,28 @@
     <div>
       <p class="eyebrow">🦅 WAR BIRDS HALL OF FAME 🦅</p>
       <h1>ELITE COMMANDERS</h1>
-      <p class="lede">Battle-tested warriors ranked by victories • Real-time combat statistics • Honor and glory await</p>
+      <p class="lede">Battle-tested warriors ranked by victories • Real-time combat statistics • Honour and glory await</p>
     </div>
     <div class="hero-actions">
       <a class="btn" href="/">Home</a>
-      <a class="btn primary" href="/offline">Play Offline</a>
+      <a class="btn primary" href="/offline">🦅 Deploy Squadron</a>
     </div>
   </header>
 
   <main>
     <section class="card" id="offline-card">
       <div class="card-header">
-        <h2 class="card-title">⚔ SOLO COMBAT ⚔</h2>
+        <h2 class="card-title">🦅 TALON WARRIORS 🦅</h2>
         <span class="badge" id="offline-count">Loading…</span>
       </div>
       <div id="offline-body" class="empty">Loading war birds roster…</div>
-    </section>
-
-    <section class="card" id="online-card">
-      <div class="card-header">
-        <h2 class="card-title">🦅 SQUADRON BATTLES 🦅</h2>
-        <span class="badge" id="online-count">Loading…</span>
-      </div>
-      <div id="online-body" class="empty">Loading squadron roster…</div>
     </section>
   </main>
 
   <footer>⚔ SPATULETAIL WAR COMMAND • Real-time combat statistics • Glory to the victorious ⚔</footer>
 
   <script>
-    const modes = ['offline', 'online'];
+    const modes = ['offline'];
 
     function renderBoard(mode, data) {
       const body = document.getElementById(`${mode}-body`);

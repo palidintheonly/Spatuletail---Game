@@ -1,4 +1,4 @@
-// Offline Battleship Game Client - 2D Grid Implementation (No Three.js)
+// Offline War Birds Game Client - 2D Grid Implementation (No Three.js)
 
 // IMMEDIATE FAILSAFE: Remove loading screen after 5 seconds no matter what
 setTimeout(() => {
@@ -36,7 +36,7 @@ const Logger = {
 };
 
 const socket = io();
-Logger.info('socket', 'Connecting to server for offline AI training...');
+Logger.info('socket', 'Connecting to Raptor Command Centre...');
 
 // Sound system
 const sounds = {
@@ -63,11 +63,11 @@ let aiDifficulty = 2; // Default: Medium
 const enemyFleetLegend = {};
 
 const SHIP_TYPES = [
-  { name: 'Carrier', length: 5, icon: 'C' },
-  { name: 'Battleship', length: 4, icon: 'B' },
-  { name: 'Cruiser', length: 3, icon: 'R' },
-  { name: 'Submarine', length: 3, icon: 'S' },
-  { name: 'Destroyer', length: 2, icon: 'D' }
+  { name: 'Eagle Carrier', length: 5, icon: '🦅' },
+  { name: 'Parrot Warship', length: 4, icon: '🦜' },
+  { name: 'Falcon Cruiser', length: 3, icon: '🦆' },
+  { name: 'Owl Stealth', length: 3, icon: '🦉' },
+  { name: 'Swift Striker', length: 2, icon: '🕊' }
 ];
 
 const DIFFICULTY_NAMES = ['', 'Easy', 'Medium', 'Hard', 'Extreme'];
@@ -79,7 +79,7 @@ setInterval(() => {
   }
 }, 10000);
 
-// Initialize 2D Grid Boards
+// Initialise 2D Grid Boards
 function initBoards() {
   const container = document.getElementById('canvas-container');
   container.innerHTML = '';
@@ -87,15 +87,15 @@ function initBoards() {
   const boardsWrapper = document.createElement('div');
   boardsWrapper.className = 'boards-wrapper';
 
-  const myBoardContainer = createBoardContainer('my', 'Your Fleet');
+  const myBoardContainer = createBoardContainer('my', 'Your Squadron');
   boardsWrapper.appendChild(myBoardContainer);
 
-  const enemyBoardContainer = createBoardContainer('enemy', 'AI Fleet');
+  const enemyBoardContainer = createBoardContainer('enemy', 'Raptor Squadron');
   boardsWrapper.appendChild(enemyBoardContainer);
 
   container.appendChild(boardsWrapper);
 
-  Logger.success('game', '2D Battleship grids initialized - 10×10 boards (200 cells total)');
+  Logger.success('game', '2D War Birds grids initialized - 10×10 boards (200 cells total)');
 }
 
 function createBoardContainer(boardType, title) {
@@ -662,9 +662,9 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
   }
 });
 
-// Initialize on load
+// Initialise on load
 window.addEventListener('load', () => {
-  Logger.info('init', 'Initializing 2D Battleship AI training (10x10 grids, 200 cells total)');
+  Logger.info('init', 'Initialising 2D War Birds training (10x10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
   buildEnemyLegend();

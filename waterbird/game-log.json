@@ -6367,5 +6367,6012 @@
     "event": "playerDisconnect",
     "socketId": "ftlynlsVn-7nW2uAAAAB",
     "playerName": "QueuePlayer1"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.845Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "ogzEWRy7ogYvD6yfAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.855Z",
+    "event": "playerJoin",
+    "socketId": "ogzEWRy7ogYvD6yfAAAB",
+    "playerName": "XPPilot1764351516660",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.873Z",
+    "event": "shipsPlaced",
+    "gameId": 1764351517864,
+    "playerId": "ogzEWRy7ogYvD6yfAAAB",
+    "playerName": "XPPilot1764351516660",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.880Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.885Z",
+    "event": "battleStart",
+    "gameId": 1764351517864,
+    "player1": "XPPilot1764351516660",
+    "player2": "ShadowKnight",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.895Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:37.901Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.322Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.326Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.336Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.341Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.748Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.752Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.759Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:38.764Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:39.135Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:39.139Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:39.148Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:39.153Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:40.648Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 7,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:40.655Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:40.663Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:40.670Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.326Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.336Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.347Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.354Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.904Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.910Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.919Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:41.926Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:42.348Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:42.355Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:42.366Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:42.372Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:43.584Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:43.588Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:43.595Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:43.602Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.006Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.011Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.027Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.033Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.901Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.908Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.920Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:44.925Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:45.935Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 19,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:45.945Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:45.953Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 20,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:45.957Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:46.870Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 21,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:46.881Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:46.894Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 21,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:46.905Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.240Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 22,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.248Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.257Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 23,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.263Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.698Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 24,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.703Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.710Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 25,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:48.717Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:49.320Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 26,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:49.326Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:49.334Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 27,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:49.339Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:50.494Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 28,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:50.504Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:50.516Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 29,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:50.524Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:51.506Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:51.511Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:51.523Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:51.527Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:52.611Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:52.621Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:52.633Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:52.640Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 8,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:53.465Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:53.472Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:53.485Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 1,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:53.492Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 1,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:54.798Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 33,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:54.803Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:54.816Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 34,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:54.823Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.214Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 34,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.219Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.226Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 35,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.232Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.750Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.755Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.762Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.770Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.988Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 37,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:56.992Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.002Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 38,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.007Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.737Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 38,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.751Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.764Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 39,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:57.775Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:59.003Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:59.008Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:38:59.017Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:38:59.024Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.040Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.047Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.058Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 42,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.067Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.810Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 43,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.820Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.827Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 44,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:00.834Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.070Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 45,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.075Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.085Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.091Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.530Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 12,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.537Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.544Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 12,
+      "totalMisses": 47,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.551Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.830Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 47,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.839Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.855Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 48,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:02.865Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:04.313Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 49,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:04.321Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:04.329Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 50,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:04.334Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:05.686Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 51,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:05.692Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:05.700Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 52,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:05.708Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:06.843Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 53,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:06.852Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:06.864Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 54,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:06.870Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:07.342Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 55,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:07.349Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:07.356Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 56,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:07.363Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:08.038Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 57,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:08.042Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:08.051Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 57,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:08.058Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:09.347Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 58,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:09.352Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:09.359Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 59,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:09.366Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:10.773Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 60,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:10.781Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:10.788Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 61,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:10.793Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.445Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 62,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.452Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.467Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 63,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.476Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.600Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 64,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.608Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.617Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 3,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:11.623Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 3,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:12.980Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:12.986Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 3,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:12.994Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:13.003Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:13.308Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:13.317Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:13.326Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:13.335Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:14.156Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 67,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:14.164Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:14.171Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 68,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:14.177Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:15.387Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 69,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:15.393Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:15.402Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 70,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:15.408Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.070Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 71,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.076Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.085Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 72,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.090Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.413Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.419Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.426Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 18,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:16.434Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:17.634Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:17.643Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:17.656Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:17.664Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:18.942Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 75,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:18.957Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:18.972Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 76,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:18.986Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:19.569Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 77,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:19.580Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:19.598Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 78,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:19.609Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.431Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 79,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.438Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.448Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 80,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 4,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.457Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 4,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.840Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 81,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.849Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.857Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 82,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:20.864Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:21.666Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 83,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:21.673Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:21.685Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 83,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:21.693Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.114Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 84,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.120Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.134Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 85,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.142Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.967Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 86,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.973Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.981Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 87,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:23.987Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.248Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 87,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.256Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.267Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 88,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.273Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.752Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 89,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.759Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.775Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 89,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:24.784Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:25.709Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 90,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:25.719Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:25.730Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 91,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:25.739Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:26.702Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 92,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:26.709Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:26.722Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 93,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:26.732Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.158Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 94,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.165Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.175Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 95,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.184Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.798Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 95,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.805Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.813Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 96,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 5,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:27.819Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 5,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.063Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 97,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.072Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.083Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 98,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.089Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.936Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 99,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.956Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.975Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 99,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:29.986Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:30.957Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 100,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:30.968Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:30.978Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 101,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:30.987Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:32.398Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 102,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:32.407Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:32.417Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 103,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:32.422Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:33.085Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 104,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:33.091Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:33.101Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 105,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:33.107Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:34.096Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 106,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:34.103Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:34.115Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 106,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:34.124Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:35.523Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 107,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:35.542Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:35.556Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 108,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:35.567Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:35.990Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 109,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:36.002Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:36.013Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 110,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:36.019Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:37.284Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 111,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:37.290Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:37.303Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 112,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:37.309Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.236Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 113,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.242Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.254Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 114,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 6,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.261Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 6,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.505Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 115,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.512Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.521Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 116,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.530Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.696Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 117,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.709Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.722Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 117,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:38.731Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:39.780Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 117,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:39.791Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 3,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:39.806Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 118,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:39.814Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:40.266Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 119,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:40.274Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:40.287Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 120,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:40.295Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.441Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 120,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 3,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.450Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 3,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.458Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 121,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.466Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.781Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 122,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.789Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 4,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.799Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 123,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:41.805Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:42.286Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 124,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:42.292Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:42.307Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 125,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:42.316Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:43.705Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 126,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:43.770Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:43.802Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 127,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:43.815Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:45.075Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 128,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:45.084Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:45.093Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 129,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:45.104Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.063Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 130,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.083Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.099Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 28,
+      "totalMisses": 131,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.116Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 7,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.514Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 131,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.523Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.534Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 132,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.542Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.781Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 133,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.792Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.802Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 134,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:46.809Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:48.301Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 29,
+      "totalMisses": 135,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 5,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:48.308Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 5,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:48.324Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 30,
+      "totalMisses": 135,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:48.332Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:49.273Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 30,
+      "totalMisses": 136,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 9,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:49.284Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 9,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:49.295Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 30,
+      "totalMisses": 137,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:49.303Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:50.045Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 137,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 0,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:50.055Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 0,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:50.065Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 31,
+      "totalMisses": 138,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:50.078Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:51.386Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 138,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 1,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:51.405Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 1,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:51.446Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 139,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:51.458Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:52.708Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 140,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:52.720Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:52.733Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 141,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:52.745Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:53.830Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 142,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:53.842Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:53.853Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 143,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:53.861Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.012Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 144,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 8,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.023Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 8,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.036Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 145,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.044Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.768Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 146,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 6,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.781Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 6,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.791Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 32,
+      "totalMisses": 147,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 8,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:55.803Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "XPPilot1764351516660",
+    "defender": "ShadowKnight",
+    "row": 8,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T17:39:56.623Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 33,
+      "totalMisses": 147,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T17:39:56.647Z",
+    "event": "attack",
+    "gameId": 1764351517864,
+    "attacker": "ShadowKnight",
+    "defender": "XPPilot1764351516660",
+    "row": 2,
+    "col": 1,
+    "hit": true,
+    "allSunk": true,
+    "mode": "offline"
+  },
+  {
+    "gameId": 1764351517864,
+    "player1": "XPPilot1764351516660",
+    "player2": "ShadowKnight",
+    "winner": "ShadowKnight",
+    "scores": {
+      "ogzEWRy7ogYvD6yfAAAB": 0,
+      "bot_1764351517863_0.7834721340684492": 1
+    },
+    "rounds": 1,
+    "mode": "offline",
+    "timestamp": "2025-11-28T17:39:56.691Z"
   }
 ]
