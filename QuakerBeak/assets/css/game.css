@@ -6,21 +6,35 @@
 }
 
 :root {
-    --primary-color: #00d4ff;
-    --secondary-color: #ff6b6b;
-    --accent-color: #ffd93d;
-    --success-color: #2ecc71;
-    --danger-color: #e74c3c;
-    --dark-bg: #0a0e27;
-    --card-bg: rgba(20, 25, 50, 0.95);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --primary-color: #d4af37;
+    --war-gold: #d4af37;
+    --secondary-color: #8b1a1a;
+    --war-red: #8b1a1a;
+    --accent-color: #d4af37;
+    --success-color: #3d5a40;
+    --tactical-green: #3d5a40;
+    --danger-color: #8b1a1a;
+    --dark-bg: #1a1f15;
+    --war-dark: #1a1f15;
+    --war-olive: #4a5a3c;
+    --card-bg: rgba(58, 70, 52, 0.95);
+    --glass-bg: rgba(106, 128, 97, 0.15);
+    --border-color: rgba(212, 175, 55, 0.3);
+    --feather-accent: #b8936e;
+    --command-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+    --text: #f0f0e8;
+    --muted: rgba(240, 240, 232, 0.7);
 }
 
 body {
-    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
-    color: #fff;
+    font-family: 'Impact', 'Arial Black', 'Segoe UI', sans-serif;
+    background:
+        linear-gradient(135deg, rgba(26, 31, 21, 0.9) 0%, rgba(58, 70, 52, 0.8) 50%, rgba(29, 35, 25, 0.9) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(74, 90, 60, 0.03) 10px, rgba(74, 90, 60, 0.03) 20px),
+        radial-gradient(circle at 20% 30%, rgba(61, 90, 64, 0.2), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(139, 26, 26, 0.15), transparent 50%),
+        #1a1f15;
+    color: var(--text);
     overflow: hidden;
     width: 100vw;
     height: 100vh;
@@ -861,7 +875,7 @@ body {
     background: #00a8cc;
 }
 
-/* 2D Battleship Grid System - 10×10 (100 cells per board, 200 total) */
+/* 2D War Birds Grid System - 10×10 (100 cells per board, 200 total) */
 .boards-wrapper {
     display: flex;
     justify-content: center;
