@@ -29,7 +29,6 @@ const REQUIRED_ENV_VARS = [
   'PORT',
   'HOST',
   'NODE_ENV',
-  'ADMIN_PASSWORD',
   'SESSION_SECRET',
   'MAX_ROUNDS',
   'TURN_TIMER_SECONDS'
@@ -62,10 +61,6 @@ const io = new Server(httpServer);
 const PORT = parseInt(process.env.PORT) || 3010;
 const HOST = process.env.HOST || '0.0.0.0';
 const NODE_ENV = process.env.NODE_ENV || 'development';
-
-// Admin Panel
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const ADMIN_SESSION_TIMEOUT = (parseInt(process.env.ADMIN_SESSION_TIMEOUT_SECONDS) || 3600) * 1000;
 
 // Security
 const SESSION_SECRET = process.env.SESSION_SECRET;
@@ -297,11 +292,6 @@ app.get('/spectate', (req, res) => {
   Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
 
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'admin.html'));
-  Logger.info('route', 'Admin dashboard accessed', { path: '/admin' });
-});
-
 // Quietly handle missing favicon to avoid noisy 404s in the console
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
@@ -315,7 +305,7 @@ app.get('/privacy-policy', (req, res) => {
   Logger.info('route', 'Privacy Policy accessed', { path: '/privacy-policy' });
 });
 
-Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/admin', '/terms', '/privacy-policy'] });
+Logger.success('server', 'All routes configured', { routes: ['/', '/online', '/offline', '/spectate', '/terms', '/privacy-policy'] });
 
 // File system utilities - check before creating
 function ensureDirectoryExists(dirPath) {
@@ -2261,22 +2251,8 @@ app.get(`/api/${API_VERSION}/logs/recent`, (req, res) => {
   res.json(recentLogs);
 });
 
-// Admin Password Verification Endpoint
-app.post(`/api/${API_VERSION}/admin/verify`, (req, res) => {
-  const { password } = req.body;
-  Logger.info('api', 'Admin password verification attempt');
-
-  if (password === ADMIN_PASSWORD) {
-    Logger.success('api', 'Admin password verified successfully');
-    res.json({ success: true, message: 'Access granted' });
-  } else {
-    Logger.warn('api', 'Admin password verification failed');
-    res.status(401).json({ success: false, message: 'Invalid password' });
-  }
-});
-
-// System Information API Endpoint
-app.get(`/api/${API_VERSION}/admin/system`, (req, res) => {
+// System Information API Endpoint (removed admin authentication)
+app.get(`/api/${API_VERSION}/system`, (req, res) => {
   Logger.info('api', 'System information requested');
 
   const systemInfo = {
@@ -2366,6 +2342,6 @@ httpServer.listen(PORT, HOST, () => {
     host: HOST,
     environment: NODE_ENV
   });
-  console.log('\x1b[32m[SERVER] Admin panel: http://localhost:%d/admin (password: %s)\x1b[0m', PORT,
-    ADMIN_PASSWORD === 'admin123' ? 'admin123 [CHANGE THIS!]' : '***');
+  console.log('\x1b[36m[SERVER] Homepage: http://localhost:%d\x1b[0m', PORT);
+  console.log('\x1b[36m[SERVER] Offline Game: http://localhost:%d/offline\x1b[0m', PORT);
 });

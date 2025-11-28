@@ -452,6 +452,17 @@ socket.on('gameOver', (data) => {
   updateStatusMessage(won ? '🏆 VICTORY! You beat the AI!' : '💀 DEFEAT! AI wins!');
   won ? sounds.victory.play() : sounds.defeat.play();
 
+  // Record Battle Pass progress
+  if (window.BattlePass) {
+    if (won) {
+      const success = window.BattlePass.recordWin();
+      Logger.success('battlepass', 'Victory recorded', { xpGained: 100, success });
+    } else {
+      const success = window.BattlePass.recordLoss();
+      Logger.info('battlepass', 'Loss recorded', { xpGained: 30, success });
+    }
+  }
+
   setTimeout(() => {
     if (confirm('Game Over! Return to menu?')) {
       window.location.href = '/';
