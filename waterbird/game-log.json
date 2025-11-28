@@ -1,1 +1,6618 @@
-{}
+[
+  {
+    "timestamp": "2025-11-28T13:12:28.407Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "umDgXOSUpjB7mPu1AAAB"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:11.541Z",
+    "event": "playerJoin",
+    "socketId": "umDgXOSUpjB7mPu1AAAB",
+    "playerName": "Player521",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:13.614Z",
+    "event": "shipsPlaced",
+    "gameId": 1764335591542,
+    "playerId": "umDgXOSUpjB7mPu1AAAB",
+    "playerName": "Player521",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:13.615Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:13.615Z",
+    "event": "battleStart",
+    "gameId": 1764335591542,
+    "player1": "Player521",
+    "player2": "CaptainCool",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:17.561Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:17.561Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 3,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:19.461Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:19.461Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 2,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:20.946Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 4,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:20.946Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 4,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:22.873Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:22.874Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:29.316Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:29.316Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:31.043Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:31.044Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:36.310Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 3,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:36.311Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 3,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:38.580Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:38.580Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:43.145Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 7,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:43.146Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:45.176Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:45.176Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:49.199Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:49.200Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 3,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:50.939Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 1,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:50.940Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 1,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:54.577Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:54.578Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:56.315Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:56.315Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 3,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:13:59.626Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:13:59.626Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 7,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:01.812Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:01.813Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:03.109Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 6,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:03.110Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 6,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:04.728Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:04.729Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 2,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:05.002Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:05.002Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:06.618Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:06.619Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 8,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:08.735Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 8,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:08.736Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 8,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:11.105Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:11.106Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:12.419Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 9,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:12.420Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 9,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:14.881Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 19,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 9,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:14.882Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 9,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:16.400Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 20,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 9,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:16.401Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 9,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:18.546Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 21,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:18.547Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 5,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:18.706Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 22,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:18.707Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:20.443Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 23,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:20.443Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:20.495Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 24,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:20.495Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:22.658Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 25,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:22.658Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:24.618Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 26,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:24.619Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 2,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:27.001Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 27,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:27.002Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:28.492Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 28,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:28.493Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 1,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:30.351Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 29,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:30.352Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:30.483Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "position": {
+      "row": 9,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:30.484Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "Player521",
+    "defender": "CaptainCool",
+    "row": 9,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:32.805Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "socketId": "umDgXOSUpjB7mPu1AAAB",
+    "playerName": "Player521"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:32.805Z",
+    "event": "playerDisconnect",
+    "socketId": "umDgXOSUpjB7mPu1AAAB",
+    "playerName": "Player521"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:32.983Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 2,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:32.983Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 2,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:51.555Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "socketId": "wgQMfAbLz05dzUmOAAAD"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:53.449Z",
+    "event": "playerJoin",
+    "socketId": "wgQMfAbLz05dzUmOAAAD",
+    "playerName": "Player141",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:55.951Z",
+    "event": "shipsPlaced",
+    "gameId": 1764335693450,
+    "playerId": "wgQMfAbLz05dzUmOAAAD",
+    "playerName": "Player141",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:55.952Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:55.953Z",
+    "event": "battleStart",
+    "gameId": 1764335693450,
+    "player1": "Player141",
+    "player2": "IceQueen",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:14:58.313Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 4,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:14:58.314Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 4,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:00.553Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 33,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:00.553Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:02.659Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 34,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:02.660Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:04.599Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 35,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:04.599Z",
+    "event": "attack",
+    "gameId": 1764335591542,
+    "attacker": "CaptainCool",
+    "defender": "Player521",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:04.727Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:04.727Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:07.304Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 37,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:07.304Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:09.805Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 38,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:09.805Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 3,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:11.760Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 39,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 8,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:11.761Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 8,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:14.033Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 5,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:14.034Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:15.815Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 6,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:15.816Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 5,
+    "col": 0,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:17.894Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 6,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:17.895Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 7,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:21.140Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:21.141Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 7,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:22.941Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 42,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:22.942Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 3,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:26.479Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 43,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:26.480Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 5,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:28.421Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 44,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:28.422Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:31.417Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 45,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:31.418Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:33.858Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 2,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:33.859Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 2,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:36.440Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 47,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 9,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:36.441Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 9,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:38.820Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 48,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:38.821Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "IceQueen",
+    "defender": "Player141",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:15:41.396Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 7,
+      "totalMisses": 49,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "position": {
+      "row": 9,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:15:41.396Z",
+    "event": "attack",
+    "gameId": 1764335693450,
+    "attacker": "Player141",
+    "defender": "IceQueen",
+    "row": 9,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:37.518Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "zwPCe9dT82lgURKdAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:41.193Z",
+    "event": "playerJoin",
+    "socketId": "zwPCe9dT82lgURKdAAAB",
+    "playerName": "Player190",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:41.200Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335801195,
+    "attacker": "Player190",
+    "defender": "ShadowKnight",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:16:41.201Z",
+    "event": "attack",
+    "gameId": 1764335801195,
+    "attacker": "Player190",
+    "defender": "ShadowKnight",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:43.225Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335801195,
+    "attacker": "ShadowKnight",
+    "defender": "Player190",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:16:43.225Z",
+    "event": "attack",
+    "gameId": 1764335801195,
+    "attacker": "ShadowKnight",
+    "defender": "Player190",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": true,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:44.127Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "socketId": "zwPCe9dT82lgURKdAAAB",
+    "playerName": "Player190"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:44.128Z",
+    "event": "playerDisconnect",
+    "socketId": "zwPCe9dT82lgURKdAAAB",
+    "playerName": "Player190"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:55.436Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "socketId": "J_76xEuelT0cuxrGAAAD"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:55.567Z",
+    "event": "playerJoin",
+    "socketId": "J_76xEuelT0cuxrGAAAD",
+    "playerName": "test",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:57.511Z",
+    "event": "shipsPlaced",
+    "gameId": 1764335815568,
+    "playerId": "J_76xEuelT0cuxrGAAAD",
+    "playerName": "test",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:57.512Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:57.512Z",
+    "event": "battleStart",
+    "gameId": 1764335815568,
+    "player1": "test",
+    "player2": "NinjaWarrior",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:16:59.987Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:16:59.988Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:17:01.822Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:17:01.823Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:17:03.300Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:17:03.300Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:17:04.992Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:17:04.992Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "row": 4,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:17:11.091Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:17:11.092Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "test",
+    "defender": "NinjaWarrior",
+    "row": 8,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:17:13.183Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 2,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:17:13.184Z",
+    "event": "attack",
+    "gameId": 1764335815568,
+    "attacker": "NinjaWarrior",
+    "defender": "test",
+    "row": 3,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:42.487Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "VI6Vt56EwwJYZ5VTAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:42.582Z",
+    "event": "playerJoin",
+    "socketId": "VI6Vt56EwwJYZ5VTAAAB",
+    "playerName": "test",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:44.536Z",
+    "event": "shipsPlaced",
+    "gameId": 1764336822584,
+    "playerId": "VI6Vt56EwwJYZ5VTAAAB",
+    "playerName": "test",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:44.537Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:44.538Z",
+    "event": "battleStart",
+    "gameId": 1764336822584,
+    "player1": "test",
+    "player2": "ThunderStrike",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:46.978Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:46.978Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 3,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:48.762Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:48.762Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:50.172Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:50.173Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 4,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:52.209Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 3,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:52.210Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 3,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:54.273Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:54.273Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 5,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:55.881Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:55.882Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:57.124Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:57.125Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 6,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:33:59.160Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:33:59.160Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:00.164Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:00.165Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 7,
+    "col": 4,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:02.114Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:02.115Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:03.309Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 8,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:03.310Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 8,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:05.346Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 7,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 8,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:05.347Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 8,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:05.931Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:05.932Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:07.550Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 7,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:07.551Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 7,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:10.160Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:10.161Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:11.918Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:11.919Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:15.227Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:15.228Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:16.790Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:16.791Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:18.810Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 9,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:18.811Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 9,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:20.765Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:20.765Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 1,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:21.914Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "position": {
+      "row": 9,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:21.915Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "test",
+    "defender": "ThunderStrike",
+    "row": 9,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:23.435Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:23.436Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 0,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:34:55.870Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "position": {
+      "row": 9,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:34:55.870Z",
+    "event": "attack",
+    "gameId": 1764336822584,
+    "attacker": "ThunderStrike",
+    "defender": "test",
+    "row": 9,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:35:17.526Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "socketId": "VI6Vt56EwwJYZ5VTAAAB",
+    "playerName": "test"
+  },
+  {
+    "timestamp": "2025-11-28T13:35:17.527Z",
+    "event": "playerDisconnect",
+    "socketId": "VI6Vt56EwwJYZ5VTAAAB",
+    "playerName": "test"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:51.034Z",
+    "event": "connection",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 0,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 0,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "socketId": "HmX0aOBIscWlylTMAAAB"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:51.104Z",
+    "event": "playerJoin",
+    "socketId": "HmX0aOBIscWlylTMAAAB",
+    "playerName": "Mobile",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:53.948Z",
+    "event": "shipsPlaced",
+    "gameId": 1764337311105,
+    "playerId": "HmX0aOBIscWlylTMAAAB",
+    "playerName": "Mobile",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:53.949Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 0,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:53.950Z",
+    "event": "battleStart",
+    "gameId": 1764337311105,
+    "player1": "Mobile",
+    "player2": "SilentAssassin",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:41:59.060Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 1,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:41:59.061Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:00.772Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 2,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 4,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:00.773Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 4,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:03.282Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 3,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:03.283Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:05.742Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 4,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:05.743Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:11.388Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 5,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:11.389Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:13.140Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 0,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:13.141Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:15.493Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 6,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:15.494Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:17.915Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 7,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:17.916Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:19.499Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 8,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:19.500Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:21.396Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 1,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:21.396Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 6,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:22.534Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 2,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 8,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:22.535Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 8,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:24.953Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 3,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:24.954Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:26.078Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 4,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:26.078Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:27.809Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 9,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:27.811Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 2,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:31.690Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 10,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:31.691Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:33.408Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 11,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:33.409Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:35.219Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 5,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:35.220Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:37.349Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 12,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:37.350Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 1,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:38.070Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 6,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:38.070Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:39.887Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 7,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:39.888Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 0,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:41.819Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 13,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:41.820Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:43.447Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 14,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:43.448Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:44.449Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 15,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:44.450Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:46.380Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 16,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:46.381Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:46.839Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 8,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:46.841Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:48.611Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 9,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:48.612Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:49.021Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 10,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:49.022Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 1,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:50.636Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 11,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 6,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:50.637Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 6,
+    "col": 6,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:51.058Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 12,
+      "totalMisses": 17,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:51.058Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:53.445Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 12,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 8,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:53.446Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 8,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:57.120Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 18,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 3,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:57.121Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 3,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:42:59.595Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 19,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:42:59.596Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:01.788Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 20,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 4,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:01.789Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 4,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:03.479Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 21,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:03.480Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:04.679Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 22,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 4,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:04.681Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 4,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:06.444Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 23,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:06.445Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:08.009Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 24,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 0,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:08.009Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 0,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:10.000Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 25,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 4,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:10.001Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 4,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:10.920Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 13,
+      "totalMisses": 26,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 6,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:10.921Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 6,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:13.411Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 26,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 1,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:13.412Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 1,
+    "col": 5,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:14.631Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 27,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:14.632Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:16.155Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 28,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:16.156Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:17.600Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 29,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:17.601Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:19.243Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 14,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:19.244Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:21.200Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 30,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:21.201Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:23.681Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 15,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 9,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:23.683Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 9,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:24.549Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 31,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 4,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:24.550Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 4,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:26.895Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 16,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:26.897Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:29.220Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 32,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:29.221Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 3,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:31.401Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 33,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 8,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:31.402Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 8,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:32.459Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 34,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:32.460Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:34.396Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 35,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 0,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:34.397Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 0,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:35.370Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 17,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:35.371Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:37.838Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 18,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 1,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:37.839Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 1,
+    "col": 8,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:38.460Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 36,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 6,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:38.461Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 6,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:40.429Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 19,
+      "totalMisses": 37,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:40.431Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:43.209Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 37,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:43.210Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 7,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:45.501Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 38,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 9,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:45.502Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 9,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:48.399Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 39,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 1,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:48.400Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 1,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:50.845Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 40,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:50.846Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 2,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:51.176Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 20,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:51.177Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:53.074Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 41,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:53.075Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:54.139Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 42,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 9,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:54.140Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 9,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:56.372Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 43,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:56.374Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:57.180Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 44,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:57.181Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:59.056Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 45,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 8,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:59.057Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 8,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:43:59.873Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 46,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 6,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:43:59.874Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 6,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:01.413Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 47,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 8,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:01.414Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 8,
+    "col": 9,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:02.039Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 48,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:02.041Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:04.108Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 49,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:04.110Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:04.377Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 50,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 4,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:04.378Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 4,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:06.718Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 51,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:06.719Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:08.911Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 52,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:08.912Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:11.403Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 53,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 6,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:11.404Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 6,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:11.901Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 54,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 8,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:11.902Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 8,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:13.994Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 55,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 9,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:13.995Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 9,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:15.079Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 56,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:15.080Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:16.932Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 57,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:16.934Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:17.819Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 58,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:17.821Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:19.371Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 59,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 4,
+      "col": 5
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:19.372Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 4,
+    "col": 5,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:20.660Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 60,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 8
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:20.662Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 8,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:22.342Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 61,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 0,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:22.344Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 0,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:24.551Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 21,
+      "totalMisses": 62,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 7,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:24.552Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 7,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:26.365Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 22,
+      "totalMisses": 62,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 0,
+      "col": 9
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:26.366Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 0,
+    "col": 9,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:28.596Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 62,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 1,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:28.597Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 1,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:30.883Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 63,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 0,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:30.884Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 0,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:31.589Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 64,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:31.591Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:33.907Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 23,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 0
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:33.908Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 0,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:34.399Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 65,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:34.400Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 1,
+    "col": 3,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:36.841Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 66,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 9,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:36.843Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 9,
+    "col": 2,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:37.588Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 67,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 2,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:37.589Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 2,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:39.806Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 24,
+      "totalMisses": 68,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 9,
+      "col": 6
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:39.807Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 9,
+    "col": 6,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:40.277Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 68,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:40.279Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 1,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:41.879Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 69,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 3,
+      "col": 7
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:41.881Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 3,
+    "col": 7,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:42.959Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 70,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 6,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:42.960Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 6,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:45.372Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 71,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 7,
+      "col": 4
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:45.374Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 7,
+    "col": 4,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:45.899Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 72,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 3,
+      "col": 1
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:45.901Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 3,
+    "col": 1,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:47.531Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 25,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:47.533Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 5,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:48.308Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 73,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 2
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:48.310Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 2,
+    "hit": true,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:50.458Z",
+    "event": "miss",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 26,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "position": {
+      "row": 1,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:50.459Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "SilentAssassin",
+    "defender": "Mobile",
+    "row": 1,
+    "col": 3,
+    "hit": false,
+    "allSunk": false,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:44:50.782Z",
+    "event": "hit",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 1,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 1,
+      "totalHits": 27,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "position": {
+      "row": 5,
+      "col": 3
+    }
+  },
+  {
+    "timestamp": "2025-11-28T13:44:50.783Z",
+    "event": "attack",
+    "gameId": 1764337311105,
+    "attacker": "Mobile",
+    "defender": "SilentAssassin",
+    "row": 5,
+    "col": 3,
+    "hit": true,
+    "allSunk": true,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:45:01.055Z",
+    "event": "shipsPlaced",
+    "gameId": 1764337311105,
+    "playerId": "HmX0aOBIscWlylTMAAAB",
+    "playerName": "Mobile",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:45:01.057Z",
+    "event": "gameStart",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 1,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 27,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "gameId": 1764337311105,
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:45:01.059Z",
+    "event": "battleStart",
+    "gameId": 1764337311105,
+    "player1": "Mobile",
+    "player2": "SilentAssassin",
+    "mode": "offline"
+  },
+  {
+    "timestamp": "2025-11-28T13:45:02.988Z",
+    "event": "disconnect",
+    "liveStats": {
+      "totalConnections": 1,
+      "currentPlayers": 0,
+      "gamesPlayed": 2,
+      "onlineGamesPlayed": 0,
+      "offlineGamesPlayed": 2,
+      "totalHits": 27,
+      "totalMisses": 74,
+      "averageGameDuration": 0
+    },
+    "socketId": "HmX0aOBIscWlylTMAAAB",
+    "playerName": "Mobile"
+  },
+  {
+    "timestamp": "2025-11-28T13:45:02.989Z",
+    "event": "playerDisconnect",
+    "socketId": "HmX0aOBIscWlylTMAAAB",
+    "playerName": "Mobile"
+  }
+]
