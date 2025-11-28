@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Spatuletail | War Command Center</title>
+    <title>Spatuletail | War Command Centre</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -884,20 +884,21 @@
         }
         /* ===== END AVATAR ENHANCEMENT FRAMEWORK ===== */
 
-        /* ===== BATTLE PASS SYSTEM ===== */
+        /* ===== WAR BIRDS HONOURS SYSTEM ===== */
         .battlepass-widget {
             position: fixed;
             top: 18px;
             right: 18px;
             width: 280px;
-            background: rgba(20, 25, 50, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(135deg, rgba(58, 70, 52, 0.98), rgba(42, 50, 38, 0.98));
+            border: 3px solid var(--war-gold);
             border-radius: 14px;
             padding: 14px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 12px 32px rgba(0, 0, 0, 0.5);
             z-index: 1200;
             transition: transform 0.3s ease;
+            font-family: 'Impact', 'Arial Black', sans-serif;
         }
         .battlepass-widget.collapsed {
             transform: translateX(calc(100% - 50px));
@@ -909,8 +910,8 @@
             transform: translateY(-50%);
             width: 36px;
             height: 48px;
-            background: rgba(20, 25, 50, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(135deg, rgba(58, 70, 52, 0.98), rgba(42, 50, 38, 0.98));
+            border: 3px solid var(--war-gold);
             border-right: none;
             border-radius: 8px 0 0 8px;
             display: flex;
@@ -921,7 +922,8 @@
             transition: all 0.3s ease;
         }
         .battlepass-toggle:hover {
-            background: rgba(30, 35, 60, 0.95);
+            background: linear-gradient(135deg, rgba(74, 90, 60, 0.98), rgba(58, 70, 52, 0.98));
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
         .battlepass-header {
             display: flex;
@@ -1163,7 +1165,7 @@
         <div class="card" role="dialog" aria-labelledby="mobile-overlay-title" aria-describedby="mobile-overlay-desc">
             <div class="icon">📱</div>
             <h2 id="mobile-overlay-title">Best on desktop/laptop</h2>
-            <p id="mobile-overlay-desc">Spatuletail is optimized for larger screens. Mobile devices may experience layout or gameplay bugs.</p>
+            <p id="mobile-overlay-desc">Spatuletail is optimised for larger screens. Mobile devices may experience layout or gameplay bugs.</p>
             <button id="mobile-overlay-accept" type="button">I understand</button>
         </div>
     </div>
@@ -1275,12 +1277,12 @@
         <div class="game-modes">
             <div class="mode-card" data-aos="fade-up" data-aos-delay="80" onclick="navigateTo('/offline')">
                 <span class="mode-icon">🦅</span>
-                <h2 class="mode-title">⚔ OFFLINE WARFARE ⚔</h2>
-                <p class="mode-description">Deploy your avian armada against elite AI commanders. Tactical bird warfare awaits on the high seas!</p>
+                <h2 class="mode-title">⚔ TALON STRIKE OPERATIONS ⚔</h2>
+                <p class="mode-description">Deploy your avian armada against elite Raptor Commanders. Tactical bird warfare awaits on the high seas!</p>
                 <ul class="mode-features">
-                    <li>Elite AI bird commanders</li>
+                    <li>Elite Raptor Commanders</li>
                     <li>Strategic turn-based combat</li>
-                    <li>Master war tactics offline</li>
+                    <li>Master tactical bird warfare</li>
                     <li>10x10 tactical grid system</li>
                 </ul>
                 <button class="play-button">⚔ Start Battle ⚔</button>
