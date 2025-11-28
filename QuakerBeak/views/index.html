@@ -933,21 +933,25 @@
         }
         .battlepass-title {
             font-size: 1.1rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--war-gold), var(--feather-accent));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: none;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
         .battlepass-tier-badge {
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            color: #fff;
+            background: linear-gradient(135deg, var(--war-gold), var(--feather-accent));
+            color: var(--war-dark);
             padding: 4px 10px;
             border-radius: 12px;
             font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.4);
+            font-weight: 800;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.6);
+            text-shadow: none;
         }
         .battlepass-progress {
             margin-bottom: 12px;
@@ -961,18 +965,18 @@
         }
         .battlepass-progress-bar {
             height: 20px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
         }
         .battlepass-progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            background: linear-gradient(90deg, var(--war-gold), var(--feather-accent));
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
         }
         .battlepass-progress-fill::after {
             content: '';
@@ -1000,8 +1004,9 @@
         }
         .battlepass-stat-value {
             font-size: 1.3rem;
-            font-weight: 800;
-            color: #00d4ff;
+            font-weight: 900;
+            color: var(--war-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
         .battlepass-stat-label {
             font-size: 0.75rem;
@@ -1053,27 +1058,28 @@
             transition: filter 0.3s ease;
         }
         .battlepass-tier.unlocked {
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            border-color: var(--war-gold);
+            background: rgba(212, 175, 55, 0.15);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
         .battlepass-tier.unlocked .battlepass-tier-icon {
             filter: none;
         }
         .battlepass-tier.unlocked .battlepass-tier-number {
-            color: #00d4ff;
+            color: var(--war-gold);
         }
         .battlepass-tier.active {
-            border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--war-gold);
+            background: rgba(212, 175, 55, 0.2);
             animation: tier-pulse 2s ease-in-out infinite;
         }
         .battlepass-tier.active .battlepass-tier-number {
-            color: #ffd700;
+            color: var(--war-gold);
+            font-weight: 900;
         }
         @keyframes tier-pulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
         }
         .battlepass-tier-tooltip {
             position: absolute;

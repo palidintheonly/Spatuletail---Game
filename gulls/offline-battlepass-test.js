@@ -35,11 +35,11 @@ function readBattlepass() {
 
 function buildShips() {
   return [
-    { type: 'Carrier', length: 5, cells: [0, 1, 2, 3, 4].map(col => ({ row: 0, col })), hits: 0, sunk: false },
-    { type: 'Battleship', length: 4, cells: [0, 1, 2, 3].map(col => ({ row: 1, col })), hits: 0, sunk: false },
-    { type: 'Cruiser', length: 3, cells: [0, 1, 2].map(col => ({ row: 2, col })), hits: 0, sunk: false },
-    { type: 'Submarine', length: 3, cells: [0, 1, 2].map(col => ({ row: 3, col })), hits: 0, sunk: false },
-    { type: 'Destroyer', length: 2, cells: [0, 1].map(col => ({ row: 4, col })), hits: 0, sunk: false }
+    { type: 'Eagle Carrier', length: 5, cells: [0, 1, 2, 3, 4].map(col => ({ row: 0, col })), hits: 0, sunk: false },
+    { type: 'Parrot Warship', length: 4, cells: [0, 1, 2, 3].map(col => ({ row: 1, col })), hits: 0, sunk: false },
+    { type: 'Falcon Cruiser', length: 3, cells: [0, 1, 2].map(col => ({ row: 2, col })), hits: 0, sunk: false },
+    { type: 'Owl Stealth', length: 3, cells: [0, 1, 2].map(col => ({ row: 3, col })), hits: 0, sunk: false },
+    { type: 'Swift Striker', length: 2, cells: [0, 1].map(col => ({ row: 4, col })), hits: 0, sunk: false }
   ];
 }
 

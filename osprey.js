@@ -544,15 +544,26 @@ const BOT_NAMES = [
 ];
 Logger.info('server', 'Bot name pool loaded', { count: BOT_NAMES.length });
 
-// Ship types for War Birds gameplay
+// Ship types for War Birds gameplay (with legacy aliases for backwards compatibility)
 const SHIP_TYPES = [
-  { name: 'Eagle Carrier', length: 5, symbol: '🦅' },
-  { name: 'Parrot Warship', length: 4, symbol: '🦜' },
-  { name: 'Falcon Cruiser', length: 3, symbol: '🦆' },
-  { name: 'Owl Stealth', length: 3, symbol: '🦉' },
-  { name: 'Swift Striker', length: 2, symbol: '🕊' }
+  { name: 'Eagle Carrier', length: 5, symbol: '🦅', aliases: ['Carrier'] },
+  { name: 'Parrot Warship', length: 4, symbol: '🦜', aliases: ['Battleship'] },
+  { name: 'Falcon Cruiser', length: 3, symbol: '🦆', aliases: ['Cruiser'] },
+  { name: 'Owl Stealth', length: 3, symbol: '🦉', aliases: ['Submarine'] },
+  { name: 'Swift Striker', length: 2, symbol: '🕊', aliases: ['Destroyer'] }
 ];
 Logger.info('server', 'Ship types loaded', { ships: SHIP_TYPES.length, totalCells: 17 });
+
+const normalizeShipName = (name) => name?.trim().toLowerCase();
+function findShipType(name) {
+  const target = normalizeShipName(name);
+  if (!target) return null;
+
+  return SHIP_TYPES.find(st => {
+    const aliases = [st.name, ...(st.aliases || [])];
+    return aliases.some(alias => normalizeShipName(alias) === target);
+  });
+}
 
 // AI Bot classes with 4-tier difficulty system
 class AIBot {
@@ -993,24 +1004,33 @@ class BattleshipGame {
     let totalCells = 0;
 
     for (let ship of ships) {
-      // Check if ship type exists in SHIP_TYPES
-      const shipType = SHIP_TYPES.find(st => st.name === ship.type);
+      // Check if ship type exists in SHIP_TYPES (supporting legacy names)
+      const shipType = findShipType(ship.type);
       if (!shipType) {
         Logger.warn('validation', 'Unknown ship type', { type: ship.type });
         return false;
       }
 
+      const canonicalName = shipType.name;
+      if (ship.type !== canonicalName) {
+        Logger.info('validation', 'Normalized legacy ship type', {
+          received: ship.type,
+          normalized: canonicalName
+        });
+        ship.type = canonicalName;
+      }
+
       // Check for duplicate ship types
-      if (placedTypes.has(ship.type)) {
-        Logger.warn('validation', 'Duplicate ship type', { type: ship.type });
+      if (placedTypes.has(canonicalName)) {
+        Logger.warn('validation', 'Duplicate ship type', { type: canonicalName });
         return false;
       }
-      placedTypes.add(ship.type);
+      placedTypes.add(canonicalName);
 
       // Validate ship length matches expected length
       if (ship.length !== shipType.length) {
         Logger.warn('validation', 'Invalid ship length', {
-          type: ship.type,
+          type: canonicalName,
           expected: shipType.length,
           received: ship.length
         });
@@ -1020,14 +1040,16 @@ class BattleshipGame {
       // Validate ship cells match length
       if (!ship.cells || ship.cells.length !== ship.length) {
         Logger.warn('validation', 'Ship cells do not match length', {
-          type: ship.type,
+          type: canonicalName,
           cellCount: ship.cells?.length,
           expectedLength: ship.length
         });
         return false;
       }
 
-      totalCells += ship.length;
+      // Keep totals consistent with canonical ship lengths
+      ship.length = shipType.length;
+      totalCells += shipType.length;
     }
 
     // Ensure both players have exactly 17 tiles (5+4+3+3+2)
@@ -1753,6 +1775,8 @@ io.on('connection', (socket) => {
       clearTimeout(game.timer);
       activeOfflineGames.splice(offlineGameIndex, 1);
       Logger.info('game', `Offline game ${game.id} removed`, { remainingOfflineGames: activeOfflineGames.length });
+      // Opening a slot may allow queued players to start immediately
+      processGameQueue();
     }
   });
 });
