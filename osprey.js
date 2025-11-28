@@ -305,6 +305,12 @@ app.get('/leaderboards', (req, res) => {
   Logger.info('route', 'Leaderboards route accessed', { path: '/leaderboards' });
 });
 
+// Backward-compatible alias
+app.get('/leaderboard', (req, res) => {
+  Logger.info('route', 'Legacy leaderboard route accessed', { path: '/leaderboard' });
+  res.redirect(302, '/leaderboards');
+});
+
 // Quietly handle missing favicon to avoid noisy 404s in the console
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 

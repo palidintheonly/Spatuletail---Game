@@ -11,6 +11,7 @@
     "postinstall": "node sparrow.js",
     "build": "node -e \"console.log('Build: nothing to compile; static assets served as-is.')\"",
     "test:offline-battlepass": "node tests/offline-battlepass-test.js",
+    "test:leaderboards": "node tests/leaderboards-endpoint-test.js",
     "version:patch": "node Go-away-bird/bump-version.js patch",
     "version:minor": "node Go-away-bird/bump-version.js minor",
     "version:major": "node Go-away-bird/bump-version.js major",

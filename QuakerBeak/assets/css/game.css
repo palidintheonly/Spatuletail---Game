@@ -237,6 +237,24 @@ body {
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
 }
 
+.hud-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.leaderboard-link {
+    text-decoration: none;
+    background: linear-gradient(120deg, rgba(91, 141, 239, 0.25), rgba(95, 255, 210, 0.25));
+    border-color: rgba(91, 141, 239, 0.6);
+    color: #e8f0ff;
+}
+
+.leaderboard-link:hover {
+    background: linear-gradient(120deg, rgba(91, 141, 239, 0.4), rgba(95, 255, 210, 0.35));
+}
+
 .player-info, .match-info {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -542,6 +560,7 @@ body {
 }
 
 .action-button {
+    display: inline-block;
     padding: 15px 40px;
     margin: 10px;
     font-size: 1.2rem;
@@ -552,6 +571,7 @@ body {
     transition: all 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .action-button {
@@ -579,6 +599,10 @@ body {
 .action-button.secondary {
     background: linear-gradient(135deg, var(--secondary-color), #c0392b);
     border: none;
+}
+
+.action-button.secondary:hover:not(:disabled) {
+    filter: brightness(1.05);
 }
 
 .action-button:disabled {
