@@ -1,16 +1,1 @@
-[
-  {
-    "username": "test",
-    "salt": "88eb354de26b697471858cfab433d025",
-    "passwordHash": "eeda51322ac0f93f082340219a52987890e6768a5201b9f8e80ee44d36a52acd603d5ed3ea51c99debdd8eb86f6b0976371f3cdd2969c8d9edddb2ed678a1745",
-    "avatar": "victoria-crowned-pigeon",
-    "createdAt": "2025-11-27T18:36:56.708Z"
-  },
-  {
-    "username": "Mobile",
-    "salt": "bc37332f1faaced3861dbbfcf182d89f",
-    "passwordHash": "be993d161b605d5a9495c23d72f5d27f4cfdc1bc9a780df7e5414f9dfa8f154e66499fe0ed6682798b0e220ec78d9c17da83f364f350d2d968b9deefafdb5567",
-    "avatar": "philippine-eagle",
-    "createdAt": "2025-11-28T13:41:46.117Z"
-  }
-]
+[]
