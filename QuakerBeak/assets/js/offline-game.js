@@ -60,6 +60,7 @@ let isMyTurn = false;
 let timeLeft = 30;
 let timerInterval = null;
 let aiDifficulty = 2; // Default: Medium
+const enemyFleetLegend = {};
 
 const SHIP_TYPES = [
   { name: 'Carrier', length: 5, icon: 'C' },
@@ -425,6 +426,7 @@ socket.on('attackResult', (data) => {
       sounds.hit.play();
       if (sunk && ship) {
         Logger.success('game', `AI ${ship} destroyed!`);
+        markEnemyShipSunk(ship);
         updateStatusMessage(`AI ${ship} destroyed! Waiting for AI response...`);
       } else {
         updateStatusMessage('Direct hit on AI! Waiting for AI response...');
@@ -522,6 +524,9 @@ function resetBoard() {
     item.classList.remove('destroyed');
     item.querySelectorAll('.health-cell').forEach(cell => cell.classList.remove('sunk'));
   });
+
+  // Reset enemy fleet legend
+  buildEnemyLegend();
 }
 
 function startTimer() {
@@ -571,6 +576,49 @@ function updateShipLegend(shipName, sunk) {
   }
 }
 
+function buildEnemyLegend() {
+  const list = document.getElementById('enemy-legend-list');
+  if (!list) return;
+  list.innerHTML = '';
+  Object.keys(enemyFleetLegend).forEach(key => delete enemyFleetLegend[key]);
+  SHIP_TYPES.forEach(ship => {
+    const chip = document.createElement('div');
+    chip.className = 'legend-chip status-ready';
+    chip.dataset.ship = ship.name.toLowerCase();
+
+    const icon = document.createElement('span');
+    icon.className = 'legend-icon';
+    icon.textContent = ship.icon;
+
+    const label = document.createElement('span');
+    label.className = 'legend-label';
+    label.textContent = ship.name;
+
+    const hits = document.createElement('div');
+    hits.className = 'ship-hits';
+    for (let i = 0; i < ship.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'hit-dot';
+      hits.appendChild(dot);
+    }
+
+    chip.appendChild(icon);
+    chip.appendChild(label);
+    chip.appendChild(hits);
+    list.appendChild(chip);
+
+    enemyFleetLegend[ship.name] = { chip, dots: hits.querySelectorAll('.hit-dot') };
+  });
+}
+
+function markEnemyShipSunk(shipName) {
+  const entry = enemyFleetLegend[shipName];
+  if (!entry) return;
+  entry.chip.classList.remove('status-ready');
+  entry.chip.classList.add('status-sunk');
+  entry.dots.forEach(dot => dot.classList.add('destroyed'));
+}
+
 // Keyboard controls
 document.addEventListener('keydown', (event) => {
   if (event.key === 'r' || event.key === 'R') {
@@ -610,7 +658,8 @@ document.getElementById('ready-btn')?.addEventListener('click', () => {
 
 // Initialize on load
 window.addEventListener('load', () => {
-  Logger.info('init', 'Initializing 2D Battleship AI training (10×10 grids, 200 cells total)');
+  Logger.info('init', 'Initializing 2D Battleship AI training (10x10 grids, 200 cells total)');
   initBoards();
   updateShipPreview();
+  buildEnemyLegend();
 });
