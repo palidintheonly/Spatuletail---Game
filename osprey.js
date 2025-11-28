@@ -300,6 +300,11 @@ app.get('/spectate', (req, res) => {
   Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
 });
 
+app.get('/leaderboards', (req, res) => {
+  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'leaderboards.html'));
+  Logger.info('route', 'Leaderboards route accessed', { path: '/leaderboards' });
+});
+
 // Quietly handle missing favicon to avoid noisy 404s in the console
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
@@ -903,12 +908,14 @@ function createBot() {
 }
 
 class BattleshipGame {
-  constructor(player1, player2) {
+  constructor(player1, player2, maxRounds = MAX_ROUNDS) {
     this.id = Date.now();
     this.player1 = player1;
     this.player2 = player2;
     this.currentRound = 1;
-    this.maxRounds = 3;
+    // Respect configured round count (env), but never allow less than 1
+    const rounds = typeof maxRounds === 'number' ? maxRounds : MAX_ROUNDS;
+    this.maxRounds = Math.max(1, rounds);
     this.scores = { [player1.id]: 0, [player2.id]: 0 };
     this.currentTurn = player1.id;
     this.boards = {
@@ -1214,13 +1221,13 @@ function startNextOnlineGame() {
     game.player1.socket.emit('gameStart', {
       opponent: game.player2.name,
       round: 1,
-      maxRounds: 3
+      maxRounds: game.maxRounds
     });
 
     game.player2.socket.emit('gameStart', {
       opponent: game.player1.name,
       round: 1,
-      maxRounds: 3
+      maxRounds: game.maxRounds
     });
 
     // Notify remaining spectators
@@ -1470,7 +1477,7 @@ io.on('connection', (socket) => {
       socket.emit('gameStart', {
         opponent: bot.name,
         round: 1,
-        maxRounds: MAX_ROUNDS
+        maxRounds: game.maxRounds
       });
 
       const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
@@ -1502,13 +1509,13 @@ io.on('connection', (socket) => {
       game.player1.socket.emit('gameStart', {
         opponent: game.player2.name,
         round: 1,
-        maxRounds: 3
+        maxRounds: game.maxRounds
       });
 
       game.player2.socket.emit('gameStart', {
         opponent: game.player1.name,
         round: 1,
-        maxRounds: 3
+        maxRounds: game.maxRounds
       });
 
       waitingPlayer = null;
@@ -1924,7 +1931,7 @@ function processAttack(game, attackerId, row, col) {
           game.player1.socket.emit('gameStart', {
             opponent: game.player2.name,
             round: game.currentRound,
-            maxRounds: 3
+            maxRounds: game.maxRounds
           });
         }
 
@@ -1932,7 +1939,7 @@ function processAttack(game, attackerId, row, col) {
           game.player2.socket.emit('gameStart', {
             opponent: game.player1.name,
             round: game.currentRound,
-            maxRounds: 3
+            maxRounds: game.maxRounds
           });
         }
       }, 3000);
@@ -2187,7 +2194,7 @@ function processGameQueue() {
   nextPlayer.socket.emit('gameStart', {
     opponent: bot.name,
     round: 1,
-    maxRounds: MAX_ROUNDS
+    maxRounds: game.maxRounds
   });
 
   const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
