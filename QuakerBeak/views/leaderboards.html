@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spatuletail | Leaderboards</title>
+  <title>Spatuletail | War Birds Hall of Fame</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #00d4ff;
-      --secondary-color: #ff6b6b;
-      --accent-color: #ffd93d;
-      --dark-bg: #0a0e27;
-      --card-bg: rgba(20, 25, 50, 0.95);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.65);
-      --glow-primary: 0 0 30px rgba(0, 212, 255, 0.6);
-      --glow-secondary: 0 0 30px rgba(255, 107, 107, 0.6);
+      --war-olive: #4a5a3c;
+      --war-dark: #1a1f15;
+      --war-gold: #d4af37;
+      --war-red: #8b1a1a;
+      --war-steel: #4a5c6a;
+      --tactical-green: #3d5a40;
+      --camo-light: rgba(106, 128, 97, 0.15);
+      --feather-accent: #b8936e;
+      --command-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+      --text: #f0f0e8;
+      --muted: rgba(240, 240, 232, 0.7);
     }
 
     * { box-sizing: border-box; }
@@ -26,14 +27,29 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+      font-family: 'Impact', 'Arial Black', 'Segoe UI', sans-serif;
+      background:
+        linear-gradient(135deg, rgba(26, 31, 21, 0.9) 0%, rgba(58, 70, 52, 0.8) 50%, rgba(29, 35, 25, 0.9) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(74, 90, 60, 0.03) 10px, rgba(74, 90, 60, 0.03) 20px),
+        radial-gradient(circle at 20% 30%, rgba(61, 90, 64, 0.2), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(139, 26, 26, 0.15), transparent 50%),
+        #1a1f15;
       color: var(--text);
       padding: 32px 24px 48px;
       display: flex;
       flex-direction: column;
       gap: 28px;
       position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.02"><path d="M50 10 L60 30 L80 35 L65 50 L68 70 L50 60 L32 70 L35 50 L20 35 L40 30 Z" fill="%23d4af37"/></svg>') repeat;
+      background-size: 150px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
     }
 
     header {
@@ -42,39 +58,59 @@
       justify-content: space-between;
       gap: 16px;
       padding: 28px 32px;
-      border: 2px solid rgba(0, 212, 255, 0.2);
-      background: var(--card-bg);
-      border-radius: 22px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35), var(--glow-primary);
+      border: 3px solid var(--war-gold);
+      background: linear-gradient(135deg, rgba(74, 90, 60, 0.4), rgba(61, 90, 64, 0.3));
+      border-radius: 8px;
+      box-shadow: var(--command-glow), 0 18px 50px rgba(0, 0, 0, 0.5), inset 0 2px 10px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
+      position: relative;
+    }
+    header::before {
+      content: '🏆';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.2rem;
+      background: var(--war-dark);
+      padding: 6px 20px;
+      border: 3px solid var(--war-gold);
+      border-radius: 4px;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
     }
 
     .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 12px;
-      color: var(--primary-color);
-      margin: 0 0 6px;
-      font-weight: 700;
+      letter-spacing: 0.3em;
+      font-size: 13px;
+      color: var(--war-gold);
+      margin: 0 0 8px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: clamp(28px, 5vw, 42px);
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5vw, 44px);
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      background: linear-gradient(135deg, var(--war-gold), var(--feather-accent));
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Impact', sans-serif;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
     }
 
     .lede {
       margin: 0;
       color: var(--muted);
       max-width: 620px;
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 1.05rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
 
     .hero-actions {
@@ -86,39 +122,44 @@
     }
 
     .btn {
-      padding: 14px 20px;
-      border-radius: 14px;
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      background: var(--glass-bg);
-      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 6px;
+      border: 2px solid var(--war-gold);
+      background: linear-gradient(135deg, rgba(74, 90, 60, 0.6), rgba(61, 90, 64, 0.7));
+      color: var(--war-gold);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       backdrop-filter: blur(10px);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      font-size: 0.95rem;
+      font-family: 'Impact', sans-serif;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 175, 55, 0.3);
     }
 
     .btn:hover {
-      border-color: var(--primary-color);
-      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+      border-color: var(--feather-accent);
+      box-shadow: var(--command-glow), 0 6px 18px rgba(0, 0, 0, 0.5);
       transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(74, 90, 60, 0.8), rgba(61, 90, 64, 0.9));
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--secondary-color), #c0392b);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(135deg, var(--war-red), #6b0f0f);
+      color: #f0f0e8;
+      border: 3px solid var(--war-gold);
+      box-shadow: 0 8px 24px rgba(139, 26, 26, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.4);
     }
 
     .btn.primary:hover {
-      box-shadow: 0 12px 30px rgba(255, 107, 107, 0.55);
-      transform: scale(1.03) translateY(-2px);
+      box-shadow: var(--command-glow), 0 12px 30px rgba(139, 26, 26, 0.8);
+      transform: scale(1.05) translateY(-2px);
+      border-color: var(--feather-accent);
     }
 
     main {
@@ -128,22 +169,39 @@
     }
 
     .card {
-      background: var(--card-bg);
-      border: 2px solid rgba(0, 212, 255, 0.15);
-      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(58, 70, 52, 0.85), rgba(42, 50, 38, 0.9)),
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(106, 128, 97, 0.05) 2px, rgba(106, 128, 97, 0.05) 4px);
+      border: 3px solid var(--war-gold);
+      border-radius: 8px;
       padding: 28px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(212, 175, 55, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
       gap: 16px;
       min-height: 300px;
       transition: all 0.35s ease;
+      position: relative;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--war-gold), transparent);
+      opacity: 0.6;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--glow-primary), 0 18px 48px rgba(0, 0, 0, 0.45);
+      box-shadow: var(--command-glow), 0 18px 48px rgba(0, 0, 0, 0.6);
+      border-color: var(--feather-accent);
     }
 
     .card-header {
@@ -151,26 +209,32 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 14px;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     }
 
     .card-title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin: 0;
-      font-weight: 800;
-      color: var(--secondary-color);
-      letter-spacing: 0.5px;
+      font-weight: 900;
+      color: var(--war-gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Impact', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .badge {
       padding: 8px 14px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1));
-      color: var(--primary-color);
-      border: 2px solid rgba(0, 212, 255, 0.3);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(184, 147, 110, 0.2));
+      color: var(--war-gold);
+      border: 2px solid var(--war-gold);
+      font-family: 'Impact', sans-serif;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.4);
     }
 
     .table {
@@ -272,35 +336,35 @@
 <body>
   <header>
     <div>
-      <p class="eyebrow">Live Standings</p>
-      <h1>Leaderboards</h1>
-      <p class="lede">Offline and online ladders updated directly from current game data. Check who is climbing and who is coasting.</p>
+      <p class="eyebrow">🦅 WAR BIRDS HALL OF FAME 🦅</p>
+      <h1>ELITE COMMANDERS</h1>
+      <p class="lede">Battle-tested warriors ranked by victories • Real-time combat statistics • Honor and glory await</p>
     </div>
     <div class="hero-actions">
-      <a class="btn" href="/" target="_blank" rel="noopener">Home</a>
-      <a class="btn primary" href="/offline" target="_blank" rel="noopener">Play Offline</a>
+      <a class="btn" href="/">Home</a>
+      <a class="btn primary" href="/offline">Play Offline</a>
     </div>
   </header>
 
   <main>
     <section class="card" id="offline-card">
       <div class="card-header">
-        <h2 class="card-title">Offline Ladder</h2>
+        <h2 class="card-title">⚔ SOLO COMBAT ⚔</h2>
         <span class="badge" id="offline-count">Loading…</span>
       </div>
-      <div id="offline-body" class="empty">Loading offline leaderboard…</div>
+      <div id="offline-body" class="empty">Loading war birds roster…</div>
     </section>
 
     <section class="card" id="online-card">
       <div class="card-header">
-        <h2 class="card-title">Online Ladder</h2>
+        <h2 class="card-title">🦅 SQUADRON BATTLES 🦅</h2>
         <span class="badge" id="online-count">Loading…</span>
       </div>
-      <div id="online-body" class="empty">Loading online leaderboard…</div>
+      <div id="online-body" class="empty">Loading squadron roster…</div>
     </section>
   </main>
 
-  <footer>Built for 2025 play sessions — updated in real time from the server.</footer>
+  <footer>⚔ SPATULETAIL WAR COMMAND • Real-time combat statistics • Glory to the victorious ⚔</footer>
 
   <script>
     const modes = ['offline', 'online'];
