@@ -209,6 +209,58 @@
             display: flex;
             opacity: 1;
         }
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 22px;
+        }
+        .mobile-overlay.show { display: flex; }
+        .mobile-overlay .card {
+            background: linear-gradient(145deg, rgba(20, 25, 50, 0.92), rgba(20, 32, 64, 0.96));
+            border: 2px solid rgba(255, 107, 107, 0.35);
+            border-radius: 18px;
+            padding: 28px 26px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 0 35px rgba(255, 107, 107, 0.35);
+        }
+        .mobile-overlay .icon {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .mobile-overlay h2 {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .mobile-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .mobile-overlay button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ff6b6b, #c0392b);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(255, 107, 107, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .mobile-overlay button:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255, 107, 107, 0.5); }
+        .mobile-overlay button:active { transform: translateY(1px); }
         .avatar-preview-content {
             position: relative;
             max-width: 400px;
@@ -959,6 +1011,15 @@
 <body>
     <div id="particles-js"></div>
     <div class="loading" id="loading"><div class="spinner"></div></div>
+
+    <div id="mobile-warning-overlay" class="mobile-overlay" aria-hidden="true">
+        <div class="card" role="dialog" aria-labelledby="mobile-overlay-title" aria-describedby="mobile-overlay-desc">
+            <div class="icon">📱</div>
+            <h2 id="mobile-overlay-title">Best on desktop/laptop</h2>
+            <p id="mobile-overlay-desc">Spatuletail is optimized for larger screens. Mobile devices may experience layout or gameplay bugs.</p>
+            <button id="mobile-overlay-accept" type="button">I understand</button>
+        </div>
+    </div>
 
     <div class="profile-widget" id="profile-widget">
         <button class="avatar-button" id="avatar-button" aria-label="Open player profile">
@@ -1907,6 +1968,25 @@
                 card.addEventListener('touchend', function() { this.style.transform = ''; });
             });
         }
+        (function mobileOverlay() {
+            const overlay = document.getElementById('mobile-warning-overlay');
+            const acceptBtn = document.getElementById('mobile-overlay-accept');
+            if (!overlay || !acceptBtn) return;
+
+            const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 780;
+            const acknowledged = localStorage.getItem('mobileOverlayAcknowledged') === 'true';
+
+            if (isMobile && !acknowledged) {
+                overlay.classList.add('show');
+                overlay.setAttribute('aria-hidden', 'false');
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                overlay.classList.remove('show');
+                overlay.setAttribute('aria-hidden', 'true');
+                localStorage.setItem('mobileOverlayAcknowledged', 'true');
+            });
+        })();
     </script>
 </body>
 </html>
