@@ -286,8 +286,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/online', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'online.html'));
-  Logger.info('route', 'Online game route accessed', { path: '/online' });
+  Logger.warn('route', 'Online route requested but mode is disabled', { path: '/online' });
+  res.status(410).send('Online mode is disabled. Please use Offline mode.');
 });
 
 app.get('/offline', (req, res) => {
@@ -296,8 +296,8 @@ app.get('/offline', (req, res) => {
 });
 
 app.get('/spectate', (req, res) => {
-  res.sendFile(path.join(__dirname, 'QuakerBeak', 'views', 'spectate.html'));
-  Logger.info('route', 'Spectate route accessed', { path: '/spectate' });
+  Logger.warn('route', 'Spectate route requested but mode is disabled', { path: '/spectate' });
+  res.status(410).send('Spectate mode is disabled. Please use Offline mode.');
 });
 
 app.get('/leaderboards', (req, res) => {
@@ -1387,9 +1387,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('join', (data) => {
-    // Handle both old format (string) and new format (object)
+    // Force offline mode; ignore requested modes
     const playerName = typeof data === 'string' ? data : (data.name || `Guest${socket.id.substring(0, 4)}`);
-    const mode = typeof data === 'object' ? data.mode : 'online';
+    const mode = 'offline';
 
     socket.playerName = playerName;
     socket.playerMode = mode;

@@ -1,18 +1,1 @@
-{
-  "test": {
-    "name": "test",
-    "xp": 0,
-    "wins": 0,
-    "losses": 0,
-    "tier": 1,
-    "lastUpdated": "2025-11-28T15:05:31.237Z"
-  },
-  "mobile": {
-    "name": "Mobile",
-    "xp": 0,
-    "wins": 0,
-    "losses": 0,
-    "tier": 1,
-    "lastUpdated": "2025-11-28T15:05:31.273Z"
-  }
-}
+{}
