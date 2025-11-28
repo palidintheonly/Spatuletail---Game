@@ -77,6 +77,7 @@ const RATE_LIMIT_SOCKET_MAX_PER_MINUTE = parseInt(process.env.RATE_LIMIT_SOCKET_
 const MAX_ROUNDS = parseInt(process.env.MAX_ROUNDS) || 3;
 const TURN_TIMER_SECONDS = parseInt(process.env.TURN_TIMER_SECONDS) || 30;
 const MAX_SIMULATED_PLAYERS = parseInt(process.env.MAX_SIMULATED_PLAYERS) || 47;
+const MAX_CONCURRENT_GAMES = parseInt(process.env.MAX_CONCURRENT_GAMES) || 2;
 const BOARD_SIZE = parseInt(process.env.BOARD_SIZE) || 10;
 const INACTIVITY_THRESHOLD = (parseInt(process.env.INACTIVITY_THRESHOLD_SECONDS) || 45) * 1000;
 const WARNING_THRESHOLD = (parseInt(process.env.WARNING_THRESHOLD_SECONDS) || 30) * 1000;
@@ -124,8 +125,8 @@ console.log('\x1b[1m\x1b[32m[CONFIG] Environment configuration loaded successful
 console.log('\x1b[36m[CONFIG] Server: %s:%d [%s]\x1b[0m', HOST, PORT, NODE_ENV);
 console.log('\x1b[36m[CONFIG] Features: Online=%s, Offline=%s, Spectator=%s\x1b[0m',
   ENABLE_ONLINE_MODE, ENABLE_OFFLINE_MODE, ENABLE_SPECTATOR_MODE);
-console.log('\x1b[36m[CONFIG] Game: %d rounds, %ds turn timer, %d max simulated players\x1b[0m',
-  MAX_ROUNDS, TURN_TIMER_SECONDS, MAX_SIMULATED_PLAYERS);
+console.log('\x1b[36m[CONFIG] Game: %d rounds, %ds turn timer, max %d concurrent games\x1b[0m',
+  MAX_ROUNDS, TURN_TIMER_SECONDS, MAX_CONCURRENT_GAMES);
 console.log('\x1b[36m[CONFIG] Bot difficulty: %d-%d, delay: %.1fs-%.1fs\x1b[0m',
   BOT_MIN_DIFFICULTY, BOT_MAX_DIFFICULTY, BOT_MIN_DELAY/1000, BOT_MAX_DELAY/1000);
 
@@ -459,8 +460,8 @@ Logger.success('init', 'Kea directory initialized', { path: KEA_PROFILE_PATH, se
 let waitingPlayer = null;
 let activeOnlineGame = null; // Only one online game at a time
 let activeOfflineGames = []; // Track all offline games
+let gameQueue = []; // Queue for players waiting when at capacity
 let spectators = []; // Players waiting and spectating
-let queue = [];
 
 // Live game stats
 let liveStats = {
@@ -510,8 +511,8 @@ Logger.info('server', 'Game state initialized', {
   waitingPlayer: null,
   activeOnlineGame: null,
   activeOfflineGames: 0,
-  spectators: 0,
-  queue: 0
+  gameQueue: 0,
+  spectators: 0
 });
 
 // Bot names pool (realistic usernames)
@@ -1416,6 +1417,27 @@ io.on('connection', (socket) => {
         activeOfflineGames.splice(existingIdx, 1);
       }
 
+      // Check if at maximum concurrent games
+      const totalGames = activeOfflineGames.length + (activeOnlineGame ? 1 : 0);
+      if (totalGames >= MAX_CONCURRENT_GAMES) {
+        // Add to queue
+        const queuePosition = gameQueue.findIndex(q => q.id === socket.id);
+        if (queuePosition === -1) {
+          gameQueue.push({ id: socket.id, socket, name: socket.playerName, mode: 'offline' });
+          Logger.info('queue', `${socket.playerName} added to queue`, {
+            queuePosition: gameQueue.length,
+            activeGames: totalGames,
+            maxGames: MAX_CONCURRENT_GAMES
+          });
+          socket.emit('queued', {
+            position: gameQueue.length,
+            activeGames: totalGames,
+            maxGames: MAX_CONCURRENT_GAMES
+          });
+        }
+        return;
+      }
+
       Logger.info('offline', `Starting offline game for ${socket.playerName}`);
       const bot = createBot();
       const game = new BattleshipGame(
@@ -1438,7 +1460,7 @@ io.on('connection', (socket) => {
       socket.emit('gameStart', {
         opponent: bot.name,
         round: 1,
-        maxRounds: 3
+        maxRounds: MAX_ROUNDS
       });
 
       const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
@@ -1653,6 +1675,25 @@ io.on('connection', (socket) => {
       return;
     }
 
+    // Check if in game queue
+    const queueIndex = gameQueue.findIndex(q => q.id === socket.id);
+    if (queueIndex !== -1) {
+      gameQueue.splice(queueIndex, 1);
+      Logger.info('queue', `Player ${socket.playerName} removed from queue`, { remainingInQueue: gameQueue.length });
+
+      // Update queue positions for remaining players
+      gameQueue.forEach((player, index) => {
+        if (player.socket && player.socket.connected) {
+          player.socket.emit('queued', {
+            position: index + 1,
+            activeGames: activeOfflineGames.length + (activeOnlineGame ? 1 : 0),
+            maxGames: MAX_CONCURRENT_GAMES
+          });
+        }
+      });
+      return;
+    }
+
     // Check if in online game
     if (activeOnlineGame) {
       if (activeOnlineGame.player1.id === socket.id || activeOnlineGame.player2.id === socket.id) {
@@ -1815,7 +1856,10 @@ function processAttack(game, attackerId, row, col) {
     attacker.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: true
+      enemy: true,
+      isAttacker: true,
+      sunk: result.sunk,
+      ship: result.ship ? result.ship.type : null
     });
   }
 
@@ -1823,7 +1867,10 @@ function processAttack(game, attackerId, row, col) {
     defender.socket.emit('attackResult', {
       row, col,
       hit: result.hit,
-      enemy: false
+      enemy: false,
+      isAttacker: false,
+      sunk: result.sunk,
+      ship: result.ship ? result.ship.type : null
     });
   }
 
@@ -2075,6 +2122,61 @@ function endGame(game) {
     rounds: game.currentRound,
     mode
   });
+
+  // Process queue to start next game
+  processGameQueue();
+}
+
+function processGameQueue() {
+  if (gameQueue.length === 0) return;
+
+  const totalGames = activeOfflineGames.length + (activeOnlineGame ? 1 : 0);
+  if (totalGames >= MAX_CONCURRENT_GAMES) return;
+
+  const nextPlayer = gameQueue.shift();
+  if (!nextPlayer || !nextPlayer.socket || !nextPlayer.socket.connected) {
+    Logger.warn('queue', 'Next player in queue is disconnected, trying next');
+    processGameQueue();
+    return;
+  }
+
+  Logger.info('queue', `Processing queue for ${nextPlayer.name}`, {
+    remainingInQueue: gameQueue.length,
+    activeGames: totalGames
+  });
+
+  // Start offline game for queued player
+  const bot = createBot();
+  const game = new BattleshipGame(
+    { id: nextPlayer.id, socket: nextPlayer.socket, name: nextPlayer.name, isBot: false },
+    bot
+  );
+  game.mode = 'offline';
+  activeOfflineGames.push(game);
+
+  // Bot places ships automatically
+  game.ships[bot.id] = bot.placeShips();
+  game.ready[bot.id] = true;
+
+  Logger.success('offline', `Offline game created from queue: ${nextPlayer.name} vs ${bot.name}`, {
+    gameId: game.id,
+    botDifficulty: bot.difficulty,
+    totalOfflineGames: activeOfflineGames.length
+  });
+
+  nextPlayer.socket.emit('gameStart', {
+    opponent: bot.name,
+    round: 1,
+    maxRounds: MAX_ROUNDS
+  });
+
+  const difficultyNames = ['Easy', 'Medium', 'Hard', 'Extreme'];
+  nextPlayer.socket.emit('botJoined', {
+    botName: bot.name,
+    difficulty: bot.difficulty,
+    difficultyName: difficultyNames[bot.difficulty - 1],
+    shipTypes: SHIP_TYPES
+  });
 }
 
 // Kea Profile APIs (lightweight, local JSON-backed)
@@ -2226,7 +2328,8 @@ app.get(`/api/${API_VERSION}/stats/live`, (req, res) => {
     },
     queue: {
       waiting: waitingPlayer ? 1 : 0,
-      spectators: spectators.length
+      spectators: spectators.length,
+      gameQueue: gameQueue.length
     },
     accuracy: liveStats.totalHits + liveStats.totalMisses > 0
       ? ((liveStats.totalHits / (liveStats.totalHits + liveStats.totalMisses)) * 100).toFixed(2) + '%'
@@ -2273,9 +2376,10 @@ app.get(`/api/${API_VERSION}/system`, (req, res) => {
     game: {
       port: PORT,
       environment: process.env.NODE_ENV || 'development',
-      maxRounds: process.env.MAX_ROUNDS || 3,
-      turnTimer: process.env.TURN_TIMER_SECONDS || 30,
-      maxSimulatedPlayers: process.env.MAX_SIMULATED_PLAYERS || 47
+      maxRounds: MAX_ROUNDS,
+      turnTimer: TURN_TIMER_SECONDS,
+      maxConcurrentGames: MAX_CONCURRENT_GAMES,
+      maxSimulatedPlayers: MAX_SIMULATED_PLAYERS
     },
     database: {
       onlineLeaderboard: readJSONFile(ONLINE_LEADERBOARD_PATH, []).length,

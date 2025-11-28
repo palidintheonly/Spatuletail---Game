@@ -152,6 +152,7 @@ function onCellClick(boardType, row, col) {
   } else if (gameState === 'playing' && isMyTurn && boardType === 'enemy' && enemyBoard[row][col] === 0) {
     socket.emit('attack', { row, col });
     isMyTurn = false;
+    stopTimer();
     updateStatusMessage('Attack sent! Waiting for result...');
   }
 }
@@ -321,9 +322,21 @@ socket.on('connect', () => {
   Logger.info('socket', 'Connected to server');
   document.getElementById('loading-screen').classList.remove('active');
 
-  const playerName = prompt('Enter your name:') || `Player${Math.floor(Math.random() * 1000)}`;
-  const difficultyInput = prompt('Choose AI difficulty (1=Easy, 2=Medium, 3=Hard, 4=Extreme):', '2');
-  aiDifficulty = Math.max(1, Math.min(4, parseInt(difficultyInput) || 2));
+  // Check if user is logged in
+  let playerName = 'Guest';
+  try {
+    const token = localStorage.getItem('bluejay-token');
+    const userCache = localStorage.getItem('bluejay-user-cache');
+    if (token && userCache) {
+      const user = JSON.parse(userCache);
+      playerName = user.username || 'Guest';
+    }
+  } catch (err) {
+    console.warn('Failed to load user data:', err);
+  }
+
+  // Use medium difficulty by default (single round game)
+  aiDifficulty = 2;
 
   socket.emit('join', { name: playerName, mode: 'offline', aiDifficulty });
   gameState = 'placing';
@@ -365,6 +378,12 @@ socket.on('gameStart', (data) => {
   updateStatusMessage(`Opponent: ${data.opponent || 'AI Bot'}`);
 });
 
+socket.on('queued', (data) => {
+  Logger.info('queue', 'Added to game queue', data);
+  updateStatusMessage(`⏳ Server at capacity (${data.activeGames}/${data.maxGames} games) - Queue position: ${data.position}`);
+  gameState = 'queued';
+});
+
 socket.on('battleStart', (data) => {
   Logger.game('game', 'Battle phase started', data);
   gameState = 'playing';
@@ -391,7 +410,12 @@ socket.on('turnChange', ({ isYourTurn }) => {
 });
 
 socket.on('attackResult', (data) => {
-  const { row, col, hit, sunk, ship, isAttacker } = data;
+  const { row, col, hit, sunk, ship, enemy, isAttacker: payloadIsAttacker } = data;
+  const isAttacker = payloadIsAttacker ?? enemy === true;
+
+  // Always pause the local timer until the server confirms whose turn it is next
+  stopTimer();
+  isMyTurn = false;
 
   if (isAttacker) {
     enemyBoard[row][col] = hit ? 3 : 2;
@@ -399,34 +423,29 @@ socket.on('attackResult', (data) => {
 
     if (hit) {
       sounds.hit.play();
-      if (sunk) {
+      if (sunk && ship) {
         Logger.success('game', `AI ${ship} destroyed!`);
-        updateStatusMessage(`💥 AI ${ship} destroyed!`);
+        updateStatusMessage(`AI ${ship} destroyed! Waiting for AI response...`);
       } else {
-        updateStatusMessage('🎯 Direct hit on AI!');
+        updateStatusMessage('Direct hit on AI! Waiting for AI response...');
       }
     } else {
       sounds.miss.play();
-      updateStatusMessage('💦 Miss!');
+      updateStatusMessage('Miss! Waiting for AI response...');
     }
   } else {
     myBoard[row][col] = hit ? 3 : 2;
     updateCell('my', row, col, sunk ? 'sunk' : (hit ? 'hit' : 'miss'));
 
-    if (hit && sunk) {
+    if (hit && sunk && ship) {
       updateShipLegend(ship, true);
-      updateStatusMessage(`⚠️ Your ${ship} was destroyed by AI!`);
+      updateStatusMessage(`Your ${ship} was destroyed by AI!`);
       Logger.ai('ai', `AI sunk your ${ship}`);
     } else if (hit) {
-      updateStatusMessage('⚠️ AI hit your ship!');
+      updateStatusMessage('AI hit your ship!');
     } else {
-      updateStatusMessage('AI missed!');
+      updateStatusMessage('AI missed! Awaiting your turn...');
     }
-
-    // Give control back to the player after the AI completes its shot
-    isMyTurn = true;
-    updateStatusMessage('Your turn - Attack AI fleet!');
-    startTimer();
   }
 });
 
