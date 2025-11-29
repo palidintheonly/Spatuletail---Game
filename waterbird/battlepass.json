@@ -1,34 +1,18 @@
 {
-  "xppilot1764350181121": {
-    "name": "XPPilot1764350181121",
-    "xp": 30,
-    "wins": 0,
-    "losses": 1,
-    "tier": 1,
-    "lastUpdated": "2025-11-28T17:18:18.798Z"
-  },
-  "testbird1764350578579": {
-    "name": "TestBird1764350578579",
-    "xp": 0,
-    "wins": 0,
+  "xppilot1764434413299": {
+    "name": "XPPilot1764434413299",
+    "xp": 100,
+    "wins": 1,
     "losses": 0,
     "tier": 1,
-    "lastUpdated": "2025-11-28T17:23:00.022Z"
+    "lastUpdated": "2025-11-29T16:41:34.453Z"
   },
-  "xppilot1764351516660": {
-    "name": "XPPilot1764351516660",
+  "xppilot1764434815209": {
+    "name": "XPPilot1764434815209",
     "xp": 30,
     "wins": 0,
     "losses": 1,
     "tier": 1,
-    "lastUpdated": "2025-11-28T17:39:56.674Z"
-  },
-  "xppilot1764354140808": {
-    "name": "XPPilot1764354140808",
-    "xp": 30,
-    "wins": 0,
-    "losses": 1,
-    "tier": 1,
-    "lastUpdated": "2025-11-28T18:23:36.423Z"
+    "lastUpdated": "2025-11-29T16:48:01.681Z"
   }
 }

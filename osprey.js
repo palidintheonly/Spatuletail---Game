@@ -102,7 +102,7 @@ const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
 const BATTLEPASS_WIN_XP = 100;
 const BATTLEPASS_LOSS_XP = 30;
 const BATTLEPASS_XP_PER_TIER = 500;
-const BATTLEPASS_MAX_TIER = 10;
+const BATTLEPASS_MAX_TIER = 4;
 const BATTLEPASS_DECAY_PER_TIER = 0.05; // reduce XP as tier climbs
 const BATTLEPASS_MIN_MULTIPLIER = 0.4;
 
@@ -179,29 +179,48 @@ const Logger = {
   ai(category, message, data) { this.log('ai', category, message, data); }
 };
 
-// Curated rare bird avatars for profile selection
-const KEA_AVATARS = [
-  {
-    id: 'resplendent-quetzal',
-    name: 'Resplendent Quetzal',
-    image: '/assets/avatars/quetzal.jpg'
-  },
-  {
-    id: 'shoebill',
-    name: 'Shoebill',
-    image: '/assets/avatars/shoebill.jpg'
-  },
-  {
-    id: 'philippine-eagle',
-    name: 'Philippine Eagle',
-    image: '/assets/avatars/philippine-eagle.jpg'
-  },
-  {
-    id: 'victoria-crowned-pigeon',
-    name: 'Victoria Crowned Pigeon',
-    image: '/assets/avatars/victoria-pigeon.jpg'
-  }
+// DiceBear Avatar System - Modern avatar generation for 2025
+// Using bird-themed identities with consistent avatar generation
+const DICEBEAR_STYLES = ['bottts-neutral', 'adventurer', 'avataaars', 'big-ears', 'lorelei', 'personas'];
+const BIRD_THEMED_SEEDS = [
+  { id: 'resplendent-quetzal', name: 'Resplendent Quetzal', seed: 'quetzal-warrior' },
+  { id: 'shoebill-striker', name: 'Shoebill Striker', seed: 'shoebill-tactical' },
+  { id: 'philippine-eagle', name: 'Philippine Eagle', seed: 'eagle-commander' },
+  { id: 'victoria-pigeon', name: 'Victoria Crowned Pigeon', seed: 'pigeon-royal' },
+  { id: 'kiwi-scout', name: 'Kiwi Scout', seed: 'kiwi-stealth' },
+  { id: 'toucan-ace', name: 'Toucan Ace', seed: 'toucan-pilot' },
+  { id: 'flamingo-fire', name: 'Flamingo Inferno', seed: 'flamingo-flames' },
+  { id: 'owl-sentinel', name: 'Owl Sentinel', seed: 'owl-guardian' },
+  { id: 'peacock-pride', name: 'Peacock Pride', seed: 'peacock-majesty' },
+  { id: 'raven-shadow', name: 'Raven Shadow', seed: 'raven-dark' },
+  { id: 'cardinal-crimson', name: 'Cardinal Crimson', seed: 'cardinal-red' },
+  { id: 'hummingbird-swift', name: 'Hummingbird Swift', seed: 'hummingbird-speed' },
+  { id: 'albatross-voyager', name: 'Albatross Voyager', seed: 'albatross-ocean' },
+  { id: 'falcon-talon', name: 'Falcon Talon', seed: 'falcon-strike' },
+  { id: 'pelican-patrol', name: 'Pelican Patrol', seed: 'pelican-watch' },
+  { id: 'macaw-rainbow', name: 'Macaw Rainbow', seed: 'macaw-spectrum' }
 ];
+
+// Generate DiceBear avatar URL
+function getDiceBearAvatarURL(seed, style = 'avataaars') {
+  // DiceBear API v9 - generates consistent, deterministic avatars
+  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(seed)}&scale=80`;
+}
+
+// Build avatar list with DiceBear URLs
+const KEA_AVATARS = BIRD_THEMED_SEEDS.map(bird => ({
+  id: bird.id,
+  name: bird.name,
+  image: getDiceBearAvatarURL(bird.seed, 'avataaars'), // Default style
+  seed: bird.seed,
+  // Provide multiple style options for user choice
+  styles: {
+    avataaars: getDiceBearAvatarURL(bird.seed, 'avataaars'),
+    adventurer: getDiceBearAvatarURL(bird.seed, 'adventurer'),
+    lorelei: getDiceBearAvatarURL(bird.seed, 'lorelei'),
+    personas: getDiceBearAvatarURL(bird.seed, 'personas')
+  }
+}));
 
 // Serve static assets from QuakerBeak directory
 app.use('/assets', express.static(path.join(__dirname, 'QuakerBeak', 'assets')));
@@ -2349,6 +2368,38 @@ app.post(`/api/${API_VERSION}/profile/avatar`, (req, res) => {
   const updatedProfile = sanitizeProfile(profiles[idx]);
   Logger.success('api', 'Avatar updated', { username: updatedProfile.username, avatar });
   res.json({ success: true, user: updatedProfile });
+});
+
+app.get(`/api/${API_VERSION}/profile/battlepass`, (req, res) => {
+  const token = (req.headers['x-bluejay-token'] || '').trim();
+  const profile = getProfileFromToken(token);
+
+  if (!profile) {
+    Logger.warn('api', 'Battle Pass request without authentication');
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  const db = loadBattlePassDB();
+  const key = profile.username.toLowerCase();
+  const battlepass = db[key] || {
+    name: profile.username,
+    xp: 0,
+    wins: 0,
+    losses: 0,
+    tier: 1,
+    lastUpdated: new Date().toISOString()
+  };
+
+  Logger.info('api', 'Battle Pass data fetched', {
+    username: profile.username,
+    xp: battlepass.xp,
+    tier: battlepass.tier
+  });
+
+  res.json({
+    success: true,
+    battlepass: battlepass
+  });
 });
 
 // API Endpoints for Leaderboard

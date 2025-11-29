@@ -843,9 +843,15 @@
             color: #fff;
         }
 
+        .avatar-button[data-badge="wins-25"]::before {
+            content: '25';
+            background: linear-gradient(135deg, #c0c0c0, #808080);
+            color: #fff;
+        }
+
         .avatar-button[data-badge="wins-50"]::before {
             content: '50';
-            background: linear-gradient(135deg, #c0c0c0, #808080);
+            background: linear-gradient(135deg, #ffd700, #b8860b);
             color: #fff;
         }
 
@@ -1235,8 +1241,8 @@
     <div class="profile-modal-overlay" id="profile-modal-overlay"></div>
     <div class="profile-modal" id="profile-modal" aria-modal="true" role="dialog">
         <button class="profile-close" id="profile-modal-close" aria-label="Close profile">×</button>
-        <h3>Player Profile</h3>
-        <p class="profile-subtext">Pick a rare bird avatar and sign in to save locally.</p>
+        <h3>⚔ War Bird Command Centre ⚔</h3>
+        <p class="profile-subtext">Choose your bird warrior avatar and join the squadron • DiceBear-powered avatars for 2025</p>
         <div class="profile-tabs">
             <button data-profile-tab="login" class="active">Login</button>
             <button data-profile-tab="signup">Sign Up</button>
@@ -1265,7 +1271,7 @@
         </form>
         <div id="avatar-picker-section" class="hidden">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; margin-bottom:8px;">
-                <div class="profile-subtext" style="margin:0;">Select a rare bird avatar</div>
+                <div class="profile-subtext" style="margin:0;">🦅 Choose your bird warrior identity</div>
                 <button type="button" class="profile-secondary hidden" id="save-avatar-btn" style="width:auto; padding:10px 14px;">Save Avatar</button>
             </div>
             <div class="avatar-grid" id="avatar-grid"></div>
@@ -1716,6 +1722,8 @@
                     setUser(result.user);
                     toggleModal(false);
                     feedback('');
+                    // Reload Battle Pass from server
+                    await loadBattlePass();
                 } catch (err) {
                     feedback(err.message, true);
                 }
@@ -1726,16 +1734,45 @@
                 const formData = new FormData(signupForm);
                 const username = formData.get('username');
                 const password = formData.get('password');
+
+                // Client-side validation
+                if (!username || username.trim().length < 3) {
+                    feedback('⚠️ Username must be at least 3 characters', true);
+                    return;
+                }
+                if (!password || password.length < 6) {
+                    feedback('⚠️ Password must be at least 6 characters', true);
+                    return;
+                }
+                if (!selectedAvatar) {
+                    feedback('⚠️ Please select a bird avatar warrior', true);
+                    return;
+                }
+
                 try {
-                    feedback('Creating account...');
+                    feedback('🦅 Creating war bird profile...');
                     const result = await submitAuth('signup', { username, password, avatar: selectedAvatar });
                     localStorage.setItem(TOKEN_KEY, result.token);
                     setCookieToken(result.token);
                     setUser(result.user);
-                    toggleModal(false);
-                    feedback('');
+                    feedback('✅ Squadron deployed successfully!');
+                    // Reload Battle Pass from server
+                    await loadBattlePass();
+                    setTimeout(() => {
+                        toggleModal(false);
+                        feedback('');
+                    }, 800);
                 } catch (err) {
-                    feedback(err.message, true);
+                    // Enhanced error messages
+                    let errorMsg = err.message;
+                    if (errorMsg.includes('already taken')) {
+                        errorMsg = '⚠️ Commander name taken! Choose another war bird identity';
+                    } else if (errorMsg.includes('Username and password')) {
+                        errorMsg = '⚠️ Commander name and tactical code required';
+                    } else if (errorMsg.includes('at least 3 characters')) {
+                        errorMsg = '⚠️ Commander name must be at least 3 characters';
+                    }
+                    feedback(errorMsg, true);
                 }
             });
 
@@ -1801,20 +1838,14 @@
             const WIN_XP = 100;
             const LOSS_XP = 30;
             const XP_PER_TIER = 500;
-            const MAX_TIER = 10;
+            const MAX_TIER = 4;
 
-            // Define tier rewards
+            // Define tier rewards - 4 tiers with colour progression
             const TIER_REWARDS = [
-                { tier: 1, icon: '🥉', name: 'Bronze Starter', border: 'bronze', badge: null, glow: null },
-                { tier: 2, icon: '🎖️', name: 'Badge Warrior', border: 'bronze', badge: 'wins-10', glow: null },
-                { tier: 3, icon: '💙', name: 'Blue Flame', border: 'bronze', badge: 'wins-10', glow: 'blue' },
-                { tier: 4, icon: '🥈', name: 'Silver Knight', border: 'silver', badge: 'wins-10', glow: 'blue' },
-                { tier: 5, icon: '⭐', name: 'Star Achiever', border: 'silver', badge: 'wins-50', glow: 'blue' },
-                { tier: 6, icon: '❤️', name: 'Red Warrior', border: 'silver', badge: 'wins-50', glow: 'red' },
-                { tier: 7, icon: '🥇', name: 'Gold Champion', border: 'gold', badge: 'wins-50', glow: 'red' },
-                { tier: 8, icon: '💯', name: 'Elite Master', border: 'gold', badge: 'wins-100', glow: 'red' },
-                { tier: 9, icon: '✨', name: 'Golden Legend', border: 'gold', badge: 'wins-100', glow: 'gold' },
-                { tier: 10, icon: '👑', name: 'Ultimate Champion', border: 'legendary', badge: 'champion', glow: 'rainbow' }
+                { tier: 1, icon: '🥉', name: 'Bronze Recruit', border: 'bronze', badge: null, glow: null },
+                { tier: 2, icon: '🥈', name: 'Silver Warrior', border: 'silver', badge: 'wins-10', glow: 'blue' },
+                { tier: 3, icon: '🥇', name: 'Gold Commander', border: 'gold', badge: 'wins-25', glow: 'gold' },
+                { tier: 4, icon: '👑', name: 'Ultimate Champion', border: 'legendary', badge: 'wins-50', glow: 'rainbow' }
             ];
 
             const bpWidget = document.getElementById('battlepass-widget');
@@ -1839,17 +1870,55 @@
                 unlockedRewards: []
             };
 
-            // Load battle pass data from storage
-            function loadBattlePass() {
+            // Load battle pass data from server (or storage if offline)
+            async function loadBattlePass() {
+                try {
+                    // If user is logged in, fetch from server
+                    if (isUserLoggedIn()) {
+                        const token = getAuthToken();
+                        const response = await fetch(`/api/v1/profile/battlepass`, {
+                            headers: {
+                                'X-Bluejay-Token': token
+                            }
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.success && data.battlepass) {
+                                // Map server data to client format
+                                battlePassData = {
+                                    currentXP: data.battlepass.xp || 0,
+                                    totalWins: data.battlepass.wins || 0,
+                                    totalLosses: data.battlepass.losses || 0
+                                };
+                                // Save to localStorage for offline access
+                                saveBattlePass();
+                            }
+                        } else {
+                            console.warn('Failed to fetch Battle Pass from server, using localStorage');
+                            loadBattlePassFromStorage();
+                        }
+                    } else {
+                        // Not logged in, use localStorage
+                        loadBattlePassFromStorage();
+                    }
+                } catch (err) {
+                    console.warn('Failed to load battle pass data from server:', err);
+                    loadBattlePassFromStorage();
+                }
+                renderBattlePass();
+            }
+
+            // Load from localStorage (fallback)
+            function loadBattlePassFromStorage() {
                 try {
                     const saved = localStorage.getItem(BP_STORAGE_KEY);
                     if (saved) {
                         battlePassData = { ...battlePassData, ...JSON.parse(saved) };
                     }
                 } catch (err) {
-                    console.warn('Failed to load battle pass data:', err);
+                    console.warn('Failed to load battle pass from storage:', err);
                 }
-                renderBattlePass();
             }
 
             // Save battle pass data to storage
@@ -1940,14 +2009,50 @@
                     const avatarBtn = document.getElementById('avatar-button');
 
                     if (avatarBtn) {
+                        // Clear previous rewards
+                        avatarBtn.removeAttribute('data-border');
+                        avatarBtn.removeAttribute('data-badge');
+                        avatarBtn.removeAttribute('data-glow');
+
+                        // Apply border (always available at tier)
                         if (reward.border) {
                             avatarBtn.setAttribute('data-border', reward.border);
                         }
-                        if (reward.badge) {
-                            avatarBtn.setAttribute('data-badge', reward.badge);
-                        }
+
+                        // Apply glow (always available at tier)
                         if (reward.glow) {
                             avatarBtn.setAttribute('data-glow', reward.glow);
+                        }
+
+                        // Apply badge only if win requirements are met
+                        if (reward.badge) {
+                            const wins = battlePassData.totalWins || 0;
+                            let canApplyBadge = false;
+
+                            switch (reward.badge) {
+                                case 'wins-10':
+                                    canApplyBadge = wins >= 10;
+                                    break;
+                                case 'wins-25':
+                                    canApplyBadge = wins >= 25;
+                                    break;
+                                case 'wins-50':
+                                    canApplyBadge = wins >= 50;
+                                    break;
+                                case 'wins-100':
+                                    canApplyBadge = wins >= 100;
+                                    break;
+                                case 'champion':
+                                    // Champion badge for tier 4
+                                    canApplyBadge = currentTier >= 4 && wins >= 50;
+                                    break;
+                                default:
+                                    canApplyBadge = false;
+                            }
+
+                            if (canApplyBadge) {
+                                avatarBtn.setAttribute('data-badge', reward.badge);
+                            }
                         }
                     }
                 }
